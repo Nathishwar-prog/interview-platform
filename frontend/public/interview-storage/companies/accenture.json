@@ -1,0 +1,50 @@
+{
+  "name": "Accenture",
+  "slug": "accenture",
+  "logo": "https://logo.clearbit.com/accenture.com",
+  "website": "https://accenture.com",
+  "careerLink": "https://www.accenture.com/careers",
+  "industry": "Consulting",
+  "type": "Service",
+  "packageRange": "₹4.5L - ₹15L",
+  "difficulty": "Easy-Medium",
+  "interviewRounds": [
+    "Cognitive Assessment",
+    "Technical",
+    "Communication",
+    "HR"
+  ],
+  "tags": [
+    "Consulting",
+    "Digital",
+    "Cloud",
+    "Strategy"
+  ],
+  "roles": [
+    "Associate Software Engineer",
+    "Software Engineer",
+    "Analyst",
+    "Consultant"
+  ],
+  "location": "Bangalore, India",
+  "hiringType": [
+    "Full Time",
+    "Fresher",
+    "On Campus",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "Python",
+    "SQL",
+    "Cloud",
+    "Agile"
+  ],
+  "overview": "Accenture is a global professional services company specializing in IT services, consulting, and strategy.",
+  "hiringProcess": "Accenture's process includes cognitive/technical assessment, coding round, communication assessment, and HR interview.",
+  "eligibility": "60%+ in academics, strong communication skills, analytical thinking.",
+  "preparationTips": "Focus on cognitive ability tests, basic coding, and communication skills. Understand Agile methodology.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

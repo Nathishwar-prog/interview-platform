@@ -1,0 +1,51 @@
+{
+  "name": "Adobe",
+  "slug": "adobe",
+  "logo": "https://logo.clearbit.com/adobe.com",
+  "website": "https://adobe.com",
+  "careerLink": "https://adobe.wd5.myworkdayjobs.com/external_experienced",
+  "industry": "Technology",
+  "type": "Product",
+  "packageRange": "$120K - $300K",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "OA",
+    "Technical (x2)",
+    "Hiring Manager",
+    "HR"
+  ],
+  "tags": [
+    "Creative",
+    "SaaS",
+    "Cloud",
+    "Design"
+  ],
+  "roles": [
+    "SDE",
+    "Frontend",
+    "Backend",
+    "ML Engineer",
+    "QA"
+  ],
+  "location": "San Jose, CA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Fresher",
+    "Experienced"
+  ],
+  "skills": [
+    "DSA",
+    "JavaScript",
+    "Java",
+    "C++",
+    "React"
+  ],
+  "overview": "Adobe is a global leader in digital media and marketing solutions. Known for Creative Cloud, Document Cloud, and Experience Cloud products.",
+  "hiringProcess": "Adobe's process includes an online coding test, 2-3 technical rounds, a hiring manager round, and an HR discussion.",
+  "eligibility": "Good CS fundamentals, creative problem-solving ability.",
+  "preparationTips": "Focus on medium-level DSA problems. Adobe asks many string and array problems. Practice system design for senior roles.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

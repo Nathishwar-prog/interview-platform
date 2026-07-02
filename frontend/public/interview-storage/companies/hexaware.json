@@ -1,0 +1,64 @@
+{
+  "name": "Hexaware Technologies",
+  "slug": "hexaware-technologies",
+  "logo": "https://logo.clearbit.com/hexaware.com",
+  "website": "https://hexaware.com",
+  "careerLink": "https://careers.hexaware.com",
+  "industry": "Information Technology & Consulting",
+  "type": "Service-Based",
+  "packageRange": "₹3.5 LPA - ₹12 LPA",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "Online Assessment",
+    "Technical Interview",
+    "Managerial Interview",
+    "HR Interview"
+  ],
+  "tags": [
+    "Service-Based",
+    "Digital Transformation",
+    "Cloud",
+    "AI",
+    "GenAI"
+  ],
+  "roles": [
+    "Software Engineer",
+    "Graduate Engineer Trainee",
+    "GenAI Engineer",
+    "AI/ML Engineer",
+    "Java Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Full Stack Developer",
+    "Data Engineer",
+    "QA Engineer"
+  ],
+  "location": "Navi Mumbai, India",
+  "hiringType": [
+    "Intern",
+    "Graduate",
+    "Full Time",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Python",
+    "SQL",
+    "JavaScript",
+    "React",
+    "DSA",
+    "OOP",
+    "DBMS",
+    "Operating Systems",
+    "Computer Networks",
+    "GenAI Basics"
+  ],
+  "overview": "Hexaware Technologies is a global IT services and consulting company that specializes in digital transformation, cloud computing, artificial intelligence, automation, and enterprise solutions. It hires fresh graduates through campus and off-campus drives for software engineering, AI, cloud, and digital technology roles.",
+
+  "hiringProcess": "The hiring process generally starts with an online assessment consisting of aptitude, logical reasoning, coding, and technical MCQs. Shortlisted candidates attend one or more technical interviews covering programming, OOP, DBMS, SQL, projects, and problem-solving, followed by a managerial discussion and an HR interview.",
+
+  "eligibility": "BE/B.Tech/MCA graduates with good academic performance. Strong knowledge of Java or Python, SQL, OOP, DBMS, and basic DSA is preferred. Good communication skills are expected.",
+
+  "preparationTips": "Practice easy and medium DSA problems, revise Java, OOP, SQL, DBMS, Operating Systems, and Computer Networks. Be prepared to explain your projects, fundamentals of Spring Boot, REST APIs, Git, and basic AI/GenAI concepts if applying for AI-related roles."
+}

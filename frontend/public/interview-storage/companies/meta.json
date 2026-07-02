@@ -1,0 +1,128 @@
+{
+  "name": "Meta",
+  "slug": "meta",
+  "logo": "https://logo.clearbit.com/meta.com",
+  "website": "https://meta.com",
+  "careerLink": "https://metacareers.com",
+  "industry": "Technology",
+  "type": "Product",
+  "packageRange": "$160K - $500K",
+  "difficulty": "Hard",
+  "interviewRounds": [
+    "Recruiter Screen",
+    "Technical Screen",
+    "Onsite (3-4 rounds)"
+  ],
+  "tags": [
+    "FAANG",
+    "Social Media",
+    "VR/AR",
+    "AI"
+  ],
+  "roles": [
+    "SDE",
+    "ML Engineer",
+    "Production Engineer",
+    "Frontend",
+    "iOS",
+    "Android"
+  ],
+  "location": "Menlo Park, CA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Experienced"
+  ],
+  "skills": [
+    "DSA",
+    "System Design",
+    "React",
+    "Python",
+    "C++",
+    "Hack"
+  ],
+  "overview": "Meta (formerly Facebook) builds technologies that help people connect. Known for fast-paced interviews with emphasis on coding speed and system design at scale.",
+  "hiringProcess": "Meta's process is streamlined: recruiter call, technical phone screen (coding), then onsite with 2 coding rounds, 1 system design, and 1 behavioral round.",
+  "eligibility": "Strong coding skills, ability to solve problems quickly. Experience with large-scale systems preferred.",
+  "preparationTips": "Practice solving medium problems in 20 minutes. Focus on graph problems and dynamic programming. Study Meta's system design patterns.",
+  "interviewQuestions": [
+    {
+      "id": "fq1",
+      "title": "Design Facebook News Feed",
+      "category": "system-design",
+      "difficulty": "Hard",
+      "frequency": "Very High",
+      "round": "System Design",
+      "expectedTime": "45 min",
+      "topics": [
+        "System Design",
+        "Feed Ranking",
+        "Caching"
+      ],
+      "content": "Design the News Feed system for a social media platform with billions of users.",
+      "expectedAnswer": "Cover feed generation (push vs pull), ranking algorithm, caching strategy, and real-time updates.",
+      "sampleAnswer": "Hybrid push/pull model: push for users with few friends, pull for celebrities. Rank using ML model considering recency, engagement, relationship. Cache pre-computed feeds in Redis. Use WebSocket for real-time updates.",
+      "tips": [
+        "Discuss push vs pull trade-offs",
+        "Cover ranking signals",
+        "Address celebrity problem"
+      ],
+      "followUp": [
+        "How to handle viral posts?",
+        "How to ensure feed freshness?"
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "fp1",
+      "title": "Binary Tree Level Order Traversal",
+      "slug": "binary-tree-level-order",
+      "difficulty": "Medium",
+      "category": "trees",
+      "acceptance": "63.7%",
+      "frequency": "Very High",
+      "topics": [
+        "Tree",
+        "BFS",
+        "Queue"
+      ],
+      "companies": [
+        "Meta",
+        "Amazon",
+        "Microsoft"
+      ],
+      "statement": "Given the root of a binary tree, return the level order traversal of its nodes' values.",
+      "examples": [
+        {
+          "input": "root = [3,9,20,null,null,15,7]",
+          "output": "[[3],[9,20],[15,7]]",
+          "explanation": "Level by level traversal."
+        }
+      ],
+      "constraints": [
+        "0 <= number of nodes <= 2000",
+        "-1000 <= Node.val <= 1000"
+      ],
+      "bruteForce": {
+        "approach": "BFS with queue tracking levels",
+        "code": "function levelOrder(root) {\n  if (!root) return [];\n  const result = [], queue = [root];\n  while (queue.length) {\n    const level = [], size = queue.length;\n    for (let i = 0; i < size; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    result.push(level);\n  }\n  return result;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)"
+      },
+      "optimal": {
+        "approach": "BFS is already optimal for level order",
+        "code": "function levelOrder(root) {\n  if (!root) return [];\n  const result = [];\n  let queue = [root];\n  while (queue.length) {\n    const level = [];\n    const nextQueue = [];\n    for (const node of queue) {\n      level.push(node.val);\n      if (node.left) nextQueue.push(node.left);\n      if (node.right) nextQueue.push(node.right);\n    }\n    result.push(level);\n    queue = nextQueue;\n  }\n  return result;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)"
+      },
+      "relatedProblems": [
+        "Binary Tree Zigzag Level Order",
+        "Binary Tree Right Side View",
+        "Average of Levels"
+      ],
+      "interviewTips": "Standard BFS template. Know variations: zigzag, right side view, bottom-up."
+    }
+  ],
+  "experiences": []
+}

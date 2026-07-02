@@ -1,0 +1,802 @@
+[
+  {
+    "id": "str001",
+    "title": "Valid Anagram",
+    "slug": "valid-anagram",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String", "Hash Map", "Sorting"],
+    "companies": ["Amazon", "Google", "Meta", "Microsoft"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str002",
+    "title": "Group Anagrams",
+    "slug": "group-anagrams",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hash Map", "Sorting"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str003",
+    "title": "Longest Common Prefix",
+    "slug": "longest-common-prefix",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String"],
+    "companies": ["Google", "Microsoft"],
+    "frequency": "High"
+  },
+  {
+    "id": "str004",
+    "title": "Longest Substring Without Repeating Characters",
+    "slug": "longest-substring-without-repeating-characters",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Sliding Window", "Hash Map"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str005",
+    "title": "Longest Palindromic Substring",
+    "slug": "longest-palindromic-substring",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming", "Two Pointers"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str006",
+    "title": "Palindromic Substrings",
+    "slug": "palindromic-substrings",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming", "Expand Around Center"],
+    "companies": ["Amazon", "Meta"],
+    "frequency": "High"
+  },
+  {
+    "id": "str007",
+    "title": "Valid Palindrome",
+    "slug": "valid-palindrome",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Two Pointers"],
+    "companies": ["Meta", "Amazon", "Microsoft"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str008",
+    "title": "Reverse Words in a String",
+    "slug": "reverse-words-in-a-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String", "Two Pointers"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str009",
+    "title": "String Compression",
+    "slug": "string-compression",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Two Pointers"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str010",
+    "title": "Encode and Decode Strings",
+    "slug": "encode-and-decode-strings",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Design", "String"],
+    "companies": ["Meta", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str011",
+    "title": "Minimum Window Substring",
+    "slug": "minimum-window-substring",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Sliding Window", "Hash Map"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str012",
+    "title": "Permutation in String",
+    "slug": "permutation-in-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Sliding Window"],
+    "companies": ["Amazon", "Meta"],
+    "frequency": "High"
+  },
+  {
+    "id": "str013",
+    "title": "Find All Anagrams in a String",
+    "slug": "find-all-anagrams-in-a-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Sliding Window", "Hash Map"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str014",
+    "title": "Implement strStr()",
+    "slug": "implement-strstr",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String", "KMP"],
+    "companies": ["Microsoft", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str015",
+    "title": "KMP Pattern Matching",
+    "slug": "kmp-pattern-matching",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["String", "Pattern Matching"],
+    "companies": ["Google", "Adobe"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str016",
+    "title": "Rabin-Karp Algorithm",
+    "slug": "rabin-karp-algorithm",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hashing", "Rolling Hash"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str017",
+    "title": "Z Algorithm Pattern Matching",
+    "slug": "z-algorithm-pattern-matching",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Pattern Matching"],
+    "companies": ["Adobe"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str018",
+    "title": "Roman to Integer",
+    "slug": "roman-to-integer",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String", "Hash Map"],
+    "companies": ["Amazon", "Microsoft"],
+    "frequency": "High"
+  },
+  {
+    "id": "str019",
+    "title": "Integer to Roman",
+    "slug": "integer-to-roman",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Greedy", "String"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str020",
+    "title": "Decode String",
+    "slug": "decode-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Stack", "Recursion"],
+    "companies": ["Google", "Amazon", "Meta"],
+    "frequency": "Very High"
+  },
+   {
+    "id": "str021",
+    "title": "Multiply Strings",
+    "slug": "multiply-strings",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String", "Math", "Simulation"],
+    "companies": ["Google", "Amazon", "Microsoft"],
+    "frequency": "High"
+  },
+  {
+    "id": "str022",
+    "title": "Add Strings",
+    "slug": "add-strings",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String", "Math"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str023",
+    "title": "Simplify Path",
+    "slug": "simplify-path",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Stack", "String"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str024",
+    "title": "Basic Calculator",
+    "slug": "basic-calculator",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Stack", "Parsing"],
+    "companies": ["Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str025",
+    "title": "Basic Calculator II",
+    "slug": "basic-calculator-ii",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Stack", "Parsing"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str026",
+    "title": "Compare Version Numbers",
+    "slug": "compare-version-numbers",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String"],
+    "companies": ["Amazon", "Microsoft"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str027",
+    "title": "Text Justification",
+    "slug": "text-justification",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Google", "Microsoft"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str028",
+    "title": "Word Break",
+    "slug": "word-break",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str029",
+    "title": "Word Break II",
+    "slug": "word-break-ii",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming", "Backtracking"],
+    "companies": ["Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str030",
+    "title": "Longest Happy Prefix",
+    "slug": "longest-happy-prefix",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["KMP"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str031",
+    "title": "Remove Duplicate Letters",
+    "slug": "remove-duplicate-letters",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Stack", "Greedy"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str032",
+    "title": "Minimum Remove to Make Valid Parentheses",
+    "slug": "minimum-remove-to-make-valid-parentheses",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Stack"],
+    "companies": ["Meta", "Amazon"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str033",
+    "title": "Generate Parentheses",
+    "slug": "generate-parentheses",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Backtracking"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str034",
+    "title": "Letter Combinations of a Phone Number",
+    "slug": "letter-combinations-of-a-phone-number",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Backtracking"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str035",
+    "title": "Count and Say",
+    "slug": "count-and-say",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str036",
+    "title": "Reverse String",
+    "slug": "reverse-string",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Two Pointers"],
+    "companies": ["Amazon", "Google", "Microsoft"],
+    "frequency": "High"
+  },
+  {
+    "id": "str037",
+    "title": "Reverse String II",
+    "slug": "reverse-string-ii",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String"],
+    "companies": ["Amazon"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str038",
+    "title": "Reverse Vowels of a String",
+    "slug": "reverse-vowels-of-a-string",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Two Pointers"],
+    "companies": ["Google", "Microsoft"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str039",
+    "title": "Isomorphic Strings",
+    "slug": "isomorphic-strings",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str040",
+    "title": "Buddy Strings",
+    "slug": "buddy-strings",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["String", "Hash Set"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str041",
+    "title": "Longest Repeating Character Replacement",
+    "slug": "longest-repeating-character-replacement",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Sliding Window"],
+    "companies": ["Amazon", "Meta", "Google"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str042",
+    "title": "Longest Repeating Substring",
+    "slug": "longest-repeating-substring",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Binary Search", "Rolling Hash"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str043",
+    "title": "Repeated DNA Sequences",
+    "slug": "repeated-dna-sequences",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hashing", "Rolling Hash"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str044",
+    "title": "Distinct Subsequences",
+    "slug": "distinct-subsequences",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str045",
+    "title": "Interleaving String",
+    "slug": "interleaving-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Amazon", "Microsoft"],
+    "frequency": "High"
+  },
+  {
+    "id": "str046",
+    "title": "Edit Distance",
+    "slug": "edit-distance",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google", "Amazon", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str047",
+    "title": "One Edit Distance",
+    "slug": "one-edit-distance",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String"],
+    "companies": ["Meta"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str048",
+    "title": "Shortest Palindrome",
+    "slug": "shortest-palindrome",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["KMP", "String"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str049",
+    "title": "Palindrome Partitioning",
+    "slug": "palindrome-partitioning",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Backtracking"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str050",
+    "title": "Palindrome Partitioning II",
+    "slug": "palindrome-partitioning-ii",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str051",
+    "title": "Wildcard Matching",
+    "slug": "wildcard-matching",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google", "Microsoft"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str052",
+    "title": "Regular Expression Matching",
+    "slug": "regular-expression-matching",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str053",
+    "title": "Scramble String",
+    "slug": "scramble-string",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming", "Recursion"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str054",
+    "title": "Shortest Common Supersequence",
+    "slug": "shortest-common-supersequence",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Microsoft", "Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str055",
+    "title": "Longest Common Subsequence",
+    "slug": "longest-common-subsequence",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str056",
+    "title": "Longest Palindromic Subsequence",
+    "slug": "longest-palindromic-subsequence",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str057",
+    "title": "Count Different Palindromic Subsequences",
+    "slug": "count-different-palindromic-subsequences",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str058",
+    "title": "Minimum Insertions to Make a String Palindrome",
+    "slug": "minimum-insertions-to-make-a-string-palindrome",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming"],
+    "companies": ["Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str059",
+    "title": "Minimum Deletions to Make String Balanced",
+    "slug": "minimum-deletions-to-make-string-balanced",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Dynamic Programming", "Greedy"],
+    "companies": ["Meta"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str060",
+    "title": "Partition Labels",
+    "slug": "partition-labels",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Greedy", "Hash Map"],
+    "companies": ["Amazon", "Google", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str061",
+    "title": "String to Integer (atoi)",
+    "slug": "string-to-integer-atoi",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String", "Simulation"],
+    "companies": ["Amazon", "Google", "Microsoft", "Meta"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str062",
+    "title": "Zigzag Conversion",
+    "slug": "zigzag-conversion",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str063",
+    "title": "Valid Number",
+    "slug": "valid-number",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Parsing"],
+    "companies": ["Google", "Microsoft"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str064",
+    "title": "Integer to English Words",
+    "slug": "integer-to-english-words",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Recursion", "Simulation"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str065",
+    "title": "Read N Characters Given Read4",
+    "slug": "read-n-characters-given-read4",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Google", "Facebook"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str066",
+    "title": "Read N Characters Given Read4 II",
+    "slug": "read-n-characters-given-read4-ii",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Google", "Facebook"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str067",
+    "title": "Encode and Decode TinyURL",
+    "slug": "encode-and-decode-tinyurl",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Design", "Hash Map"],
+    "companies": ["Google", "Amazon"],
+    "frequency": "High"
+  },
+  {
+    "id": "str068",
+    "title": "Remove Comments",
+    "slug": "remove-comments",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Parsing"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str069",
+    "title": "Custom Sort String",
+    "slug": "custom-sort-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Meta", "Amazon"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str070",
+    "title": "Find and Replace Pattern",
+    "slug": "find-and-replace-pattern",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str071",
+    "title": "Alien Dictionary",
+    "slug": "alien-dictionary",
+    "difficulty": "Hard",
+    "category": "Strings",
+    "topics": ["Graph", "Topological Sort"],
+    "companies": ["Google", "Meta", "Amazon"],
+    "frequency": "Very High"
+  },
+  {
+    "id": "str072",
+    "title": "Verifying an Alien Dictionary",
+    "slug": "verifying-an-alien-dictionary",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str073",
+    "title": "Sentence Similarity",
+    "slug": "sentence-similarity",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Meta"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str074",
+    "title": "Subdomain Visit Count",
+    "slug": "subdomain-visit-count",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Amazon"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str075",
+    "title": "Reorganize String",
+    "slug": "reorganize-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Heap", "Greedy"],
+    "companies": ["Amazon", "Google"],
+    "frequency": "High"
+  },
+  {
+    "id": "str076",
+    "title": "Repeated String Match",
+    "slug": "repeated-string-match",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["String", "KMP"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str077",
+    "title": "Long Pressed Name",
+    "slug": "long-pressed-name",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Two Pointers"],
+    "companies": ["Google"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str078",
+    "title": "Goat Latin",
+    "slug": "goat-latin",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Simulation"],
+    "companies": ["Amazon"],
+    "frequency": "Low"
+  },
+  {
+    "id": "str079",
+    "title": "Most Common Word",
+    "slug": "most-common-word",
+    "difficulty": "Easy",
+    "category": "Strings",
+    "topics": ["Hash Map"],
+    "companies": ["Amazon"],
+    "frequency": "Medium"
+  },
+  {
+    "id": "str080",
+    "title": "Shortest Way to Form String",
+    "slug": "shortest-way-to-form-string",
+    "difficulty": "Medium",
+    "category": "Strings",
+    "topics": ["Greedy", "Binary Search"],
+    "companies": ["Google"],
+    "frequency": "High"
+  }
+]

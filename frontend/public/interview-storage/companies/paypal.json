@@ -1,0 +1,50 @@
+{
+  "name": "PayPal",
+  "slug": "paypal",
+  "logo": "https://logo.clearbit.com/paypal.com",
+  "website": "https://paypal.com",
+  "careerLink": "https://careers.pypl.com",
+  "industry": "Fintech",
+  "type": "Product",
+  "packageRange": "$120K - $300K",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "OA",
+    "Technical (x2)",
+    "System Design",
+    "HR"
+  ],
+  "tags": [
+    "Fintech",
+    "Payments",
+    "Security",
+    "Scale"
+  ],
+  "roles": [
+    "SDE",
+    "Backend",
+    "Security Engineer",
+    "Data Engineer",
+    "Full Stack"
+  ],
+  "location": "San Jose, CA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "Spring",
+    "DSA",
+    "System Design",
+    "Security"
+  ],
+  "overview": "PayPal is a global fintech company operating a worldwide online payments system. Focus on secure, scalable payment processing.",
+  "hiringProcess": "PayPal's process includes an online coding test, 2 technical rounds focusing on DSA and system design, and an HR round.",
+  "eligibility": "Strong Java/Spring skills, understanding of payment systems and security.",
+  "preparationTips": "Focus on concurrency, transaction handling, and secure system design. Practice medium DSA problems.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

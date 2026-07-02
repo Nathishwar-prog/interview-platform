@@ -1,0 +1,819 @@
+{
+  "companies": [
+    {
+      "name": "Google",
+      "slug": "google",
+      "logo": "https://logo.clearbit.com/google.com",
+      "website": "https://google.com",
+      "careerLink": "https://careers.google.com",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$150K - $450K",
+      "difficulty": "Hard",
+      "interviewRounds": [
+        "Phone Screen",
+        "Technical (x3)",
+        "System Design",
+        "Behavioral",
+        "Team Match"
+      ],
+      "tags": [
+        "FAANG",
+        "AI/ML",
+        "Cloud",
+        "Search"
+      ],
+      "roles": [
+        "SDE",
+        "ML Engineer",
+        "Data Scientist",
+        "Frontend",
+        "Backend",
+        "Full Stack",
+        "DevOps"
+      ],
+      "location": "Mountain View, CA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced"
+      ],
+      "skills": [
+        "DSA",
+        "System Design",
+        "Python",
+        "Java",
+        "C++",
+        "Go",
+        "JavaScript"
+      ],
+      "overview": "Google is a multinational technology company specializing in Internet-related services and products. Known for its rigorous interview process focusing on algorithmic problem-solving and system design.",
+      "hiringProcess": "Google's hiring process typically involves an online assessment, followed by phone screens, and then on-site interviews consisting of 4-5 rounds covering coding, system design, and behavioral questions.",
+      "eligibility": "Strong CS fundamentals, competitive programming background preferred. GPA > 3.5 for new grads.",
+      "preparationTips": "Focus on LeetCode medium/hard problems, practice system design, study Google's engineering culture and values.",
+      "questionCount": 4,
+      "problemCount": 3,
+      "experienceCount": 1
+    },{
+  "name": "Hexaware Technologies",
+  "slug": "hexaware-technologies",
+  "logo": "https://logo.clearbit.com/hexaware.com",
+  "website": "https://hexaware.com",
+  "careerLink": "https://careers.hexaware.com",
+  "industry": "Information Technology & Consulting",
+  "type": "Service-Based",
+  "packageRange": "₹3.5 LPA - ₹12 LPA",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "Online Assessment",
+    "Technical Interview",
+    "Managerial Interview",
+    "HR Interview"
+  ],
+  "tags": [
+    "Service-Based",
+    "Digital Transformation",
+    "Cloud",
+    "AI",
+    "GenAI"
+  ],
+  "roles": [
+    "Graduate Engineer Trainee",
+    "Software Engineer",
+    "Java Developer",
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "AI/ML Engineer",
+    "GenAI Engineer",
+    "Data Engineer",
+    "QA Engineer"
+  ],
+  "location": "Navi Mumbai, Maharashtra, India",
+  "hiringType": [
+    "Intern",
+    "Full Time",
+    "Graduate",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Python",
+    "SQL",
+    "DSA",
+    "OOP",
+    "DBMS",
+    "Operating Systems",
+    "Computer Networks",
+    "JavaScript",
+    "React",
+    "Git",
+    "REST APIs",
+    "GenAI Fundamentals"
+  ],
+  "overview": "Hexaware Technologies is a leading global IT services and digital transformation company providing solutions in cloud computing, artificial intelligence, automation, data engineering, enterprise applications, and software development. The company recruits fresh graduates and experienced professionals for software engineering, AI, cloud, and digital technology roles.",
+  "hiringProcess": "The recruitment process generally consists of an Online Assessment (Aptitude, Logical Reasoning, Technical MCQs, Coding), followed by a Technical Interview covering programming fundamentals, DSA, OOP, DBMS, SQL, projects, and problem-solving. Shortlisted candidates attend a Managerial Interview and finally an HR Interview.",
+  "eligibility": "BE/B.Tech/MCA graduates with good academic performance. Strong understanding of Java or Python, Object-Oriented Programming, SQL, DBMS, Data Structures & Algorithms, and good communication skills are preferred.",
+  "preparationTips": "Practice easy to medium DSA problems, revise Java, OOP, SQL, DBMS, Operating Systems, Computer Networks, Spring Boot, REST APIs, Git, and prepare to explain your academic and personal projects clearly. Review basic AI and GenAI concepts if applying for AI-related roles.",
+  "questionCount": 4,
+  "problemCount": 3,
+  "experienceCount": 1
+},
+    {
+      "name": "Amazon",
+      "slug": "amazon",
+      "logo": "https://logo.clearbit.com/amazon.com",
+      "website": "https://amazon.com",
+      "careerLink": "https://amazon.jobs",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$130K - $400K",
+      "difficulty": "Medium-Hard",
+      "interviewRounds": [
+        "OA",
+        "Phone Screen",
+        "Loop (4-5 rounds)",
+        "Bar Raiser"
+      ],
+      "tags": [
+        "FAANG",
+        "E-commerce",
+        "Cloud",
+        "AWS"
+      ],
+      "roles": [
+        "SDE",
+        "Data Engineer",
+        "Solutions Architect",
+        "Frontend",
+        "Backend",
+        "DevOps"
+      ],
+      "location": "Seattle, WA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced",
+        "Fresher"
+      ],
+      "skills": [
+        "DSA",
+        "System Design",
+        "Leadership Principles",
+        "Java",
+        "Python",
+        "AWS"
+      ],
+      "overview": "Amazon is the world's largest e-commerce and cloud computing company. Their interview process heavily emphasizes Leadership Principles alongside technical skills.",
+      "hiringProcess": "Amazon's process includes an Online Assessment, phone screen, and a loop of 4-5 interviews. Each round tests both technical ability and alignment with Amazon's 16 Leadership Principles.",
+      "eligibility": "Strong problem-solving skills, familiarity with Amazon's Leadership Principles is essential.",
+      "preparationTips": "Master the STAR method for behavioral questions. Practice LP stories. Focus on system design for senior roles.",
+      "questionCount": 2,
+      "problemCount": 2,
+      "experienceCount": 1
+    },
+    {
+      "name": "Microsoft",
+      "slug": "microsoft",
+      "logo": "https://logo.clearbit.com/microsoft.com",
+      "website": "https://microsoft.com",
+      "careerLink": "https://careers.microsoft.com",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$140K - $380K",
+      "difficulty": "Medium-Hard",
+      "interviewRounds": [
+        "Phone Screen",
+        "Technical (x3)",
+        "Design",
+        "As Appropriate"
+      ],
+      "tags": [
+        "FAANG",
+        "Cloud",
+        "Enterprise",
+        "AI"
+      ],
+      "roles": [
+        "SDE",
+        "PM",
+        "Data Scientist",
+        "Frontend",
+        "Backend",
+        "Cloud Engineer"
+      ],
+      "location": "Redmond, WA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced",
+        "Fresher"
+      ],
+      "skills": [
+        "DSA",
+        "System Design",
+        "C#",
+        "Java",
+        "Python",
+        "Azure"
+      ],
+      "overview": "Microsoft is a global technology leader in cloud computing, productivity software, and AI. Their interview process is collaborative and focuses on problem-solving approach.",
+      "hiringProcess": "Microsoft's process includes a recruiter screen, 4-5 technical interviews including a 'As Appropriate' round with a senior leader who makes the final hiring decision.",
+      "eligibility": "Strong fundamentals in CS, good communication skills, growth mindset.",
+      "preparationTips": "Practice coding on whiteboard, focus on clean code and testing. Microsoft values collaboration and growth mindset.",
+      "questionCount": 1,
+      "problemCount": 1,
+      "experienceCount": 0
+    },
+    {
+      "name": "Meta",
+      "slug": "meta",
+      "logo": "https://logo.clearbit.com/meta.com",
+      "website": "https://meta.com",
+      "careerLink": "https://metacareers.com",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$160K - $500K",
+      "difficulty": "Hard",
+      "interviewRounds": [
+        "Recruiter Screen",
+        "Technical Screen",
+        "Onsite (3-4 rounds)"
+      ],
+      "tags": [
+        "FAANG",
+        "Social Media",
+        "VR/AR",
+        "AI"
+      ],
+      "roles": [
+        "SDE",
+        "ML Engineer",
+        "Production Engineer",
+        "Frontend",
+        "iOS",
+        "Android"
+      ],
+      "location": "Menlo Park, CA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced"
+      ],
+      "skills": [
+        "DSA",
+        "System Design",
+        "React",
+        "Python",
+        "C++",
+        "Hack"
+      ],
+      "overview": "Meta (formerly Facebook) builds technologies that help people connect. Known for fast-paced interviews with emphasis on coding speed and system design at scale.",
+      "hiringProcess": "Meta's process is streamlined: recruiter call, technical phone screen (coding), then onsite with 2 coding rounds, 1 system design, and 1 behavioral round.",
+      "eligibility": "Strong coding skills, ability to solve problems quickly. Experience with large-scale systems preferred.",
+      "preparationTips": "Practice solving medium problems in 20 minutes. Focus on graph problems and dynamic programming. Study Meta's system design patterns.",
+      "questionCount": 1,
+      "problemCount": 1,
+      "experienceCount": 0
+    },
+    {
+      "name": "Netflix",
+      "slug": "netflix",
+      "logo": "https://logo.clearbit.com/netflix.com",
+      "website": "https://netflix.com",
+      "careerLink": "https://jobs.netflix.com",
+      "industry": "Entertainment",
+      "type": "Product",
+      "packageRange": "$200K - $600K",
+      "difficulty": "Very Hard",
+      "interviewRounds": [
+        "Recruiter",
+        "Hiring Manager",
+        "Technical (x3-4)",
+        "Culture Fit"
+      ],
+      "tags": [
+        "FAANG",
+        "Streaming",
+        "Content",
+        "ML"
+      ],
+      "roles": [
+        "Senior SDE",
+        "Staff Engineer",
+        "ML Engineer",
+        "Data Engineer"
+      ],
+      "location": "Los Gatos, CA",
+      "hiringType": [
+        "Full Time",
+        "Experienced"
+      ],
+      "skills": [
+        "System Design",
+        "Java",
+        "Python",
+        "Microservices",
+        "AWS"
+      ],
+      "overview": "Netflix is the world's leading streaming entertainment service. They hire primarily senior engineers and are known for their unique culture of freedom and responsibility.",
+      "hiringProcess": "Netflix focuses on senior hires. Process includes recruiter screen, hiring manager conversation, 4-5 technical interviews focusing on system design and past experience.",
+      "eligibility": "Typically 5+ years experience. Strong system design skills. Cultural alignment with Netflix's values.",
+      "preparationTips": "Read the Netflix Culture Deck. Focus on system design at massive scale. Prepare deep-dive stories about past projects.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Adobe",
+      "slug": "adobe",
+      "logo": "https://logo.clearbit.com/adobe.com",
+      "website": "https://adobe.com",
+      "careerLink": "https://adobe.wd5.myworkdayjobs.com/external_experienced",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$120K - $300K",
+      "difficulty": "Medium",
+      "interviewRounds": [
+        "OA",
+        "Technical (x2)",
+        "Hiring Manager",
+        "HR"
+      ],
+      "tags": [
+        "Creative",
+        "SaaS",
+        "Cloud",
+        "Design"
+      ],
+      "roles": [
+        "SDE",
+        "Frontend",
+        "Backend",
+        "ML Engineer",
+        "QA"
+      ],
+      "location": "San Jose, CA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Fresher",
+        "Experienced"
+      ],
+      "skills": [
+        "DSA",
+        "JavaScript",
+        "Java",
+        "C++",
+        "React"
+      ],
+      "overview": "Adobe is a global leader in digital media and marketing solutions. Known for Creative Cloud, Document Cloud, and Experience Cloud products.",
+      "hiringProcess": "Adobe's process includes an online coding test, 2-3 technical rounds, a hiring manager round, and an HR discussion.",
+      "eligibility": "Good CS fundamentals, creative problem-solving ability.",
+      "preparationTips": "Focus on medium-level DSA problems. Adobe asks many string and array problems. Practice system design for senior roles.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Uber",
+      "slug": "uber",
+      "logo": "https://logo.clearbit.com/uber.com",
+      "website": "https://uber.com",
+      "careerLink": "https://www.uber.com/careers",
+      "industry": "Transportation",
+      "type": "Product",
+      "packageRange": "$140K - $380K",
+      "difficulty": "Hard",
+      "interviewRounds": [
+        "Recruiter",
+        "Phone Screen",
+        "Onsite (4 rounds)"
+      ],
+      "tags": [
+        "Ride-sharing",
+        "Maps",
+        "Real-time",
+        "ML"
+      ],
+      "roles": [
+        "SDE",
+        "Backend",
+        "ML Engineer",
+        "iOS",
+        "Android",
+        "Data Engineer"
+      ],
+      "location": "San Francisco, CA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced"
+      ],
+      "skills": [
+        "DSA",
+        "System Design",
+        "Go",
+        "Java",
+        "Python",
+        "Distributed Systems"
+      ],
+      "overview": "Uber is a technology company that connects riders with drivers through its platform. Known for solving complex real-time geospatial problems at scale.",
+      "hiringProcess": "Uber's process includes a recruiter call, coding phone screen, and 4 onsite rounds covering coding, system design, and behavioral questions.",
+      "eligibility": "Strong algorithmic skills, experience with distributed systems preferred.",
+      "preparationTips": "Focus on graph algorithms, real-time systems, and geospatial problems. Study Uber's engineering blog.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Oracle",
+      "slug": "oracle",
+      "logo": "https://logo.clearbit.com/oracle.com",
+      "website": "https://oracle.com",
+      "careerLink": "https://oracle.com/careers",
+      "industry": "Technology",
+      "type": "Product",
+      "packageRange": "$100K - $250K",
+      "difficulty": "Medium",
+      "interviewRounds": [
+        "OA",
+        "Technical (x2)",
+        "Managerial",
+        "HR"
+      ],
+      "tags": [
+        "Database",
+        "Cloud",
+        "Enterprise",
+        "Java"
+      ],
+      "roles": [
+        "SDE",
+        "Database Engineer",
+        "Cloud Engineer",
+        "QA",
+        "DevOps"
+      ],
+      "location": "Austin, TX",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Fresher",
+        "Experienced"
+      ],
+      "skills": [
+        "Java",
+        "SQL",
+        "DSA",
+        "Database Design",
+        "Cloud"
+      ],
+      "overview": "Oracle is a multinational technology corporation specializing in database software, cloud systems, and enterprise solutions.",
+      "hiringProcess": "Oracle's process typically includes an online assessment, 2 technical interviews, a managerial round, and HR discussion.",
+      "eligibility": "Good understanding of databases, Java proficiency, CS fundamentals.",
+      "preparationTips": "Focus on SQL queries, Java OOP concepts, and medium-level DSA. Understand database internals.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "PayPal",
+      "slug": "paypal",
+      "logo": "https://logo.clearbit.com/paypal.com",
+      "website": "https://paypal.com",
+      "careerLink": "https://careers.pypl.com",
+      "industry": "Fintech",
+      "type": "Product",
+      "packageRange": "$120K - $300K",
+      "difficulty": "Medium",
+      "interviewRounds": [
+        "OA",
+        "Technical (x2)",
+        "System Design",
+        "HR"
+      ],
+      "tags": [
+        "Fintech",
+        "Payments",
+        "Security",
+        "Scale"
+      ],
+      "roles": [
+        "SDE",
+        "Backend",
+        "Security Engineer",
+        "Data Engineer",
+        "Full Stack"
+      ],
+      "location": "San Jose, CA",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Experienced"
+      ],
+      "skills": [
+        "Java",
+        "Spring",
+        "DSA",
+        "System Design",
+        "Security"
+      ],
+      "overview": "PayPal is a global fintech company operating a worldwide online payments system. Focus on secure, scalable payment processing.",
+      "hiringProcess": "PayPal's process includes an online coding test, 2 technical rounds focusing on DSA and system design, and an HR round.",
+      "eligibility": "Strong Java/Spring skills, understanding of payment systems and security.",
+      "preparationTips": "Focus on concurrency, transaction handling, and secure system design. Practice medium DSA problems.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Walmart",
+      "slug": "walmart",
+      "logo": "https://logo.clearbit.com/walmart.com",
+      "website": "https://walmart.com",
+      "careerLink": "https://careers.walmart.com",
+      "industry": "Retail",
+      "type": "Product",
+      "packageRange": "$110K - $280K",
+      "difficulty": "Medium",
+      "interviewRounds": [
+        "OA",
+        "Technical (x2)",
+        "Managerial",
+        "HR"
+      ],
+      "tags": [
+        "E-commerce",
+        "Retail",
+        "Supply Chain",
+        "Cloud"
+      ],
+      "roles": [
+        "SDE",
+        "Full Stack",
+        "Data Engineer",
+        "DevOps",
+        "ML Engineer"
+      ],
+      "location": "Bentonville, AR",
+      "hiringType": [
+        "Full Time",
+        "Intern",
+        "Fresher",
+        "Experienced"
+      ],
+      "skills": [
+        "Java",
+        "React",
+        "DSA",
+        "System Design",
+        "Cloud"
+      ],
+      "overview": "Walmart Global Tech builds the technology that powers the world's largest retailer. Focus on e-commerce, supply chain, and customer experience.",
+      "hiringProcess": "Walmart's process includes an online assessment, 2-3 technical rounds, a managerial discussion, and HR round.",
+      "eligibility": "Good CS fundamentals, full-stack development experience preferred.",
+      "preparationTips": "Practice medium-level DSA, focus on system design for e-commerce scenarios. Understand microservices architecture.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Infosys",
+      "slug": "infosys",
+      "logo": "https://logo.clearbit.com/infosys.com",
+      "website": "https://infosys.com",
+      "careerLink": "https://career.infosys.com",
+      "industry": "IT Services",
+      "type": "Service",
+      "packageRange": "₹3.6L - ₹12L",
+      "difficulty": "Easy-Medium",
+      "interviewRounds": [
+        "Online Test",
+        "Technical",
+        "HR"
+      ],
+      "tags": [
+        "IT Services",
+        "Consulting",
+        "Digital",
+        "Cloud"
+      ],
+      "roles": [
+        "Systems Engineer",
+        "Technology Analyst",
+        "Consultant",
+        "Full Stack"
+      ],
+      "location": "Bangalore, India",
+      "hiringType": [
+        "Full Time",
+        "Fresher",
+        "On Campus",
+        "Off Campus"
+      ],
+      "skills": [
+        "Java",
+        "Python",
+        "SQL",
+        "DSA Basics",
+        "Aptitude"
+      ],
+      "overview": "Infosys is a global leader in next-generation digital services and consulting. One of the largest IT services companies in India.",
+      "hiringProcess": "Infosys conducts online aptitude + coding test, followed by technical interview and HR round. Campus hiring is common.",
+      "eligibility": "60%+ in academics, no active backlogs. Open to all branches for some roles.",
+      "preparationTips": "Focus on aptitude, basic DSA, SQL queries, and OOP concepts. Practice InfyTQ platform problems.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "TCS",
+      "slug": "tcs",
+      "logo": "https://logo.clearbit.com/tcs.com",
+      "website": "https://tcs.com",
+      "careerLink": "https://www.tcs.com/careers",
+      "industry": "IT Services",
+      "type": "Service",
+      "packageRange": "₹3.3L - ₹10L",
+      "difficulty": "Easy",
+      "interviewRounds": [
+        "TCS NQT",
+        "Technical",
+        "Managerial",
+        "HR"
+      ],
+      "tags": [
+        "IT Services",
+        "Consulting",
+        "Digital"
+      ],
+      "roles": [
+        "Assistant Systems Engineer",
+        "Systems Engineer",
+        "IT Analyst"
+      ],
+      "location": "Mumbai, India",
+      "hiringType": [
+        "Full Time",
+        "Fresher",
+        "On Campus"
+      ],
+      "skills": [
+        "C",
+        "Java",
+        "Python",
+        "SQL",
+        "Aptitude"
+      ],
+      "overview": "Tata Consultancy Services is an Indian multinational IT services and consulting company. Largest IT employer in India.",
+      "hiringProcess": "TCS conducts the National Qualifier Test (NQT) followed by technical and HR interviews for campus hiring.",
+      "eligibility": "60%+ throughout academics, no backlogs at time of joining.",
+      "preparationTips": "Practice TCS NQT mock tests, focus on aptitude, basic coding, and email writing. Prepare for behavioral questions.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Wipro",
+      "slug": "wipro",
+      "logo": "https://logo.clearbit.com/wipro.com",
+      "website": "https://wipro.com",
+      "careerLink": "https://careers.wipro.com",
+      "industry": "IT Services",
+      "type": "Service",
+      "packageRange": "₹3.5L - ₹10L",
+      "difficulty": "Easy",
+      "interviewRounds": [
+        "Online Test",
+        "Technical",
+        "HR"
+      ],
+      "tags": [
+        "IT Services",
+        "Consulting",
+        "Cloud"
+      ],
+      "roles": [
+        "Project Engineer",
+        "Senior Software Engineer",
+        "Technical Lead"
+      ],
+      "location": "Bangalore, India",
+      "hiringType": [
+        "Full Time",
+        "Fresher",
+        "On Campus",
+        "Off Campus"
+      ],
+      "skills": [
+        "Java",
+        "Python",
+        "SQL",
+        "Aptitude",
+        "Communication"
+      ],
+      "overview": "Wipro Limited is an Indian multinational corporation providing IT, consulting, and business process services.",
+      "hiringProcess": "Wipro conducts an online assessment (aptitude + coding), followed by technical and HR interviews.",
+      "eligibility": "60%+ in academics, good communication skills.",
+      "preparationTips": "Focus on aptitude, basic programming, and communication skills. Practice Wipro-specific test patterns.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    },
+    {
+      "name": "Accenture",
+      "slug": "accenture",
+      "logo": "https://logo.clearbit.com/accenture.com",
+      "website": "https://accenture.com",
+      "careerLink": "https://www.accenture.com/careers",
+      "industry": "Consulting",
+      "type": "Service",
+      "packageRange": "₹4.5L - ₹15L",
+      "difficulty": "Easy-Medium",
+      "interviewRounds": [
+        "Cognitive Assessment",
+        "Technical",
+        "Communication",
+        "HR"
+      ],
+      "tags": [
+        "Consulting",
+        "Digital",
+        "Cloud",
+        "Strategy"
+      ],
+      "roles": [
+        "Associate Software Engineer",
+        "Software Engineer",
+        "Analyst",
+        "Consultant"
+      ],
+      "location": "Bangalore, India",
+      "hiringType": [
+        "Full Time",
+        "Fresher",
+        "On Campus",
+        "Experienced"
+      ],
+      "skills": [
+        "Java",
+        "Python",
+        "SQL",
+        "Cloud",
+        "Agile"
+      ],
+      "overview": "Accenture is a global professional services company specializing in IT services, consulting, and strategy.",
+      "hiringProcess": "Accenture's process includes cognitive/technical assessment, coding round, communication assessment, and HR interview.",
+      "eligibility": "60%+ in academics, strong communication skills, analytical thinking.",
+      "preparationTips": "Focus on cognitive ability tests, basic coding, and communication skills. Understand Agile methodology.",
+      "questionCount": 0,
+      "problemCount": 0,
+      "experienceCount": 0
+    }
+  ],
+  "categories": {
+    "dsa": [
+      "arrays",
+      "strings",
+      "linked-list",
+      "stacks",
+      "queues",
+      "trees",
+      "graphs",
+      "dp",
+      "recursion",
+      "sorting",
+      "searching",
+      "math",
+      "greedy",
+      "bit-manipulation",
+      "heap",
+      "binary-search",
+      "sliding-window",
+      "two-pointer",
+      "trie",
+      "backtracking",
+      "segment-tree",
+      "union-find"
+    ],
+    "interview": [
+      "behavioral",
+      "technical",
+      "hr",
+      "oa",
+      "system-design",
+      "managerial",
+      "coding",
+      "puzzle"
+    ]
+  },
+  "stats": {
+    "totalCompanies": 14,
+    "totalQuestions": 8,
+    "totalProblems": 7,
+    "totalExperiences": 2,
+    "activeUsers": 50000
+  }
+}

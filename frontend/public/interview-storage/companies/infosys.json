@@ -1,0 +1,49 @@
+{
+  "name": "Infosys",
+  "slug": "infosys",
+  "logo": "https://logo.clearbit.com/infosys.com",
+  "website": "https://infosys.com",
+  "careerLink": "https://career.infosys.com",
+  "industry": "IT Services",
+  "type": "Service",
+  "packageRange": "₹3.6L - ₹12L",
+  "difficulty": "Easy-Medium",
+  "interviewRounds": [
+    "Online Test",
+    "Technical",
+    "HR"
+  ],
+  "tags": [
+    "IT Services",
+    "Consulting",
+    "Digital",
+    "Cloud"
+  ],
+  "roles": [
+    "Systems Engineer",
+    "Technology Analyst",
+    "Consultant",
+    "Full Stack"
+  ],
+  "location": "Bangalore, India",
+  "hiringType": [
+    "Full Time",
+    "Fresher",
+    "On Campus",
+    "Off Campus"
+  ],
+  "skills": [
+    "Java",
+    "Python",
+    "SQL",
+    "DSA Basics",
+    "Aptitude"
+  ],
+  "overview": "Infosys is a global leader in next-generation digital services and consulting. One of the largest IT services companies in India.",
+  "hiringProcess": "Infosys conducts online aptitude + coding test, followed by technical interview and HR round. Campus hiring is common.",
+  "eligibility": "60%+ in academics, no active backlogs. Open to all branches for some roles.",
+  "preparationTips": "Focus on aptitude, basic DSA, SQL queries, and OOP concepts. Practice InfyTQ platform problems.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

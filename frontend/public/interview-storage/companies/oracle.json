@@ -1,0 +1,51 @@
+{
+  "name": "Oracle",
+  "slug": "oracle",
+  "logo": "https://logo.clearbit.com/oracle.com",
+  "website": "https://oracle.com",
+  "careerLink": "https://oracle.com/careers",
+  "industry": "Technology",
+  "type": "Product",
+  "packageRange": "$100K - $250K",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "OA",
+    "Technical (x2)",
+    "Managerial",
+    "HR"
+  ],
+  "tags": [
+    "Database",
+    "Cloud",
+    "Enterprise",
+    "Java"
+  ],
+  "roles": [
+    "SDE",
+    "Database Engineer",
+    "Cloud Engineer",
+    "QA",
+    "DevOps"
+  ],
+  "location": "Austin, TX",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Fresher",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "SQL",
+    "DSA",
+    "Database Design",
+    "Cloud"
+  ],
+  "overview": "Oracle is a multinational technology corporation specializing in database software, cloud systems, and enterprise solutions.",
+  "hiringProcess": "Oracle's process typically includes an online assessment, 2 technical interviews, a managerial round, and HR discussion.",
+  "eligibility": "Good understanding of databases, Java proficiency, CS fundamentals.",
+  "preparationTips": "Focus on SQL queries, Java OOP concepts, and medium-level DSA. Understand database internals.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

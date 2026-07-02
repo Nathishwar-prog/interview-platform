@@ -1,0 +1,221 @@
+[
+  {
+    "id": "gq1",
+    "title": "Tell me about yourself",
+    "category": "behavioral",
+    "difficulty": "Easy",
+    "frequency": "Very High",
+    "round": "All Rounds",
+    "expectedTime": "2-3 min",
+    "topics": [
+      "Introduction",
+      "Background"
+    ],
+    "content": "Craft a compelling 2-minute pitch covering your background, key achievements, and why you're interested in Google.",
+    "expectedAnswer": "Structure: Present → Past → Future. Start with current role, highlight relevant achievements, connect to why Google excites you.",
+    "sampleAnswer": "I'm a software engineer with 3 years of experience building scalable distributed systems at [Company]. I led the redesign of our real-time data pipeline that reduced latency by 40% and handles 1M events/sec. I'm drawn to Google because of the scale of problems you solve and the opportunity to impact billions of users.",
+    "tips": [
+      "Keep it under 2 minutes",
+      "Quantify achievements",
+      "Show genuine interest in Google's mission"
+    ],
+    "followUp": [
+      "What's your biggest technical achievement?",
+      "Why Google specifically?"
+    ],
+    "companyName": "Google",
+    "companySlug": "google"
+  },
+  {
+    "id": "gq2",
+    "title": "Explain OOP Principles",
+    "category": "technical",
+    "difficulty": "Medium",
+    "frequency": "High",
+    "round": "Technical",
+    "expectedTime": "5-7 min",
+    "topics": [
+      "OOP",
+      "Design Patterns"
+    ],
+    "content": "Explain the four pillars of Object-Oriented Programming with real-world examples.",
+    "expectedAnswer": "Cover Encapsulation, Abstraction, Inheritance, and Polymorphism with code examples.",
+    "sampleAnswer": "The four pillars are: 1) Encapsulation - bundling data and methods, controlling access via private/public. 2) Abstraction - hiding complexity, exposing only necessary interfaces. 3) Inheritance - creating hierarchies for code reuse. 4) Polymorphism - same interface, different implementations.",
+    "tips": [
+      "Use real-world analogies",
+      "Provide code examples",
+      "Discuss trade-offs"
+    ],
+    "followUp": [
+      "When would you prefer composition over inheritance?",
+      "Explain SOLID principles"
+    ],
+    "companyName": "Google",
+    "companySlug": "google"
+  },
+  {
+    "id": "gq3",
+    "title": "Design a URL Shortener",
+    "category": "system-design",
+    "difficulty": "Medium",
+    "frequency": "Very High",
+    "round": "System Design",
+    "expectedTime": "35-45 min",
+    "topics": [
+      "System Design",
+      "Scalability",
+      "Database"
+    ],
+    "content": "Design a URL shortening service like bit.ly that can handle millions of URLs.",
+    "expectedAnswer": "Cover requirements, API design, database schema, encoding algorithm, caching, and scaling strategies.",
+    "sampleAnswer": "Requirements: shorten URLs, redirect, analytics. Use base62 encoding with counter/hash. Store in NoSQL (DynamoDB). Cache hot URLs in Redis. Use CDN for redirects. Handle 100M URLs/day with horizontal scaling.",
+    "tips": [
+      "Start with requirements clarification",
+      "Draw diagrams",
+      "Discuss trade-offs at each step"
+    ],
+    "followUp": [
+      "How would you handle custom aliases?",
+      "How to prevent abuse?"
+    ],
+    "companyName": "Google",
+    "companySlug": "google"
+  },
+  {
+    "id": "gq4",
+    "title": "What are your salary expectations?",
+    "category": "hr",
+    "difficulty": "Easy",
+    "frequency": "High",
+    "round": "HR",
+    "expectedTime": "2-3 min",
+    "topics": [
+      "Negotiation",
+      "Compensation"
+    ],
+    "content": "How to handle salary expectation questions professionally.",
+    "expectedAnswer": "Research market rates, provide a range, emphasize total compensation.",
+    "sampleAnswer": "Based on my research and experience level, I'm looking at a total compensation in the range of $X-$Y, but I'm flexible and more focused on the role's growth potential and impact.",
+    "tips": [
+      "Research Levels.fyi beforehand",
+      "Never give a single number",
+      "Consider total comp including RSUs"
+    ],
+    "followUp": [
+      "What's your current compensation?",
+      "Are you considering other offers?"
+    ],
+    "companyName": "Google",
+    "companySlug": "google"
+  },
+  {
+    "id": "aq1",
+    "title": "Tell me about a time you disagreed with your manager",
+    "category": "behavioral",
+    "difficulty": "Medium",
+    "frequency": "Very High",
+    "round": "Behavioral",
+    "expectedTime": "3-5 min",
+    "topics": [
+      "Leadership Principles",
+      "Have Backbone"
+    ],
+    "content": "Amazon tests 'Have Backbone; Disagree and Commit' principle with this question.",
+    "expectedAnswer": "Use STAR method. Show respectful disagreement backed by data, and commitment to the final decision.",
+    "sampleAnswer": "Situation: My manager wanted to use a monolithic architecture for a new service. Task: I believed microservices would be better for our scale. Action: I prepared a comparison document with performance projections and presented it in a team meeting. Result: We adopted a hybrid approach that reduced deployment time by 60%.",
+    "tips": [
+      "Always use STAR format",
+      "Show data-driven decision making",
+      "Demonstrate commitment after disagreement"
+    ],
+    "followUp": [
+      "What would you do if your manager still disagreed?",
+      "How did this affect your relationship?"
+    ],
+    "companyName": "Amazon",
+    "companySlug": "amazon"
+  },
+  {
+    "id": "aq2",
+    "title": "Design an e-commerce recommendation system",
+    "category": "system-design",
+    "difficulty": "Hard",
+    "frequency": "High",
+    "round": "System Design",
+    "expectedTime": "45 min",
+    "topics": [
+      "System Design",
+      "ML",
+      "Distributed Systems"
+    ],
+    "content": "Design a product recommendation engine for Amazon-scale e-commerce.",
+    "expectedAnswer": "Cover collaborative filtering, content-based filtering, real-time vs batch processing, A/B testing framework.",
+    "sampleAnswer": "Use collaborative filtering (user-item matrix) + content-based (product features). Batch compute with Spark, real-time with Kafka streams. Store in Redis for low-latency serving. A/B test with feature flags.",
+    "tips": [
+      "Discuss cold start problem",
+      "Mention privacy considerations",
+      "Cover both online and offline components"
+    ],
+    "followUp": [
+      "How to handle the cold start problem?",
+      "How to measure recommendation quality?"
+    ],
+    "companyName": "Amazon",
+    "companySlug": "amazon"
+  },
+  {
+    "id": "mq1",
+    "title": "Why Microsoft?",
+    "category": "behavioral",
+    "difficulty": "Easy",
+    "frequency": "Very High",
+    "round": "All Rounds",
+    "expectedTime": "2-3 min",
+    "topics": [
+      "Motivation",
+      "Culture Fit"
+    ],
+    "content": "Explain your motivation for joining Microsoft specifically.",
+    "expectedAnswer": "Connect personal values with Microsoft's mission to empower every person and organization.",
+    "sampleAnswer": "I'm passionate about Microsoft's mission to empower every person and organization to achieve more. The scale of Azure's infrastructure challenges excites me, and I admire the growth mindset culture that Satya Nadella has fostered.",
+    "tips": [
+      "Research Microsoft's recent initiatives",
+      "Connect to their mission statement",
+      "Mention specific products or teams"
+    ],
+    "followUp": [
+      "Which Microsoft product would you improve?",
+      "How does our mission align with your career goals?"
+    ],
+    "companyName": "Microsoft",
+    "companySlug": "microsoft"
+  },
+  {
+    "id": "fq1",
+    "title": "Design Facebook News Feed",
+    "category": "system-design",
+    "difficulty": "Hard",
+    "frequency": "Very High",
+    "round": "System Design",
+    "expectedTime": "45 min",
+    "topics": [
+      "System Design",
+      "Feed Ranking",
+      "Caching"
+    ],
+    "content": "Design the News Feed system for a social media platform with billions of users.",
+    "expectedAnswer": "Cover feed generation (push vs pull), ranking algorithm, caching strategy, and real-time updates.",
+    "sampleAnswer": "Hybrid push/pull model: push for users with few friends, pull for celebrities. Rank using ML model considering recency, engagement, relationship. Cache pre-computed feeds in Redis. Use WebSocket for real-time updates.",
+    "tips": [
+      "Discuss push vs pull trade-offs",
+      "Cover ranking signals",
+      "Address celebrity problem"
+    ],
+    "followUp": [
+      "How to handle viral posts?",
+      "How to ensure feed freshness?"
+    ],
+    "companyName": "Meta",
+    "companySlug": "meta"
+  }
+]

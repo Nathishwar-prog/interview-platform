@@ -1,0 +1,256 @@
+{
+  "name": "Amazon",
+  "slug": "amazon",
+  "logo": "https://logo.clearbit.com/amazon.com",
+  "website": "https://amazon.com",
+  "careerLink": "https://amazon.jobs",
+  "industry": "Technology",
+  "type": "Product",
+  "packageRange": "$130K - $400K",
+  "difficulty": "Medium-Hard",
+  "interviewRounds": [
+    "OA",
+    "Phone Screen",
+    "Loop (4-5 rounds)",
+    "Bar Raiser"
+  ],
+  "tags": [
+    "FAANG",
+    "E-commerce",
+    "Cloud",
+    "AWS"
+  ],
+  "roles": [
+    "SDE",
+    "Data Engineer",
+    "Solutions Architect",
+    "Frontend",
+    "Backend",
+    "DevOps"
+  ],
+  "location": "Seattle, WA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Experienced",
+    "Fresher"
+  ],
+  "skills": [
+    "DSA",
+    "System Design",
+    "Leadership Principles",
+    "Java",
+    "Python",
+    "AWS"
+  ],
+  "overview": "Amazon is the world's largest e-commerce and cloud computing company. Their interview process heavily emphasizes Leadership Principles alongside technical skills.",
+  "hiringProcess": "Amazon's process includes an Online Assessment, phone screen, and a loop of 4-5 interviews. Each round tests both technical ability and alignment with Amazon's 16 Leadership Principles.",
+  "eligibility": "Strong problem-solving skills, familiarity with Amazon's Leadership Principles is essential.",
+  "preparationTips": "Master the STAR method for behavioral questions. Practice LP stories. Focus on system design for senior roles.",
+  "interviewQuestions": [
+    {
+      "id": "aq1",
+      "title": "Tell me about a time you disagreed with your manager",
+      "category": "behavioral",
+      "difficulty": "Medium",
+      "frequency": "Very High",
+      "round": "Behavioral",
+      "expectedTime": "3-5 min",
+      "topics": [
+        "Leadership Principles",
+        "Have Backbone"
+      ],
+      "content": "Amazon tests 'Have Backbone; Disagree and Commit' principle with this question.",
+      "expectedAnswer": "Use STAR method. Show respectful disagreement backed by data, and commitment to the final decision.",
+      "sampleAnswer": "Situation: My manager wanted to use a monolithic architecture for a new service. Task: I believed microservices would be better for our scale. Action: I prepared a comparison document with performance projections and presented it in a team meeting. Result: We adopted a hybrid approach that reduced deployment time by 60%.",
+      "tips": [
+        "Always use STAR format",
+        "Show data-driven decision making",
+        "Demonstrate commitment after disagreement"
+      ],
+      "followUp": [
+        "What would you do if your manager still disagreed?",
+        "How did this affect your relationship?"
+      ]
+    },
+    {
+      "id": "aq2",
+      "title": "Design an e-commerce recommendation system",
+      "category": "system-design",
+      "difficulty": "Hard",
+      "frequency": "High",
+      "round": "System Design",
+      "expectedTime": "45 min",
+      "topics": [
+        "System Design",
+        "ML",
+        "Distributed Systems"
+      ],
+      "content": "Design a product recommendation engine for Amazon-scale e-commerce.",
+      "expectedAnswer": "Cover collaborative filtering, content-based filtering, real-time vs batch processing, A/B testing framework.",
+      "sampleAnswer": "Use collaborative filtering (user-item matrix) + content-based (product features). Batch compute with Spark, real-time with Kafka streams. Store in Redis for low-latency serving. A/B test with feature flags.",
+      "tips": [
+        "Discuss cold start problem",
+        "Mention privacy considerations",
+        "Cover both online and offline components"
+      ],
+      "followUp": [
+        "How to handle the cold start problem?",
+        "How to measure recommendation quality?"
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "ap1",
+      "title": "Valid Parentheses",
+      "slug": "valid-parentheses",
+      "difficulty": "Easy",
+      "category": "stacks",
+      "acceptance": "42.8%",
+      "frequency": "Very High",
+      "topics": [
+        "Stack",
+        "String"
+      ],
+      "companies": [
+        "Amazon",
+        "Google",
+        "Meta"
+      ],
+      "statement": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+      "examples": [
+        {
+          "input": "s = '()[]{}'",
+          "output": "true",
+          "explanation": "All brackets are properly closed."
+        }
+      ],
+      "constraints": [
+        "1 <= s.length <= 10^4",
+        "s consists of parentheses only"
+      ],
+      "bruteForce": {
+        "approach": "Use a stack to match brackets",
+        "code": "function isValid(s) {\n  const stack = [];\n  const map = { ')': '(', '}': '{', ']': '[' };\n  for (const char of s) {\n    if (!map[char]) stack.push(char);\n    else if (stack.pop() !== map[char]) return false;\n  }\n  return stack.length === 0;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)"
+      },
+      "optimal": {
+        "approach": "Stack-based matching (same as brute force - already optimal)",
+        "code": "function isValid(s) {\n  const stack = [];\n  const pairs = { ')': '(', '}': '{', ']': '[' };\n  for (const c of s) {\n    if (c in pairs) {\n      if (stack.pop() !== pairs[c]) return false;\n    } else stack.push(c);\n  }\n  return stack.length === 0;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)"
+      },
+      "relatedProblems": [
+        "Generate Parentheses",
+        "Longest Valid Parentheses",
+        "Remove Invalid Parentheses"
+      ],
+      "interviewTips": "Classic stack problem. Mention edge cases: empty string, single character, nested brackets."
+    },
+    {
+      "id": "ap2",
+      "title": "Number of Islands",
+      "slug": "number-of-islands",
+      "difficulty": "Medium",
+      "category": "graphs",
+      "acceptance": "56.2%",
+      "frequency": "Very High",
+      "topics": [
+        "Graph",
+        "BFS",
+        "DFS",
+        "Matrix"
+      ],
+      "companies": [
+        "Amazon",
+        "Google",
+        "Microsoft"
+      ],
+      "statement": "Given an m x n 2D binary grid which represents a map of '1's (land) and '0's (water), return the number of islands.",
+      "examples": [
+        {
+          "input": "grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,1,0,0],[0,0,0,1,1]]",
+          "output": "3",
+          "explanation": "Three distinct islands found."
+        }
+      ],
+      "constraints": [
+        "m == grid.length",
+        "n == grid[i].length",
+        "1 <= m, n <= 300"
+      ],
+      "bruteForce": {
+        "approach": "DFS from each unvisited land cell",
+        "code": "function numIslands(grid) {\n  let count = 0;\n  const dfs = (i, j) => {\n    if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] === '0') return;\n    grid[i][j] = '0';\n    dfs(i+1, j); dfs(i-1, j); dfs(i, j+1); dfs(i, j-1);\n  };\n  for (let i = 0; i < grid.length; i++)\n    for (let j = 0; j < grid[0].length; j++)\n      if (grid[i][j] === '1') { count++; dfs(i, j); }\n  return count;\n}",
+        "timeComplexity": "O(m×n)",
+        "spaceComplexity": "O(m×n)"
+      },
+      "optimal": {
+        "approach": "BFS with queue for iterative approach",
+        "code": "function numIslands(grid) {\n  let count = 0;\n  const rows = grid.length, cols = grid[0].length;\n  for (let i = 0; i < rows; i++) {\n    for (let j = 0; j < cols; j++) {\n      if (grid[i][j] === '1') {\n        count++;\n        const queue = [[i, j]];\n        grid[i][j] = '0';\n        while (queue.length) {\n          const [r, c] = queue.shift();\n          for (const [dr, dc] of [[1,0],[-1,0],[0,1],[0,-1]]) {\n            const nr = r+dr, nc = c+dc;\n            if (nr >= 0 && nc >= 0 && nr < rows && nc < cols && grid[nr][nc] === '1') {\n              grid[nr][nc] = '0';\n              queue.push([nr, nc]);\n            }\n          }\n        }\n      }\n    }\n  }\n  return count;\n}",
+        "timeComplexity": "O(m×n)",
+        "spaceComplexity": "O(min(m,n))"
+      },
+      "relatedProblems": [
+        "Max Area of Island",
+        "Surrounded Regions",
+        "Pacific Atlantic Water Flow"
+      ],
+      "interviewTips": "Discuss BFS vs DFS trade-offs. BFS is better for large grids to avoid stack overflow."
+    }
+  ],
+  "experiences": [
+    {
+      "id": "ae1",
+      "candidate": "Anonymous SDE-1",
+      "role": "Software Development Engineer",
+      "date": "2024-05",
+      "result": "Selected",
+      "difficulty": "Medium",
+      "rounds": [
+        {
+          "name": "Online Assessment",
+          "questions": [
+            "Two coding problems",
+            "Work simulation"
+          ],
+          "difficulty": "Medium"
+        },
+        {
+          "name": "Phone Screen",
+          "questions": [
+            "Array problem + LP question"
+          ],
+          "difficulty": "Medium"
+        },
+        {
+          "name": "Loop Round 1",
+          "questions": [
+            "Graph traversal",
+            "Customer Obsession story"
+          ],
+          "difficulty": "Medium"
+        },
+        {
+          "name": "Loop Round 2",
+          "questions": [
+            "System Design - notification service"
+          ],
+          "difficulty": "Hard"
+        },
+        {
+          "name": "Bar Raiser",
+          "questions": [
+            "DP problem",
+            "Deep dive on past project"
+          ],
+          "difficulty": "Hard"
+        }
+      ],
+      "lessons": "Amazon heavily weighs Leadership Principles. Have 2-3 stories ready for each LP. Use STAR method consistently.",
+      "timeline": "Applied → OA (3 days) → Phone (1 week) → Loop (2 weeks) → Offer (1 week)"
+    }
+  ]
+}

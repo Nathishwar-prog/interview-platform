@@ -1,0 +1,47 @@
+{
+  "name": "Wipro",
+  "slug": "wipro",
+  "logo": "https://logo.clearbit.com/wipro.com",
+  "website": "https://wipro.com",
+  "careerLink": "https://careers.wipro.com",
+  "industry": "IT Services",
+  "type": "Service",
+  "packageRange": "₹3.5L - ₹10L",
+  "difficulty": "Easy",
+  "interviewRounds": [
+    "Online Test",
+    "Technical",
+    "HR"
+  ],
+  "tags": [
+    "IT Services",
+    "Consulting",
+    "Cloud"
+  ],
+  "roles": [
+    "Project Engineer",
+    "Senior Software Engineer",
+    "Technical Lead"
+  ],
+  "location": "Bangalore, India",
+  "hiringType": [
+    "Full Time",
+    "Fresher",
+    "On Campus",
+    "Off Campus"
+  ],
+  "skills": [
+    "Java",
+    "Python",
+    "SQL",
+    "Aptitude",
+    "Communication"
+  ],
+  "overview": "Wipro Limited is an Indian multinational corporation providing IT, consulting, and business process services.",
+  "hiringProcess": "Wipro conducts an online assessment (aptitude + coding), followed by technical and HR interviews.",
+  "eligibility": "60%+ in academics, good communication skills.",
+  "preparationTips": "Focus on aptitude, basic programming, and communication skills. Practice Wipro-specific test patterns.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

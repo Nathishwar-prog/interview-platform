@@ -1,0 +1,251 @@
+{
+"id": "arr001",
+"title": "Two Sum",
+"slug": "two-sum",
+"difficulty": "Easy",
+"category": "Array",
+"subcategory": "Hashing",
+"pattern": "Hash Map Lookup",
+"frequency": "Very High",
+"acceptance": "55.2%",
+"premium": false,
+"companies": [
+"Google",
+"Amazon",
+"Microsoft",
+"Meta",
+"Apple",
+"Netflix",
+"Adobe",
+"Uber",
+"LinkedIn",
+"Salesforce",
+"Bloomberg",
+"Oracle",
+"Goldman Sachs",
+"PayPal",
+"VMware"
+],
+"topics": [
+"Array",
+"Hash Table",
+"Lookup",
+"Searching",
+"Complement Technique"
+],
+"prerequisites": [
+"Arrays",
+"Loops",
+"HashMap",
+"Time Complexity",
+"Space Complexity"
+],
+"problemStatement": "Given an integer array nums and an integer target, return the indices of the two numbers such that they add up to the target. Assume that exactly one valid answer exists, and you may not use the same element twice. You may return the answer in any order.",
+"realWorldExample": "Imagine you are shopping with a gift card worth exactly $100. Every product has a price. Instead of checking every pair of products manually, you remember every product price you've already seen. For each new product, you instantly calculate how much money is still needed and check whether you've already seen that price. This is exactly how the optimal HashMap solution works.",
+"intuition": "Instead of asking 'Which two numbers make the target?', think differently: 'For the current number, what number do I need to complete the target?' This required value is called the complement. If that complement has already appeared earlier, then we immediately found the answer.",
+"whenToUse": "Use this approach whenever you need to find two values that satisfy a mathematical relationship (usually sum = target) in linear time. The HashMap complement pattern is one of the most common interview patterns.",
+"examples": [
+{
+"input": "nums = [2,7,11,15], target = 9",
+"output": "[0,1]",
+"explanation": "nums[0] + nums[1] = 2 + 7 = 9."
+},
+{
+"input": "nums = [3,2,4], target = 6",
+"output": "[1,2]",
+"explanation": "nums[1] + nums[2] = 2 + 4 = 6."
+}
+],
+"constraints": [
+"2 <= nums.length <= 100000",
+"-1000000000 <= nums[i] <= 1000000000",
+"-1000000000 <= target <= 1000000000",
+"Exactly one valid answer exists.",
+"Cannot use the same element twice."
+],
+"edgeCases": [
+"Duplicate values",
+"Negative numbers",
+"Target equals zero",
+"Large positive numbers",
+"Large negative numbers",
+"Answer contains duplicate values at different indices",
+"Array size equals 2"
+],
+"hints": [
+"Instead of searching for two numbers, search for one missing number.",
+"Store numbers you've already visited.",
+"Use a HashMap to achieve O(1) average lookup."
+],
+"bruteForce": {
+"title": "Nested Loop Approach",
+"description": "Check every possible pair and return the pair whose sum equals the target.",
+"algorithm": [
+"Loop i from 0 to n-1.",
+"Loop j from i+1 to n-1.",
+"Check nums[i] + nums[j].",
+"If equal to target, return indices."
+],
+"dryRun": "nums=[2,7,11,15], target=9\nCheck (2,7)=9 -> Found.",
+"java": "public int[] twoSum(int[] nums, int target) {\n for(int i=0;i<nums.length;i++){\n for(int j=i+1;j<nums.length;j++){\n if(nums[i]+nums[j]==target)\n return new int[]{i,j};\n }\n }\n return new int[]{};\n}",
+"python": "def twoSum(nums, target):\n n = len(nums)\n for i in range(n):\n for j in range(i+1, n):\n if nums[i] + nums[j] == target:\n return [i, j]",
+"cpp": "vector<int> twoSum(vector<int>& nums, int target){\n for(int i=0;i<nums.size();i++){\n for(int j=i+1;j<nums.size();j++){\n if(nums[i]+nums[j]==target)\n return {i,j};\n }\n return {};\n}",
+"javascript": "function twoSum(nums,target){\nfor(let i=0;i<nums.length;i++){\nfor(let j=i+1;j<nums.length;j++){\nif(nums[i]+nums[j]===target) return [i,j];\n}\n}\nreturn [];\n}",
+"timeComplexity": "O(n²)",
+"spaceComplexity": "O(1)"
+},
+"betterApproach": {
+"title": "Sorting with Two Pointers",
+"description": "Create value-index pairs, sort them, then use two pointers to locate the required sum.",
+"algorithm": [
+"Store value and original index.",
+"Sort by value.",
+"Initialize left and right pointers.",
+"Move pointers based on current sum.",
+"Return original indices."
+],
+"dryRun": "Pairs: [(2,0),(7,1),(11,2),(15,3)]\nleft=2 right=15 sum=17 >9\nMove right\n2+11=13\nMove right\n2+7=9 Found.",
+"java": "Sorting-based solution omitted for brevity. Uses Arrays.sort() with Pair objects.",
+"python": "Sorting-based solution using enumerate() and sorted().",
+"cpp": "Sorting-based solution using vector<pair<int,int>>.",
+"javascript": "Sorting-based solution using array of objects.",
+"timeComplexity": "O(n log n)",
+"spaceComplexity": "O(n)"
+},
+"optimalApproach": {
+"title": "HashMap Complement Lookup",
+"description": "Traverse the array once. For each number compute its complement (target - current). If the complement already exists in the HashMap, return the stored index and current index. Otherwise store the current number and index.",
+"algorithm": [
+"Create an empty HashMap.",
+"Traverse the array.",
+"Calculate complement = target - nums[i].",
+"If complement exists, return indices.",
+"Otherwise insert current value with its index.",
+"Continue until answer is found."
+],
+"whyOptimal": "Each element is processed only once. HashMap provides constant average lookup and insertion. Therefore the entire solution runs in linear time.",
+"dryRun": "nums=[2,7,11,15], target=9\nMap={}\nCurrent=2 Complement=7 Not Found Store {2:0}\nCurrent=7 Complement=2 Found in Map Return [0,1]",
+"java": "public int[] twoSum(int[] nums, int target) {\n Map<Integer,Integer> map = new HashMap<>();\n for(int i=0;i<nums.length;i++){\n int complement = target - nums[i];\n if(map.containsKey(complement)){\n return new int[]{map.get(complement), i};\n }\n map.put(nums[i], i);\n }\n return new int[]{};\n}",
+"python": "def twoSum(nums, target):\n lookup = {}\n for i, num in enumerate(nums):\n comp = target - num\n if comp in lookup:\n return [lookup[comp], i]\n lookup[num] = i",
+"cpp": "vector<int> twoSum(vector<int>& nums, int target){\n unordered_map<int,int> mp;\n for(int i=0;i<nums.size();i++){\n int comp = target - nums[i];\n if(mp.count(comp))\n return {mp[comp], i};\n mp[nums[i]] = i;\n }\n return {};\n}",
+"javascript": "function twoSum(nums,target){\nconst map=new Map();\nfor(let i=0;i<nums.length;i++){\nlet comp=target-nums[i];\nif(map.has(comp)) return [map.get(comp),i];\nmap.set(nums[i],i);\n}\nreturn [];\n}",
+"timeComplexity": "O(n)",
+"spaceComplexity": "O(n)"
+},
+"complexityComparison": [
+{
+"approach": "Brute Force",
+"time": "O(n²)",
+"space": "O(1)"
+},
+{
+"approach": "Better",
+"time": "O(n log n)",
+"space": "O(n)"
+},
+{
+"approach": "Optimal",
+"time": "O(n)",
+"space": "O(n)"
+}
+],
+"visualExplanation": {
+"description": "The HashMap stores numbers that have already been visited.",
+"steps": [
+"Visit 2 → Need 7 → Store 2",
+"Visit 7 → Need 2 → Found",
+"Return indices immediately"
+]
+},
+"commonMistakes": [
+"Adding current number into HashMap before checking complement.",
+"Returning values instead of indices.",
+"Using the same index twice.",
+"Forgetting duplicate numbers.",
+"Sorting original array without preserving indices."
+],
+"interviewFollowUps": [
+"What if multiple answers exist?",
+"Can you solve it without extra space?",
+"What if the array is already sorted?",
+"How would you solve Three Sum?",
+"Can this work on a stream of incoming numbers?"
+],
+"relatedProblems": [
+"Two Sum II",
+"Three Sum",
+"Four Sum",
+"Contains Duplicate",
+"Subarray Sum Equals K",
+"Pair with Given Difference"
+],
+"variations": [
+"Return values instead of indices.",
+"Count total valid pairs.",
+"Find all unique pairs.",
+"Closest sum to target.",
+"Sorted array version."
+],
+"revisionNotes": [
+"Think in terms of complement.",
+"HashMap stores visited numbers.",
+"Lookup first, insert later.",
+"Most common HashMap interview question.",
+"Remember duplicate handling."
+],
+"importantPoints": [
+"HashMap key is value.",
+"HashMap value is index.",
+"Complement = target - current.",
+"Single traversal.",
+"Average O(1) lookup."
+],
+"cheatSheet": {
+"keyObservation": "Every number needs its complement.",
+"algorithm": "Lookup complement first. If found return. Else insert current.",
+"timeComplexity": "O(n)",
+"spaceComplexity": "O(n)"
+},
+"patternRecognition": {
+"howToIdentify": "Whenever a question asks for two numbers satisfying a mathematical relationship (sum, difference, complement), immediately think about storing previously seen values in a HashMap.",
+"keywords": [
+"Pair",
+"Target Sum",
+"Complement",
+"Lookup",
+"HashMap",
+"One Pass",
+"Indices"
+]
+},
+"interviewTips": [
+"Always explain brute force before optimization.",
+"Mention complement technique.",
+"Explain why lookup occurs before insertion.",
+"State average HashMap complexity.",
+"Discuss duplicate handling."
+],
+"practiceLevel": "Beginner",
+"estimatedTime": "15-20 minutes",
+"askedIn": [
+"Google",
+"Amazon",
+"Meta",
+"Microsoft",
+"Apple",
+"Adobe",
+"Uber",
+"LinkedIn"
+],
+"leetcode": "https://leetcode.com/problems/two-sum/",
+"neetcode": "https://neetcode.io/problems/two-integer-sum",
+"youtube": [
+"NeetCode - Two Sum",
+"Abdul Bari - Hashing",
+"Take U Forward - Two Sum",
+"CodeHelp - Two Sum",
+"Nick White - Two Sum"
+],
+"lastUpdated": "2026-07-02",
+"version": "1.0"
+}

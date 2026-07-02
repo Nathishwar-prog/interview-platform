@@ -1,0 +1,47 @@
+{
+  "name": "TCS",
+  "slug": "tcs",
+  "logo": "https://logo.clearbit.com/tcs.com",
+  "website": "https://tcs.com",
+  "careerLink": "https://www.tcs.com/careers",
+  "industry": "IT Services",
+  "type": "Service",
+  "packageRange": "₹3.3L - ₹10L",
+  "difficulty": "Easy",
+  "interviewRounds": [
+    "TCS NQT",
+    "Technical",
+    "Managerial",
+    "HR"
+  ],
+  "tags": [
+    "IT Services",
+    "Consulting",
+    "Digital"
+  ],
+  "roles": [
+    "Assistant Systems Engineer",
+    "Systems Engineer",
+    "IT Analyst"
+  ],
+  "location": "Mumbai, India",
+  "hiringType": [
+    "Full Time",
+    "Fresher",
+    "On Campus"
+  ],
+  "skills": [
+    "C",
+    "Java",
+    "Python",
+    "SQL",
+    "Aptitude"
+  ],
+  "overview": "Tata Consultancy Services is an Indian multinational IT services and consulting company. Largest IT employer in India.",
+  "hiringProcess": "TCS conducts the National Qualifier Test (NQT) followed by technical and HR interviews for campus hiring.",
+  "eligibility": "60%+ throughout academics, no backlogs at time of joining.",
+  "preparationTips": "Practice TCS NQT mock tests, focus on aptitude, basic coding, and email writing. Prepare for behavioral questions.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

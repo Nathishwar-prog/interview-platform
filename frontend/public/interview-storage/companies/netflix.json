@@ -1,0 +1,48 @@
+{
+  "name": "Netflix",
+  "slug": "netflix",
+  "logo": "https://logo.clearbit.com/netflix.com",
+  "website": "https://netflix.com",
+  "careerLink": "https://jobs.netflix.com",
+  "industry": "Entertainment",
+  "type": "Product",
+  "packageRange": "$200K - $600K",
+  "difficulty": "Very Hard",
+  "interviewRounds": [
+    "Recruiter",
+    "Hiring Manager",
+    "Technical (x3-4)",
+    "Culture Fit"
+  ],
+  "tags": [
+    "FAANG",
+    "Streaming",
+    "Content",
+    "ML"
+  ],
+  "roles": [
+    "Senior SDE",
+    "Staff Engineer",
+    "ML Engineer",
+    "Data Engineer"
+  ],
+  "location": "Los Gatos, CA",
+  "hiringType": [
+    "Full Time",
+    "Experienced"
+  ],
+  "skills": [
+    "System Design",
+    "Java",
+    "Python",
+    "Microservices",
+    "AWS"
+  ],
+  "overview": "Netflix is the world's leading streaming entertainment service. They hire primarily senior engineers and are known for their unique culture of freedom and responsibility.",
+  "hiringProcess": "Netflix focuses on senior hires. Process includes recruiter screen, hiring manager conversation, 4-5 technical interviews focusing on system design and past experience.",
+  "eligibility": "Typically 5+ years experience. Strong system design skills. Cultural alignment with Netflix's values.",
+  "preparationTips": "Read the Netflix Culture Deck. Focus on system design at massive scale. Prepare deep-dive stories about past projects.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

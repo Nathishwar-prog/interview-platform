@@ -1,0 +1,51 @@
+{
+  "name": "Walmart",
+  "slug": "walmart",
+  "logo": "https://logo.clearbit.com/walmart.com",
+  "website": "https://walmart.com",
+  "careerLink": "https://careers.walmart.com",
+  "industry": "Retail",
+  "type": "Product",
+  "packageRange": "$110K - $280K",
+  "difficulty": "Medium",
+  "interviewRounds": [
+    "OA",
+    "Technical (x2)",
+    "Managerial",
+    "HR"
+  ],
+  "tags": [
+    "E-commerce",
+    "Retail",
+    "Supply Chain",
+    "Cloud"
+  ],
+  "roles": [
+    "SDE",
+    "Full Stack",
+    "Data Engineer",
+    "DevOps",
+    "ML Engineer"
+  ],
+  "location": "Bentonville, AR",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Fresher",
+    "Experienced"
+  ],
+  "skills": [
+    "Java",
+    "React",
+    "DSA",
+    "System Design",
+    "Cloud"
+  ],
+  "overview": "Walmart Global Tech builds the technology that powers the world's largest retailer. Focus on e-commerce, supply chain, and customer experience.",
+  "hiringProcess": "Walmart's process includes an online assessment, 2-3 technical rounds, a managerial discussion, and HR round.",
+  "eligibility": "Good CS fundamentals, full-stack development experience preferred.",
+  "preparationTips": "Practice medium-level DSA, focus on system design for e-commerce scenarios. Understand microservices architecture.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}

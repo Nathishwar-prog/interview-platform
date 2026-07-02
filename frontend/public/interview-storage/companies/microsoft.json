@@ -1,0 +1,128 @@
+{
+  "name": "Microsoft",
+  "slug": "microsoft",
+  "logo": "https://logo.clearbit.com/microsoft.com",
+  "website": "https://microsoft.com",
+  "careerLink": "https://careers.microsoft.com",
+  "industry": "Technology",
+  "type": "Product",
+  "packageRange": "$140K - $380K",
+  "difficulty": "Medium-Hard",
+  "interviewRounds": [
+    "Phone Screen",
+    "Technical (x3)",
+    "Design",
+    "As Appropriate"
+  ],
+  "tags": [
+    "FAANG",
+    "Cloud",
+    "Enterprise",
+    "AI"
+  ],
+  "roles": [
+    "SDE",
+    "PM",
+    "Data Scientist",
+    "Frontend",
+    "Backend",
+    "Cloud Engineer"
+  ],
+  "location": "Redmond, WA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Experienced",
+    "Fresher"
+  ],
+  "skills": [
+    "DSA",
+    "System Design",
+    "C#",
+    "Java",
+    "Python",
+    "Azure"
+  ],
+  "overview": "Microsoft is a global technology leader in cloud computing, productivity software, and AI. Their interview process is collaborative and focuses on problem-solving approach.",
+  "hiringProcess": "Microsoft's process includes a recruiter screen, 4-5 technical interviews including a 'As Appropriate' round with a senior leader who makes the final hiring decision.",
+  "eligibility": "Strong fundamentals in CS, good communication skills, growth mindset.",
+  "preparationTips": "Practice coding on whiteboard, focus on clean code and testing. Microsoft values collaboration and growth mindset.",
+  "interviewQuestions": [
+    {
+      "id": "mq1",
+      "title": "Why Microsoft?",
+      "category": "behavioral",
+      "difficulty": "Easy",
+      "frequency": "Very High",
+      "round": "All Rounds",
+      "expectedTime": "2-3 min",
+      "topics": [
+        "Motivation",
+        "Culture Fit"
+      ],
+      "content": "Explain your motivation for joining Microsoft specifically.",
+      "expectedAnswer": "Connect personal values with Microsoft's mission to empower every person and organization.",
+      "sampleAnswer": "I'm passionate about Microsoft's mission to empower every person and organization to achieve more. The scale of Azure's infrastructure challenges excites me, and I admire the growth mindset culture that Satya Nadella has fostered.",
+      "tips": [
+        "Research Microsoft's recent initiatives",
+        "Connect to their mission statement",
+        "Mention specific products or teams"
+      ],
+      "followUp": [
+        "Which Microsoft product would you improve?",
+        "How does our mission align with your career goals?"
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "mp1",
+      "title": "Reverse Linked List",
+      "slug": "reverse-linked-list",
+      "difficulty": "Easy",
+      "category": "linked-list",
+      "acceptance": "72.5%",
+      "frequency": "Very High",
+      "topics": [
+        "Linked List",
+        "Recursion"
+      ],
+      "companies": [
+        "Microsoft",
+        "Amazon",
+        "Google"
+      ],
+      "statement": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+      "examples": [
+        {
+          "input": "head = [1,2,3,4,5]",
+          "output": "[5,4,3,2,1]",
+          "explanation": "The linked list is reversed."
+        }
+      ],
+      "constraints": [
+        "0 <= Number of nodes <= 5000",
+        "-5000 <= Node.val <= 5000"
+      ],
+      "bruteForce": {
+        "approach": "Iterative with three pointers",
+        "code": "function reverseList(head) {\n  let prev = null, curr = head;\n  while (curr) {\n    const next = curr.next;\n    curr.next = prev;\n    prev = curr;\n    curr = next;\n  }\n  return prev;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(1)"
+      },
+      "optimal": {
+        "approach": "Recursive approach",
+        "code": "function reverseList(head) {\n  if (!head || !head.next) return head;\n  const reversed = reverseList(head.next);\n  head.next.next = head;\n  head.next = null;\n  return reversed;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(n)"
+      },
+      "relatedProblems": [
+        "Reverse Linked List II",
+        "Palindrome Linked List",
+        "Reverse Nodes in k-Group"
+      ],
+      "interviewTips": "Draw diagrams. Show both iterative and recursive solutions. Discuss space complexity trade-offs."
+    }
+  ],
+  "experiences": []
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Uber",
+  "slug": "uber",
+  "logo": "https://logo.clearbit.com/uber.com",
+  "website": "https://uber.com",
+  "careerLink": "https://www.uber.com/careers",
+  "industry": "Transportation",
+  "type": "Product",
+  "packageRange": "$140K - $380K",
+  "difficulty": "Hard",
+  "interviewRounds": [
+    "Recruiter",
+    "Phone Screen",
+    "Onsite (4 rounds)"
+  ],
+  "tags": [
+    "Ride-sharing",
+    "Maps",
+    "Real-time",
+    "ML"
+  ],
+  "roles": [
+    "SDE",
+    "Backend",
+    "ML Engineer",
+    "iOS",
+    "Android",
+    "Data Engineer"
+  ],
+  "location": "San Francisco, CA",
+  "hiringType": [
+    "Full Time",
+    "Intern",
+    "Experienced"
+  ],
+  "skills": [
+    "DSA",
+    "System Design",
+    "Go",
+    "Java",
+    "Python",
+    "Distributed Systems"
+  ],
+  "overview": "Uber is a technology company that connects riders with drivers through its platform. Known for solving complex real-time geospatial problems at scale.",
+  "hiringProcess": "Uber's process includes a recruiter call, coding phone screen, and 4 onsite rounds covering coding, system design, and behavioral questions.",
+  "eligibility": "Strong algorithmic skills, experience with distributed systems preferred.",
+  "preparationTips": "Focus on graph algorithms, real-time systems, and geospatial problems. Study Uber's engineering blog.",
+  "interviewQuestions": [],
+  "problems": [],
+  "experiences": []
+}
