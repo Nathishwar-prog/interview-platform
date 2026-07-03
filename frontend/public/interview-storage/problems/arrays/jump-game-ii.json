@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "id": "arr028",
+    "title": "Jump Game II",
+    "slug": "jump-game-ii",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Greedy BFS Level Traversal",
+    "tags": [
+      "Array",
+      "Greedy",
+      "Dynamic Programming"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Uber",
+      "Bloomberg",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "42.8%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Greedy Algorithm, Loops, Dynamic Programming Basics, Time Complexity",
+    "whyDoesThisExist": "Imagine crossing stepping stones across a river. Every stone tells you how far you can jump from it. Instead of making the longest jump every time, your goal is to reach the last stone using the fewest jumps possible.",
+    "realWorldAnalogy": "Imagine crossing stepping stones across a river. Every stone tells you how far you can jump from it. Instead of making the longest jump every time, your goal is to reach the last stone using the fewest jumps possible.",
+    "prerequisites": [
+      "Arrays",
+      "Greedy Algorithm",
+      "Loops",
+      "Dynamic Programming Basics",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Greedy BFS pattern whenever you need the minimum number of jumps or moves while each position expands the reachable range.",
+    "patternRecognitionKeywords": [
+      "Minimum Jumps",
+      "Greedy",
+      "Reachability",
+      "BFS Level",
+      "Boundary",
+      "Farthest Reach"
+    ],
+    "signals": "Whenever you need the minimum number of moves while each position expands the reachable range, think of Greedy BFS Level Traversal.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given a 0-indexed integer array nums where each element represents the maximum jump length from that position. Starting from the first index, return the minimum number of jumps required to reach the last index. You can assume that you can always reach the last index.",
+    "examples": [
+      {
+        "input": "nums = [2,3,1,1,4]",
+        "output": "2",
+        "explanation": "Jump from index 0 to index 1, then from index 1 to index 4."
+      },
+      {
+        "input": "nums = [2,3,0,1,4]",
+        "output": "2",
+        "explanation": "The minimum number of jumps is 2."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 10000",
+      "0 <= nums[i] <= 1000",
+      "It is guaranteed that the last index is reachable."
+    ],
+    "edgeCases": [
+      "Single element",
+      "Large jump from first index",
+      "Many small jumps",
+      "Zeros inside the array",
+      "Minimum array size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Try every possible jump recursively and return the minimum jumps required.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Think of each jump as covering a range of indices. While exploring one range, keep track of the farthest position reachable. Once the current range ends, make one jump and move to the next range. This is similar to performing BFS level by level.",
+    "ahaMoment": "Each jump explores one reachable range just like one level of BFS.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever you need the minimum number of moves while each position expands the reachable range, think of Greedy BFS Level Traversal.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every index is processed exactly once. The current boundary represents one BFS level, while the farthest reachable position defines the next level. This guarantees the minimum number of jumps.",
+    "howToRecognizeSimilar": "Whenever you need the minimum number of moves while each position expands the reachable range, think of Greedy BFS Level Traversal.",
+    "commonWrongPaths": [
+      "Incrementing jumps at every index.",
+      "Traversing until n instead of n-1.",
+      "Updating currentEnd before computing farthest.",
+      "Confusing Jump Game I with Jump Game II.",
+      "Using recursion leading to TLE."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Treat every jump as one BFS level.",
+      "Track the farthest reachable index.",
+      "Increase jumps only when the current range ends."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Incrementing jumps at every index.",
+      "Traversing until n instead of n-1.",
+      "Updating currentEnd before computing farthest.",
+      "Confusing Jump Game I with Jump Game II.",
+      "Using recursion leading to TLE."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy BFS Level Traversal",
+    "recognitionSignals": "Whenever you need the minimum number of moves while each position expands the reachable range, think of Greedy BFS Level Traversal.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Recursive Backtracking",
+      "idea": "Try every possible jump recursively and return the minimum jumps required.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Start from index 0.",
+        "Try every possible jump.",
+        "Recursively compute minimum jumps.",
+        "Return the smallest answer."
+      ],
+      "dryRun": "Explore every possible path recursively.",
+      "visualization": {},
+      "code": {
+        "java": "Recursive DFS solution omitted because it causes exponential complexity.",
+        "python": "Recursive solution omitted.",
+        "cpp": "Recursive DFS omitted.",
+        "javascript": "Recursive solution omitted."
+      },
+      "complexities": {
+        "time": "O(2ⁿ)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Dynamic Programming",
+      "idea": "Use DP where dp[i] stores the minimum jumps needed to reach index i.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize DP array.",
+        "Update reachable indices.",
+        "Store minimum jumps.",
+        "Return dp[n-1]."
+      ],
+      "dryRun": "Fill DP array from left to right.",
+      "visualization": {},
+      "code": {
+        "java": "Uses DP array.",
+        "python": "Uses DP.",
+        "cpp": "Uses DP.",
+        "javascript": "Uses DP."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy BFS Level Traversal",
+      "idea": "Maintain the current jump boundary and the farthest index reachable within that boundary. Traverse the array while updating the farthest reachable position. Whenever the current index reaches the boundary, increment the jump count and expand the boundary to the farthest reachable index.",
+      "intuition": "Every index is processed exactly once. The current boundary represents one BFS level, while the farthest reachable position defines the next level. This guarantees the minimum number of jumps.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize jumps = 0.",
+        "Initialize currentEnd = 0.",
+        "Initialize farthest = 0.",
+        "Traverse from index 0 to n-2.",
+        "Update farthest = max(farthest, i + nums[i]).",
+        "If i reaches currentEnd:",
+        "Increment jumps.",
+        "Update currentEnd = farthest.",
+        "Return jumps."
+      ],
+      "dryRun": "nums=[2,3,1,1,4]\nJump=0 End=0\nReach=2\nBoundary reached → Jump=1 End=2\nReach=4\nBoundary reached → Jump=2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int jump(int[] nums) {\n    int jumps = 0;\n    int currentEnd = 0;\n    int farthest = 0;\n\n    for(int i = 0; i < nums.length - 1; i++){\n        farthest = Math.max(farthest, i + nums[i]);\n\n        if(i == currentEnd){\n            jumps++;\n            currentEnd = farthest;\n        }\n    }\n\n    return jumps;\n}",
+        "python": "def jump(nums):\n    jumps=0\n    currentEnd=0\n    farthest=0\n\n    for i in range(len(nums)-1):\n        farthest=max(farthest,i+nums[i])\n\n        if i==currentEnd:\n            jumps+=1\n            currentEnd=farthest\n\n    return jumps",
+        "cpp": "int jump(vector<int>& nums){\n    int jumps=0,currentEnd=0,farthest=0;\n\n    for(int i=0;i<nums.size()-1;i++){\n        farthest=max(farthest,i+nums[i]);\n\n        if(i==currentEnd){\n            jumps++;\n            currentEnd=farthest;\n        }\n    }\n\n    return jumps;\n}",
+        "javascript": "function jump(nums){\nlet jumps=0;\nlet currentEnd=0;\nlet farthest=0;\n\nfor(let i=0;i<nums.length-1;i++){\n    farthest=Math.max(farthest,i+nums[i]);\n\n    if(i===currentEnd){\n        jumps++;\n        currentEnd=farthest;\n    }\n}\n\nreturn jumps;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Each jump covers one reachable range.",
+    "steps": [
+      "Start with the first range.",
+      "Find the farthest reachable position.",
+      "Boundary reached → Take one jump.",
+      "Expand to the next range.",
+      "Repeat until reaching the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Think BFS levels.",
+      "Track current boundary.",
+      "Track farthest reach.",
+      "Increase jumps only at boundary.",
+      "Linear greedy solution."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why is this equivalent to BFS?",
+      "How does it differ from Jump Game I?",
+      "Can Dynamic Programming solve it?",
+      "Can you reconstruct the actual path?",
+      "What if the destination is unreachable?"
+    ],
+    "interviewTips": [
+      "Start with the recursive idea.",
+      "Mention the DP optimization.",
+      "Explain why each boundary represents one jump.",
+      "Relate the greedy solution to BFS levels.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Each jump explores one reachable range just like one level of BFS.",
+      "algorithm": "Track Boundary → Expand Farthest → Jump at Boundary.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Boundary represents one jump.",
+      "Farthest determines next boundary.",
+      "Traverse only to n-2.",
+      "Greedy gives minimum jumps.",
+      "O(n) solution."
+    ],
+    "commonMistakes": [
+      "Incrementing jumps at every index.",
+      "Traversing until n instead of n-1.",
+      "Updating currentEnd before computing farthest.",
+      "Confusing Jump Game I with Jump Game II.",
+      "Using recursion leading to TLE."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/jump-game-ii/",
+    "neetcode": "https://neetcode.io/problems/jump-game-ii",
+    "youtube": [
+      "NeetCode - Jump Game II",
+      "Take U Forward - Jump Game II",
+      "CodeHelp - Greedy Problems",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Jump Game II"
+    ],
+    "relatedProblems": [
+      "Jump Game",
+      "Jump Game III",
+      "Jump Game IV",
+      "Minimum Number of Refueling Stops",
+      "Gas Station"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

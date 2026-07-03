@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr034",
+    "title": "Maximum Average Subarray I",
+    "slug": "maximum-average-subarray-i",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Fixed Size Sliding Window",
+    "tags": [
+      "Array",
+      "Sliding Window",
+      "Prefix Sum"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Yahoo",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "46.9%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Sliding Window, Basic Mathematics, Time Complexity",
+    "whyDoesThisExist": "Imagine tracking the average temperature over every consecutive k days. Instead of recalculating each average from scratch, slide the window by one day and update the sum efficiently.",
+    "realWorldAnalogy": "Imagine tracking the average temperature over every consecutive k days. Instead of recalculating each average from scratch, slide the window by one day and update the sum efficiently.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Sliding Window",
+      "Basic Mathematics",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Fixed Size Sliding Window pattern whenever the problem asks about a contiguous subarray of fixed length with maximum or minimum sum, average, or count.",
+    "patternRecognitionKeywords": [
+      "Fixed Window",
+      "Sliding Window",
+      "Maximum Average",
+      "Subarray",
+      "Window Sum",
+      "Contiguous"
+    ],
+    "signals": "Whenever a problem asks for a contiguous subarray of fixed size with maximum/minimum sum, average, or count, think of the Fixed Size Sliding Window pattern.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array nums consisting of n elements, and an integer k. Find the contiguous subarray of length k that has the maximum average value and return this value. Any answer with a calculation error less than 10⁻⁵ will be accepted.",
+    "examples": [
+      {
+        "input": "nums = [1,12,-5,-6,50,3], k = 4",
+        "output": "12.75",
+        "explanation": "The subarray [12,-5,-6,50] has sum 51 and average 12.75."
+      },
+      {
+        "input": "nums = [5], k = 1",
+        "output": "5.0",
+        "explanation": "Only one possible subarray exists."
+      }
+    ],
+    "constraints": [
+      "1 <= k <= nums.length <= 100000",
+      "-10000 <= nums[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single element array",
+      "k equals array length",
+      "Negative numbers",
+      "All equal elements",
+      "Maximum window at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Calculate the sum of every window of size k independently and compute its average.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since the window size is fixed, maintain the sum of the current window. As the window moves, subtract the outgoing element and add the incoming element. Keep track of the maximum window sum.",
+    "ahaMoment": "A fixed-size window can be updated in O(1) while sliding.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks for a contiguous subarray of fixed size with maximum/minimum sum, average, or count, think of the Fixed Size Sliding Window pattern.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element enters and leaves the window exactly once, resulting in a linear-time solution with constant extra space.",
+    "howToRecognizeSimilar": "Whenever a problem asks for a contiguous subarray of fixed size with maximum/minimum sum, average, or count, think of the Fixed Size Sliding Window pattern.",
+    "commonWrongPaths": [
+      "Recomputing the entire window every time.",
+      "Forgetting to subtract the outgoing element.",
+      "Returning maximum sum instead of average.",
+      "Using integer division.",
+      "Incorrect window boundaries."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Calculate the first window sum.",
+      "Slide the window one element at a time.",
+      "Track the maximum window sum."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Recomputing the entire window every time.",
+      "Forgetting to subtract the outgoing element.",
+      "Returning maximum sum instead of average.",
+      "Using integer division.",
+      "Incorrect window boundaries."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Fixed Size Sliding Window",
+    "recognitionSignals": "Whenever a problem asks for a contiguous subarray of fixed size with maximum/minimum sum, average, or count, think of the Fixed Size Sliding Window pattern.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Compute Every Window",
+      "idea": "Calculate the sum of every window of size k independently and compute its average.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every window of size k.",
+        "Compute its sum.",
+        "Calculate the average.",
+        "Return the maximum average."
+      ],
+      "dryRun": "Recalculate every window from scratch.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n × k)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum",
+      "idea": "Build a prefix sum array so every window sum can be calculated in constant time.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build prefix sum array.",
+        "Compute every window sum using prefix sums.",
+        "Track the maximum sum.",
+        "Return maximum average."
+      ],
+      "dryRun": "WindowSum = prefix[i+k] - prefix[i].",
+      "visualization": {},
+      "code": {
+        "java": "Uses prefix sum array.",
+        "python": "Uses prefix sums.",
+        "cpp": "Uses prefix sums.",
+        "javascript": "Uses prefix sums."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Fixed Size Sliding Window",
+      "idea": "Compute the sum of the first window. Slide the window by removing the leftmost element and adding the next element. Update the maximum window sum after every move and finally divide by k.",
+      "intuition": "Each element enters and leaves the window exactly once, resulting in a linear-time solution with constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute the first window sum.",
+        "Initialize maxSum with the first window.",
+        "Slide the window one position at a time.",
+        "Subtract outgoing element.",
+        "Add incoming element.",
+        "Update maxSum.",
+        "Return maxSum / k."
+      ],
+      "dryRun": "nums=[1,12,-5,-6,50,3], k=4\nFirst Sum=2\nNext Sum=51\nMax=51\nNext Sum=42\nAnswer=51/4=12.75",
+      "visualization": {},
+      "code": {
+        "java": "public double findMaxAverage(int[] nums, int k) {\n    int sum = 0;\n\n    for (int i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n\n    int maxSum = sum;\n\n    for (int i = k; i < nums.length; i++) {\n        sum += nums[i] - nums[i - k];\n        maxSum = Math.max(maxSum, sum);\n    }\n\n    return (double) maxSum / k;\n}",
+        "python": "def findMaxAverage(nums, k):\n    windowSum = sum(nums[:k])\n    maxSum = windowSum\n\n    for i in range(k, len(nums)):\n        windowSum += nums[i] - nums[i-k]\n        maxSum = max(maxSum, windowSum)\n\n    return maxSum / k",
+        "cpp": "double findMaxAverage(vector<int>& nums, int k) {\n    int sum = 0;\n\n    for (int i = 0; i < k; i++)\n        sum += nums[i];\n\n    int maxSum = sum;\n\n    for (int i = k; i < nums.size(); i++) {\n        sum += nums[i] - nums[i-k];\n        maxSum = max(maxSum, sum);\n    }\n\n    return (double)maxSum / k;\n}",
+        "javascript": "function findMaxAverage(nums, k) {\n    let sum = 0;\n\n    for (let i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n\n    let maxSum = sum;\n\n    for (let i = k; i < nums.length; i++) {\n        sum += nums[i] - nums[i-k];\n        maxSum = Math.max(maxSum, sum);\n    }\n\n    return maxSum / k;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Move a fixed-size window across the array.",
+    "steps": [
+      "Calculate first window sum.",
+      "Remove leftmost element.",
+      "Add next element.",
+      "Update maximum sum.",
+      "Repeat until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Fixed window size.",
+      "Maintain window sum.",
+      "Subtract outgoing element.",
+      "Add incoming element.",
+      "Track maximum sum."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why is Sliding Window better than brute force?",
+      "Can Prefix Sum solve this?",
+      "What if the window size changes?",
+      "How would you find the minimum average?",
+      "How would you solve Maximum Average Subarray II?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Explain why recalculating each window is inefficient.",
+      "Introduce the Sliding Window optimization.",
+      "Track the window sum instead of the average.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A fixed-size window can be updated in O(1) while sliding.",
+      "algorithm": "First Window → Slide → Update Sum → Track Maximum → Divide by k.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Window size never changes.",
+      "Each element enters and leaves once.",
+      "Sliding Window avoids recomputation.",
+      "Return average, not sum.",
+      "O(n) time and O(1) space."
+    ],
+    "commonMistakes": [
+      "Recomputing the entire window every time.",
+      "Forgetting to subtract the outgoing element.",
+      "Returning maximum sum instead of average.",
+      "Using integer division.",
+      "Incorrect window boundaries."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-average-subarray-i/",
+    "neetcode": "https://neetcode.io/problems/maximum-average-subarray-i",
+    "youtube": [
+      "NeetCode - Maximum Average Subarray I",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window Technique",
+      "Nick White - Maximum Average Subarray I"
+    ],
+    "relatedProblems": [
+      "Maximum Average Subarray II",
+      "Maximum Sum Subarray of Size K",
+      "Sliding Window Maximum",
+      "Minimum Size Subarray Sum",
+      "Longest Substring Without Repeating Characters"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr047",
+    "title": "Minimum Operations to Reduce X to Zero",
+    "slug": "minimum-operations-to-reduce-x-to-zero",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Longest Subarray with Target Sum",
+    "tags": [
+      "Array",
+      "Sliding Window",
+      "Prefix Sum",
+      "Hash Table"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "40.7%",
+    "estimatedTime": "25-30 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sliding Window, Prefix Sum, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine removing books from either end of a shelf until the total weight removed equals a target weight x. Instead of deciding which books to remove, it's easier to determine which consecutive books should remain on the shelf.",
+    "realWorldAnalogy": "Imagine removing books from either end of a shelf until the total weight removed equals a target weight x. Instead of deciding which books to remove, it's easier to determine which consecutive books should remain on the shelf.",
+    "prerequisites": [
+      "Arrays",
+      "Sliding Window",
+      "Prefix Sum",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this pattern whenever elements can only be removed from both ends. Convert the problem into finding the longest subarray with a target sum.",
+    "patternRecognitionKeywords": [
+      "Sliding Window",
+      "Longest Subarray",
+      "Both Ends",
+      "Target Sum",
+      "Complement",
+      "Minimum Operations"
+    ],
+    "signals": "Whenever elements can only be removed from both ends, think about keeping the middle subarray instead.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array nums and an integer x. In one operation, you may remove the leftmost or the rightmost element from the array and subtract its value from x. Return the minimum number of operations required to reduce x exactly to 0. If it is impossible, return -1.",
+    "examples": [
+      {
+        "input": "nums = [1,1,4,2,3], x = 5",
+        "output": "2",
+        "explanation": "Remove 2 and 3 from the right. Two operations reduce x to 0."
+      },
+      {
+        "input": "nums = [5,6,7,8,9], x = 4",
+        "output": "-1",
+        "explanation": "No sequence of removals can reduce x to exactly 0."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "1 <= nums[i] <= 10000",
+      "1 <= x <= 10^9"
+    ],
+    "edgeCases": [
+      "x equals total array sum",
+      "x greater than total sum",
+      "Single element array",
+      "Longest valid subarray in the middle",
+      "No valid solution"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Recursively try removing elements from the left or right until x becomes zero.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of removing elements from both ends, think about keeping one contiguous middle subarray. If the remaining subarray has sum = totalSum - x, then the removed elements automatically sum to x. Therefore, find the longest subarray with sum = totalSum - x.",
+    "ahaMoment": "Removing elements from both ends is equivalent to keeping one longest middle subarray.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever elements can only be removed from both ends, think about keeping the middle subarray instead.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Because all numbers are positive, the sliding window expands and shrinks monotonically. Each element enters and leaves the window once, giving linear time complexity.",
+    "howToRecognizeSimilar": "Whenever elements can only be removed from both ends, think about keeping the middle subarray instead.",
+    "commonWrongPaths": [
+      "Trying every left/right removal.",
+      "Not converting the problem into a longest subarray problem.",
+      "Using sliding window when negative numbers exist.",
+      "Forgetting the target == 0 case.",
+      "Returning the longest length instead of minimum operations."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Compute the total array sum.",
+      "Find the longest subarray with sum = totalSum - x.",
+      "Answer = n - longestSubarrayLength."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Trying every left/right removal.",
+      "Not converting the problem into a longest subarray problem.",
+      "Using sliding window when negative numbers exist.",
+      "Forgetting the target == 0 case.",
+      "Returning the longest length instead of minimum operations."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Longest Subarray with Target Sum",
+    "recognitionSignals": "Whenever elements can only be removed from both ends, think about keeping the middle subarray instead.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Left and Right Removal",
+      "idea": "Recursively try removing elements from the left or right until x becomes zero.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Remove left element.",
+        "Remove right element.",
+        "Explore every possibility.",
+        "Return the minimum operations."
+      ],
+      "dryRun": "Explore all left/right removal combinations.",
+      "visualization": {},
+      "code": {
+        "java": "Recursive solution omitted because of exponential complexity.",
+        "python": "Recursive solution omitted.",
+        "cpp": "Recursive solution omitted.",
+        "javascript": "Recursive solution omitted."
+      },
+      "complexities": {
+        "time": "O(2ⁿ)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum + HashMap",
+      "idea": "Compute prefix sums and use a HashMap to find the longest subarray with sum = totalSum - x.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute target = totalSum - x.",
+        "Maintain prefix sums.",
+        "Store first occurrence of each prefix sum.",
+        "Find the longest valid subarray."
+      ],
+      "dryRun": "Use prefix sums to detect the target sum.",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashMap.",
+        "python": "Uses dictionary.",
+        "cpp": "Uses unordered_map.",
+        "javascript": "Uses Map."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sliding Window (Positive Numbers)",
+      "idea": "Since all numbers are positive, use a sliding window to find the longest subarray whose sum equals totalSum - x. The minimum operations equal the total length minus the longest valid window.",
+      "intuition": "Because all numbers are positive, the sliding window expands and shrinks monotonically. Each element enters and leaves the window once, giving linear time complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute totalSum.",
+        "Set target = totalSum - x.",
+        "If target < 0, return -1.",
+        "If target == 0, return array length.",
+        "Use a sliding window to find the longest subarray with sum = target.",
+        "Return n - longestLength if found; otherwise return -1."
+      ],
+      "dryRun": "nums=[1,1,4,2,3]\nTotal=11\nTarget=6\nWindow=[1,1,4] Sum=6 Length=3\nLongest=3\nAnswer=5-3=2",
+      "visualization": {},
+      "code": {
+        "java": "public int minOperations(int[] nums, int x) {\n    int total = 0;\n    for (int num : nums) total += num;\n\n    int target = total - x;\n\n    if (target < 0) return -1;\n    if (target == 0) return nums.length;\n\n    int left = 0;\n    int sum = 0;\n    int longest = -1;\n\n    for (int right = 0; right < nums.length; right++) {\n        sum += nums[right];\n\n        while (sum > target) {\n            sum -= nums[left++];\n        }\n\n        if (sum == target) {\n            longest = Math.max(longest, right - left + 1);\n        }\n    }\n\n    return longest == -1 ? -1 : nums.length - longest;\n}",
+        "python": "def minOperations(nums, x):\n    target = sum(nums) - x\n\n    if target < 0:\n        return -1\n    if target == 0:\n        return len(nums)\n\n    left = 0\n    curr = 0\n    longest = -1\n\n    for right in range(len(nums)):\n        curr += nums[right]\n\n        while curr > target:\n            curr -= nums[left]\n            left += 1\n\n        if curr == target:\n            longest = max(longest, right - left + 1)\n\n    return -1 if longest == -1 else len(nums) - longest",
+        "cpp": "int minOperations(vector<int>& nums, int x) {\n    int total = accumulate(nums.begin(), nums.end(), 0);\n    int target = total - x;\n\n    if (target < 0) return -1;\n    if (target == 0) return nums.size();\n\n    int left = 0, sum = 0, longest = -1;\n\n    for (int right = 0; right < nums.size(); right++) {\n        sum += nums[right];\n\n        while (sum > target)\n            sum -= nums[left++];\n\n        if (sum == target)\n            longest = max(longest, right - left + 1);\n    }\n\n    return longest == -1 ? -1 : nums.size() - longest;\n}",
+        "javascript": "function minOperations(nums, x) {\n    const total = nums.reduce((a, b) => a + b, 0);\n    const target = total - x;\n\n    if (target < 0) return -1;\n    if (target === 0) return nums.length;\n\n    let left = 0;\n    let sum = 0;\n    let longest = -1;\n\n    for (let right = 0; right < nums.length; right++) {\n        sum += nums[right];\n\n        while (sum > target) {\n            sum -= nums[left++];\n        }\n\n        if (sum === target) {\n            longest = Math.max(longest, right - left + 1);\n        }\n    }\n\n    return longest === -1 ? -1 : nums.length - longest;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Keep the longest middle subarray instead of choosing elements to remove.",
+    "steps": [
+      "Find the total sum.",
+      "Compute target = totalSum - x.",
+      "Slide the window to find the target sum.",
+      "Track the longest valid window.",
+      "Answer = n - longestWindow."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Think in reverse.",
+      "Keep the longest middle subarray.",
+      "Target = Total - x.",
+      "Sliding window because values are positive.",
+      "Answer = n - longest."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does keeping the longest subarray work?",
+      "Why is sliding window valid only for positive numbers?",
+      "How would you solve it if negative numbers existed?",
+      "Can Prefix Sum solve it?",
+      "Can you return the removed elements?"
+    ],
+    "interviewTips": [
+      "Mention the brute-force recursion first.",
+      "Reverse the problem into a longest subarray problem.",
+      "Explain why sliding window works.",
+      "Mention the positive-number assumption.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Removing elements from both ends is equivalent to keeping one longest middle subarray.",
+      "algorithm": "Total Sum → Target → Longest Window → n - Length.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Reverse the problem.",
+      "Find the longest subarray.",
+      "Sliding window requires positive numbers.",
+      "Target = totalSum - x.",
+      "Linear solution."
+    ],
+    "commonMistakes": [
+      "Trying every left/right removal.",
+      "Not converting the problem into a longest subarray problem.",
+      "Using sliding window when negative numbers exist.",
+      "Forgetting the target == 0 case.",
+      "Returning the longest length instead of minimum operations."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/",
+    "neetcode": "https://neetcode.io/problems/minimum-operations-to-reduce-x-to-zero",
+    "youtube": [
+      "NeetCode - Minimum Operations to Reduce X to Zero",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window",
+      "Nick White - Minimum Operations to Reduce X to Zero"
+    ],
+    "relatedProblems": [
+      "Maximum Points You Can Obtain from Cards",
+      "Minimum Size Subarray Sum",
+      "Maximum Sum of Distinct Subarrays With Length K",
+      "Longest Subarray with Sum K",
+      "Fruit Into Baskets"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,1072 @@
+<USER_REQUEST>
+# Master Prompt for Vibe Code Agent
+
+## Role
+
+You are a Senior Software Architect, Senior Frontend Engineer, Senior Backend Engineer, UX Designer, Learning Experience Designer, and DSA Interview Mentor.
+
+Your task is to redesign and rebuild the Interview Preparation Platform into a world-class learning platform inspired by the strengths of LeetCode, NeetCode, AlgoMonster, Interview Cake, Educative, and Brilliant—but with a much stronger emphasis on **teaching users how to think**, not just giving solutions.
+
+This is **not** simply a coding practice website.
+
+The platform's mission is:
+
+> Help users become interview-ready by teaching problem-solving intuition, pattern recognition, interview communication, debugging, and long-term retention.
+
+Every feature, component, animation, explanation, and data model should reinforce this goal.
+
+---
+
+# Primary Goals
+
+The platform should teach users:
+
+* How to understand a problem
+* How to identify the underlying pattern
+* How to derive the solution naturally
+* How to move from brute force to optimal
+* How to explain the solution during interviews
+* How to debug mistakes
+* How to remember the concept months later
+
+The user should finish every problem feeling like they have learned a reusable thinking process—not memorized one solution.
+
+---
+
+# Project Requirements
+
+## DO NOT simply display JSON.
+
+Transform the data into a structured learning experience.
+
+Every problem page should feel like an interactive lesson.
+
+Think like:
+
+Course
+
+↓
+
+Lesson
+
+↓
+
+Visualization
+
+↓
+
+Thinking Process
+
+↓
+
+Coding
+
+↓
+
+Interview
+
+↓
+
+Revision
+
+instead of
+
+Problem
+
+↓
+
+Solution
+
+---
+
+# Restructure the Entire Data Model
+
+The existing JSON is too flat.
+
+Completely migrate every problem into the following architecture.
+
+```text
+Problem
+│
+├── metadata
+├── learning
+├── problem
+├── thinkingProcess
+├── thinkingCoach
+├── pattern
+├── approaches
+├── visualization
+├── practice
+├── interview
+├── revision
+├── resources
+└── analytics
+```
+
+Every section must be independent and reusable.
+
+---
+
+# Metadata
+
+Contains only metadata.
+
+```json
+{
+"id":"",
+"title":"",
+"slug":"",
+"difficulty":"",
+"category":"",
+"subcategory":"",
+"pattern":"",
+"tags":[],
+"companies":[],
+"frequency":"",
+"acceptance":"",
+"estimatedTime":"",
+"practiceLevel":"",
+"premium":false
+}
+```
+
+No explanations belong here.
+
+---
+
+# Learning Section
+
+Purpose:
+
+Teach the user BEFORE solving.
+
+Include:
+
+What will you learn?
+
+Why does this problem exist?
+
+Real-world analogy
+
+Prerequisites
+
+When should this pattern be used?
+
+Pattern recognition keywords
+
+Signals
+
+Red flags
+
+Common scenarios
+
+Expected learning outcome
+
+Example:
+
+"I will know when sorting is useful."
+
+---
+
+# Problem Section
+
+Contains only
+
+Problem statement
+
+Examples
+
+Constraints
+
+Edge cases
+
+Nothing else.
+
+---
+
+# Thinking Process Section (Most Important)
+
+This is the heart of the platform.
+
+Teach the exact thinking process.
+
+Required fields:
+
+First Thought
+
+Initial assumptions
+
+Naive idea
+
+Why it seems correct
+
+Where it fails
+
+Observation
+
+Key insight
+
+Aha Moment
+
+Mental Model
+
+Pattern recognition
+
+Derive the algorithm
+
+Why it works
+
+Proof
+
+How to recognize similar problems
+
+Common wrong paths
+
+How experts think
+
+Expected structure
+
+```text
+Read problem
+
+↓
+
+What changes answer?
+
+↓
+
+Can brute force work?
+
+↓
+
+No
+
+↓
+
+Observe hidden pattern
+
+↓
+
+New insight
+
+↓
+
+Optimal approach
+```
+
+This should be visual.
+
+---
+
+# Thinking Coach
+
+Create an AI mentor section.
+
+Instead of giving answers immediately, guide users.
+
+Examples:
+
+"What information actually affects the answer?"
+
+"What can you ignore?"
+
+"Can sorting simplify the problem?"
+
+"What changes if values are reordered?"
+
+"Can you solve a smaller version first?"
+
+This section should contain
+
+Hints
+
+Guided questions
+
+Common misconceptions
+
+Correct mindset
+
+Reasoning checkpoints
+
+---
+
+# Pattern Library
+
+Every problem belongs to a reusable interview pattern.
+
+Pattern should contain:
+
+Pattern name
+
+Recognition signals
+
+When NOT to use
+
+Mental model
+
+Template algorithm
+
+Reusable pseudocode
+
+Similar patterns
+
+Pattern difficulty
+
+Related concepts
+
+Users should learn the pattern—not only the problem.
+
+---
+
+# Approaches
+
+Instead of separate objects,
+
+Create an array.
+
+```text
+Approaches
+
+Brute Force
+
+Better
+
+Optimal
+```
+
+Each approach contains
+
+Title
+
+Idea
+
+Intuition
+
+When to use
+
+Algorithm
+
+Dry run
+
+Visualization
+
+Code
+
+Complexities
+
+Pros
+
+Cons
+
+Interview explanation
+
+Optimization path
+
+Edge cases
+
+---
+
+# Code Section
+
+Every language should contain
+
+Syntax-highlighted code
+
+Explanation beside each block
+
+Line-by-line walkthrough
+
+Important lines highlighted
+
+Alternative implementation
+
+Common mistakes
+
+---
+
+# Dry Run
+
+Replace plain text.
+
+Generate interactive steps.
+
+Example
+
+```text
+Input
+
+↓
+
+Sort
+
+↓
+
+Pair
+
+↓
+
+Take even index
+
+↓
+
+Answer
+```
+
+Each step should animate.
+
+---
+
+# Visualization
+
+Every algorithm should support
+
+Flowcharts
+
+Animations
+
+Tables
+
+Pointer movements
+
+Array highlighting
+
+Variable updates
+
+Decision trees
+
+Graphs
+
+Trees
+
+Recursion stack
+
+Sliding window movement
+
+Queue evolution
+
+Heap visualization
+
+Linked list animation
+
+Backtracking tree
+
+DP table animation
+
+The visualization system must be generic enough to support every DSA category.
+
+---
+
+# Interview Section
+
+Teach communication.
+
+Include
+
+How interviewer expects explanation
+
+Best order of explanation
+
+Common interviewer questions
+
+Follow-up questions
+
+Whiteboard explanation
+
+Common mistakes
+
+Optimization discussion
+
+Trade-offs
+
+Time complexity explanation
+
+Space complexity explanation
+
+---
+
+# Practice Section
+
+Contains
+
+Revision Notes
+
+Cheat Sheet
+
+Flashcards
+
+Mini Quiz
+
+MCQs
+
+Fill in blanks
+
+Code completion
+
+Pattern quiz
+
+True/False
+
+Mistake checklist
+
+Debug checklist
+
+Memory exercises
+
+Confidence score
+
+---
+
+# Revision Section
+
+One-minute revision
+
+Five-minute revision
+
+Cheat sheet
+
+Formula
+
+Decision tree
+
+Memory hook
+
+Mnemonic
+
+Visual summary
+
+Key observations
+
+One-line takeaway
+
+---
+
+# Resources
+
+LeetCode
+
+NeetCode
+
+YouTube
+
+Articles
+
+Research papers
+
+Related problems
+
+Harder problems
+
+Easier problems
+
+Practice roadmap
+
+---
+
+# Analytics Section
+
+Future-proof the platform.
+
+Store
+
+Completion status
+
+Time spent
+
+Confidence
+
+Attempts
+
+Hints used
+
+Mistakes
+
+Weak patterns
+
+Revision count
+
+Success rate
+
+Average solve time
+
+Personal notes
+
+Bookmarks
+
+Favorites
+
+Interview readiness
+
+---
+
+# Interactive Learning Features
+
+Build all components.
+
+Problem Roadmap
+
+Learning Timeline
+
+Pattern Progress
+
+Company Progress
+
+Difficulty Progress
+
+Streak
+
+XP
+
+Achievements
+
+Daily Goals
+
+Weekly Goals
+
+Learning Calendar
+
+Pattern Heatmap
+
+Revision Reminder
+
+Bookmarks
+
+Notes
+
+Highlight important sections
+
+---
+
+# UI/UX Requirements
+
+Design must be modern.
+
+Dark Theme
+
+Glassmorphism
+
+Gradient accents
+
+Excellent typography
+
+Responsive
+
+Smooth animations
+
+Beautiful cards
+
+Timeline
+
+Expandable sections
+
+Sticky navigation
+
+Progress tracker
+
+Pattern badges
+
+Difficulty colors
+
+Company logos
+
+Learning cards
+
+Interactive diagrams
+
+Modern code editor
+
+Resizable panels
+
+Keyboard shortcuts
+
+---
+
+# Sidebar
+
+Sticky learning navigator
+
+Overview
+
+Thinking
+
+Approaches
+
+Visualization
+
+Code
+
+Interview
+
+Quiz
+
+Revision
+
+Resources
+
+Notes
+
+Progress
+
+Clicking a section should smoothly scroll.
+
+---
+
+# Learning Flow
+
+The page should not reveal everything immediately.
+
+Recommended flow
+
+Problem
+
+↓
+
+Understand
+
+↓
+
+Think
+
+↓
+
+Hints
+
+↓
+
+Brute Force
+
+↓
+
+Observation
+
+↓
+
+Optimal
+
+↓
+
+Visualization
+
+↓
+
+Code
+
+↓
+
+Interview
+
+↓
+
+Practice
+
+↓
+
+Revision
+
+---
+
+# AI Mentor
+
+Build an AI tutor panel.
+
+Capabilities
+
+Ask questions
+
+Explain line-by-line
+
+Generate hints
+
+Explain complexity
+
+Suggest similar problems
+
+Explain interview expectations
+
+Quiz the learner
+
+Test understanding
+
+Generate analogies
+
+Encourage thinking before revealing answers
+
+---
+
+# Search
+
+Advanced search.
+
+Filter by
+
+Difficulty
+
+Pattern
+
+Category
+
+Company
+
+Frequency
+
+Tags
+
+Topic
+
+Time complexity
+
+Space complexity
+
+Confidence
+
+Solved
+
+Bookmarked
+
+Weak areas
+
+---
+
+# Notes
+
+Allow personal notes.
+
+Markdown support
+
+Code blocks
+
+Images
+
+Highlight
+
+Autosave
+
+Version history
+
+---
+
+# Progress
+
+Track
+
+Pattern mastery
+
+Category mastery
+
+Company readiness
+
+Interview readiness
+
+Revision due
+
+Accuracy
+
+Learning streak
+
+---
+
+# Data Migration
+
+Create a migration layer.
+
+Old JSON
+
+↓
+
+New JSON
+
+Automatically map existing fields.
+
+If information is missing
+
+Generate placeholders.
+
+Do NOT lose any existing information.
+
+Support backward compatibility.
+
+---
+
+# File Structure
+
+```text
+src/
+
+components/
+    learning/
+    interview/
+    visualization/
+    quiz/
+    revision/
+    pattern/
+    mentor/
+
+pages/
+
+hooks/
+
+services/
+
+types/
+
+data/
+
+animations/
+
+utils/
+
+store/
+
+```
+
+---
+
+# Component Requirements
+
+Every section should be reusable.
+
+No duplicated code.
+
+Strong TypeScript interfaces.
+
+Lazy loading.
+
+Code splitting.
+
+Reusable cards.
+
+Reusable timeline.
+
+Reusable accordion.
+
+Reusable visualization engine.
+
+Reusable code viewer.
+
+Reusable quiz engine.
+
+Reusable note editor.
+
+---
+
+# Performance
+
+Virtualization
+
+Memoization
+
+Dynamic imports
+
+Caching
+
+Optimistic updates
+
+Fast search
+
+Offline support
+
+---
+
+# Accessibility
+
+Keyboard navigation
+
+Screen reader support
+
+High contrast
+
+Responsive layout
+
+ARIA labels
+
+Focus states
+
+---
+
+# Future Features
+
+Design architecture to support
+
+AI-generated problems
+
+Company interview sets
+
+Mock interviews
+
+Voice explanations
+
+Live coding
+
+Collaborative learning
+
+Discussion forum
+
+Contest mode
+
+Personalized learning paths
+
+Adaptive revision
+
+Spaced repetition
+
+AI coaching
+
+Gamification
+
+Achievements
+
+Certificates
+
+---
+
+# Code Quality
+
+Strict TypeScript
+
+Modular architecture
+
+SOLID principles
+
+Reusable hooks
+
+Reusable services
+
+Feature-based organization
+
+Proper folder structure
+
+Strong typing
+
+Clean naming
+
+No duplicated logic
+
+Scalable architecture
+
+Production-ready code
+
+---
+
+# Deliverables
+
+1. Redesign the complete project architecture.
+2. Refactor all existing problem JSON files into the new schema.
+3. Build reusable React components for every learning section.
+4. Build the complete learning workflow.
+5. Build the visualization engine.
+6. Build quizzes and revision modules.
+7. Build analytics and progress tracking.
+8. Preserve all existing data during migration.
+9. Create documentation for the new schema.
+10. Ensure the platform is scalable to 10,000+ interview problems.
+
+Final objective:
+
+Build an interview learning platform that doesn't just help users solve problems—it teaches them how expert engineers think, communicate, recognize patterns, debug effectively, and retain knowledge for long-term interview success.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-03T01:55:42-07:00.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.5 Flash (High) to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

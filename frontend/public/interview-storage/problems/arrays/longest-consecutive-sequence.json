@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr031",
+    "title": "Longest Consecutive Sequence",
+    "slug": "longest-consecutive-sequence",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Hashing",
+    "pattern": "Hash Set",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Union Find"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Salesforce",
+      "Goldman Sachs",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "49.8%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, HashSet, Loops, Time Complexity, Basic Searching",
+    "whyDoesThisExist": "Imagine attendance IDs arriving in random order. You want to find the longest streak of consecutive IDs without sorting the entire list.",
+    "realWorldAnalogy": "Imagine attendance IDs arriving in random order. You want to find the longest streak of consecutive IDs without sorting the entire list.",
+    "prerequisites": [
+      "Arrays",
+      "HashSet",
+      "Loops",
+      "Time Complexity",
+      "Basic Searching"
+    ],
+    "whenToUseThis": "Use the Hash Set pattern whenever you need fast O(1) lookups to detect consecutive sequences or neighboring values without sorting.",
+    "patternRecognitionKeywords": [
+      "Consecutive",
+      "HashSet",
+      "Sequence",
+      "O(1) Lookup",
+      "Unsorted Array",
+      "Longest Streak"
+    ],
+    "signals": "Whenever the problem asks for consecutive elements in an unsorted array with O(n) time, think of using a HashSet.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence. You must write an algorithm that runs in O(n) time.",
+    "examples": [
+      {
+        "input": "nums = [100,4,200,1,3,2]",
+        "output": "4",
+        "explanation": "The longest consecutive sequence is [1,2,3,4], whose length is 4."
+      },
+      {
+        "input": "nums = [0,3,7,2,5,8,4,6,0,1]",
+        "output": "9",
+        "explanation": "The longest consecutive sequence is [0,1,2,3,4,5,6,7,8]."
+      }
+    ],
+    "constraints": [
+      "0 <= nums.length <= 100000",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "edgeCases": [
+      "Empty array",
+      "Single element",
+      "Duplicate numbers",
+      "Negative numbers",
+      "Already consecutive"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every number, repeatedly search for the next consecutive number in the array.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Store all numbers in a HashSet. A number starts a sequence only if its previous number (num - 1) does not exist. From every starting number, count consecutive values until the sequence ends.",
+    "ahaMoment": "Only numbers without a predecessor can start a new consecutive sequence.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for consecutive elements in an unsorted array with O(n) time, think of using a HashSet.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each number is processed at most once while expanding sequences. HashSet lookups are O(1) on average, giving an overall O(n) solution.",
+    "howToRecognizeSimilar": "Whenever the problem asks for consecutive elements in an unsorted array with O(n) time, think of using a HashSet.",
+    "commonWrongPaths": [
+      "Sorting when O(n) is required.",
+      "Starting from every element instead of sequence starts.",
+      "Not handling duplicates.",
+      "Using a list instead of a HashSet.",
+      "Forgetting empty array cases."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Avoid sorting because O(n log n) is not optimal.",
+      "Use a HashSet for O(1) lookup.",
+      "Start counting only from sequence beginnings."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting when O(n) is required.",
+      "Starting from every element instead of sequence starts.",
+      "Not handling duplicates.",
+      "Using a list instead of a HashSet.",
+      "Forgetting empty array cases."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Hash Set",
+    "recognitionSignals": "Whenever the problem asks for consecutive elements in an unsorted array with O(n) time, think of using a HashSet.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Sequence",
+      "idea": "For every number, repeatedly search for the next consecutive number in the array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Pick every number.",
+        "Search for the next consecutive value.",
+        "Continue until the sequence breaks.",
+        "Track the maximum length."
+      ],
+      "dryRun": "Repeatedly scan the array for consecutive numbers.",
+      "visualization": {},
+      "code": {
+        "java": "Nested search solution omitted because of quadratic complexity.",
+        "python": "Nested search omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting",
+      "idea": "Sort the array and count consecutive numbers while ignoring duplicates.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array.",
+        "Skip duplicates.",
+        "Count consecutive values.",
+        "Return the maximum streak."
+      ],
+      "dryRun": "Sort then count consecutive elements.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Arrays.sort().",
+        "python": "Uses sort().",
+        "cpp": "Uses sort().",
+        "javascript": "Uses sort()."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Hash Set",
+      "idea": "Insert every element into a HashSet. Only begin expanding a sequence if the previous number does not exist. Continue checking num+1, num+2, ... until the sequence ends. Keep track of the maximum sequence length.",
+      "intuition": "Each number is processed at most once while expanding sequences. HashSet lookups are O(1) on average, giving an overall O(n) solution.",
+      "whenToUse": "",
+      "algorithm": [
+        "Insert all numbers into a HashSet.",
+        "Traverse every number.",
+        "If num-1 exists, skip because it is not a sequence start.",
+        "Otherwise count consecutive numbers using the HashSet.",
+        "Update the maximum sequence length.",
+        "Return the maximum length."
+      ],
+      "dryRun": "nums=[100,4,200,1,3,2]\nSet={100,4,200,1,3,2}\nStart at 1\nCount:1→2→3→4\nLength=4\nAnswer=4",
+      "visualization": {},
+      "code": {
+        "java": "public int longestConsecutive(int[] nums) {\n    HashSet<Integer> set = new HashSet<>();\n    for (int num : nums) {\n        set.add(num);\n    }\n\n    int longest = 0;\n\n    for (int num : set) {\n        if (!set.contains(num - 1)) {\n            int current = num;\n            int length = 1;\n\n            while (set.contains(current + 1)) {\n                current++;\n                length++;\n            }\n\n            longest = Math.max(longest, length);\n        }\n    }\n\n    return longest;\n}",
+        "python": "def longestConsecutive(nums):\n    numSet = set(nums)\n    longest = 0\n\n    for num in numSet:\n        if num - 1 not in numSet:\n            current = num\n            length = 1\n\n            while current + 1 in numSet:\n                current += 1\n                length += 1\n\n            longest = max(longest, length)\n\n    return longest",
+        "cpp": "int longestConsecutive(vector<int>& nums) {\n    unordered_set<int> st(nums.begin(), nums.end());\n    int longest = 0;\n\n    for (int num : st) {\n        if (!st.count(num - 1)) {\n            int current = num;\n            int length = 1;\n\n            while (st.count(current + 1)) {\n                current++;\n                length++;\n            }\n\n            longest = max(longest, length);\n        }\n    }\n\n    return longest;\n}",
+        "javascript": "function longestConsecutive(nums) {\n    const set = new Set(nums);\n    let longest = 0;\n\n    for (const num of set) {\n        if (!set.has(num - 1)) {\n            let current = num;\n            let length = 1;\n\n            while (set.has(current + 1)) {\n                current++;\n                length++;\n            }\n\n            longest = Math.max(longest, length);\n        }\n    }\n\n    return longest;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Only start counting from the beginning of each sequence.",
+    "steps": [
+      "Store all numbers in a HashSet.",
+      "Find numbers with no predecessor.",
+      "Expand forward while consecutive numbers exist.",
+      "Count the sequence length.",
+      "Track the maximum length."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Use a HashSet.",
+      "Start only from sequence beginnings.",
+      "Expand forward.",
+      "Update maximum length.",
+      "Overall O(n)."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why do we check only sequence starts?",
+      "Why is the complexity O(n)?",
+      "Can Union Find solve this?",
+      "What changes if duplicates are removed?",
+      "Can this be solved in-place?"
+    ],
+    "interviewTips": [
+      "Mention sorting first.",
+      "Explain why sorting isn't optimal.",
+      "Describe sequence starts.",
+      "Show why each element is visited once.",
+      "State O(n) time and O(n) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Only numbers without a predecessor can start a new consecutive sequence.",
+      "algorithm": "HashSet → Find Starts → Expand → Update Maximum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "HashSet provides O(1) lookup.",
+      "Skip numbers having predecessors.",
+      "Each sequence is counted once.",
+      "No sorting required.",
+      "Optimal complexity is O(n)."
+    ],
+    "commonMistakes": [
+      "Sorting when O(n) is required.",
+      "Starting from every element instead of sequence starts.",
+      "Not handling duplicates.",
+      "Using a list instead of a HashSet.",
+      "Forgetting empty array cases."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/longest-consecutive-sequence/",
+    "neetcode": "https://neetcode.io/problems/longest-consecutive-sequence",
+    "youtube": [
+      "NeetCode - Longest Consecutive Sequence",
+      "Take U Forward - Longest Consecutive Sequence",
+      "CodeHelp - Hashing Problems",
+      "Abdul Bari - Hashing",
+      "Nick White - Longest Consecutive Sequence"
+    ],
+    "relatedProblems": [
+      "Longest Increasing Subsequence",
+      "Contains Duplicate",
+      "Missing Number",
+      "First Missing Positive",
+      "Longest Continuous Increasing Subsequence"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

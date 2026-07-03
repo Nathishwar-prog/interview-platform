@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "id": "arr040",
+    "title": "Maximum Sum of Distinct Subarrays With Length K",
+    "slug": "maximum-sum-of-distinct-subarrays-with-length-k",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Fixed Size Sliding Window + HashMap",
+    "tags": [
+      "Array",
+      "Sliding Window",
+      "Hash Table"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Apple"
+    ],
+    "frequency": "Medium",
+    "acceptance": "53.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sliding Window, HashMap, Frequency Counting, Time Complexity",
+    "whyDoesThisExist": "Imagine selecting exactly k consecutive products from a shelf. You earn points equal to the total price, but every selected product must be unique. Find the selection with the highest total value.",
+    "realWorldAnalogy": "Imagine selecting exactly k consecutive products from a shelf. You earn points equal to the total price, but every selected product must be unique. Find the selection with the highest total value.",
+    "prerequisites": [
+      "Arrays",
+      "Sliding Window",
+      "HashMap",
+      "Frequency Counting",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this pattern whenever a problem involves a fixed-size window with uniqueness or frequency constraints.",
+    "patternRecognitionKeywords": [
+      "Sliding Window",
+      "Distinct Elements",
+      "HashMap",
+      "Frequency",
+      "Fixed Window",
+      "Maximum Sum"
+    ],
+    "signals": "Whenever a fixed-size window requires uniqueness constraints, combine Sliding Window with a HashMap.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array nums and an integer k. Find the maximum sum of any subarray of length exactly k where all elements are distinct. Return the maximum sum. If no such subarray exists, return 0.",
+    "examples": [
+      {
+        "input": "nums = [1,5,4,2,9,9,9], k = 3",
+        "output": "15",
+        "explanation": "The subarray [4,2,9] contains distinct elements and has the maximum sum of 15."
+      },
+      {
+        "input": "nums = [4,4,4], k = 3",
+        "output": "0",
+        "explanation": "No window of length 3 contains distinct elements."
+      }
+    ],
+    "constraints": [
+      "1 <= k <= nums.length <= 100000",
+      "1 <= nums[i] <= 100000"
+    ],
+    "edgeCases": [
+      "k = 1",
+      "All elements distinct",
+      "All elements identical",
+      "Duplicates inside the window",
+      "Window at the end gives maximum sum"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every window of size k, verify whether all elements are distinct, and compute its sum.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since the window size is fixed, maintain a sliding window of length k. Use a HashMap to track element frequencies. A window is valid only when every element appears exactly once.",
+    "ahaMoment": "A valid window has exactly k distinct elements.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a fixed-size window requires uniqueness constraints, combine Sliding Window with a HashMap.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element enters and leaves the sliding window exactly once. HashMap operations take O(1) on average, resulting in linear time complexity.",
+    "howToRecognizeSimilar": "Whenever a fixed-size window requires uniqueness constraints, combine Sliding Window with a HashMap.",
+    "commonWrongPaths": [
+      "Using a HashSet instead of frequencies.",
+      "Not removing elements with zero frequency.",
+      "Checking only the sum without uniqueness.",
+      "Forgetting to subtract the outgoing element.",
+      "Using int instead of long for the sum."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Maintain the window sum.",
+      "Use a HashMap to store frequencies.",
+      "A valid window has exactly k distinct elements."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using a HashSet instead of frequencies.",
+      "Not removing elements with zero frequency.",
+      "Checking only the sum without uniqueness.",
+      "Forgetting to subtract the outgoing element.",
+      "Using int instead of long for the sum."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Fixed Size Sliding Window + HashMap",
+    "recognitionSignals": "Whenever a fixed-size window requires uniqueness constraints, combine Sliding Window with a HashMap.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Window",
+      "idea": "Generate every window of size k, verify whether all elements are distinct, and compute its sum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every subarray of size k.",
+        "Check uniqueness using a HashSet.",
+        "Calculate the sum.",
+        "Return the maximum valid sum."
+      ],
+      "dryRun": "Examine every window independently.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n × k)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum + HashSet",
+      "idea": "Use prefix sums to calculate window sums quickly while checking uniqueness separately.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build prefix sums.",
+        "Check uniqueness for every window.",
+        "Calculate the sum in O(1).",
+        "Return the maximum."
+      ],
+      "dryRun": "Use prefix sums with a HashSet.",
+      "visualization": {},
+      "code": {
+        "java": "Uses prefix sums.",
+        "python": "Uses prefix sums.",
+        "cpp": "Uses prefix sums.",
+        "javascript": "Uses prefix sums."
+      },
+      "complexities": {
+        "time": "O(n × k)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Fixed Size Sliding Window + HashMap",
+      "idea": "Maintain a sliding window of size k. Track the current window sum and element frequencies using a HashMap. Whenever the window size reaches k, if the HashMap size equals k, update the answer. Then slide the window by removing the leftmost element.",
+      "intuition": "Each element enters and leaves the sliding window exactly once. HashMap operations take O(1) on average, resulting in linear time complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize an empty HashMap.",
+        "Maintain the current window sum.",
+        "Expand the window by adding nums[right].",
+        "If window size exceeds k, remove nums[left].",
+        "Decrease its frequency or remove it from the map.",
+        "When window size equals k and map size equals k, update the maximum sum.",
+        "Continue until the end."
+      ],
+      "dryRun": "nums=[1,5,4,2,9,9,9], k=3\nWindow=[1,5,4] Sum=10 ✓\nWindow=[5,4,2] Sum=11 ✓\nWindow=[4,2,9] Sum=15 ✓ Max\nWindow=[2,9,9] Duplicate ✗\nAnswer=15",
+      "visualization": {},
+      "code": {
+        "java": "public long maximumSubarraySum(int[] nums, int k) {\n    Map<Integer, Integer> map = new HashMap<>();\n    long sum = 0, ans = 0;\n    int left = 0;\n\n    for (int right = 0; right < nums.length; right++) {\n        sum += nums[right];\n        map.put(nums[right], map.getOrDefault(nums[right], 0) + 1);\n\n        if (right - left + 1 > k) {\n            sum -= nums[left];\n            map.put(nums[left], map.get(nums[left]) - 1);\n            if (map.get(nums[left]) == 0)\n                map.remove(nums[left]);\n            left++;\n        }\n\n        if (right - left + 1 == k && map.size() == k)\n            ans = Math.max(ans, sum);\n    }\n\n    return ans;\n}",
+        "python": "from collections import defaultdict\n\ndef maximumSubarraySum(nums, k):\n    freq = defaultdict(int)\n    left = 0\n    total = 0\n    ans = 0\n\n    for right in range(len(nums)):\n        total += nums[right]\n        freq[nums[right]] += 1\n\n        if right - left + 1 > k:\n            total -= nums[left]\n            freq[nums[left]] -= 1\n            if freq[nums[left]] == 0:\n                del freq[nums[left]]\n            left += 1\n\n        if right - left + 1 == k and len(freq) == k:\n            ans = max(ans, total)\n\n    return ans",
+        "cpp": "long long maximumSubarraySum(vector<int>& nums, int k) {\n    unordered_map<int,int> freq;\n    long long sum = 0, ans = 0;\n    int left = 0;\n\n    for (int right = 0; right < nums.size(); right++) {\n        sum += nums[right];\n        freq[nums[right]]++;\n\n        if (right - left + 1 > k) {\n            sum -= nums[left];\n            if (--freq[nums[left]] == 0)\n                freq.erase(nums[left]);\n            left++;\n        }\n\n        if (right - left + 1 == k && freq.size() == k)\n            ans = max(ans, sum);\n    }\n\n    return ans;\n}",
+        "javascript": "function maximumSubarraySum(nums, k) {\n    const freq = new Map();\n    let left = 0;\n    let sum = 0;\n    let ans = 0;\n\n    for (let right = 0; right < nums.length; right++) {\n        sum += nums[right];\n        freq.set(nums[right], (freq.get(nums[right]) || 0) + 1);\n\n        if (right - left + 1 > k) {\n            sum -= nums[left];\n            freq.set(nums[left], freq.get(nums[left]) - 1);\n            if (freq.get(nums[left]) === 0)\n                freq.delete(nums[left]);\n            left++;\n        }\n\n        if (right - left + 1 === k && freq.size === k)\n            ans = Math.max(ans, sum);\n    }\n\n    return ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Slide a fixed-size window while maintaining frequencies.",
+    "steps": [
+      "Expand the window.",
+      "Maintain frequencies.",
+      "Remove the left element when needed.",
+      "Check if all elements are unique.",
+      "Update the maximum sum."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Fixed-size sliding window.",
+      "Maintain frequencies.",
+      "Track window sum.",
+      "Window is valid when map size == k.",
+      "O(n) solution."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why use a HashMap instead of a HashSet?",
+      "Can Prefix Sum solve this optimally?",
+      "How would you return the subarray?",
+      "What if window size is variable?",
+      "How would you allow at most one duplicate?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Use a sliding window because k is fixed.",
+      "Maintain frequencies using a HashMap.",
+      "Use long for large sums.",
+      "State O(n) time and O(k) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A valid window has exactly k distinct elements.",
+      "algorithm": "Sliding Window → HashMap → Maintain Sum → Update Answer.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(k)"
+    },
+    "importantPoints": [
+      "Use HashMap for frequencies.",
+      "Maintain window sum.",
+      "Map size equals k means all elements are distinct.",
+      "Each element is processed once.",
+      "O(n) time."
+    ],
+    "commonMistakes": [
+      "Using a HashSet instead of frequencies.",
+      "Not removing elements with zero frequency.",
+      "Checking only the sum without uniqueness.",
+      "Forgetting to subtract the outgoing element.",
+      "Using int instead of long for the sum."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/",
+    "neetcode": "https://neetcode.io/problems/maximum-sum-of-distinct-subarrays-with-length-k",
+    "youtube": [
+      "NeetCode - Sliding Window",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window",
+      "Nick White - Maximum Sum of Distinct Subarrays"
+    ],
+    "relatedProblems": [
+      "Maximum Average Subarray I",
+      "Sliding Window Maximum",
+      "Fruit Into Baskets",
+      "Longest Substring Without Repeating Characters",
+      "Subarray Product Less Than K"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

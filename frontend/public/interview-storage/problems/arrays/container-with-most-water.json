@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "id": "arr009",
+    "title": "Container With Most Water",
+    "slug": "container-with-most-water",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Opposite Direction Two Pointers",
+    "tags": [
+      "Array",
+      "Two Pointers",
+      "Greedy",
+      "Geometry",
+      "Optimization"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "LinkedIn",
+      "Oracle",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware",
+      "Netflix"
+    ],
+    "frequency": "Very High",
+    "acceptance": "57.4%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Two Pointers, Greedy Algorithms, Time Complexity",
+    "whyDoesThisExist": "Imagine two walls holding water between them. The amount of water depends on the shorter wall and the distance between them. To maximize water storage, you must intelligently choose which wall to move instead of checking every possible pair.",
+    "realWorldAnalogy": "Imagine two walls holding water between them. The amount of water depends on the shorter wall and the distance between them. To maximize water storage, you must intelligently choose which wall to move instead of checking every possible pair.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Two Pointers",
+      "Greedy Algorithms",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Opposite Direction Two Pointer pattern whenever the answer depends on two endpoints and you need to optimize a value involving both distance and height.",
+    "patternRecognitionKeywords": [
+      "Two Ends",
+      "Maximum Area",
+      "Water",
+      "Width",
+      "Height",
+      "Greedy",
+      "Two Pointers"
+    ],
+    "signals": "Whenever two endpoints determine an answer involving width or distance, consider using Opposite Direction Two Pointers.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]). Find two lines that together with the x-axis form a container that can hold the maximum amount of water. Return the maximum amount of water a container can store. You may not slant the container.",
+    "examples": [
+      {
+        "input": "height = [1,8,6,2,5,4,8,3,7]",
+        "output": "49",
+        "explanation": "The maximum area is formed by heights 8 and 7 with width 7. Area = 7 × 7 = 49."
+      },
+      {
+        "input": "height = [1,1]",
+        "output": "1",
+        "explanation": "Only one container exists."
+      }
+    ],
+    "constraints": [
+      "2 <= height.length <= 100000",
+      "0 <= height[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Minimum array size",
+      "All heights equal",
+      "Strictly increasing heights",
+      "Strictly decreasing heights",
+      "Contains zero height",
+      "Maximum height at both ends"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Calculate the area for every possible pair of lines and return the maximum.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The water level is always limited by the shorter wall. If we move the taller wall inward, the width decreases while the shorter wall remains unchanged, so the area can never increase. Therefore, always move the shorter wall.",
+    "ahaMoment": "Moving the taller line cannot improve the area because the shorter line still limits the water level.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever two endpoints determine an answer involving width or distance, consider using Opposite Direction Two Pointers.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each pointer moves at most n times. Moving the taller line can never improve the answer because the shorter line still limits the water level while the width decreases.",
+    "howToRecognizeSimilar": "Whenever two endpoints determine an answer involving width or distance, consider using Opposite Direction Two Pointers.",
+    "commonWrongPaths": [
+      "Moving the taller pointer.",
+      "Using the taller height instead of the shorter height.",
+      "Calculating width incorrectly.",
+      "Stopping too early.",
+      "Using max(height[left], height[right]) instead of min()."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "The area depends on width and the shorter height.",
+      "Start from both ends.",
+      "Always move the shorter line."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Moving the taller pointer.",
+      "Using the taller height instead of the shorter height.",
+      "Calculating width incorrectly.",
+      "Stopping too early.",
+      "Using max(height[left], height[right]) instead of min()."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Opposite Direction Two Pointers",
+    "recognitionSignals": "Whenever two endpoints determine an answer involving width or distance, consider using Opposite Direction Two Pointers.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Pair",
+      "idea": "Calculate the area for every possible pair of lines and return the maximum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose every first line.",
+        "Pair it with every remaining line.",
+        "Compute width.",
+        "Compute area = min(height[i], height[j]) × width.",
+        "Track the maximum area."
+      ],
+      "dryRun": "height=[1,8,6]\nPairs:\n(1,8)=1\n(1,6)=2\n(8,6)=6\nMaximum=6",
+      "visualization": {},
+      "code": {
+        "java": "public int maxArea(int[] height) {\n    int max = 0;\n    for(int i=0;i<height.length;i++){\n        for(int j=i+1;j<height.length;j++){\n            int area = Math.min(height[i],height[j])*(j-i);\n            max = Math.max(max,area);\n        }\n    }\n    return max;\n}",
+        "python": "def maxArea(height):\n    ans = 0\n    for i in range(len(height)):\n        for j in range(i+1,len(height)):\n            ans = max(ans,min(height[i],height[j])*(j-i))\n    return ans",
+        "cpp": "int maxArea(vector<int>& height){\n    int ans=0;\n    for(int i=0;i<height.size();i++)\n        for(int j=i+1;j<height.size();j++)\n            ans=max(ans,min(height[i],height[j])*(j-i));\n    return ans;\n}",
+        "javascript": "function maxArea(height){\nlet ans=0;\nfor(let i=0;i<height.length;i++){\nfor(let j=i+1;j<height.length;j++){\nans=Math.max(ans,Math.min(height[i],height[j])*(j-i));\n}\n}\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointers",
+      "idea": "Start with pointers at both ends of the array. Compute the current area and move the shorter line inward because only a taller line can possibly increase the area.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left = 0.",
+        "Initialize right = n-1.",
+        "Compute area.",
+        "Update maximum.",
+        "Move the pointer with the smaller height.",
+        "Repeat until pointers meet."
+      ],
+      "dryRun": "Left=1 Right=7 Area=8\nMove shorter\nContinue until pointers meet.",
+      "visualization": {},
+      "code": {
+        "java": "Uses two pointers.",
+        "python": "Uses two pointers.",
+        "cpp": "Uses two pointers.",
+        "javascript": "Uses two pointers."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Opposite Direction Two Pointers",
+      "idea": "Place one pointer at the beginning and another at the end. Compute the current container area. Since the shorter line limits the water level, move only the pointer pointing to the shorter line. Continue until both pointers meet.",
+      "intuition": "Each pointer moves at most n times. Moving the taller line can never improve the answer because the shorter line still limits the water level while the width decreases.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left = 0.",
+        "Initialize right = n - 1.",
+        "Initialize maximumArea = 0.",
+        "While left < right:",
+        "Calculate width = right - left.",
+        "Calculate area = min(height[left], height[right]) × width.",
+        "Update maximumArea.",
+        "Move the pointer with the smaller height.",
+        "Return maximumArea."
+      ],
+      "dryRun": "height=[1,8,6,2,5,4,8,3,7]\nArea=(1,7)=8\nMove left\nArea=(8,7)=49\nMove right\nContinue...\nMaximum=49",
+      "visualization": {},
+      "code": {
+        "java": "public int maxArea(int[] height) {\n    int left = 0;\n    int right = height.length - 1;\n    int maxArea = 0;\n\n    while(left < right){\n        int area = Math.min(height[left], height[right]) * (right - left);\n        maxArea = Math.max(maxArea, area);\n\n        if(height[left] < height[right]){\n            left++;\n        }else{\n            right--;\n        }\n    }\n\n    return maxArea;\n}",
+        "python": "def maxArea(height):\n    left = 0\n    right = len(height)-1\n    ans = 0\n\n    while left < right:\n        area = min(height[left], height[right]) * (right-left)\n        ans = max(ans, area)\n\n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n\n    return ans",
+        "cpp": "int maxArea(vector<int>& height){\n    int left=0,right=height.size()-1;\n    int ans=0;\n\n    while(left<right){\n        ans=max(ans,min(height[left],height[right])*(right-left));\n        if(height[left]<height[right]) left++;\n        else right--;\n    }\n\n    return ans;\n}",
+        "javascript": "function maxArea(height){\nlet left=0,right=height.length-1;\nlet ans=0;\n\nwhile(left<right){\nans=Math.max(ans,Math.min(height[left],height[right])*(right-left));\nif(height[left]<height[right]) left++;\nelse right--;\n}\n\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "The shorter line determines the water level.",
+    "steps": [
+      "Start from both ends.",
+      "Calculate current area.",
+      "Move the shorter line.",
+      "Repeat until pointers meet."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Area = Width × Minimum Height.",
+      "Always move the shorter pointer.",
+      "Start from both ends.",
+      "One traversal.",
+      "Classic Two Pointer problem."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does moving the shorter pointer always work?",
+      "Can this be solved using dynamic programming?",
+      "What if the container could be slanted?",
+      "Can you prove the greedy decision?",
+      "How does this differ from Trapping Rain Water?"
+    ],
+    "interviewTips": [
+      "Explain the brute-force solution first.",
+      "State why the shorter wall limits the water level.",
+      "Justify moving only the shorter pointer.",
+      "Mention the O(n) optimization.",
+      "Discuss the greedy proof if asked."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Moving the taller line cannot improve the area because the shorter line still limits the water level.",
+      "algorithm": "Two Ends → Compute Area → Move Smaller Height.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Water level depends on the shorter wall.",
+      "Width decreases every move.",
+      "Move the smaller height.",
+      "Linear traversal.",
+      "Constant space."
+    ],
+    "commonMistakes": [
+      "Moving the taller pointer.",
+      "Using the taller height instead of the shorter height.",
+      "Calculating width incorrectly.",
+      "Stopping too early.",
+      "Using max(height[left], height[right]) instead of min()."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/container-with-most-water/",
+    "neetcode": "https://neetcode.io/problems/max-water-container",
+    "youtube": [
+      "NeetCode - Container With Most Water",
+      "Take U Forward - Two Pointer Problems",
+      "CodeHelp - Two Pointer Technique",
+      "Abdul Bari - Two Pointers",
+      "Nick White - Container With Most Water"
+    ],
+    "relatedProblems": [
+      "Trapping Rain Water",
+      "Boats to Save People",
+      "Two Sum II",
+      "Maximum Width Ramp",
+      "Largest Rectangle in Histogram"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

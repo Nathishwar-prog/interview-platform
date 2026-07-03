@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "id": "arr045",
+    "title": "Merge Sorted Array",
+    "slug": "merge-sorted-array",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Reverse Two Pointers",
+    "tags": [
+      "Array",
+      "Two Pointers",
+      "Sorting"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "52.3%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Two Pointers, Sorting, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine combining two sorted lists of exam scores into one larger sorted list without using extra storage. Since nums1 already has extra empty space at the end, fill it from the back to avoid overwriting values.",
+    "realWorldAnalogy": "Imagine combining two sorted lists of exam scores into one larger sorted list without using extra storage. Since nums1 already has extra empty space at the end, fill it from the back to avoid overwriting values.",
+    "prerequisites": [
+      "Arrays",
+      "Two Pointers",
+      "Sorting",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Reverse Two Pointers pattern whenever one sorted array has enough extra space to merge another sorted array in-place.",
+    "patternRecognitionKeywords": [
+      "Merge",
+      "Sorted Arrays",
+      "Two Pointers",
+      "In-place",
+      "Reverse Traversal",
+      "Three Pointers"
+    ],
+    "signals": "Whenever one sorted array has enough extra space to hold another sorted array, think of Reverse Two Pointers.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given two integer arrays nums1 and nums2 sorted in non-decreasing order, along with integers m and n representing the number of valid elements in each array. Merge nums2 into nums1 as one sorted array. The final sorted array should be stored inside nums1.",
+    "examples": [
+      {
+        "input": "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3",
+        "output": "[1,2,2,3,5,6]",
+        "explanation": "Merge nums2 into nums1 while maintaining sorted order."
+      },
+      {
+        "input": "nums1 = [1], m = 1, nums2 = [], n = 0",
+        "output": "[1]",
+        "explanation": "nums2 is empty, so nums1 remains unchanged."
+      }
+    ],
+    "constraints": [
+      "nums1.length == m + n",
+      "nums2.length == n",
+      "0 <= m, n <= 200",
+      "-10^9 <= nums1[i], nums2[i] <= 10^9"
+    ],
+    "edgeCases": [
+      "nums2 is empty",
+      "nums1 has no valid elements",
+      "All elements of nums2 are smaller",
+      "All elements of nums2 are larger",
+      "Duplicate values"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Merge both arrays into a new array, then copy the result back into nums1.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The largest element always belongs at the end of the merged array. Compare the largest remaining elements from both arrays and place the larger one at the last available position in nums1.",
+    "ahaMoment": "The largest remaining element always belongs at the last available position.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever one sorted array has enough extra space to hold another sorted array, think of Reverse Two Pointers.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Filling from the end avoids overwriting valid elements in nums1. Every element is processed exactly once, resulting in linear time and constant extra space.",
+    "howToRecognizeSimilar": "Whenever one sorted array has enough extra space to hold another sorted array, think of Reverse Two Pointers.",
+    "commonWrongPaths": [
+      "Merging from the front and overwriting values.",
+      "Forgetting to copy remaining nums2 elements.",
+      "Copying remaining nums1 elements unnecessarily.",
+      "Using extra space despite the in-place requirement.",
+      "Incorrect pointer initialization."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Start filling from the end.",
+      "Compare the largest remaining values.",
+      "Copy remaining nums2 elements if necessary."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Merging from the front and overwriting values.",
+      "Forgetting to copy remaining nums2 elements.",
+      "Copying remaining nums1 elements unnecessarily.",
+      "Using extra space despite the in-place requirement.",
+      "Incorrect pointer initialization."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Reverse Two Pointers",
+    "recognitionSignals": "Whenever one sorted array has enough extra space to hold another sorted array, think of Reverse Two Pointers.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Merge Using Extra Array",
+      "idea": "Merge both arrays into a new array, then copy the result back into nums1.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a temporary array.",
+        "Merge both sorted arrays.",
+        "Copy the merged array into nums1.",
+        "Return."
+      ],
+      "dryRun": "Merge into an auxiliary array first.",
+      "visualization": {},
+      "code": {
+        "java": "Uses an extra array.",
+        "python": "Uses an extra list.",
+        "cpp": "Uses an auxiliary vector.",
+        "javascript": "Uses an extra array."
+      },
+      "complexities": {
+        "time": "O(m + n)",
+        "space": "O(m + n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Forward Merge with Shifting",
+      "idea": "Merge elements from the front by shifting existing elements whenever necessary.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compare front elements.",
+        "Shift elements in nums1 when required.",
+        "Insert nums2 elements.",
+        "Continue until merged."
+      ],
+      "dryRun": "Repeated shifting maintains sorted order.",
+      "visualization": {},
+      "code": {
+        "java": "Uses element shifting.",
+        "python": "Uses insert operations.",
+        "cpp": "Uses shifting.",
+        "javascript": "Uses splice/shift."
+      },
+      "complexities": {
+        "time": "O((m+n)²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Reverse Two Pointers",
+      "idea": "Maintain three pointers: i at the last valid element of nums1, j at the last element of nums2, and k at the last position of nums1. Place the larger element at nums1[k] and move the corresponding pointer backward.",
+      "intuition": "Filling from the end avoids overwriting valid elements in nums1. Every element is processed exactly once, resulting in linear time and constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize i = m-1.",
+        "Initialize j = n-1.",
+        "Initialize k = m+n-1.",
+        "Compare nums1[i] and nums2[j].",
+        "Place the larger value at nums1[k].",
+        "Move the corresponding pointer backward.",
+        "Copy remaining nums2 elements if any."
+      ],
+      "dryRun": "nums1=[1,2,3,0,0,0]\nnums2=[2,5,6]\n6→end\n5→next\n3→next\n2→next\n2→next\n1→front\nAnswer=[1,2,2,3,5,6]",
+      "visualization": {},
+      "code": {
+        "java": "public void merge(int[] nums1, int m, int[] nums2, int n) {\n    int i = m - 1;\n    int j = n - 1;\n    int k = m + n - 1;\n\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j]) {\n            nums1[k--] = nums1[i--];\n        } else {\n            nums1[k--] = nums2[j--];\n        }\n    }\n\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}",
+        "python": "def merge(nums1, m, nums2, n):\n    i = m - 1\n    j = n - 1\n    k = m + n - 1\n\n    while i >= 0 and j >= 0:\n        if nums1[i] > nums2[j]:\n            nums1[k] = nums1[i]\n            i -= 1\n        else:\n            nums1[k] = nums2[j]\n            j -= 1\n        k -= 1\n\n    while j >= 0:\n        nums1[k] = nums2[j]\n        j -= 1\n        k -= 1",
+        "cpp": "void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {\n    int i = m - 1;\n    int j = n - 1;\n    int k = m + n - 1;\n\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n\n    while (j >= 0)\n        nums1[k--] = nums2[j--];\n}",
+        "javascript": "function merge(nums1, m, nums2, n) {\n    let i = m - 1;\n    let j = n - 1;\n    let k = m + n - 1;\n\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j]) {\n            nums1[k--] = nums1[i--];\n        } else {\n            nums1[k--] = nums2[j--];\n        }\n    }\n\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}"
+      },
+      "complexities": {
+        "time": "O(m + n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Fill nums1 from the back.",
+    "steps": [
+      "Compare the last valid elements.",
+      "Place the larger value at the end.",
+      "Move the corresponding pointer.",
+      "Repeat until one array finishes.",
+      "Copy remaining nums2 elements."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Start from the end.",
+      "Maintain three pointers.",
+      "Compare larger values.",
+      "Copy remaining nums2.",
+      "O(m+n) time."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why merge from the end instead of the front?",
+      "Why don't we copy remaining nums1 elements?",
+      "Can this be done recursively?",
+      "What if nums1 had no extra space?",
+      "How would you merge k sorted arrays?"
+    ],
+    "interviewTips": [
+      "Mention the extra-array solution first.",
+      "Explain why merging from the front fails.",
+      "Describe the reverse two-pointer technique.",
+      "Explain why remaining nums1 elements stay in place.",
+      "State O(m+n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The largest remaining element always belongs at the last available position.",
+      "algorithm": "Three Pointers → Compare → Fill from Back.",
+      "timeComplexity": "O(m+n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Fill from the back.",
+      "Avoid overwriting valid values.",
+      "Three-pointer solution.",
+      "No extra memory.",
+      "Standard in-place merge."
+    ],
+    "commonMistakes": [
+      "Merging from the front and overwriting values.",
+      "Forgetting to copy remaining nums2 elements.",
+      "Copying remaining nums1 elements unnecessarily.",
+      "Using extra space despite the in-place requirement.",
+      "Incorrect pointer initialization."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/merge-sorted-array/",
+    "neetcode": "https://neetcode.io/problems/merge-sorted-array",
+    "youtube": [
+      "NeetCode - Merge Sorted Array",
+      "Take U Forward - Merge Sorted Array",
+      "CodeHelp - Two Pointer Problems",
+      "Abdul Bari - Merge Arrays",
+      "Nick White - Merge Sorted Array"
+    ],
+    "relatedProblems": [
+      "Merge Intervals",
+      "Median of Two Sorted Arrays",
+      "Merge Two Sorted Lists",
+      "Kth Largest Element in an Array",
+      "Sort Colors"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

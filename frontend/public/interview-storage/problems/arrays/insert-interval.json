@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "id": "arr025",
+    "title": "Insert Interval",
+    "slug": "insert-interval",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Merge Intervals",
+    "tags": [
+      "Array",
+      "Intervals",
+      "Sorting",
+      "Merge Intervals"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "46.8%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Intervals, Merge Intervals, Sorting, Time Complexity",
+    "whyDoesThisExist": "Imagine adding a new meeting to an already organized calendar. If the new meeting overlaps with existing meetings, they should be merged into one continuous meeting while preserving the schedule order.",
+    "realWorldAnalogy": "Imagine adding a new meeting to an already organized calendar. If the new meeting overlaps with existing meetings, they should be merged into one continuous meeting while preserving the schedule order.",
+    "prerequisites": [
+      "Arrays",
+      "Intervals",
+      "Merge Intervals",
+      "Sorting",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Merge Intervals pattern whenever a new interval must be inserted into an already sorted list of non-overlapping intervals.",
+    "patternRecognitionKeywords": [
+      "Insert",
+      "Intervals",
+      "Merge",
+      "Sorted",
+      "Overlap",
+      "Calendar"
+    ],
+    "signals": "Whenever a new interval must be inserted into an already sorted, non-overlapping interval list, think of the Merge Intervals pattern.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an array of non-overlapping intervals sorted in ascending order by their start times and a new interval. Insert the new interval into the intervals such that the intervals remain sorted and non-overlapping after merging if necessary. Return the resulting intervals.",
+    "examples": [
+      {
+        "input": "intervals = [[1,3],[6,9]], newInterval = [2,5]",
+        "output": "[[1,5],[6,9]]",
+        "explanation": "The new interval overlaps with [1,3], so they merge into [1,5]."
+      },
+      {
+        "input": "intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]",
+        "output": "[[1,2],[3,10],[12,16]]",
+        "explanation": "The new interval overlaps with [3,5], [6,7], and [8,10]."
+      }
+    ],
+    "constraints": [
+      "0 <= intervals.length <= 10000",
+      "intervals[i].length == 2",
+      "0 <= start <= end <= 100000",
+      "Intervals are sorted and non-overlapping."
+    ],
+    "edgeCases": [
+      "Empty interval list",
+      "Insert at beginning",
+      "Insert at end",
+      "No overlap",
+      "Merge multiple intervals",
+      "New interval covers all intervals"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Insert the new interval into the array, sort the intervals again, then perform a complete Merge Intervals algorithm.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since the intervals are already sorted, process them from left to right. Add all intervals before the new interval, merge all overlapping intervals, then append the remaining intervals.",
+    "ahaMoment": "Sorted intervals allow insertion without sorting again.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a new interval must be inserted into an already sorted, non-overlapping interval list, think of the Merge Intervals pattern.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The intervals are already sorted and non-overlapping, allowing insertion and merging in a single linear traversal without sorting again.",
+    "howToRecognizeSimilar": "Whenever a new interval must be inserted into an already sorted, non-overlapping interval list, think of the Merge Intervals pattern.",
+    "commonWrongPaths": [
+      "Sorting an already sorted array.",
+      "Forgetting to merge multiple overlapping intervals.",
+      "Appending the new interval before merging.",
+      "Using '<' instead of '<=' when checking overlap.",
+      "Ignoring empty input."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Process intervals in three phases.",
+      "Before overlap.",
+      "Merge overlap.",
+      "After overlap."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting an already sorted array.",
+      "Forgetting to merge multiple overlapping intervals.",
+      "Appending the new interval before merging.",
+      "Using '<' instead of '<=' when checking overlap.",
+      "Ignoring empty input."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Merge Intervals",
+    "recognitionSignals": "Whenever a new interval must be inserted into an already sorted, non-overlapping interval list, think of the Merge Intervals pattern.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Insert Then Merge",
+      "idea": "Insert the new interval into the array, sort the intervals again, then perform a complete Merge Intervals algorithm.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Insert the new interval.",
+        "Sort all intervals.",
+        "Merge overlapping intervals.",
+        "Return the merged list."
+      ],
+      "dryRun": "Insert [2,5]\nSort\nMerge [1,3] and [2,5]",
+      "visualization": {},
+      "code": {
+        "java": "Insert interval, sort using Arrays.sort(), then apply Merge Intervals.",
+        "python": "Insert, sort, then merge.",
+        "cpp": "Insert, sort, merge.",
+        "javascript": "Insert, sort, merge."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Single Pass Merge",
+      "idea": "Since intervals are already sorted, process them in one traversal without sorting again.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Add intervals before overlap.",
+        "Merge overlapping intervals.",
+        "Append remaining intervals."
+      ],
+      "dryRun": "Before → Merge → After",
+      "visualization": {},
+      "code": {
+        "java": "Uses one traversal.",
+        "python": "Uses one traversal.",
+        "cpp": "Uses one traversal.",
+        "javascript": "Uses one traversal."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Three-Phase Merge",
+      "idea": "Traverse the sorted intervals once. First, add all intervals ending before the new interval begins. Next, merge every overlapping interval by expanding the new interval. Finally, append the remaining intervals.",
+      "intuition": "The intervals are already sorted and non-overlapping, allowing insertion and merging in a single linear traversal without sorting again.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize answer list.",
+        "Traverse intervals before overlap and add them.",
+        "While intervals overlap:",
+        "Update newInterval.start with minimum start.",
+        "Update newInterval.end with maximum end.",
+        "Add merged interval.",
+        "Append remaining intervals."
+      ],
+      "dryRun": "Intervals=[[1,3],[6,9]]\nNew=[2,5]\nMerge with [1,3] → [1,5]\nAdd [6,9]",
+      "visualization": {},
+      "code": {
+        "java": "public int[][] insert(int[][] intervals, int[] newInterval) {\n    List<int[]> ans = new ArrayList<>();\n    int i = 0;\n    int n = intervals.length;\n\n    while(i < n && intervals[i][1] < newInterval[0])\n        ans.add(intervals[i++]);\n\n    while(i < n && intervals[i][0] <= newInterval[1]){\n        newInterval[0] = Math.min(newInterval[0], intervals[i][0]);\n        newInterval[1] = Math.max(newInterval[1], intervals[i][1]);\n        i++;\n    }\n\n    ans.add(newInterval);\n\n    while(i < n)\n        ans.add(intervals[i++]);\n\n    return ans.toArray(new int[ans.size()][]);\n}",
+        "python": "def insert(intervals,newInterval):\n    ans=[]\n    i=0\n    n=len(intervals)\n\n    while i<n and intervals[i][1]<newInterval[0]:\n        ans.append(intervals[i])\n        i+=1\n\n    while i<n and intervals[i][0]<=newInterval[1]:\n        newInterval[0]=min(newInterval[0],intervals[i][0])\n        newInterval[1]=max(newInterval[1],intervals[i][1])\n        i+=1\n\n    ans.append(newInterval)\n\n    while i<n:\n        ans.append(intervals[i])\n        i+=1\n\n    return ans",
+        "cpp": "Uses one-pass interval insertion and merging.",
+        "javascript": "Uses single-pass merge of sorted intervals."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Process intervals in three sections.",
+    "steps": [
+      "Add intervals before overlap.",
+      "Merge overlapping intervals.",
+      "Append remaining intervals."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Already sorted.",
+      "Three phases.",
+      "Merge while overlapping.",
+      "Append remaining intervals.",
+      "Linear traversal."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How is this different from Merge Intervals?",
+      "What if intervals were unsorted?",
+      "Can this be done in-place?",
+      "What if multiple new intervals are inserted?",
+      "How would you handle interval deletion?"
+    ],
+    "interviewTips": [
+      "Mention that sorting is unnecessary.",
+      "Explain the three traversal phases.",
+      "Use <= for overlap detection.",
+      "Discuss why only one pass is needed.",
+      "State O(n) complexity."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Sorted intervals allow insertion without sorting again.",
+      "algorithm": "Before Overlap → Merge → After Overlap.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "No sorting needed.",
+      "Three-step traversal.",
+      "Expand new interval while merging.",
+      "One-pass solution.",
+      "Classic interval problem."
+    ],
+    "commonMistakes": [
+      "Sorting an already sorted array.",
+      "Forgetting to merge multiple overlapping intervals.",
+      "Appending the new interval before merging.",
+      "Using '<' instead of '<=' when checking overlap.",
+      "Ignoring empty input."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/insert-interval/",
+    "neetcode": "https://neetcode.io/problems/insert-new-interval",
+    "youtube": [
+      "NeetCode - Insert Interval",
+      "Take U Forward - Merge Intervals",
+      "CodeHelp - Insert Interval",
+      "Abdul Bari - Interval Problems",
+      "Nick White - Insert Interval"
+    ],
+    "relatedProblems": [
+      "Merge Intervals",
+      "Employee Free Time",
+      "Meeting Rooms",
+      "Meeting Rooms II",
+      "Non-overlapping Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

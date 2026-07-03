@@ -130,17 +130,76 @@ export async function getCompanyBySlug(slug: string): Promise<Company | undefine
   }
 }
 
-export async function getAllProblems(): Promise<(Problem & { companyName: string; companySlug: string })[]> {
-  if (cachedProblems) return cachedProblems;
+export async function safeFetchJson<T = any>(url: string): Promise<T | null> {
   try {
-    const response = await fetch("/interview-storage/all-problems.json");
-    const data = await response.json();
-    cachedProblems = data;
-    return data;
+    const res = await fetch(url);
+    if (res.ok) {
+      const text = await res.text();
+      if (text && text.trim().length > 0) {
+        return JSON.parse(text) as T;
+      }
+    }
   } catch (e) {
-    console.error("Failed to fetch all problems", e);
-    return [];
+    // Return null if empty or invalid JSON file
   }
+  return null;
+}
+
+export async function getAllProblems(): Promise<(Problem & { companyName?: string; companySlug?: string })[]> {
+  if (cachedProblems) return cachedProblems;
+
+  // 1. Load from problems-manifest.json for instant access to all 2,110+ problems
+  const manifest = await safeFetchJson<Problem[]>("/interview-storage/problems-manifest.json");
+  if (manifest && Array.isArray(manifest) && manifest.length > 0) {
+    cachedProblems = manifest as any;
+    return cachedProblems;
+  }
+
+  const problemMap = new Map<string, Problem & { companyName?: string; companySlug?: string }>();
+
+  // 1. Load main all-problems.json
+  const mainProblems = await safeFetchJson<Problem[]>("/interview-storage/all-problems.json");
+  if (mainProblems && Array.isArray(mainProblems)) {
+    mainProblems.forEach((p) => {
+      if (p.slug) problemMap.set(p.slug, p as any);
+    });
+  }
+
+  // 2. Load from all category JSON files
+  for (const catKey of ALL_CATEGORY_SLUGS) {
+    const catProblems = await safeFetchJson<Problem[]>(`/interview-storage/categories/${catKey}.json`);
+    if (catProblems && Array.isArray(catProblems)) {
+      catProblems.forEach((p) => {
+        if (p.slug && !problemMap.has(p.slug)) {
+          problemMap.set(p.slug, {
+            ...p,
+            category: p.category || catKey,
+          } as any);
+        }
+      });
+    }
+  }
+
+  // 3. Load from company JSON files
+  const companies = await getCompanies();
+  for (const compMeta of companies) {
+    const company = await getCompanyBySlug(compMeta.slug);
+    if (company && company.problems) {
+      company.problems.forEach((p) => {
+        if (p.slug && !problemMap.has(p.slug)) {
+          problemMap.set(p.slug, {
+            ...p,
+            companyName: company.name,
+            companySlug: company.slug,
+          });
+        }
+      });
+    }
+  }
+
+  const result = Array.from(problemMap.values());
+  cachedProblems = result;
+  return result;
 }
 
 export async function getAllQuestions(): Promise<(InterviewQuestion & { companyName: string; companySlug: string })[]> {
@@ -245,17 +304,18 @@ export function getCategoryIcon(category: string): string {
 const problemDetailCache: Record<string, any> = {};
 
 export async function getCategoryProblems(categorySlug: string): Promise<Problem[]> {
-  try {
-    const res = await fetch(`/interview-storage/categories/${categorySlug.toLowerCase()}.json`);
-    if (res.ok) {
-      const data = await res.json();
-      return data;
-    }
-  } catch (e) {
-    console.error(`Failed to fetch category problems for ${categorySlug}`, e);
+  const catKey = categorySlug.toLowerCase();
+  const data = await safeFetchJson<Problem[]>(`/interview-storage/categories/${catKey}.json`);
+  if (data && Array.isArray(data) && data.length > 0) {
+    return data;
   }
+
   const all = await getAllProblems();
-  return all.filter((p) => (p.category || "").toLowerCase() === categorySlug.toLowerCase());
+  const filtered = all.filter((p) => (p.category || "").toLowerCase() === catKey);
+  if (filtered.length > 0) return filtered;
+
+  const normKey = catKey.replace(/-/g, "");
+  return all.filter((p) => (p.category || "").toLowerCase().replace(/-/g, "") === normKey);
 }
 
 export async function getProblemBySlug(
@@ -296,57 +356,84 @@ export async function getProblemBySlug(
       ];
 
   for (const cat of categoriesToTry) {
-    try {
-      const res = await fetch(`/interview-storage/problems/${cat}/${problemSlug}.json`);
-      if (res.ok) {
-        const data = await res.json();
-        // Normalize fields for layout rendering compatibility
-        if (!data.statement && data.problemStatement) {
-          data.statement = data.problemStatement;
+    const data = await safeFetchJson(`/interview-storage/problems/${cat}/${problemSlug}.json`);
+    if (data) {
+      // Normalize fields for layout rendering compatibility
+      if (data.metadata) {
+        Object.assign(data, data.metadata);
+        if (data.problem) {
+          data.statement = data.problem.problemStatement || data.statement;
+          data.examples = data.problem.examples || data.examples;
+          data.constraints = data.problem.constraints || data.constraints;
+          data.edgeCases = data.problem.edgeCases || data.edgeCases;
         }
-        if (!data.companies && data.askedIn) {
-          data.companies = data.askedIn;
+        if (data.approaches && data.approaches.length > 0) {
+          data.bruteForce = data.approaches[0];
+          data.optimal = data.approaches[data.approaches.length - 1];
         }
-        
-        // Normalize bruteForce
-        if (data.bruteForce) {
-          if (!data.bruteForce.approach) {
-            data.bruteForce.approach = data.bruteForce.description || data.bruteForce.title || "Brute Force Approach";
-          }
-          if (!data.bruteForce.code) {
-            data.bruteForce.code = data.bruteForce.javascript || data.bruteForce.java || data.bruteForce.python || "";
-          }
-        } else if (data.bruteForceApproach) {
-          data.bruteForce = {
-            approach: data.bruteForceApproach.description || data.bruteForceApproach.title || "Brute Force Approach",
-            code: data.bruteForceApproach.javascript || data.bruteForceApproach.java || data.bruteForceApproach.python || "",
-            timeComplexity: data.bruteForceApproach.timeComplexity || "",
-            spaceComplexity: data.bruteForceApproach.spaceComplexity || "",
-          };
+        if (data.learning) {
+          data.intuition = data.learning.whyDoesThisExist;
+          data.whenToUse = data.learning.whenToUseThis;
         }
-
-        // Normalize optimal
-        if (data.optimal) {
-          if (!data.optimal.approach) {
-            data.optimal.approach = data.optimal.description || data.optimal.title || "Optimal Solution";
-          }
-          if (!data.optimal.code) {
-            data.optimal.code = data.optimal.javascript || data.optimal.java || data.optimal.python || "";
-          }
-        } else if (data.optimalApproach) {
-          data.optimal = {
-            approach: data.optimalApproach.description || data.optimalApproach.title || "Optimal Solution",
-            code: data.optimalApproach.javascript || data.optimalApproach.java || data.optimalApproach.python || "",
-            timeComplexity: data.optimalApproach.timeComplexity || "",
-            spaceComplexity: data.optimalApproach.spaceComplexity || "",
-          };
+        if (data.interview) {
+          data.interviewTips = data.interview.interviewTips;
         }
-
-        problemDetailCache[problemSlug] = data;
-        return data;
+        if (data.resources) {
+          data.relatedProblems = data.resources.relatedProblems;
+        }
       }
-    } catch (e) {
-      // Continue trying remaining categories
+
+      if (!data.statement && data.problemStatement) {
+        data.statement = data.problemStatement;
+      }
+      if (!data.companies && data.askedIn) {
+        data.companies = data.askedIn;
+      }
+      
+      // Normalize bruteForce
+      if (data.bruteForce) {
+        if (!data.bruteForce.approach) {
+          data.bruteForce.approach = data.bruteForce.description || data.bruteForce.title || data.bruteForce.idea || "Brute Force Approach";
+        }
+        if (!data.bruteForce.code) {
+          data.bruteForce.code = (data.bruteForce.code && typeof data.bruteForce.code === 'object' ? (data.bruteForce.code.javascript || data.bruteForce.code.java || data.bruteForce.code.python) : null) || data.bruteForce.javascript || data.bruteForce.java || data.bruteForce.python || "";
+        }
+        if (data.bruteForce.complexities) {
+            data.bruteForce.timeComplexity = data.bruteForce.complexities.time || "";
+            data.bruteForce.spaceComplexity = data.bruteForce.complexities.space || "";
+        }
+      } else if (data.bruteForceApproach) {
+        data.bruteForce = {
+          approach: data.bruteForceApproach.description || data.bruteForceApproach.title || "Brute Force Approach",
+          code: data.bruteForceApproach.javascript || data.bruteForceApproach.java || data.bruteForceApproach.python || "",
+          timeComplexity: data.bruteForceApproach.timeComplexity || "",
+          spaceComplexity: data.bruteForceApproach.spaceComplexity || "",
+        };
+      }
+
+      // Normalize optimal
+      if (data.optimal) {
+        if (!data.optimal.approach) {
+          data.optimal.approach = data.optimal.description || data.optimal.title || data.optimal.idea || "Optimal Solution";
+        }
+        if (!data.optimal.code) {
+          data.optimal.code = (data.optimal.code && typeof data.optimal.code === 'object' ? (data.optimal.code.javascript || data.optimal.code.java || data.optimal.code.python) : null) || data.optimal.javascript || data.optimal.java || data.optimal.python || "";
+        }
+        if (data.optimal.complexities) {
+            data.optimal.timeComplexity = data.optimal.complexities.time || "";
+            data.optimal.spaceComplexity = data.optimal.complexities.space || "";
+        }
+      } else if (data.optimalApproach) {
+        data.optimal = {
+          approach: data.optimalApproach.description || data.optimalApproach.title || "Optimal Solution",
+          code: data.optimalApproach.javascript || data.optimalApproach.java || data.optimalApproach.python || "",
+          timeComplexity: data.optimalApproach.timeComplexity || "",
+          spaceComplexity: data.optimalApproach.spaceComplexity || "",
+        };
+      }
+
+      problemDetailCache[problemSlug] = data;
+      return data;
     }
   }
 

@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "id": "arr026",
+    "title": "Interval List Intersections",
+    "slug": "interval-list-intersections",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Two Pointers",
+    "tags": [
+      "Array",
+      "Intervals",
+      "Two Pointers"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "71.5%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Intervals, Two Pointers, Sorting, Time Complexity",
+    "whyDoesThisExist": "Imagine two people's calendars containing their busy meeting slots. The overlapping portions of their meetings represent the times when both are busy simultaneously.",
+    "realWorldAnalogy": "Imagine two people's calendars containing their busy meeting slots. The overlapping portions of their meetings represent the times when both are busy simultaneously.",
+    "prerequisites": [
+      "Arrays",
+      "Intervals",
+      "Two Pointers",
+      "Sorting",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Two Pointer technique whenever two sorted interval lists need to be compared efficiently.",
+    "patternRecognitionKeywords": [
+      "Intervals",
+      "Intersection",
+      "Overlap",
+      "Two Pointers",
+      "Sorted",
+      "Calendar"
+    ],
+    "signals": "Whenever two sorted interval lists must be compared to find common overlapping regions, think of the Two Pointer technique.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given two lists of closed intervals, firstList and secondList, where each list is pairwise disjoint and sorted in ascending order. Return the intersection of these two interval lists.",
+    "examples": [
+      {
+        "input": "firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]",
+        "output": "[[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]",
+        "explanation": "Each output interval represents an overlap between intervals from both lists."
+      },
+      {
+        "input": "firstList = [[1,3],[5,9]], secondList = []",
+        "output": "[]",
+        "explanation": "There are no intervals in the second list."
+      }
+    ],
+    "constraints": [
+      "0 <= firstList.length, secondList.length <= 1000",
+      "0 <= start <= end <= 1000000000",
+      "Each interval list is sorted.",
+      "Intervals inside each list do not overlap."
+    ],
+    "edgeCases": [
+      "One list is empty",
+      "Both lists are empty",
+      "Touching intervals",
+      "One interval completely contains another",
+      "No intersections",
+      "Single interval lists"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every interval in the first list with every interval in the second list and record all intersections.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Each list is already sorted and non-overlapping. Compare one interval from each list. If they overlap, record the intersection. Then move the pointer whose interval finishes first because it cannot overlap with future intervals.",
+    "ahaMoment": "The overlap of two intervals is [max(start1,start2), min(end1,end2)] if max(start) ≤ min(end).",
+    "mentalModel": "",
+    "patternRecognition": "Whenever two sorted interval lists must be compared to find common overlapping regions, think of the Two Pointer technique.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Since both lists are already sorted and non-overlapping, each interval is visited only once. Advancing the interval with the smaller ending point guarantees that no possible intersections are missed.",
+    "howToRecognizeSimilar": "Whenever two sorted interval lists must be compared to find common overlapping regions, think of the Two Pointer technique.",
+    "commonWrongPaths": [
+      "Using start < end instead of start <= end.",
+      "Moving both pointers unnecessarily.",
+      "Not handling touching intervals.",
+      "Computing overlap incorrectly.",
+      "Forgetting empty lists."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Compare only one interval from each list at a time.",
+      "Intersection starts at the larger starting point.",
+      "Intersection ends at the smaller ending point.",
+      "Move the pointer with the smaller ending value."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using start < end instead of start <= end.",
+      "Moving both pointers unnecessarily.",
+      "Not handling touching intervals.",
+      "Computing overlap incorrectly.",
+      "Forgetting empty lists."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Two Pointers",
+    "recognitionSignals": "Whenever two sorted interval lists must be compared to find common overlapping regions, think of the Two Pointer technique.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Compare Every Pair",
+      "idea": "Compare every interval in the first list with every interval in the second list and record all intersections.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Loop through every interval in firstList.",
+        "Loop through every interval in secondList.",
+        "Check whether they overlap.",
+        "Store the intersection."
+      ],
+      "dryRun": "Compare every interval pair until all intersections are found.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because every interval pair is compared.",
+        "python": "Brute force omitted.",
+        "cpp": "Naive implementation omitted.",
+        "javascript": "Naive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n × m)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointers",
+      "idea": "Traverse both sorted interval lists simultaneously using two pointers.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize two pointers.",
+        "Check overlap.",
+        "Store intersection.",
+        "Advance the interval that ends first."
+      ],
+      "dryRun": "[0,2] & [1,5] → [1,2]\nMove first pointer.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Two Pointers.",
+        "python": "Uses Two Pointers.",
+        "cpp": "Uses Two Pointers.",
+        "javascript": "Uses Two Pointers."
+      },
+      "complexities": {
+        "time": "O(n + m)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointer Interval Traversal",
+      "idea": "Maintain one pointer for each interval list. Compute the overlap using max(start1, start2) and min(end1, end2). If they overlap, store the intersection. Move the pointer whose interval finishes first because that interval cannot intersect with future intervals.",
+      "intuition": "Since both lists are already sorted and non-overlapping, each interval is visited only once. Advancing the interval with the smaller ending point guarantees that no possible intersections are missed.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize i = 0 and j = 0.",
+        "While both pointers are valid:",
+        "Compute start = max(firstList[i][0], secondList[j][0]).",
+        "Compute end = min(firstList[i][1], secondList[j][1]).",
+        "If start <= end, add [start,end] to the answer.",
+        "If first interval ends first, increment i.",
+        "Otherwise increment j.",
+        "Return the answer."
+      ],
+      "dryRun": "A=[0,2]\nB=[1,5]\nIntersection=[1,2]\nMove A\nA=[5,10]\nB=[1,5]\nIntersection=[5,5]\nMove B",
+      "visualization": {},
+      "code": {
+        "java": "public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {\n    List<int[]> ans = new ArrayList<>();\n    int i = 0, j = 0;\n\n    while(i < firstList.length && j < secondList.length){\n        int start = Math.max(firstList[i][0], secondList[j][0]);\n        int end = Math.min(firstList[i][1], secondList[j][1]);\n\n        if(start <= end)\n            ans.add(new int[]{start,end});\n\n        if(firstList[i][1] < secondList[j][1])\n            i++;\n        else\n            j++;\n    }\n\n    return ans.toArray(new int[ans.size()][]);\n}",
+        "python": "def intervalIntersection(firstList, secondList):\n    ans=[]\n    i=j=0\n\n    while i<len(firstList) and j<len(secondList):\n        start=max(firstList[i][0],secondList[j][0])\n        end=min(firstList[i][1],secondList[j][1])\n\n        if start<=end:\n            ans.append([start,end])\n\n        if firstList[i][1]<secondList[j][1]:\n            i+=1\n        else:\n            j+=1\n\n    return ans",
+        "cpp": "Uses two pointers to traverse both interval lists simultaneously.",
+        "javascript": "Uses two pointers and computes overlap using max(start) and min(end)."
+      },
+      "complexities": {
+        "time": "O(n + m)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Compare one interval from each list and move the one that finishes first.",
+    "steps": [
+      "Choose current intervals.",
+      "Compute overlap.",
+      "Store intersection if it exists.",
+      "Advance the interval ending first."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Two sorted lists.",
+      "Overlap = max(start), min(end).",
+      "Move smaller ending interval.",
+      "Linear traversal.",
+      "Classic interval problem."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How is this different from Merge Intervals?",
+      "What if intervals are unsorted?",
+      "Can this work for three interval lists?",
+      "How would you find the union instead?",
+      "How would you find common free time?"
+    ],
+    "interviewTips": [
+      "Mention that sorting is already done.",
+      "Explain why max(start) and min(end) determine the overlap.",
+      "Move only the interval that ends first.",
+      "Handle touching intervals using <=.",
+      "State O(n + m) time complexity."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The overlap of two intervals is [max(start1,start2), min(end1,end2)] if max(start) ≤ min(end).",
+      "algorithm": "Compare → Compute Overlap → Move Smaller End Pointer.",
+      "timeComplexity": "O(n + m)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Lists are already sorted.",
+      "Intervals are non-overlapping.",
+      "Use max(start) and min(end).",
+      "Move pointer with smaller end.",
+      "O(n+m) solution."
+    ],
+    "commonMistakes": [
+      "Using start < end instead of start <= end.",
+      "Moving both pointers unnecessarily.",
+      "Not handling touching intervals.",
+      "Computing overlap incorrectly.",
+      "Forgetting empty lists."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/interval-list-intersections/",
+    "neetcode": "https://neetcode.io/problems/interval-list-intersections",
+    "youtube": [
+      "NeetCode - Interval List Intersections",
+      "Take U Forward - Interval Problems",
+      "CodeHelp - Intervals",
+      "Abdul Bari - Two Pointer Technique",
+      "Nick White - Interval List Intersections"
+    ],
+    "relatedProblems": [
+      "Merge Intervals",
+      "Insert Interval",
+      "Employee Free Time",
+      "Meeting Scheduler",
+      "Non-overlapping Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

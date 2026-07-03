@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "id": "arr041",
+    "title": "Median of Two Sorted Arrays",
+    "slug": "median-of-two-sorted-arrays",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Binary Search",
+    "pattern": "Binary Search on Partition",
+    "tags": [
+      "Array",
+      "Binary Search",
+      "Divide and Conquer"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "42.1%",
+    "estimatedTime": "35-45 minutes",
+    "practiceLevel": "Hard",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Binary Search, Sorted Arrays, Divide and Conquer, Time Complexity",
+    "whyDoesThisExist": "Imagine two hospitals each maintaining sorted patient age records. Instead of merging both lists, efficiently find the middle age among all patients using binary search.",
+    "realWorldAnalogy": "Imagine two hospitals each maintaining sorted patient age records. Instead of merging both lists, efficiently find the middle age among all patients using binary search.",
+    "prerequisites": [
+      "Arrays",
+      "Binary Search",
+      "Sorted Arrays",
+      "Divide and Conquer",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use Binary Search on Partition whenever you need the median of two sorted arrays in logarithmic time.",
+    "patternRecognitionKeywords": [
+      "Median",
+      "Two Sorted Arrays",
+      "Binary Search",
+      "Partition",
+      "Divide and Conquer",
+      "Logarithmic Time"
+    ],
+    "signals": "Whenever two sorted arrays require finding the median in logarithmic time, think of Binary Search on Partition.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given two sorted arrays nums1 and nums2 of sizes m and n respectively, return the median of the two sorted arrays. The overall run time complexity must be O(log(min(m, n))).",
+    "examples": [
+      {
+        "input": "nums1 = [1,3], nums2 = [2]",
+        "output": "2.0",
+        "explanation": "Merged array is [1,2,3]. Median is 2."
+      },
+      {
+        "input": "nums1 = [1,2], nums2 = [3,4]",
+        "output": "2.5",
+        "explanation": "Merged array is [1,2,3,4]. Median is (2 + 3) / 2 = 2.5."
+      }
+    ],
+    "constraints": [
+      "nums1.length == m",
+      "nums2.length == n",
+      "0 <= m <= 1000",
+      "0 <= n <= 1000",
+      "1 <= m + n <= 2000",
+      "-10^6 <= nums1[i], nums2[i] <= 10^6"
+    ],
+    "edgeCases": [
+      "One array is empty",
+      "Arrays of different sizes",
+      "Even total length",
+      "Odd total length",
+      "Duplicate values"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Merge both sorted arrays into one sorted array, then directly compute the median.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Rather than merging both arrays, partition them so that the left half contains exactly half of the total elements. If every element on the left is less than or equal to every element on the right, the correct partition has been found.",
+    "ahaMoment": "The correct partition makes every left element less than or equal to every right element.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever two sorted arrays require finding the median in logarithmic time, think of Binary Search on Partition.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Binary search is performed only on the smaller array. Every partition check takes constant time, giving O(log(min(m,n))) complexity.",
+    "howToRecognizeSimilar": "Whenever two sorted arrays require finding the median in logarithmic time, think of Binary Search on Partition.",
+    "commonWrongPaths": [
+      "Binary searching the larger array.",
+      "Using incorrect partition formulas.",
+      "Not handling empty partitions.",
+      "Confusing even and odd total lengths.",
+      "Merging arrays despite the logarithmic requirement."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Always binary search the smaller array.",
+      "Partition both arrays into left and right halves.",
+      "Compare boundary elements of the partitions."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Binary searching the larger array.",
+      "Using incorrect partition formulas.",
+      "Not handling empty partitions.",
+      "Confusing even and odd total lengths.",
+      "Merging arrays despite the logarithmic requirement."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Binary Search on Partition",
+    "recognitionSignals": "Whenever two sorted arrays require finding the median in logarithmic time, think of Binary Search on Partition.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Merge Both Arrays",
+      "idea": "Merge both sorted arrays into one sorted array, then directly compute the median.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Merge both arrays.",
+        "Find the middle index.",
+        "Return the median."
+      ],
+      "dryRun": "Merge then find the middle element.",
+      "visualization": {},
+      "code": {
+        "java": "Uses merge procedure.",
+        "python": "Uses merge.",
+        "cpp": "Uses merge.",
+        "javascript": "Uses merge."
+      },
+      "complexities": {
+        "time": "O(m + n)",
+        "space": "O(m + n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointer Merge Without Extra Array",
+      "idea": "Traverse both arrays using two pointers until the median position is reached without storing the merged array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Use two pointers.",
+        "Traverse until the median position.",
+        "Track the required elements.",
+        "Return the median."
+      ],
+      "dryRun": "Stop once the median index is reached.",
+      "visualization": {},
+      "code": {
+        "java": "Uses two pointers.",
+        "python": "Uses two pointers.",
+        "cpp": "Uses two pointers.",
+        "javascript": "Uses two pointers."
+      },
+      "complexities": {
+        "time": "O(m + n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Binary Search on Partition",
+      "idea": "Always perform binary search on the smaller array. Partition both arrays such that the total elements on the left equal half of the combined length. Adjust the partition until every left-side element is less than or equal to every right-side element.",
+      "intuition": "Binary search is performed only on the smaller array. Every partition check takes constant time, giving O(log(min(m,n))) complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Ensure nums1 is the smaller array.",
+        "Binary search the partition in nums1.",
+        "Compute the corresponding partition in nums2.",
+        "Find leftMax1, rightMin1, leftMax2, rightMin2.",
+        "If partitions are valid, compute the median.",
+        "Otherwise move the binary search left or right."
+      ],
+      "dryRun": "nums1=[1,3]\nnums2=[2]\nPartition1=1\nPartition2=1\nLeft={1,2}\nRight={3}\nMedian=2",
+      "visualization": {},
+      "code": {
+        "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    if (nums1.length > nums2.length)\n        return findMedianSortedArrays(nums2, nums1);\n\n    int m = nums1.length;\n    int n = nums2.length;\n    int low = 0, high = m;\n\n    while (low <= high) {\n        int cut1 = (low + high) / 2;\n        int cut2 = (m + n + 1) / 2 - cut1;\n\n        int left1 = (cut1 == 0) ? Integer.MIN_VALUE : nums1[cut1 - 1];\n        int right1 = (cut1 == m) ? Integer.MAX_VALUE : nums1[cut1];\n\n        int left2 = (cut2 == 0) ? Integer.MIN_VALUE : nums2[cut2 - 1];\n        int right2 = (cut2 == n) ? Integer.MAX_VALUE : nums2[cut2];\n\n        if (left1 <= right2 && left2 <= right1) {\n            if ((m + n) % 2 == 0)\n                return (Math.max(left1, left2) + Math.min(right1, right2)) / 2.0;\n            else\n                return Math.max(left1, left2);\n        }\n        else if (left1 > right2)\n            high = cut1 - 1;\n        else\n            low = cut1 + 1;\n    }\n\n    return 0.0;\n}",
+        "python": "def findMedianSortedArrays(nums1, nums2):\n    if len(nums1) > len(nums2):\n        nums1, nums2 = nums2, nums1\n\n    m, n = len(nums1), len(nums2)\n    low, high = 0, m\n\n    while low <= high:\n        cut1 = (low + high) // 2\n        cut2 = (m + n + 1) // 2 - cut1\n\n        left1 = float('-inf') if cut1 == 0 else nums1[cut1-1]\n        right1 = float('inf') if cut1 == m else nums1[cut1]\n\n        left2 = float('-inf') if cut2 == 0 else nums2[cut2-1]\n        right2 = float('inf') if cut2 == n else nums2[cut2]\n\n        if left1 <= right2 and left2 <= right1:\n            if (m+n) % 2 == 0:\n                return (max(left1,left2)+min(right1,right2))/2\n            return max(left1,left2)\n\n        elif left1 > right2:\n            high = cut1 - 1\n        else:\n            low = cut1 + 1",
+        "cpp": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n    if (nums1.size() > nums2.size())\n        return findMedianSortedArrays(nums2, nums1);\n\n    int m = nums1.size(), n = nums2.size();\n    int low = 0, high = m;\n\n    while (low <= high) {\n        int cut1 = (low + high) / 2;\n        int cut2 = (m + n + 1) / 2 - cut1;\n\n        int left1 = (cut1 == 0) ? INT_MIN : nums1[cut1-1];\n        int right1 = (cut1 == m) ? INT_MAX : nums1[cut1];\n        int left2 = (cut2 == 0) ? INT_MIN : nums2[cut2-1];\n        int right2 = (cut2 == n) ? INT_MAX : nums2[cut2];\n\n        if (left1 <= right2 && left2 <= right1) {\n            if ((m+n)%2==0)\n                return (max(left1,left2)+min(right1,right2))/2.0;\n            return max(left1,left2);\n        }\n        else if (left1 > right2)\n            high = cut1 - 1;\n        else\n            low = cut1 + 1;\n    }\n\n    return 0;\n}",
+        "javascript": "JavaScript implementation follows the same binary-search partition logic as the Java solution by always searching on the smaller array and comparing partition boundaries."
+      },
+      "complexities": {
+        "time": "O(log(min(m, n)))",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Partition both arrays into equal left and right halves.",
+    "steps": [
+      "Binary search the smaller array.",
+      "Find matching partition in the second array.",
+      "Check partition validity.",
+      "Adjust partitions if needed.",
+      "Compute the median."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Always binary search the smaller array.",
+      "Partition both arrays.",
+      "Left size equals right size.",
+      "Check partition boundaries.",
+      "O(log(min(m,n)))."
+    ],
+    "practiceLevel": "Hard",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why binary search only the smaller array?",
+      "How is the partition formula derived?",
+      "What happens if one array is empty?",
+      "Can this be extended to k sorted arrays?",
+      "Why is the complexity logarithmic?"
+    ],
+    "interviewTips": [
+      "Mention merge solution first.",
+      "Explain why O(m+n) is insufficient.",
+      "Describe the partition idea clearly.",
+      "Explain boundary handling using infinity.",
+      "State O(log(min(m,n))) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The correct partition makes every left element less than or equal to every right element.",
+      "algorithm": "Binary Search → Partition → Validate → Compute Median.",
+      "timeComplexity": "O(log(min(m,n)))",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Search only the smaller array.",
+      "Partition instead of merging.",
+      "Handle infinity boundaries.",
+      "Works for odd and even lengths.",
+      "Optimal logarithmic solution."
+    ],
+    "commonMistakes": [
+      "Binary searching the larger array.",
+      "Using incorrect partition formulas.",
+      "Not handling empty partitions.",
+      "Confusing even and odd total lengths.",
+      "Merging arrays despite the logarithmic requirement."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+    "neetcode": "https://neetcode.io/problems/median-of-two-sorted-arrays",
+    "youtube": [
+      "NeetCode - Median of Two Sorted Arrays",
+      "Take U Forward - Median of Two Sorted Arrays",
+      "CodeHelp - Binary Search Problems",
+      "Abdul Bari - Binary Search",
+      "Nick White - Median of Two Sorted Arrays"
+    ],
+    "relatedProblems": [
+      "Kth Element of Two Sorted Arrays",
+      "Find Peak Element",
+      "Search in Rotated Sorted Array",
+      "Find Minimum in Rotated Sorted Array",
+      "Kth Largest Element in an Array"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

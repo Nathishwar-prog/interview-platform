@@ -1,0 +1,312 @@
+{
+  "metadata": {
+    "id": "arr046",
+    "title": "Merge Two 2D Arrays by Summing Values",
+    "slug": "merge-two-2d-arrays-by-summing-values",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Two Pointers on Sorted Arrays",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Two Pointers"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Adobe",
+      "Oracle",
+      "Bloomberg",
+      "Apple"
+    ],
+    "frequency": "Medium",
+    "acceptance": "87.6%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Two Pointers, Loops, Sorting, Time Complexity",
+    "whyDoesThisExist": "Imagine two stores maintaining inventories where each product has a unique ID and quantity. When combining inventories, quantities for matching product IDs are added together while preserving sorted order.",
+    "realWorldAnalogy": "Imagine two stores maintaining inventories where each product has a unique ID and quantity. When combining inventories, quantities for matching product IDs are added together while preserving sorted order.",
+    "prerequisites": [
+      "Arrays",
+      "Two Pointers",
+      "Loops",
+      "Sorting",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Two Pointers pattern whenever two sorted arrays need to be merged while combining matching elements.",
+    "patternRecognitionKeywords": [
+      "Two Pointers",
+      "Sorted Arrays",
+      "Merge",
+      "ID",
+      "Summation",
+      "Linear Merge"
+    ],
+    "signals": "Whenever two sorted arrays need to be merged while combining matching keys, think of the Two Pointers merge technique.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given two 2D integer arrays nums1 and nums2. Each array consists of pairs [id, value] sorted in strictly increasing order by id. Merge the two arrays into one sorted array. If an id appears in both arrays, sum their values. Otherwise, keep the existing pair.",
+    "examples": [
+      {
+        "input": "nums1 = [[1,2],[2,3],[4,5]], nums2 = [[1,4],[3,2],[4,1]]",
+        "output": "[[1,6],[2,3],[3,2],[4,6]]",
+        "explanation": "IDs 1 and 4 appear in both arrays, so their values are summed."
+      },
+      {
+        "input": "nums1 = [[2,4],[3,6],[5,5]], nums2 = [[1,3],[4,3]]",
+        "output": "[[1,3],[2,4],[3,6],[4,3],[5,5]]",
+        "explanation": "No IDs overlap, so both arrays are simply merged."
+      }
+    ],
+    "constraints": [
+      "1 <= nums1.length, nums2.length <= 200",
+      "nums1[i].length == nums2[i].length == 2",
+      "1 <= id, value <= 1000",
+      "IDs are unique within each array.",
+      "Arrays are sorted by ID."
+    ],
+    "edgeCases": [
+      "One array is empty",
+      "All IDs overlap",
+      "No IDs overlap",
+      "Single element arrays",
+      "Remaining elements after one array ends"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Store all IDs and values inside a HashMap, then sort the IDs before constructing the answer.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since both arrays are already sorted by id, use two pointers. Compare the current IDs and move the pointer with the smaller ID. If both IDs are equal, add their values and move both pointers.",
+    "ahaMoment": "Since both arrays are sorted by ID, they can be merged exactly like Merge Sorted Array.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever two sorted arrays need to be merged while combining matching keys, think of the Two Pointers merge technique.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is processed exactly once. Since both arrays are already sorted, no additional sorting is required.",
+    "howToRecognizeSimilar": "Whenever two sorted arrays need to be merged while combining matching keys, think of the Two Pointers merge technique.",
+    "commonWrongPaths": [
+      "Comparing values instead of IDs.",
+      "Forgetting to append remaining elements.",
+      "Using unnecessary sorting.",
+      "Ignoring that arrays are already sorted.",
+      "Not summing duplicate IDs."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Use two pointers.",
+      "Compare IDs instead of values.",
+      "Append remaining elements after one array finishes."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Comparing values instead of IDs.",
+      "Forgetting to append remaining elements.",
+      "Using unnecessary sorting.",
+      "Ignoring that arrays are already sorted.",
+      "Not summing duplicate IDs."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Two Pointers on Sorted Arrays",
+    "recognitionSignals": "Whenever two sorted arrays need to be merged while combining matching keys, think of the Two Pointers merge technique.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "HashMap Merge",
+      "idea": "Store all IDs and values inside a HashMap, then sort the IDs before constructing the answer.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Insert all pairs from nums1.",
+        "Add values from nums2.",
+        "Sort IDs.",
+        "Build the answer."
+      ],
+      "dryRun": "Merge into a map, then sort.",
+      "visualization": {},
+      "code": {
+        "java": "Uses TreeMap.",
+        "python": "Uses dictionary.",
+        "cpp": "Uses map.",
+        "javascript": "Uses Map."
+      },
+      "complexities": {
+        "time": "O((m+n) log(m+n))",
+        "space": "O(m+n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashMap + Sorting",
+      "idea": "Use a HashMap to merge values, then sort the final entries by ID.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Store values in a HashMap.",
+        "Add duplicate values.",
+        "Sort by ID.",
+        "Return the merged list."
+      ],
+      "dryRun": "Merge first, sort later.",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashMap.",
+        "python": "Uses dict.",
+        "cpp": "Uses unordered_map.",
+        "javascript": "Uses Map."
+      },
+      "complexities": {
+        "time": "O((m+n) log(m+n))",
+        "space": "O(m+n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointers on Sorted Arrays",
+      "idea": "Since both arrays are sorted by ID, traverse them simultaneously. If IDs match, add their values. Otherwise, append the smaller ID and advance its pointer. Finally, append the remaining elements.",
+      "intuition": "Each element is processed exactly once. Since both arrays are already sorted, no additional sorting is required.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize two pointers i and j.",
+        "Compare nums1[i][0] and nums2[j][0].",
+        "If IDs are equal, sum the values and move both pointers.",
+        "If nums1 ID is smaller, add nums1[i] and move i.",
+        "Otherwise, add nums2[j] and move j.",
+        "Append remaining elements.",
+        "Return the merged array."
+      ],
+      "dryRun": "nums1=[[1,2],[2,3],[4,5]]\nnums2=[[1,4],[3,2],[4,1]]\n1==1 → [1,6]\n2<3 → [2,3]\n3<4 → [3,2]\n4==4 → [4,6]",
+      "visualization": {},
+      "code": {
+        "java": "public List<List<Integer>> mergeArrays(int[][] nums1, int[][] nums2) {\n    List<List<Integer>> result = new ArrayList<>();\n    int i = 0, j = 0;\n\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i][0] == nums2[j][0]) {\n            result.add(Arrays.asList(nums1[i][0], nums1[i][1] + nums2[j][1]));\n            i++;\n            j++;\n        } else if (nums1[i][0] < nums2[j][0]) {\n            result.add(Arrays.asList(nums1[i][0], nums1[i][1]));\n            i++;\n        } else {\n            result.add(Arrays.asList(nums2[j][0], nums2[j][1]));\n            j++;\n        }\n    }\n\n    while (i < nums1.length)\n        result.add(Arrays.asList(nums1[i][0], nums1[i++][1]));\n\n    while (j < nums2.length)\n        result.add(Arrays.asList(nums2[j][0], nums2[j++][1]));\n\n    return result;\n}",
+        "python": "def mergeArrays(nums1, nums2):\n    i = j = 0\n    result = []\n\n    while i < len(nums1) and j < len(nums2):\n        if nums1[i][0] == nums2[j][0]:\n            result.append([nums1[i][0], nums1[i][1] + nums2[j][1]])\n            i += 1\n            j += 1\n        elif nums1[i][0] < nums2[j][0]:\n            result.append(nums1[i])\n            i += 1\n        else:\n            result.append(nums2[j])\n            j += 1\n\n    result.extend(nums1[i:])\n    result.extend(nums2[j:])\n\n    return result",
+        "cpp": "vector<vector<int>> mergeArrays(vector<vector<int>>& nums1, vector<vector<int>>& nums2) {\n    vector<vector<int>> ans;\n    int i = 0, j = 0;\n\n    while (i < nums1.size() && j < nums2.size()) {\n        if (nums1[i][0] == nums2[j][0]) {\n            ans.push_back({nums1[i][0], nums1[i][1] + nums2[j][1]});\n            i++;\n            j++;\n        } else if (nums1[i][0] < nums2[j][0]) {\n            ans.push_back(nums1[i++]);\n        } else {\n            ans.push_back(nums2[j++]);\n        }\n    }\n\n    while (i < nums1.size()) ans.push_back(nums1[i++]);\n    while (j < nums2.size()) ans.push_back(nums2[j++]);\n\n    return ans;\n}",
+        "javascript": "function mergeArrays(nums1, nums2) {\n    let i = 0, j = 0;\n    const result = [];\n\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i][0] === nums2[j][0]) {\n            result.push([nums1[i][0], nums1[i][1] + nums2[j][1]]);\n            i++;\n            j++;\n        } else if (nums1[i][0] < nums2[j][0]) {\n            result.push(nums1[i++]);\n        } else {\n            result.push(nums2[j++]);\n        }\n    }\n\n    while (i < nums1.length) result.push(nums1[i++]);\n    while (j < nums2.length) result.push(nums2[j++]);\n\n    return result;\n}"
+      },
+      "complexities": {
+        "time": "O(m+n)",
+        "space": "O(m+n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Traverse both sorted arrays simultaneously.",
+    "steps": [
+      "Compare IDs.",
+      "Merge equal IDs by summing values.",
+      "Append the smaller ID.",
+      "Advance pointers.",
+      "Append remaining elements."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Arrays are already sorted.",
+      "Use two pointers.",
+      "Compare IDs.",
+      "Sum duplicate values.",
+      "O(m+n) solution."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using a HashMap?",
+      "Why is sorting unnecessary?",
+      "How would you merge three arrays?",
+      "What if arrays were unsorted?",
+      "Can the merge be done in-place?"
+    ],
+    "interviewTips": [
+      "Notice that arrays are already sorted.",
+      "Avoid using a HashMap unless necessary.",
+      "Compare IDs instead of values.",
+      "Explain remaining element handling.",
+      "State O(m+n) time and O(m+n) output space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Since both arrays are sorted by ID, they can be merged exactly like Merge Sorted Array.",
+      "algorithm": "Two Pointers → Compare IDs → Sum if Equal → Append Remaining.",
+      "timeComplexity": "O(m+n)",
+      "spaceComplexity": "O(m+n)"
+    },
+    "importantPoints": [
+      "IDs are unique within each array.",
+      "Compare IDs only.",
+      "No sorting required.",
+      "Append remaining elements.",
+      "Linear merge."
+    ],
+    "commonMistakes": [
+      "Comparing values instead of IDs.",
+      "Forgetting to append remaining elements.",
+      "Using unnecessary sorting.",
+      "Ignoring that arrays are already sorted.",
+      "Not summing duplicate IDs."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/",
+    "neetcode": "https://neetcode.io/problems/merge-two-2d-arrays-by-summing-values",
+    "youtube": [
+      "NeetCode - Merge Two 2D Arrays by Summing Values",
+      "Take U Forward - Two Pointer Problems",
+      "CodeHelp - Merge Arrays",
+      "Abdul Bari - Two Pointer Technique",
+      "Nick White - Merge Arrays"
+    ],
+    "relatedProblems": [
+      "Merge Sorted Array",
+      "Merge Intervals",
+      "Intersection of Two Arrays II",
+      "Median of Two Sorted Arrays",
+      "Merge Two Sorted Lists"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr017",
+    "title": "Find All Numbers Disappeared in an Array",
+    "slug": "find-all-numbers-disappeared-in-an-array",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Cyclic Sort",
+    "pattern": "Index Marking",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Cyclic Sort",
+      "Indexing",
+      "In-place Algorithm"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "63.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Index Manipulation, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine students are assigned roll numbers from 1 to n. During attendance, some students answer twice while others are absent. By marking the roll numbers that appear, the unmarked roll numbers represent the absent students.",
+    "realWorldAnalogy": "Imagine students are assigned roll numbers from 1 to n. During attendance, some students answer twice while others are absent. By marking the roll numbers that appear, the unmarked roll numbers represent the absent students.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Index Manipulation",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Index Marking pattern whenever array values are guaranteed to lie in the range [1, n] and you need O(1) extra space.",
+    "patternRecognitionKeywords": [
+      "Missing Numbers",
+      "1 to n",
+      "Index Marking",
+      "Negative Marking",
+      "In-place",
+      "Constant Space"
+    ],
+    "signals": "Whenever array values are restricted to the range [1,n], consider using the array indices themselves as storage.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums of length n where every integer is in the range [1, n], some elements appear twice and others appear once. Return all the integers in the range [1, n] that do not appear in nums.",
+    "examples": [
+      {
+        "input": "nums = [4,3,2,7,8,2,3,1]",
+        "output": "[5,6]",
+        "explanation": "Numbers 5 and 6 never appear in the array."
+      },
+      {
+        "input": "nums = [1,1]",
+        "output": "[2]",
+        "explanation": "Only the number 2 is missing."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "1 <= nums[i] <= nums.length"
+    ],
+    "edgeCases": [
+      "Single element",
+      "No missing numbers",
+      "All numbers missing except one",
+      "Duplicate values",
+      "Maximum array size",
+      "Missing numbers at the beginning or end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every number from 1 to n, search the entire array to determine whether it exists.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since every value belongs to the range [1, n], every number has a corresponding index. Mark that index as visited. After processing the array, every index that remains unmarked corresponds to a missing number.",
+    "ahaMoment": "Every value corresponds to exactly one index because values lie in the range [1,n].",
+    "mentalModel": "",
+    "patternRecognition": "Whenever array values are restricted to the range [1,n], consider using the array indices themselves as storage.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is processed twice. The input array itself stores visitation information, eliminating the need for extra memory.",
+    "howToRecognizeSimilar": "Whenever array values are restricted to the range [1,n], consider using the array indices themselves as storage.",
+    "commonWrongPaths": [
+      "Forgetting to use abs() while indexing.",
+      "Using value instead of value-1 as the index.",
+      "Negating an already negative number without checking.",
+      "Returning indices instead of values.",
+      "Using extra arrays unnecessarily."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Every value maps to an index.",
+      "Use the input array itself for marking.",
+      "Positive indices after traversal indicate missing numbers."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Forgetting to use abs() while indexing.",
+      "Using value instead of value-1 as the index.",
+      "Negating an already negative number without checking.",
+      "Returning indices instead of values.",
+      "Using extra arrays unnecessarily."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Index Marking",
+    "recognitionSignals": "Whenever array values are restricted to the range [1,n], consider using the array indices themselves as storage.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Linear Search for Every Number",
+      "idea": "For every number from 1 to n, search the entire array to determine whether it exists.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Loop through numbers 1 to n.",
+        "Search the array.",
+        "If the number is not found, add it to the answer."
+      ],
+      "dryRun": "nums=[4,3,2,7,8,2,3,1]\nSearch for 1,2,3,4,5...\n5 not found\n6 not found",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because every value requires a complete search.",
+        "python": "Brute force omitted.",
+        "cpp": "Naive implementation omitted.",
+        "javascript": "Naive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashSet",
+      "idea": "Store every number inside a HashSet, then iterate from 1 to n and collect the numbers that are not present.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Insert every number into a HashSet.",
+        "Traverse from 1 to n.",
+        "If a number is missing from the set, add it to the answer."
+      ],
+      "dryRun": "Set={1,2,3,4,7,8}\n5 missing\n6 missing",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashSet.",
+        "python": "Uses set().",
+        "cpp": "Uses unordered_set.",
+        "javascript": "Uses Set."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Index Marking (Negative Marking)",
+      "idea": "Since values belong to the range [1,n], use each value as an index. Traverse the array and mark the corresponding position negative. Afterward, every positive index represents a missing number.",
+      "intuition": "Each element is processed twice. The input array itself stores visitation information, eliminating the need for extra memory.",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse the array.",
+        "Compute index = abs(nums[i]) - 1.",
+        "Mark nums[index] as negative if it is positive.",
+        "Traverse the array again.",
+        "Every positive position i means number i+1 is missing.",
+        "Return the answer."
+      ],
+      "dryRun": "nums=[4,3,2,7,8,2,3,1]\nMark indices:\n4→3\n3→2\n2→1\n7→6\n8→7\n...\nRemaining positive positions: 4,5\nAnswer=[5,6]",
+      "visualization": {},
+      "code": {
+        "java": "public List<Integer> findDisappearedNumbers(int[] nums) {\n    List<Integer> ans = new ArrayList<>();\n\n    for(int i=0;i<nums.length;i++){\n        int index = Math.abs(nums[i]) - 1;\n        if(nums[index] > 0)\n            nums[index] *= -1;\n    }\n\n    for(int i=0;i<nums.length;i++){\n        if(nums[i] > 0)\n            ans.add(i + 1);\n    }\n\n    return ans;\n}",
+        "python": "def findDisappearedNumbers(nums):\n    for num in nums:\n        index = abs(num) - 1\n        if nums[index] > 0:\n            nums[index] *= -1\n\n    ans=[]\n    for i in range(len(nums)):\n        if nums[i] > 0:\n            ans.append(i+1)\n\n    return ans",
+        "cpp": "vector<int> findDisappearedNumbers(vector<int>& nums){\n    for(int num:nums){\n        int index=abs(num)-1;\n        if(nums[index]>0)\n            nums[index]*=-1;\n    }\n\n    vector<int> ans;\n    for(int i=0;i<nums.size();i++)\n        if(nums[i]>0)\n            ans.push_back(i+1);\n\n    return ans;\n}",
+        "javascript": "function findDisappearedNumbers(nums){\nfor(let num of nums){\nlet index=Math.abs(num)-1;\nif(nums[index]>0)\nnums[index]*=-1;\n}\n\nconst ans=[];\nfor(let i=0;i<nums.length;i++){\nif(nums[i]>0)\nans.push(i+1);\n}\n\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Each value marks its corresponding index as visited.",
+    "steps": [
+      "Visit number x.",
+      "Go to index x-1.",
+      "Mark it negative.",
+      "Positive indices after traversal are missing numbers."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Values are in [1,n].",
+      "Use index = value - 1.",
+      "Negative means visited.",
+      "Positive means missing.",
+      "Constant extra space."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without modifying the input array?",
+      "How does this differ from Find All Duplicates?",
+      "Can Cyclic Sort also solve this problem?",
+      "What if values are outside the range [1,n]?",
+      "How would you find both missing and duplicate numbers?"
+    ],
+    "interviewTips": [
+      "Mention the HashSet solution first.",
+      "Explain why the value range enables index marking.",
+      "Remember to use abs() after marking values negative.",
+      "State O(n) time and O(1) extra space.",
+      "Mention Cyclic Sort as an alternative solution."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every value corresponds to exactly one index because values lie in the range [1,n].",
+      "algorithm": "Mark Index → Scan Positive Indices → Return Missing Numbers.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Use abs() before indexing.",
+      "Index = value - 1.",
+      "Negative marking.",
+      "Positive indices represent missing numbers.",
+      "Linear time."
+    ],
+    "commonMistakes": [
+      "Forgetting to use abs() while indexing.",
+      "Using value instead of value-1 as the index.",
+      "Negating an already negative number without checking.",
+      "Returning indices instead of values.",
+      "Using extra arrays unnecessarily."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
+    "neetcode": "https://neetcode.io/problems/find-all-numbers-disappeared-in-an-array",
+    "youtube": [
+      "NeetCode - Find All Numbers Disappeared in an Array",
+      "Take U Forward - Cyclic Sort",
+      "CodeHelp - Array Problems",
+      "Abdul Bari - Arrays",
+      "Nick White - Find All Numbers Disappeared in an Array"
+    ],
+    "relatedProblems": [
+      "Find All Duplicates in an Array",
+      "Find the Duplicate Number",
+      "First Missing Positive",
+      "Missing Number",
+      "Set Mismatch"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

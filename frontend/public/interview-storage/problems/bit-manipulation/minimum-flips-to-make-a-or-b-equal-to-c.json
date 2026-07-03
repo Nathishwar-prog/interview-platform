@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "id": "minimum-flips-to-make-a-or-b-equal-to-c",
+    "title": "Minimum Flips To Make A Or B Equal To C",
+    "slug": "minimum-flips-to-make-a-or-b-equal-to-c",
+    "difficulty": "Medium",
+    "category": "bit-manipulation",
+    "subcategory": "",
+    "pattern": "",
+    "tags": [],
+    "companies": [],
+    "frequency": "",
+    "acceptance": "",
+    "estimatedTime": "",
+    "practiceLevel": "",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Core pattern and intuition",
+    "whyDoesThisExist": "Common interview concept",
+    "realWorldAnalogy": "",
+    "prerequisites": [],
+    "whenToUseThis": "",
+    "patternRecognitionKeywords": [],
+    "signals": "",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "",
+    "examples": [],
+    "constraints": [],
+    "edgeCases": []
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "",
+    "ahaMoment": "",
+    "mentalModel": "",
+    "patternRecognition": "",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "",
+    "howToRecognizeSimilar": "",
+    "commonWrongPaths": []
+  },
+  "thinkingCoach": {
+    "hints": [],
+    "guidedQuestions": [],
+    "commonMisconceptions": [],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "",
+    "recognitionSignals": "",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [],
+  "visualization": {
+    "description": "",
+    "steps": []
+  },
+  "practice": {
+    "revisionNotes": [],
+    "practiceLevel": "",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [],
+    "interviewTips": [],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {},
+    "importantPoints": [],
+    "commonMistakes": []
+  },
+  "resources": {
+    "leetcode": "",
+    "neetcode": "",
+    "youtube": [],
+    "relatedProblems": []
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

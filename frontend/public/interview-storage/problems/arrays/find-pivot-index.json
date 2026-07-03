@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "id": "arr019",
+    "title": "Find Pivot Index",
+    "slug": "find-pivot-index",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Prefix Sum",
+    "pattern": "Running Prefix Sum",
+    "tags": [
+      "Array",
+      "Prefix Sum",
+      "Running Sum"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "58.7%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Beginner",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Prefix Sum, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine a balanced weighing scale where numbers on the left side represent weights on one pan and numbers on the right side represent weights on the other. The pivot index is the position where both sides have exactly the same total weight.",
+    "realWorldAnalogy": "Imagine a balanced weighing scale where numbers on the left side represent weights on one pan and numbers on the right side represent weights on the other. The pivot index is the position where both sides have exactly the same total weight.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Prefix Sum",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Running Prefix Sum pattern whenever a problem requires comparing cumulative sums on both sides of every index.",
+    "patternRecognitionKeywords": [
+      "Pivot",
+      "Left Sum",
+      "Right Sum",
+      "Prefix Sum",
+      "Running Sum",
+      "Balanced"
+    ],
+    "signals": "Whenever a problem asks you to compare the cumulative sum on the left and right side of every index, think of Running Prefix Sum.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, return the leftmost pivot index. The pivot index is the index where the sum of all numbers strictly to the left is equal to the sum of all numbers strictly to the right. If no such index exists, return -1.",
+    "examples": [
+      {
+        "input": "nums = [1,7,3,6,5,6]",
+        "output": "3",
+        "explanation": "Left sum = 1 + 7 + 3 = 11 and Right sum = 5 + 6 = 11."
+      },
+      {
+        "input": "nums = [1,2,3]",
+        "output": "-1",
+        "explanation": "No pivot index exists."
+      },
+      {
+        "input": "nums = [2,1,-1]",
+        "output": "0",
+        "explanation": "Left sum = 0 and Right sum = 1 + (-1) = 0."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 10000",
+      "-1000 <= nums[i] <= 1000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "Pivot at first index",
+      "Pivot at last index",
+      "Negative numbers",
+      "No pivot exists",
+      "Multiple pivot indices"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every index, separately compute the sum of elements on the left and right sides.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of calculating left and right sums repeatedly for every index, first compute the total sum. As you move through the array, maintain a running left sum. The right sum can then be calculated instantly as totalSum - leftSum - currentElement.",
+    "ahaMoment": "Right sum can always be computed using Total Sum - Left Sum - Current Element.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks you to compare the cumulative sum on the left and right side of every index, think of Running Prefix Sum.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is processed only once after computing the total sum. The running left sum eliminates the need to repeatedly calculate left and right sums.",
+    "howToRecognizeSimilar": "Whenever a problem asks you to compare the cumulative sum on the left and right side of every index, think of Running Prefix Sum.",
+    "commonWrongPaths": [
+      "Including the current element in the left or right sum.",
+      "Updating left sum before checking equality.",
+      "Forgetting to subtract the current element from the total.",
+      "Returning the last pivot instead of the first.",
+      "Recomputing sums repeatedly."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Compute the total sum first.",
+      "Maintain a running left sum.",
+      "Right sum can be computed without another loop."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Including the current element in the left or right sum.",
+      "Updating left sum before checking equality.",
+      "Forgetting to subtract the current element from the total.",
+      "Returning the last pivot instead of the first.",
+      "Recomputing sums repeatedly."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Running Prefix Sum",
+    "recognitionSignals": "Whenever a problem asks you to compare the cumulative sum on the left and right side of every index, think of Running Prefix Sum.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Calculate Left and Right Sum for Every Index",
+      "idea": "For every index, separately compute the sum of elements on the left and right sides.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse every index.",
+        "Calculate left sum.",
+        "Calculate right sum.",
+        "If both are equal, return the index.",
+        "Return -1 if none exists."
+      ],
+      "dryRun": "nums=[1,7,3,6,5,6]\nIndex0 → 0 vs 27\nIndex1 → 1 vs 20\nIndex3 → 11 vs 11 ✓",
+      "visualization": {},
+      "code": {
+        "java": "public int pivotIndex(int[] nums){\n    for(int i=0;i<nums.length;i++){\n        int left=0,right=0;\n        for(int j=0;j<i;j++) left+=nums[j];\n        for(int j=i+1;j<nums.length;j++) right+=nums[j];\n        if(left==right) return i;\n    }\n    return -1;\n}",
+        "python": "def pivotIndex(nums):\n    n=len(nums)\n    for i in range(n):\n        if sum(nums[:i])==sum(nums[i+1:]):\n            return i\n    return -1",
+        "cpp": "int pivotIndex(vector<int>& nums){\n    for(int i=0;i<nums.size();i++){\n        int left=0,right=0;\n        for(int j=0;j<i;j++) left+=nums[j];\n        for(int j=i+1;j<nums.size();j++) right+=nums[j];\n        if(left==right) return i;\n    }\n    return -1;\n}",
+        "javascript": "function pivotIndex(nums){\nfor(let i=0;i<nums.length;i++){\nlet left=0,right=0;\nfor(let j=0;j<i;j++) left+=nums[j];\nfor(let j=i+1;j<nums.length;j++) right+=nums[j];\nif(left===right) return i;\n}\nreturn -1;\n}"
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum Array",
+      "idea": "Build a prefix sum array so left and right sums can be computed in constant time.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Construct prefix sum array.",
+        "For each index compute left sum.",
+        "Compute right sum using total sum.",
+        "Return the first valid pivot."
+      ],
+      "dryRun": "Prefix=[1,8,11,17,22,28]\nIndex3 → Left=11 Right=11",
+      "visualization": {},
+      "code": {
+        "java": "Uses a Prefix Sum array.",
+        "python": "Uses prefix sums.",
+        "cpp": "Uses prefix array.",
+        "javascript": "Uses prefix sum array."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Running Prefix Sum",
+      "idea": "First compute the total sum of the array. Traverse the array while maintaining a running left sum. At every index, calculate the right sum as totalSum - leftSum - currentElement. If both sums are equal, return the current index.",
+      "intuition": "Each element is processed only once after computing the total sum. The running left sum eliminates the need to repeatedly calculate left and right sums.",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute totalSum.",
+        "Initialize leftSum = 0.",
+        "Traverse the array.",
+        "Compute rightSum = totalSum - leftSum - nums[i].",
+        "If leftSum == rightSum, return i.",
+        "Update leftSum += nums[i].",
+        "Return -1 if no pivot exists."
+      ],
+      "dryRun": "nums=[1,7,3,6,5,6]\nTotal=28\nIndex0: Left=0 Right=27\nIndex1: Left=1 Right=20\nIndex2: Left=8 Right=17\nIndex3: Left=11 Right=11 ✓ Return 3",
+      "visualization": {},
+      "code": {
+        "java": "public int pivotIndex(int[] nums) {\n    int total = 0;\n    for(int num : nums)\n        total += num;\n\n    int leftSum = 0;\n\n    for(int i = 0; i < nums.length; i++){\n        int rightSum = total - leftSum - nums[i];\n\n        if(leftSum == rightSum)\n            return i;\n\n        leftSum += nums[i];\n    }\n\n    return -1;\n}",
+        "python": "def pivotIndex(nums):\n    total = sum(nums)\n    left = 0\n\n    for i, num in enumerate(nums):\n        right = total - left - num\n        if left == right:\n            return i\n        left += num\n\n    return -1",
+        "cpp": "int pivotIndex(vector<int>& nums){\n    int total=accumulate(nums.begin(),nums.end(),0);\n    int left=0;\n\n    for(int i=0;i<nums.size();i++){\n        int right=total-left-nums[i];\n        if(left==right) return i;\n        left+=nums[i];\n    }\n\n    return -1;\n}",
+        "javascript": "function pivotIndex(nums){\nlet total=nums.reduce((a,b)=>a+b,0);\nlet left=0;\n\nfor(let i=0;i<nums.length;i++){\nconst right=total-left-nums[i];\nif(left===right) return i;\nleft+=nums[i];\n}\n\nreturn -1;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Maintain the left sum while computing the right sum using the total sum.",
+    "steps": [
+      "Calculate total sum.",
+      "Start left sum at 0.",
+      "Compute right sum.",
+      "Compare both sums.",
+      "Update left sum."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Compute total sum first.",
+      "Maintain running left sum.",
+      "Right = Total - Left - Current.",
+      "Check before updating left sum.",
+      "Linear solution."
+    ],
+    "practiceLevel": "Beginner",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can multiple pivot indices exist?",
+      "How would you find all pivot indices?",
+      "Can this be solved using a Prefix Sum array?",
+      "What if the array changes dynamically?",
+      "How is this related to Running Sum problems?"
+    ],
+    "interviewTips": [
+      "Explain the O(n²) approach first.",
+      "Mention why recomputing sums is inefficient.",
+      "Explain the Total - Left - Current formula.",
+      "Update left sum only after checking.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Right sum can always be computed using Total Sum - Left Sum - Current Element.",
+      "algorithm": "Total Sum → Running Left Sum → Compare Left & Right.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Current element belongs to neither side.",
+      "Running Prefix Sum.",
+      "Constant extra space.",
+      "Return first valid pivot.",
+      "O(n) solution."
+    ],
+    "commonMistakes": [
+      "Including the current element in the left or right sum.",
+      "Updating left sum before checking equality.",
+      "Forgetting to subtract the current element from the total.",
+      "Returning the last pivot instead of the first.",
+      "Recomputing sums repeatedly."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/find-pivot-index/",
+    "neetcode": "https://neetcode.io/problems/find-pivot-index",
+    "youtube": [
+      "NeetCode - Find Pivot Index",
+      "Take U Forward - Prefix Sum",
+      "CodeHelp - Prefix Sum Problems",
+      "Abdul Bari - Prefix Sum",
+      "Nick White - Find Pivot Index"
+    ],
+    "relatedProblems": [
+      "Running Sum of 1D Array",
+      "Range Sum Query - Immutable",
+      "Subarray Sum Equals K",
+      "Product of Array Except Self",
+      "Find the Middle Index in Array"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

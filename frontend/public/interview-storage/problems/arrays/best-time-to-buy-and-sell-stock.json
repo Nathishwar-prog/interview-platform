@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "id": "arr004",
+    "title": "Best Time to Buy and Sell Stock",
+    "slug": "best-time-to-buy-and-sell-stock",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Dynamic Programming",
+    "pattern": "Running Minimum",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Greedy",
+      "Prefix Minimum",
+      "Optimization"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Oracle",
+      "Salesforce",
+      "PayPal",
+      "VMware",
+      "Netflix"
+    ],
+    "frequency": "Very High",
+    "acceptance": "56.3%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Beginner",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Variables, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine tracking a company's stock price every day. You want to buy when the price is lowest and sell later when the price is highest. Instead of checking every possible buy and sell combination, you simply remember the lowest price seen so far while scanning the prices once.",
+    "realWorldAnalogy": "Imagine tracking a company's stock price every day. You want to buy when the price is lowest and sell later when the price is highest. Instead of checking every possible buy and sell combination, you simply remember the lowest price seen so far while scanning the prices once.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Variables",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Running Minimum pattern whenever you need to maximize the difference between two values where the smaller value must appear before the larger value.",
+    "patternRecognitionKeywords": [
+      "Stock",
+      "Maximum Profit",
+      "Running Minimum",
+      "One Transaction",
+      "Greedy",
+      "Optimization"
+    ],
+    "signals": "Whenever a problem asks for the maximum difference between two values where the smaller value must appear before the larger one, think of maintaining a running minimum.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an array prices where prices[i] is the price of a stock on the ith day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different future day to sell that stock. Return the maximum profit you can achieve. If no profit is possible, return 0.",
+    "examples": [
+      {
+        "input": "prices = [7,1,5,3,6,4]",
+        "output": "5",
+        "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6). Profit = 5."
+      },
+      {
+        "input": "prices = [7,6,4,3,1]",
+        "output": "0",
+        "explanation": "Stock prices keep decreasing, so no profit is possible."
+      }
+    ],
+    "constraints": [
+      "1 <= prices.length <= 100000",
+      "0 <= prices[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single element array",
+      "Strictly decreasing prices",
+      "Strictly increasing prices",
+      "Duplicate prices",
+      "Maximum profit equals zero",
+      "Minimum price appears near the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Try every possible buying day with every future selling day and compute the maximum profit.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "For every day, ask yourself two questions: 'What is the lowest stock price I've seen so far?' and 'If I sell today, what profit would I make?' Keep updating both answers while traversing the array once.",
+    "ahaMoment": "The best buying day before today is simply the minimum price seen so far.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks for the maximum difference between two values where the smaller value must appear before the larger one, think of maintaining a running minimum.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every stock price is visited exactly once. The algorithm continuously maintains the best buying price and the maximum achievable profit without requiring any extra memory.",
+    "howToRecognizeSimilar": "Whenever a problem asks for the maximum difference between two values where the smaller value must appear before the larger one, think of maintaining a running minimum.",
+    "commonWrongPaths": [
+      "Selling before buying.",
+      "Resetting maximum profit incorrectly.",
+      "Updating profit before updating minimum price.",
+      "Allowing multiple transactions.",
+      "Returning negative profit instead of zero."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Keep track of the minimum price seen so far.",
+      "Calculate today's profit before updating the answer.",
+      "Only one transaction is allowed."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Selling before buying.",
+      "Resetting maximum profit incorrectly.",
+      "Updating profit before updating minimum price.",
+      "Allowing multiple transactions.",
+      "Returning negative profit instead of zero."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Running Minimum",
+    "recognitionSignals": "Whenever a problem asks for the maximum difference between two values where the smaller value must appear before the larger one, think of maintaining a running minimum.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Buy-Sell Pair",
+      "idea": "Try every possible buying day with every future selling day and compute the maximum profit.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose every day as buying day.",
+        "Try every later day as selling day.",
+        "Calculate profit.",
+        "Return the maximum profit."
+      ],
+      "dryRun": "prices=[7,1,5,3,6,4]\nBuy=1 Sell=6 Profit=5 (Maximum)",
+      "visualization": {},
+      "code": {
+        "java": "public int maxProfit(int[] prices) {\n    int maxProfit = 0;\n    for(int i=0;i<prices.length;i++){\n        for(int j=i+1;j<prices.length;j++){\n            maxProfit = Math.max(maxProfit, prices[j]-prices[i]);\n        }\n    }\n    return maxProfit;\n}",
+        "python": "def maxProfit(prices):\n    ans = 0\n    n = len(prices)\n    for i in range(n):\n        for j in range(i+1,n):\n            ans = max(ans, prices[j]-prices[i])\n    return ans",
+        "cpp": "int maxProfit(vector<int>& prices){\n    int ans=0;\n    for(int i=0;i<prices.size();i++){\n        for(int j=i+1;j<prices.size();j++)\n            ans=max(ans,prices[j]-prices[i]);\n    }\n    return ans;\n}",
+        "javascript": "function maxProfit(prices){\nlet ans=0;\nfor(let i=0;i<prices.length;i++){\nfor(let j=i+1;j<prices.length;j++){\nans=Math.max(ans,prices[j]-prices[i]);\n}\n}\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Minimum Array",
+      "idea": "Precompute the minimum stock price seen before every day, then calculate the profit for each day.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a prefix minimum array.",
+        "Store the smallest price until every index.",
+        "Calculate today's profit using prefix minimum.",
+        "Return the maximum profit."
+      ],
+      "dryRun": "prices=[7,1,5,3,6]\nPrefixMin=[7,1,1,1,1]\nProfits=[0,0,4,2,5]",
+      "visualization": {},
+      "code": {
+        "java": "Uses an additional prefix minimum array.",
+        "python": "Uses a prefix minimum list.",
+        "cpp": "Uses prefix minimum vector.",
+        "javascript": "Uses prefix minimum array."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Running Minimum",
+      "idea": "Traverse the array once while maintaining the minimum stock price seen so far. For each price, calculate the profit if sold today and update the maximum profit.",
+      "intuition": "Every stock price is visited exactly once. The algorithm continuously maintains the best buying price and the maximum achievable profit without requiring any extra memory.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize minimumPrice = prices[0].",
+        "Initialize maximumProfit = 0.",
+        "Traverse the array from index 1.",
+        "Update minimumPrice if current price is smaller.",
+        "Otherwise calculate currentProfit = currentPrice - minimumPrice.",
+        "Update maximumProfit.",
+        "Return maximumProfit."
+      ],
+      "dryRun": "prices=[7,1,5,3,6,4]\nMin=7 Profit=0\nMin=1\nSell=5 Profit=4\nSell=3 Profit=2\nSell=6 Profit=5\nSell=4 Profit=3\nAnswer=5",
+      "visualization": {},
+      "code": {
+        "java": "public int maxProfit(int[] prices) {\n    int minPrice = prices[0];\n    int maxProfit = 0;\n    for(int i = 1; i < prices.length; i++){\n        if(prices[i] < minPrice){\n            minPrice = prices[i];\n        }else{\n            maxProfit = Math.max(maxProfit, prices[i] - minPrice);\n        }\n    }\n    return maxProfit;\n}",
+        "python": "def maxProfit(prices):\n    minPrice = prices[0]\n    maxProfit = 0\n    for price in prices[1:]:\n        if price < minPrice:\n            minPrice = price\n        else:\n            maxProfit = max(maxProfit, price - minPrice)\n    return maxProfit",
+        "cpp": "int maxProfit(vector<int>& prices){\n    int minPrice=prices[0];\n    int maxProfit=0;\n    for(int i=1;i<prices.size();i++){\n        minPrice=min(minPrice,prices[i]);\n        maxProfit=max(maxProfit,prices[i]-minPrice);\n    }\n    return maxProfit;\n}",
+        "javascript": "function maxProfit(prices){\nlet minPrice=prices[0];\nlet maxProfit=0;\nfor(let i=1;i<prices.length;i++){\nminPrice=Math.min(minPrice,prices[i]);\nmaxProfit=Math.max(maxProfit,prices[i]-minPrice);\n}\nreturn maxProfit;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Continuously remember the cheapest buying price while scanning future selling prices.",
+    "steps": [
+      "Visit first price.",
+      "Update minimum price whenever a smaller value appears.",
+      "Calculate today's possible profit.",
+      "Keep the maximum profit."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Remember the lowest price.",
+      "Profit = Current Price - Minimum Price.",
+      "Update minimum first.",
+      "One pass solution.",
+      "Return zero if no profit."
+    ],
+    "practiceLevel": "Beginner",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "What if multiple transactions are allowed?",
+      "What if there is a transaction fee?",
+      "What if there is a cooldown period?",
+      "Can you solve Best Time to Buy and Sell Stock II?",
+      "How would you solve the problem with at most K transactions?"
+    ],
+    "interviewTips": [
+      "Explain the brute force solution first.",
+      "Mention that buying must happen before selling.",
+      "Explain the running minimum idea.",
+      "State why only one traversal is needed.",
+      "Mention O(1) space optimization."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The best buying day before today is simply the minimum price seen so far.",
+      "algorithm": "Maintain minimum price → Compute current profit → Update maximum profit.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Only one buy and one sell.",
+      "Buy before sell.",
+      "Track running minimum.",
+      "Profit cannot be negative.",
+      "Single traversal."
+    ],
+    "commonMistakes": [
+      "Selling before buying.",
+      "Resetting maximum profit incorrectly.",
+      "Updating profit before updating minimum price.",
+      "Allowing multiple transactions.",
+      "Returning negative profit instead of zero."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+    "neetcode": "https://neetcode.io/problems/buy-and-sell-crypto",
+    "youtube": [
+      "NeetCode - Best Time to Buy and Sell Stock",
+      "Take U Forward - Stock Buy and Sell",
+      "CodeHelp - Stock Problems",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Best Time to Buy and Sell Stock"
+    ],
+    "relatedProblems": [
+      "Best Time to Buy and Sell Stock II",
+      "Best Time to Buy and Sell Stock III",
+      "Best Time to Buy and Sell Stock IV",
+      "Maximum Subarray",
+      "Maximum Difference Between Increasing Elements"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

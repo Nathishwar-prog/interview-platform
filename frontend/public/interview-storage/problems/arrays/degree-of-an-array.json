@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "id": "arr014",
+    "title": "Degree of an Array",
+    "slug": "degree-of-an-array",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Hashing",
+    "pattern": "Frequency Counting",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Frequency Counting",
+      "Counting",
+      "Searching"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Medium",
+    "acceptance": "57.8%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, HashMap, Loops, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine a classroom attendance sheet where some students appear multiple times because they attended different sessions. The student with the highest attendance determines the degree of the class. Now you need to find the shortest continuous attendance record that still contains that maximum attendance count.",
+    "realWorldAnalogy": "Imagine a classroom attendance sheet where some students appear multiple times because they attended different sessions. The student with the highest attendance determines the degree of the class. Now you need to find the shortest continuous attendance record that still contains that maximum attendance count.",
+    "prerequisites": [
+      "Arrays",
+      "HashMap",
+      "Loops",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this HashMap frequency tracking pattern whenever you need both the frequency of elements and their positions in the array.",
+    "patternRecognitionKeywords": [
+      "Degree",
+      "Frequency",
+      "HashMap",
+      "First Occurrence",
+      "Last Occurrence",
+      "Subarray",
+      "Counting"
+    ],
+    "signals": "Whenever a problem asks for both the frequency and position of elements, think of maintaining frequency and index HashMaps together.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements. Return the length of the smallest possible contiguous subarray that has the same degree as nums.",
+    "examples": [
+      {
+        "input": "nums = [1,2,2,3,1]",
+        "output": "2",
+        "explanation": "The degree is 2. Number 2 forms the shortest subarray [2,2] of length 2."
+      },
+      {
+        "input": "nums = [1,2,2,3,1,4,2]",
+        "output": "6",
+        "explanation": "The degree is 3. The shortest subarray containing all three occurrences of 2 has length 6."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 50000",
+      "0 <= nums[i] <= 50000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All elements unique",
+      "All elements identical",
+      "Multiple numbers with the same degree",
+      "Shortest subarray at the beginning",
+      "Shortest subarray at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible subarray, calculate its degree, and compare it with the degree of the original array.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "To determine the shortest valid subarray, you need three pieces of information for every number: how many times it appears, where it first appeared, and where it last appeared.",
+    "ahaMoment": "Only numbers with the maximum frequency need to be considered. Their first and last positions determine the shortest valid subarray.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks for both the frequency and position of elements, think of maintaining frequency and index HashMaps together.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is processed exactly once. HashMap operations take O(1) average time, resulting in an overall linear-time solution.",
+    "howToRecognizeSimilar": "Whenever a problem asks for both the frequency and position of elements, think of maintaining frequency and index HashMaps together.",
+    "commonWrongPaths": [
+      "Not storing the first occurrence.",
+      "Using only frequency information.",
+      "Updating the first occurrence multiple times.",
+      "Ignoring multiple numbers with the same degree.",
+      "Returning the frequency instead of the subarray length."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Store the first occurrence of every number.",
+      "Count the frequency of every number.",
+      "Track the last occurrence while traversing."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not storing the first occurrence.",
+      "Using only frequency information.",
+      "Updating the first occurrence multiple times.",
+      "Ignoring multiple numbers with the same degree.",
+      "Returning the frequency instead of the subarray length."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Frequency Counting",
+    "recognitionSignals": "Whenever a problem asks for both the frequency and position of elements, think of maintaining frequency and index HashMaps together.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every possible subarray, calculate its degree, and compare it with the degree of the original array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Calculate the degree of the original array.",
+        "Generate every possible subarray.",
+        "Calculate each subarray's degree.",
+        "Return the smallest valid subarray length."
+      ],
+      "dryRun": "nums=[1,2,2,3,1]\nCheck every subarray until one with degree 2 is found.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because it requires checking every subarray.",
+        "python": "Brute force omitted because of cubic complexity.",
+        "cpp": "Naive implementation omitted.",
+        "javascript": "Naive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n³)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Three HashMaps",
+      "idea": "Store frequency, first occurrence, and last occurrence of every number using HashMaps.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse the array once.",
+        "Store first occurrence.",
+        "Update frequency.",
+        "Update last occurrence.",
+        "Compute the answer."
+      ],
+      "dryRun": "1 -> freq=2 first=0 last=4\n2 -> freq=2 first=1 last=2",
+      "visualization": {},
+      "code": {
+        "java": "Uses three HashMaps.",
+        "python": "Uses three dictionaries.",
+        "cpp": "Uses unordered_maps.",
+        "javascript": "Uses Map objects."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Frequency + First and Last Occurrence",
+      "idea": "Traverse the array once while maintaining three HashMaps: one for frequency, one for the first occurrence, and one for the last occurrence. After traversal, determine the maximum frequency (degree) and compute the minimum subarray length among all numbers having that degree.",
+      "intuition": "Each element is processed exactly once. HashMap operations take O(1) average time, resulting in an overall linear-time solution.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create frequency HashMap.",
+        "Create first occurrence HashMap.",
+        "Create last occurrence HashMap.",
+        "Traverse the array.",
+        "Record first occurrence if unseen.",
+        "Update frequency.",
+        "Update last occurrence.",
+        "Find the degree.",
+        "For every number with the degree, compute last - first + 1.",
+        "Return the minimum length."
+      ],
+      "dryRun": "nums=[1,2,2,3,1]\nFrequency={1:2,2:2,3:1}\nFirst={1:0,2:1,3:3}\nLast={1:4,2:2,3:3}\nDegree=2\nLengths=5 and 2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int findShortestSubArray(int[] nums) {\n    Map<Integer,Integer> freq = new HashMap<>();\n    Map<Integer,Integer> first = new HashMap<>();\n    Map<Integer,Integer> last = new HashMap<>();\n\n    for(int i=0;i<nums.length;i++){\n        first.putIfAbsent(nums[i],i);\n        last.put(nums[i],i);\n        freq.put(nums[i],freq.getOrDefault(nums[i],0)+1);\n    }\n\n    int degree=0;\n    for(int f:freq.values())\n        degree=Math.max(degree,f);\n\n    int ans=nums.length;\n    for(int key:freq.keySet()){\n        if(freq.get(key)==degree)\n            ans=Math.min(ans,last.get(key)-first.get(key)+1);\n    }\n\n    return ans;\n}",
+        "python": "def findShortestSubArray(nums):\n    freq={}\n    first={}\n    last={}\n\n    for i,num in enumerate(nums):\n        if num not in first:\n            first[num]=i\n        last[num]=i\n        freq[num]=freq.get(num,0)+1\n\n    degree=max(freq.values())\n    ans=len(nums)\n\n    for num in freq:\n        if freq[num]==degree:\n            ans=min(ans,last[num]-first[num]+1)\n\n    return ans",
+        "cpp": "Uses three unordered_maps to store frequency, first occurrence, and last occurrence.",
+        "javascript": "Uses three Map objects for frequency and indices."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Track frequency and boundary indices for every number.",
+    "steps": [
+      "Visit each element.",
+      "Store first occurrence.",
+      "Update frequency.",
+      "Update last occurrence.",
+      "Find the minimum valid subarray."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Track frequency.",
+      "Store first occurrence.",
+      "Store last occurrence.",
+      "Degree = maximum frequency.",
+      "Minimum length = last - first + 1."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without HashMaps?",
+      "How would you return the actual subarray?",
+      "What if the array is streamed?",
+      "How would you solve this for strings?",
+      "Can the degree be updated dynamically?"
+    ],
+    "interviewTips": [
+      "Explain why frequency alone is insufficient.",
+      "Mention that first and last occurrences define the subarray length.",
+      "Discuss why only elements with maximum frequency matter.",
+      "State the O(n) complexity.",
+      "Use three HashMaps for clarity."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Only numbers with the maximum frequency need to be considered. Their first and last positions determine the shortest valid subarray.",
+      "algorithm": "Frequency + First Index + Last Index → Compute Degree → Find Minimum Length.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Three HashMaps.",
+      "Frequency determines degree.",
+      "First occurrence matters.",
+      "Last occurrence matters.",
+      "Linear solution."
+    ],
+    "commonMistakes": [
+      "Not storing the first occurrence.",
+      "Using only frequency information.",
+      "Updating the first occurrence multiple times.",
+      "Ignoring multiple numbers with the same degree.",
+      "Returning the frequency instead of the subarray length."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/degree-of-an-array/",
+    "neetcode": "https://neetcode.io/",
+    "youtube": [
+      "NeetCode - Degree of an Array",
+      "Take U Forward - Hashing Problems",
+      "CodeHelp - HashMap",
+      "Abdul Bari - Hashing",
+      "Nick White - Degree of an Array"
+    ],
+    "relatedProblems": [
+      "Contains Duplicate",
+      "Top K Frequent Elements",
+      "Majority Element",
+      "Longest Harmonious Subsequence",
+      "Find All Duplicates in an Array"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

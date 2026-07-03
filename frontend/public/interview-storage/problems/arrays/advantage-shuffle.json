@@ -1,0 +1,321 @@
+{
+  "metadata": {
+    "id": "arr002",
+    "title": "Advantage Shuffle",
+    "slug": "advantage-shuffle",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Sorting + Two Pointers",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Greedy",
+      "Two Pointers",
+      "Priority Assignment"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "PayPal",
+      "VMware",
+      "Salesforce"
+    ],
+    "frequency": "Medium",
+    "acceptance": "55.8%",
+    "estimatedTime": "25-35 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Two Pointers, Greedy Algorithms, Custom Comparator",
+    "whyDoesThisExist": "Imagine two racing teams. Team A wants to assign its fastest cars against Team B's cars in a way that wins as many races as possible. Instead of wasting the fastest car against an unbeatable opponent, Team A intelligently assigns cars only when they can secure a victory. This greedy assignment is exactly how Advantage Shuffle works.",
+    "realWorldAnalogy": "Imagine two racing teams. Team A wants to assign its fastest cars against Team B's cars in a way that wins as many races as possible. Instead of wasting the fastest car against an unbeatable opponent, Team A intelligently assigns cars only when they can secure a victory. This greedy assignment is exactly how Advantage Shuffle works.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Two Pointers",
+      "Greedy Algorithms",
+      "Custom Comparator"
+    ],
+    "whenToUseThis": "Use this greedy sorting strategy whenever you need to maximize the number of successful pairings between two arrays while preserving all elements.",
+    "patternRecognitionKeywords": [
+      "Permutation",
+      "Maximum Wins",
+      "Greedy",
+      "Sorting",
+      "Assignment",
+      "Pairing",
+      "Two Pointers"
+    ],
+    "signals": "Whenever a problem asks to maximize successful pairings between two collections, think about sorting and greedily matching the strongest available candidate.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given two integer arrays nums1 and nums2 of equal length. Return any permutation of nums1 that maximizes its advantage over nums2. The advantage of nums1 is the number of indices i for which nums1[i] > nums2[i].",
+    "examples": [
+      {
+        "input": "nums1 = [2,7,11,15], nums2 = [1,10,4,11]",
+        "output": "[2,11,7,15]",
+        "explanation": "All four positions satisfy nums1[i] > nums2[i]."
+      },
+      {
+        "input": "nums1 = [12,24,8,32], nums2 = [13,25,32,11]",
+        "output": "[24,32,8,12]",
+        "explanation": "Three positions gain an advantage."
+      }
+    ],
+    "constraints": [
+      "1 <= nums1.length <= 100000",
+      "nums2.length == nums1.length",
+      "0 <= nums1[i], nums2[i] <= 1000000000"
+    ],
+    "edgeCases": [
+      "All elements equal",
+      "nums1 always smaller",
+      "nums1 always larger",
+      "Duplicate values",
+      "Single element array",
+      "Large input size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible permutation of nums1 and count the number of winning positions.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Sort nums1. Process nums2 from the largest value to the smallest. If the largest remaining number in nums1 can beat the current largest number in nums2, use it. Otherwise sacrifice the smallest remaining number because it cannot beat anyone stronger.",
+    "ahaMoment": "Never waste a large value unless it secures a win.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks to maximize successful pairings between two collections, think about sorting and greedily matching the strongest available candidate.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is assigned exactly once after sorting. The greedy strategy always preserves larger numbers for future victories while sacrificing numbers that cannot win.",
+    "howToRecognizeSimilar": "Whenever a problem asks to maximize successful pairings between two collections, think about sorting and greedily matching the strongest available candidate.",
+    "commonWrongPaths": [
+      "Sorting nums2 without storing original indices.",
+      "Using the largest value even when it cannot win.",
+      "Forgetting to reconstruct the answer in original order.",
+      "Comparing wrong pointer values.",
+      "Not handling duplicate values correctly."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Sorting both arrays reveals the greedy strategy.",
+      "Try matching the largest available number first.",
+      "If a number cannot win, sacrifice it against the strongest opponent."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting nums2 without storing original indices.",
+      "Using the largest value even when it cannot win.",
+      "Forgetting to reconstruct the answer in original order.",
+      "Comparing wrong pointer values.",
+      "Not handling duplicate values correctly."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Sorting + Two Pointers",
+    "recognitionSignals": "Whenever a problem asks to maximize successful pairings between two collections, think about sorting and greedily matching the strongest available candidate.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Permutation",
+      "idea": "Generate every possible permutation of nums1 and count the number of winning positions.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate all permutations of nums1.",
+        "Compare each permutation with nums2.",
+        "Count winning positions.",
+        "Return the permutation with maximum wins."
+      ],
+      "dryRun": "nums1=[2,7,11,15]\nGenerate all 24 permutations.\nChoose the one producing maximum wins.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force permutation generation is omitted because it is impractical for large inputs.",
+        "python": "Brute force using itertools.permutations is omitted because of factorial complexity.",
+        "cpp": "Brute force using next_permutation is omitted.",
+        "javascript": "Recursive permutation solution omitted."
+      },
+      "complexities": {
+        "time": "O(n! × n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sort and Linear Search",
+      "idea": "Sort nums1. For every element in nums2, linearly search for the smallest unused value that is greater than it.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort nums1.",
+        "Maintain a visited array.",
+        "For each nums2 element, find the first unused larger value.",
+        "If none exists, use the smallest unused value."
+      ],
+      "dryRun": "Sorted nums1=[2,7,11,15]\nFind smallest winning value for every nums2 element.",
+      "visualization": {},
+      "code": {
+        "java": "Linear search implementation omitted for brevity.",
+        "python": "Linear search implementation omitted.",
+        "cpp": "Linear search implementation omitted.",
+        "javascript": "Linear search implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Sorting with Two Pointers",
+      "idea": "Sort nums1. Create value-index pairs for nums2 and sort them. Use two pointers on nums1. If the largest value in nums1 beats the current largest value in nums2, assign it there. Otherwise assign the smallest value to that position.",
+      "intuition": "Each element is assigned exactly once after sorting. The greedy strategy always preserves larger numbers for future victories while sacrificing numbers that cannot win.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort nums1.",
+        "Create (value,index) pairs from nums2.",
+        "Sort pairs by value.",
+        "Initialize left=0 and right=n-1 for nums1.",
+        "Process nums2 pairs from largest to smallest.",
+        "If nums1[right] > current value, assign nums1[right] and decrement right.",
+        "Otherwise assign nums1[left] and increment left.",
+        "Return the constructed answer."
+      ],
+      "dryRun": "nums1=[2,7,11,15]\nSorted nums1=[2,7,11,15]\nSorted nums2 pairs=[(1,0),(4,2),(10,1),(11,3)]\n15 beats 11 -> assign\n11 beats 10 -> assign\n7 beats 4 -> assign\n2 beats 1 -> assign",
+      "visualization": {},
+      "code": {
+        "java": "public int[] advantageCount(int[] nums1, int[] nums2) {\n    Arrays.sort(nums1);\n    int n = nums1.length;\n    int[][] arr = new int[n][2];\n    for(int i=0;i<n;i++){\n        arr[i][0]=nums2[i];\n        arr[i][1]=i;\n    }\n    Arrays.sort(arr,(a,b)->Integer.compare(a[0],b[0]));\n    int[] ans=new int[n];\n    int left=0,right=n-1;\n    for(int i=n-1;i>=0;i--){\n        if(nums1[right]>arr[i][0]){\n            ans[arr[i][1]]=nums1[right--];\n        }else{\n            ans[arr[i][1]]=nums1[left++];\n        }\n    }\n    return ans;\n}",
+        "python": "def advantageCount(nums1, nums2):\n    nums1.sort()\n    pairs = sorted([(v,i) for i,v in enumerate(nums2)])\n    ans=[0]*len(nums1)\n    left,right=0,len(nums1)-1\n    for value,index in reversed(pairs):\n        if nums1[right] > value:\n            ans[index]=nums1[right]\n            right-=1\n        else:\n            ans[index]=nums1[left]\n            left+=1\n    return ans",
+        "cpp": "vector<int> advantageCount(vector<int>& nums1, vector<int>& nums2){\n    sort(nums1.begin(),nums1.end());\n    int n=nums1.size();\n    vector<pair<int,int>> arr;\n    for(int i=0;i<n;i++) arr.push_back({nums2[i],i});\n    sort(arr.begin(),arr.end());\n    vector<int> ans(n);\n    int left=0,right=n-1;\n    for(int i=n-1;i>=0;i--){\n        if(nums1[right]>arr[i].first)\n            ans[arr[i].second]=nums1[right--];\n        else\n            ans[arr[i].second]=nums1[left++];\n    }\n    return ans;\n}",
+        "javascript": "function advantageCount(nums1, nums2){\nnums1.sort((a,b)=>a-b);\nconst pairs=nums2.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]);\nconst ans=new Array(nums1.length);\nlet left=0,right=nums1.length-1;\nfor(let i=pairs.length-1;i>=0;i--){\nif(nums1[right]>pairs[i][0]) ans[pairs[i][1]]=nums1[right--];\nelse ans[pairs[i][1]]=nums1[left++];\n}\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Always try to beat the strongest remaining opponent. Otherwise sacrifice your weakest number.",
+    "steps": [
+      "Sort nums1.",
+      "Sort nums2 with original indices.",
+      "Largest beats largest if possible.",
+      "Otherwise use smallest.",
+      "Repeat until finished."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort both arrays.",
+      "Keep original indices.",
+      "Largest beats largest.",
+      "Otherwise sacrifice smallest.",
+      "Classic greedy pairing."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without sorting?",
+      "Why is the greedy strategy always optimal?",
+      "Can we minimize losses instead of maximizing wins?",
+      "How would you solve a similar matching problem with three arrays?",
+      "Can a priority queue replace sorting?"
+    ],
+    "interviewTips": [
+      "Explain why sacrificing weak elements is beneficial.",
+      "Mention that sorting enables greedy matching.",
+      "Store original indices before sorting nums2.",
+      "Discuss why greedy is optimal.",
+      "Clearly explain the two-pointer strategy."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Never waste a large value unless it secures a win.",
+      "algorithm": "Sort → Compare largest values → Win if possible else sacrifice smallest.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Sort nums1.",
+      "Sort nums2 with indices.",
+      "Use two pointers.",
+      "Greedy assignment.",
+      "Restore original order."
+    ],
+    "commonMistakes": [
+      "Sorting nums2 without storing original indices.",
+      "Using the largest value even when it cannot win.",
+      "Forgetting to reconstruct the answer in original order.",
+      "Comparing wrong pointer values.",
+      "Not handling duplicate values correctly."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/advantage-shuffle/",
+    "neetcode": "https://neetcode.io/",
+    "youtube": [
+      "NeetCode - Advantage Shuffle",
+      "Take U Forward - Greedy Problems",
+      "CodeHelp - Greedy Algorithms",
+      "Abdul Bari - Greedy Strategy",
+      "Nick White - LeetCode Greedy"
+    ],
+    "relatedProblems": [
+      "Assign Cookies",
+      "Boats to Save People",
+      "Queue Reconstruction by Height",
+      "Minimum Number of Arrows to Burst Balloons",
+      "Two City Scheduling"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "id": "arr011",
+    "title": "Corporate Flight Bookings",
+    "slug": "corporate-flight-bookings",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Prefix Sum",
+    "pattern": "Difference Array",
+    "tags": [
+      "Array",
+      "Prefix Sum",
+      "Difference Array",
+      "Range Update",
+      "Simulation"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "64.7%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Prefix Sum, Difference Array, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine an airline reservation system. A travel agency books 20 seats for flights 2 through 5. Instead of updating every individual flight one by one, the airline records where the booking starts and where it ends. Later, a cumulative calculation determines the total reservations for each flight.",
+    "realWorldAnalogy": "Imagine an airline reservation system. A travel agency books 20 seats for flights 2 through 5. Instead of updating every individual flight one by one, the airline records where the booking starts and where it ends. Later, a cumulative calculation determines the total reservations for each flight.",
+    "prerequisites": [
+      "Arrays",
+      "Prefix Sum",
+      "Difference Array",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Difference Array pattern whenever many range updates are followed by queries asking for the final values of every position.",
+    "patternRecognitionKeywords": [
+      "Range Update",
+      "Bookings",
+      "Flights",
+      "Difference Array",
+      "Prefix Sum",
+      "Intervals",
+      "Simulation"
+    ],
+    "signals": "Whenever multiple range additions are followed by a request for the final values of every position, think of the Difference Array pattern.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "There are n flights labeled from 1 to n. You are given an array bookings where bookings[i] = [first, last, seats] represents a booking that reserves seats seats for every flight from first to last (inclusive). Return an array answer of length n, where answer[i] is the total number of seats reserved for flight i + 1.",
+    "examples": [
+      {
+        "input": "bookings = [[1,2,10],[2,3,20],[2,5,25]], n = 5",
+        "output": "[10,55,45,25,25]",
+        "explanation": "Each booking adds seats across a range of flights."
+      },
+      {
+        "input": "bookings = [[1,2,10],[2,2,15]], n = 2",
+        "output": "[10,25]",
+        "explanation": "Flight 2 receives seats from both bookings."
+      }
+    ],
+    "constraints": [
+      "1 <= bookings.length <= 20000",
+      "1 <= first <= last <= n <= 20000",
+      "1 <= seats <= 10000"
+    ],
+    "edgeCases": [
+      "Single booking",
+      "Booking covering all flights",
+      "Booking covering one flight",
+      "Multiple overlapping bookings",
+      "Maximum number of flights",
+      "Large seat values"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For each booking, iterate through every affected flight and add the booked seats.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Each booking affects an entire range of flights. Rather than updating every flight in that range, record only where the booking begins and where it ends. A prefix sum reconstructs the final seat count for every flight.",
+    "ahaMoment": "Each booking affects only its start and end positions in the Difference Array.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever multiple range additions are followed by a request for the final values of every position, think of the Difference Array pattern.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each booking performs only two updates regardless of the number of affected flights. A single Prefix Sum reconstructs the final reservations for every flight.",
+    "howToRecognizeSimilar": "Whenever multiple range additions are followed by a request for the final values of every position, think of the Difference Array pattern.",
+    "commonWrongPaths": [
+      "Subtracting seats at the wrong index.",
+      "Forgetting that flights are 1-indexed.",
+      "Updating every flight individually.",
+      "Missing the boundary check for last flight.",
+      "Not computing the Prefix Sum."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Think about recording changes instead of updating every flight.",
+      "Use a Difference Array.",
+      "Recover the final answer using Prefix Sum."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Subtracting seats at the wrong index.",
+      "Forgetting that flights are 1-indexed.",
+      "Updating every flight individually.",
+      "Missing the boundary check for last flight.",
+      "Not computing the Prefix Sum."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Difference Array",
+    "recognitionSignals": "Whenever multiple range additions are followed by a request for the final values of every position, think of the Difference Array pattern.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Update Every Flight",
+      "idea": "For each booking, iterate through every affected flight and add the booked seats.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an answer array initialized to zero.",
+        "For every booking:",
+        "Loop from first to last.",
+        "Add seats to every flight.",
+        "Return the answer."
+      ],
+      "dryRun": "Booking [2,5,25]\nFlights 2,3,4,5 each receive +25 seats.",
+      "visualization": {},
+      "code": {
+        "java": "public int[] corpFlightBookings(int[][] bookings, int n) {\n    int[] ans = new int[n];\n    for(int[] b : bookings){\n        for(int i=b[0]-1;i<=b[1]-1;i++)\n            ans[i]+=b[2];\n    }\n    return ans;\n}",
+        "python": "def corpFlightBookings(bookings,n):\n    ans=[0]*n\n    for first,last,seats in bookings:\n        for i in range(first-1,last):\n            ans[i]+=seats\n    return ans",
+        "cpp": "vector<int> corpFlightBookings(vector<vector<int>>& bookings,int n){\n    vector<int> ans(n,0);\n    for(auto &b:bookings)\n        for(int i=b[0]-1;i<=b[1]-1;i++)\n            ans[i]+=b[2];\n    return ans;\n}",
+        "javascript": "function corpFlightBookings(bookings,n){\nconst ans=new Array(n).fill(0);\nfor(const [first,last,seats] of bookings){\nfor(let i=first-1;i<=last-1;i++)\nans[i]+=seats;\n}\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(m × n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Difference Array",
+      "idea": "Record only where each booking starts and where it ends. Use a Prefix Sum to reconstruct the reserved seats for every flight.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a difference array.",
+        "Add seats at first flight.",
+        "Subtract seats after last flight.",
+        "Compute prefix sum.",
+        "Return the final array."
+      ],
+      "dryRun": "Booking [2,5,25]\nDiff[2]+=25\nDiff[6]-=25",
+      "visualization": {},
+      "code": {
+        "java": "Uses Difference Array and Prefix Sum.",
+        "python": "Uses Difference Array.",
+        "cpp": "Uses Prefix Sum.",
+        "javascript": "Uses Difference Array."
+      },
+      "complexities": {
+        "time": "O(n + m)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Difference Array + Prefix Sum",
+      "idea": "Create a Difference Array of size n. For every booking, add seats at the starting flight and subtract seats immediately after the ending flight (if it exists). Finally, compute the Prefix Sum to obtain the total seats reserved for every flight.",
+      "intuition": "Each booking performs only two updates regardless of the number of affected flights. A single Prefix Sum reconstructs the final reservations for every flight.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create difference array of size n.",
+        "For each booking:",
+        "Add seats at first-1.",
+        "Subtract seats at last if within bounds.",
+        "Compute Prefix Sum.",
+        "Return the resulting array."
+      ],
+      "dryRun": "Bookings=[[1,2,10],[2,3,20],[2,5,25]]\nDiff=[10,45,-10,-20,0]\nPrefix=[10,55,45,25,25]",
+      "visualization": {},
+      "code": {
+        "java": "public int[] corpFlightBookings(int[][] bookings, int n) {\n    int[] diff = new int[n];\n\n    for(int[] booking : bookings){\n        int first = booking[0]-1;\n        int last = booking[1]-1;\n        int seats = booking[2];\n\n        diff[first] += seats;\n        if(last + 1 < n)\n            diff[last + 1] -= seats;\n    }\n\n    for(int i=1;i<n;i++)\n        diff[i] += diff[i-1];\n\n    return diff;\n}",
+        "python": "def corpFlightBookings(bookings,n):\n    diff=[0]*n\n\n    for first,last,seats in bookings:\n        diff[first-1]+=seats\n        if last<n:\n            diff[last]-=seats\n\n    for i in range(1,n):\n        diff[i]+=diff[i-1]\n\n    return diff",
+        "cpp": "vector<int> corpFlightBookings(vector<vector<int>>& bookings,int n){\n    vector<int> diff(n,0);\n\n    for(auto &b:bookings){\n        diff[b[0]-1]+=b[2];\n        if(b[1]<n)\n            diff[b[1]]-=b[2];\n    }\n\n    for(int i=1;i<n;i++)\n        diff[i]+=diff[i-1];\n\n    return diff;\n}",
+        "javascript": "function corpFlightBookings(bookings,n){\nconst diff=new Array(n).fill(0);\n\nfor(const [first,last,seats] of bookings){\n    diff[first-1]+=seats;\n    if(last<n) diff[last]-=seats;\n}\n\nfor(let i=1;i<n;i++)\n    diff[i]+=diff[i-1];\n\nreturn diff;\n}"
+      },
+      "complexities": {
+        "time": "O(n + m)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Record only where bookings begin and end.",
+    "steps": [
+      "Booking starts → Add seats.",
+      "Booking ends → Remove seats after end.",
+      "Compute Prefix Sum.",
+      "Final array represents total bookings."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Difference Array stores changes.",
+      "Prefix Sum rebuilds values.",
+      "Only two updates per booking.",
+      "Excellent Range Update problem.",
+      "Linear reconstruction."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How would you solve this if flights were added dynamically?",
+      "Can this be solved using a Segment Tree?",
+      "What if bookings were removed later?",
+      "How does this compare with Range Addition?",
+      "What if queries were online instead of offline?"
+    ],
+    "interviewTips": [
+      "Explain why updating every flight is inefficient.",
+      "Describe the Difference Array concept clearly.",
+      "Mention that Prefix Sum reconstructs the final array.",
+      "State O(n + m) complexity.",
+      "Remember the 1-based indexing conversion."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Each booking affects only its start and end positions in the Difference Array.",
+      "algorithm": "Difference Array → Prefix Sum → Final Reservations.",
+      "timeComplexity": "O(n + m)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Flights are 1-indexed.",
+      "Difference Array.",
+      "Prefix Sum.",
+      "Range update optimization.",
+      "Two updates per booking."
+    ],
+    "commonMistakes": [
+      "Subtracting seats at the wrong index.",
+      "Forgetting that flights are 1-indexed.",
+      "Updating every flight individually.",
+      "Missing the boundary check for last flight.",
+      "Not computing the Prefix Sum."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/corporate-flight-bookings/",
+    "neetcode": "https://neetcode.io/",
+    "youtube": [
+      "NeetCode - Corporate Flight Bookings",
+      "Take U Forward - Difference Array",
+      "CodeHelp - Prefix Sum",
+      "Abdul Bari - Prefix Sum",
+      "Nick White - Corporate Flight Bookings"
+    ],
+    "relatedProblems": [
+      "Car Pooling",
+      "Range Addition",
+      "Meeting Rooms II",
+      "My Calendar I",
+      "Merge Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

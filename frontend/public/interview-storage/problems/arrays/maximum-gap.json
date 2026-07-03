@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr036",
+    "title": "Maximum Gap",
+    "slug": "maximum-gap",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Bucket Sort",
+    "pattern": "Pigeonhole Principle / Bucket Sort",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Bucket Sort",
+      "Radix Sort"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Yahoo",
+      "VMware"
+    ],
+    "frequency": "Medium",
+    "acceptance": "46.3%",
+    "estimatedTime": "35-40 minutes",
+    "practiceLevel": "Hard",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Bucket Sort, Math, Time Complexity",
+    "whyDoesThisExist": "Imagine several cities located along a highway. After arranging them by distance, you want to find the largest empty stretch between any two neighboring cities.",
+    "realWorldAnalogy": "Imagine several cities located along a highway. After arranging them by distance, you want to find the largest empty stretch between any two neighboring cities.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Bucket Sort",
+      "Math",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use Bucket Sort whenever a problem asks for maximum adjacent difference after sorting while requiring O(n) time.",
+    "patternRecognitionKeywords": [
+      "Maximum Gap",
+      "Bucket Sort",
+      "Pigeonhole Principle",
+      "Adjacent Difference",
+      "Linear Time",
+      "Sorting"
+    ],
+    "signals": "Whenever a problem asks for the maximum adjacent difference after sorting with an O(n) requirement, think of Bucket Sort and the Pigeonhole Principle.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, return the maximum difference between two successive elements in its sorted form. If the array contains fewer than two elements, return 0. You must write an algorithm that runs in linear time and uses linear extra space.",
+    "examples": [
+      {
+        "input": "nums = [3,6,9,1]",
+        "output": "3",
+        "explanation": "Sorted array is [1,3,6,9]. Maximum adjacent gap is 3."
+      },
+      {
+        "input": "nums = [10]",
+        "output": "0",
+        "explanation": "Only one element exists, so no gap is possible."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "0 <= nums[i] <= 10^9"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All elements equal",
+      "Duplicate values",
+      "Already sorted",
+      "Large value range"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Sort the array and compute the maximum adjacent difference.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of sorting the entire array, divide the value range into buckets. According to the Pigeonhole Principle, the maximum gap must occur between buckets rather than inside a bucket.",
+    "ahaMoment": "The maximum adjacent gap after sorting must occur between two neighboring non-empty buckets.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks for the maximum adjacent difference after sorting with an O(n) requirement, think of Bucket Sort and the Pigeonhole Principle.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each number is inserted into exactly one bucket. Since values inside one bucket cannot produce the maximum gap, only adjacent non-empty buckets need to be compared, giving O(n) complexity.",
+    "howToRecognizeSimilar": "Whenever a problem asks for the maximum adjacent difference after sorting with an O(n) requirement, think of Bucket Sort and the Pigeonhole Principle.",
+    "commonWrongPaths": [
+      "Sorting instead of using buckets.",
+      "Comparing values inside the same bucket.",
+      "Not handling all equal numbers.",
+      "Incorrect bucket size calculation.",
+      "Forgetting to skip empty buckets."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Finding the sorted order directly is unnecessary.",
+      "Compute bucket size using min and max values.",
+      "The answer lies between buckets."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting instead of using buckets.",
+      "Comparing values inside the same bucket.",
+      "Not handling all equal numbers.",
+      "Incorrect bucket size calculation.",
+      "Forgetting to skip empty buckets."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Pigeonhole Principle / Bucket Sort",
+    "recognitionSignals": "Whenever a problem asks for the maximum adjacent difference after sorting with an O(n) requirement, think of Bucket Sort and the Pigeonhole Principle.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Sort and Scan",
+      "idea": "Sort the array and compute the maximum adjacent difference.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array.",
+        "Traverse adjacent elements.",
+        "Track the largest difference.",
+        "Return the maximum gap."
+      ],
+      "dryRun": "Sort → Compare neighbors.",
+      "visualization": {},
+      "code": {
+        "java": "Arrays.sort(nums);",
+        "python": "nums.sort()",
+        "cpp": "sort(nums.begin(), nums.end());",
+        "javascript": "nums.sort((a,b)=>a-b);"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Radix Sort",
+      "idea": "Sort the numbers using Radix Sort and then compute the maximum adjacent difference.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Perform Radix Sort.",
+        "Traverse adjacent elements.",
+        "Return the largest gap."
+      ],
+      "dryRun": "Linear sorting followed by scanning.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Radix Sort.",
+        "python": "Uses Radix Sort.",
+        "cpp": "Uses Radix Sort.",
+        "javascript": "Uses Radix Sort."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Bucket Sort using Pigeonhole Principle",
+      "idea": "Find the minimum and maximum values. Compute the bucket size and create buckets storing only their minimum and maximum values. The maximum gap can only exist between consecutive non-empty buckets.",
+      "intuition": "Each number is inserted into exactly one bucket. Since values inside one bucket cannot produce the maximum gap, only adjacent non-empty buckets need to be compared, giving O(n) complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "If array size is less than 2, return 0.",
+        "Find minimum and maximum values.",
+        "Compute bucket size and bucket count.",
+        "Create buckets storing minimum and maximum values.",
+        "Place every number into its bucket.",
+        "Traverse non-empty buckets.",
+        "Compute the gap between the current bucket minimum and previous bucket maximum.",
+        "Return the maximum gap."
+      ],
+      "dryRun": "nums=[3,6,9,1]\nMin=1 Max=9\nBuckets:\n[1]\n[3]\n[6]\n[9]\nGaps=2,3,3\nAnswer=3",
+      "visualization": {},
+      "code": {
+        "java": "public int maximumGap(int[] nums) {\n    if (nums == null || nums.length < 2) return 0;\n\n    int min = Integer.MAX_VALUE;\n    int max = Integer.MIN_VALUE;\n\n    for (int num : nums) {\n        min = Math.min(min, num);\n        max = Math.max(max, num);\n    }\n\n    if (min == max) return 0;\n\n    int n = nums.length;\n    int bucketSize = Math.max(1, (max - min) / (n - 1));\n    int bucketCount = (max - min) / bucketSize + 1;\n\n    int[] bucketMin = new int[bucketCount];\n    int[] bucketMax = new int[bucketCount];\n    boolean[] used = new boolean[bucketCount];\n\n    Arrays.fill(bucketMin, Integer.MAX_VALUE);\n    Arrays.fill(bucketMax, Integer.MIN_VALUE);\n\n    for (int num : nums) {\n        int idx = (num - min) / bucketSize;\n        bucketMin[idx] = Math.min(bucketMin[idx], num);\n        bucketMax[idx] = Math.max(bucketMax[idx], num);\n        used[idx] = true;\n    }\n\n    int prev = min;\n    int ans = 0;\n\n    for (int i = 0; i < bucketCount; i++) {\n        if (!used[i]) continue;\n        ans = Math.max(ans, bucketMin[i] - prev);\n        prev = bucketMax[i];\n    }\n\n    return ans;\n}",
+        "python": "def maximumGap(nums):\n    if len(nums) < 2:\n        return 0\n\n    mn, mx = min(nums), max(nums)\n    if mn == mx:\n        return 0\n\n    n = len(nums)\n    bucketSize = max(1, (mx - mn) // (n - 1))\n    bucketCount = (mx - mn) // bucketSize + 1\n\n    bucketMin = [float('inf')] * bucketCount\n    bucketMax = [float('-inf')] * bucketCount\n    used = [False] * bucketCount\n\n    for num in nums:\n        idx = (num - mn) // bucketSize\n        bucketMin[idx] = min(bucketMin[idx], num)\n        bucketMax[idx] = max(bucketMax[idx], num)\n        used[idx] = True\n\n    prev = mn\n    ans = 0\n\n    for i in range(bucketCount):\n        if not used[i]:\n            continue\n        ans = max(ans, bucketMin[i] - prev)\n        prev = bucketMax[i]\n\n    return ans",
+        "cpp": "int maximumGap(vector<int>& nums) {\n    if (nums.size() < 2) return 0;\n\n    int mn = *min_element(nums.begin(), nums.end());\n    int mx = *max_element(nums.begin(), nums.end());\n\n    if (mn == mx) return 0;\n\n    int n = nums.size();\n    int bucketSize = max(1, (mx - mn) / (n - 1));\n    int bucketCount = (mx - mn) / bucketSize + 1;\n\n    vector<int> bucketMin(bucketCount, INT_MAX);\n    vector<int> bucketMax(bucketCount, INT_MIN);\n    vector<bool> used(bucketCount, false);\n\n    for (int num : nums) {\n        int idx = (num - mn) / bucketSize;\n        bucketMin[idx] = min(bucketMin[idx], num);\n        bucketMax[idx] = max(bucketMax[idx], num);\n        used[idx] = true;\n    }\n\n    int prev = mn;\n    int ans = 0;\n\n    for (int i = 0; i < bucketCount; i++) {\n        if (!used[i]) continue;\n        ans = max(ans, bucketMin[i] - prev);\n        prev = bucketMax[i];\n    }\n\n    return ans;\n}",
+        "javascript": "JavaScript requires implementing the same bucket logic using arrays for bucketMin, bucketMax, and used. The algorithm remains identical to the Java solution."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Distribute numbers into buckets and compare neighboring non-empty buckets.",
+    "steps": [
+      "Find minimum and maximum.",
+      "Create buckets.",
+      "Store bucket minimum and maximum.",
+      "Skip empty buckets.",
+      "Compute gaps between adjacent buckets."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Use Bucket Sort.",
+      "Maximum gap is between buckets.",
+      "Store only bucket minimum and maximum.",
+      "Skip empty buckets.",
+      "Linear time solution."
+    ],
+    "practiceLevel": "Hard",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why can't the maximum gap exist inside one bucket?",
+      "How does the Pigeonhole Principle apply?",
+      "Why is bucket size important?",
+      "Can Radix Sort solve this problem?",
+      "How would you return the pair producing the maximum gap?"
+    ],
+    "interviewTips": [
+      "Mention sorting first.",
+      "Explain why O(n log n) is insufficient.",
+      "Introduce bucket-based reasoning.",
+      "Explain why the maximum gap is between buckets.",
+      "State O(n) time and O(n) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The maximum adjacent gap after sorting must occur between two neighboring non-empty buckets.",
+      "algorithm": "Find Min/Max → Create Buckets → Store Min & Max → Compare Adjacent Buckets.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Bucket Sort achieves O(n).",
+      "Maximum gap is never inside a bucket.",
+      "Store only min and max per bucket.",
+      "Skip empty buckets.",
+      "Based on the Pigeonhole Principle."
+    ],
+    "commonMistakes": [
+      "Sorting instead of using buckets.",
+      "Comparing values inside the same bucket.",
+      "Not handling all equal numbers.",
+      "Incorrect bucket size calculation.",
+      "Forgetting to skip empty buckets."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-gap/",
+    "neetcode": "https://neetcode.io/problems/maximum-gap",
+    "youtube": [
+      "NeetCode - Maximum Gap",
+      "Take U Forward - Bucket Sort",
+      "CodeHelp - Maximum Gap",
+      "Abdul Bari - Bucket Sort",
+      "Nick White - Maximum Gap"
+    ],
+    "relatedProblems": [
+      "Sort an Array",
+      "Kth Largest Element in an Array",
+      "Largest Number",
+      "Contains Duplicate",
+      "First Missing Positive"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

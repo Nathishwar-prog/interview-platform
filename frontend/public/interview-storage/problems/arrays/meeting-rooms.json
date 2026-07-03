@@ -1,0 +1,312 @@
+{
+  "metadata": {
+    "id": "arr042",
+    "title": "Meeting Rooms",
+    "slug": "meeting-rooms",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Sorting + Interval Comparison",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Intervals"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "LinkedIn",
+      "Uber",
+      "VMware",
+      "Salesforce"
+    ],
+    "frequency": "High",
+    "acceptance": "58.4%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": true
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Intervals, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine checking your daily calendar. If two meetings overlap in time, you cannot attend both. Your goal is to verify whether your schedule has any conflicts.",
+    "realWorldAnalogy": "Imagine checking your daily calendar. If two meetings overlap in time, you cannot attend both. Your goal is to verify whether your schedule has any conflicts.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Intervals",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this pattern whenever you need to detect overlapping intervals after sorting them by their starting times.",
+    "patternRecognitionKeywords": [
+      "Intervals",
+      "Meeting Rooms",
+      "Sorting",
+      "Overlap",
+      "Schedule",
+      "Conflict Detection"
+    ],
+    "signals": "Whenever you need to determine whether intervals overlap, think of sorting by start time followed by a linear scan.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array of meeting time intervals where intervals[i] = [starti, endi], determine whether a person could attend all meetings. Return true if no meetings overlap; otherwise return false.",
+    "examples": [
+      {
+        "input": "intervals = [[0,30],[5,10],[15,20]]",
+        "output": "false",
+        "explanation": "Meeting [5,10] overlaps with [0,30]."
+      },
+      {
+        "input": "intervals = [[7,10],[2,4]]",
+        "output": "true",
+        "explanation": "After sorting, no meetings overlap."
+      }
+    ],
+    "constraints": [
+      "0 <= intervals.length <= 10000",
+      "intervals[i].length == 2",
+      "0 <= starti < endi <= 1000000"
+    ],
+    "edgeCases": [
+      "No meetings",
+      "Single meeting",
+      "Meetings touching at endpoints",
+      "Already sorted intervals",
+      "Completely overlapping meetings"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every meeting with every other meeting to detect overlaps.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "After sorting meetings by their start time, only adjacent meetings need to be checked. If a meeting starts before the previous one ends, an overlap exists.",
+    "ahaMoment": "After sorting, overlapping intervals become adjacent.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever you need to determine whether intervals overlap, think of sorting by start time followed by a linear scan.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Sorting guarantees overlapping intervals become adjacent. Only one linear scan is needed after sorting.",
+    "howToRecognizeSimilar": "Whenever you need to determine whether intervals overlap, think of sorting by start time followed by a linear scan.",
+    "commonWrongPaths": [
+      "Not sorting before comparison.",
+      "Comparing every pair unnecessarily.",
+      "Using <= instead of < when endpoints touch.",
+      "Ignoring empty input.",
+      "Sorting by end time instead of start time."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Sort intervals by start time.",
+      "Compare each interval with the previous one.",
+      "Return false immediately when overlap occurs."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not sorting before comparison.",
+      "Comparing every pair unnecessarily.",
+      "Using <= instead of < when endpoints touch.",
+      "Ignoring empty input.",
+      "Sorting by end time instead of start time."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Sorting + Interval Comparison",
+    "recognitionSignals": "Whenever you need to determine whether intervals overlap, think of sorting by start time followed by a linear scan.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Compare Every Pair",
+      "idea": "Compare every meeting with every other meeting to detect overlaps.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compare every pair of intervals.",
+        "Check whether they overlap.",
+        "Return false if overlap exists.",
+        "Otherwise return true."
+      ],
+      "dryRun": "Check every pair of meetings.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Nested loop omitted.",
+        "cpp": "Nested loop omitted.",
+        "javascript": "Nested loop omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Linear Scan",
+      "idea": "Sort intervals by start time and compare neighboring intervals for overlap.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort intervals by start time.",
+        "Traverse the sorted list.",
+        "Compare current start with previous end.",
+        "Return false if overlap is found."
+      ],
+      "dryRun": "Sort then compare adjacent meetings.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Arrays.sort().",
+        "python": "Uses sort().",
+        "cpp": "Uses sort().",
+        "javascript": "Uses sort()."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Interval Comparison",
+      "idea": "Sort all intervals by their starting time. Traverse the sorted intervals and compare each interval with the previous one. If the current meeting starts before the previous meeting ends, an overlap exists.",
+      "intuition": "Sorting guarantees overlapping intervals become adjacent. Only one linear scan is needed after sorting.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort intervals by start time.",
+        "Traverse from the second interval.",
+        "If current start < previous end, return false.",
+        "Otherwise continue.",
+        "Return true after traversal."
+      ],
+      "dryRun": "Intervals=[[0,30],[5,10],[15,20]]\nSorted=[[0,30],[5,10],[15,20]]\n5 < 30 → Overlap\nAnswer=false",
+      "visualization": {},
+      "code": {
+        "java": "public boolean canAttendMeetings(int[][] intervals) {\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n\n    for (int i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] < intervals[i - 1][1]) {\n            return false;\n        }\n    }\n\n    return true;\n}",
+        "python": "def canAttendMeetings(intervals):\n    intervals.sort(key=lambda x: x[0])\n\n    for i in range(1, len(intervals)):\n        if intervals[i][0] < intervals[i-1][1]:\n            return False\n\n    return True",
+        "cpp": "bool canAttendMeetings(vector<vector<int>>& intervals) {\n    sort(intervals.begin(), intervals.end());\n\n    for (int i = 1; i < intervals.size(); i++) {\n        if (intervals[i][0] < intervals[i-1][1])\n            return false;\n    }\n\n    return true;\n}",
+        "javascript": "function canAttendMeetings(intervals) {\n    intervals.sort((a, b) => a[0] - b[0]);\n\n    for (let i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] < intervals[i-1][1]) {\n            return false;\n        }\n    }\n\n    return true;\n}"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Sort meetings and compare neighboring intervals.",
+    "steps": [
+      "Sort by start time.",
+      "Compare current start with previous end.",
+      "If overlap exists, return false.",
+      "Otherwise continue.",
+      "Finish traversal."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort by start time.",
+      "Compare adjacent intervals.",
+      "Overlap if currentStart < previousEnd.",
+      "Return immediately on conflict.",
+      "O(n log n)."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How would you find the minimum number of meeting rooms?",
+      "Can this be solved without sorting?",
+      "What if meetings can touch at endpoints?",
+      "How would you merge overlapping intervals?",
+      "How would you return all conflicting meetings?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Explain why sorting simplifies overlap detection.",
+      "Show why only adjacent intervals matter.",
+      "Discuss endpoint handling.",
+      "State O(n log n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "After sorting, overlapping intervals become adjacent.",
+      "algorithm": "Sort → Compare Adjacent Intervals → Detect Overlap.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Sorting is mandatory.",
+      "Only adjacent intervals matter.",
+      "Touching endpoints are allowed.",
+      "Linear scan after sorting.",
+      "O(n log n) solution."
+    ],
+    "commonMistakes": [
+      "Not sorting before comparison.",
+      "Comparing every pair unnecessarily.",
+      "Using <= instead of < when endpoints touch.",
+      "Ignoring empty input.",
+      "Sorting by end time instead of start time."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/meeting-rooms/",
+    "neetcode": "https://neetcode.io/problems/meeting-rooms",
+    "youtube": [
+      "NeetCode - Meeting Rooms",
+      "Take U Forward - Interval Problems",
+      "CodeHelp - Merge Intervals",
+      "Abdul Bari - Interval Scheduling",
+      "Nick White - Meeting Rooms"
+    ],
+    "relatedProblems": [
+      "Meeting Rooms II",
+      "Merge Intervals",
+      "Insert Interval",
+      "Non-overlapping Intervals",
+      "Employee Free Time"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

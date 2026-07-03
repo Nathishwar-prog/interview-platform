@@ -1,0 +1,321 @@
+{
+  "metadata": {
+    "id": "arr015",
+    "title": "Employee Free Time",
+    "slug": "employee-free-time",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Merge Intervals",
+    "tags": [
+      "Array",
+      "Intervals",
+      "Sorting",
+      "Merge Intervals",
+      "Sweep Line"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "LinkedIn",
+      "Oracle",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Medium",
+    "acceptance": "72.4%",
+    "estimatedTime": "30-40 minutes",
+    "practiceLevel": "Advanced",
+    "premium": true
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Intervals, Merge Intervals, Time Complexity",
+    "whyDoesThisExist": "Imagine scheduling a company-wide meeting. Every employee already has meetings on their calendar. To find a suitable meeting slot, combine everyone's schedules into one timeline and identify the gaps where nobody is busy.",
+    "realWorldAnalogy": "Imagine scheduling a company-wide meeting. Every employee already has meetings on their calendar. To find a suitable meeting slot, combine everyone's schedules into one timeline and identify the gaps where nobody is busy.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Intervals",
+      "Merge Intervals",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Merge Intervals pattern whenever multiple people's schedules must be combined to find overlapping busy or free periods.",
+    "patternRecognitionKeywords": [
+      "Intervals",
+      "Schedule",
+      "Merge",
+      "Calendar",
+      "Free Time",
+      "Sorting",
+      "Overlap"
+    ],
+    "signals": "Whenever multiple schedules or intervals must be combined to find available gaps, think of Merge Intervals.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "We are given a list schedule of employees, where schedule[i] represents the working intervals of the ith employee. Each employee has a list of non-overlapping intervals sorted by start time. Return the list of finite intervals representing the common free time for all employees.",
+    "examples": [
+      {
+        "input": "schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]",
+        "output": "[[3,4]]",
+        "explanation": "Every employee is free only during the interval [3,4]."
+      },
+      {
+        "input": "schedule = [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]",
+        "output": "[[5,6],[7,9]]",
+        "explanation": "The common free intervals are [5,6] and [7,9]."
+      }
+    ],
+    "constraints": [
+      "1 <= schedule.length <= 50",
+      "1 <= schedule[i].length <= 50",
+      "0 <= start < end <= 100000000",
+      "Intervals within each employee are already sorted and non-overlapping."
+    ],
+    "edgeCases": [
+      "Single employee",
+      "No common free time",
+      "All employees completely free",
+      "Touching intervals",
+      "Nested intervals",
+      "Only one merged interval"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare the working intervals of every employee with every other employee to find common free periods.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of comparing every employee with every other employee, merge all working intervals into one sorted timeline. Any gap between merged intervals represents a common free time shared by everyone.",
+    "ahaMoment": "Once all busy intervals are merged, every gap between them is a common free interval.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever multiple schedules or intervals must be combined to find available gaps, think of Merge Intervals.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Sorting once allows all overlapping working intervals to be merged in a single traversal. Every gap between merged busy intervals is guaranteed to be a common free interval.",
+    "howToRecognizeSimilar": "Whenever multiple schedules or intervals must be combined to find available gaps, think of Merge Intervals.",
+    "commonWrongPaths": [
+      "Not flattening all employee schedules.",
+      "Forgetting to sort intervals.",
+      "Missing touching intervals.",
+      "Returning infinite free intervals.",
+      "Not merging completely overlapping intervals."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Flatten all employee intervals.",
+      "Sort intervals by starting time.",
+      "Merge overlapping intervals.",
+      "The gaps are the answer."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not flattening all employee schedules.",
+      "Forgetting to sort intervals.",
+      "Missing touching intervals.",
+      "Returning infinite free intervals.",
+      "Not merging completely overlapping intervals."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Merge Intervals",
+    "recognitionSignals": "Whenever multiple schedules or intervals must be combined to find available gaps, think of Merge Intervals.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Compare Every Schedule",
+      "idea": "Compare the working intervals of every employee with every other employee to find common free periods.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compare schedules pairwise.",
+        "Find common busy periods.",
+        "Compute remaining gaps.",
+        "Return common free intervals."
+      ],
+      "dryRun": "Compare employee 1 with employee 2, then employee 3.\nVery inefficient for many employees.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force comparison omitted because of high complexity.",
+        "python": "Brute force solution omitted.",
+        "cpp": "Brute force implementation omitted.",
+        "javascript": "Brute force implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n² × m²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Flatten and Sort",
+      "idea": "Collect every interval into one list, sort them by start time, and merge overlapping intervals.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Flatten all schedules.",
+        "Sort by start time.",
+        "Merge overlapping intervals.",
+        "Return gaps between merged intervals."
+      ],
+      "dryRun": "Intervals:\n[1,2] [5,6] [1,3] [4,10]\nSorted\nMerged\nGap = [3,4]",
+      "visualization": {},
+      "code": {
+        "java": "Uses sorting and interval merging.",
+        "python": "Uses sorted intervals.",
+        "cpp": "Uses interval sorting.",
+        "javascript": "Uses interval sorting."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Merge Intervals",
+      "idea": "Flatten all employee schedules into a single list, sort by starting time, merge overlapping intervals, and record every gap between consecutive merged intervals as common free time.",
+      "intuition": "Sorting once allows all overlapping working intervals to be merged in a single traversal. Every gap between merged busy intervals is guaranteed to be a common free interval.",
+      "whenToUse": "",
+      "algorithm": [
+        "Flatten all employee intervals into one list.",
+        "Sort intervals by start time.",
+        "Initialize merged list.",
+        "Traverse sorted intervals.",
+        "Merge overlapping intervals.",
+        "Whenever a gap exists between merged intervals, record it.",
+        "Return all gaps."
+      ],
+      "dryRun": "Intervals:\n[1,2],[1,3],[4,10],[5,6]\nMerge → [1,3],[4,10]\nGap = [3,4]",
+      "visualization": {},
+      "code": {
+        "java": "public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {\n    List<Interval> intervals = new ArrayList<>();\n    for(List<Interval> employee : schedule)\n        intervals.addAll(employee);\n\n    intervals.sort((a,b)->a.start-b.start);\n\n    List<Interval> result = new ArrayList<>();\n    Interval current = intervals.get(0);\n\n    for(int i=1;i<intervals.size();i++){\n        Interval next = intervals.get(i);\n        if(current.end < next.start){\n            result.add(new Interval(current.end,next.start));\n            current = next;\n        }else{\n            current.end = Math.max(current.end,next.end);\n        }\n    }\n\n    return result;\n}",
+        "python": "def employeeFreeTime(schedule):\n    intervals=[]\n    for employee in schedule:\n        intervals.extend(employee)\n\n    intervals.sort(key=lambda x:x.start)\n\n    merged=[intervals[0]]\n    answer=[]\n\n    for interval in intervals[1:]:\n        if merged[-1].end < interval.start:\n            answer.append([merged[-1].end, interval.start])\n            merged.append(interval)\n        else:\n            merged[-1].end=max(merged[-1].end, interval.end)\n\n    return answer",
+        "cpp": "Uses sorting followed by interval merging to collect free gaps.",
+        "javascript": "Uses interval sorting and merge algorithm."
+      },
+      "complexities": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Merge all busy intervals and the remaining gaps become common free time.",
+    "steps": [
+      "Flatten schedules.",
+      "Sort intervals.",
+      "Merge overlaps.",
+      "Record every gap."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Flatten intervals.",
+      "Sort by start time.",
+      "Merge busy intervals.",
+      "Gaps are free time.",
+      "Classic interval problem."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using a Priority Queue?",
+      "How would you handle millions of employees?",
+      "Can you find the earliest available meeting slot?",
+      "How would you return free intervals of a minimum duration?",
+      "Can this be solved using a Sweep Line algorithm?"
+    ],
+    "interviewTips": [
+      "Mention that each employee's schedule is already sorted.",
+      "Explain why flattening simplifies the problem.",
+      "Describe interval merging before finding gaps.",
+      "Mention the Priority Queue alternative.",
+      "State O(N log N) complexity clearly."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Once all busy intervals are merged, every gap between them is a common free interval.",
+      "algorithm": "Flatten → Sort → Merge → Return Gaps.",
+      "timeComplexity": "O(N log N)",
+      "spaceComplexity": "O(N)"
+    },
+    "importantPoints": [
+      "Intervals are already sorted per employee.",
+      "Merge all schedules together.",
+      "Only finite gaps are returned.",
+      "Sort before merging.",
+      "O(N log N) solution."
+    ],
+    "commonMistakes": [
+      "Not flattening all employee schedules.",
+      "Forgetting to sort intervals.",
+      "Missing touching intervals.",
+      "Returning infinite free intervals.",
+      "Not merging completely overlapping intervals."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/employee-free-time/",
+    "neetcode": "",
+    "youtube": [
+      "Take U Forward - Merge Intervals",
+      "NeetCode - Interval Problems",
+      "CodeHelp - Merge Intervals",
+      "Abdul Bari - Interval Scheduling",
+      "GeeksforGeeks - Employee Free Time"
+    ],
+    "relatedProblems": [
+      "Merge Intervals",
+      "Insert Interval",
+      "Meeting Rooms II",
+      "Meeting Scheduler",
+      "Non-overlapping Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

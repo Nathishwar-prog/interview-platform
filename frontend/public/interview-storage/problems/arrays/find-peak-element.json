@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr018",
+    "title": "Find Peak Element",
+    "slug": "find-peak-element",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Binary Search",
+    "pattern": "Binary Search on Answer",
+    "tags": [
+      "Array",
+      "Binary Search",
+      "Divide and Conquer"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "47.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Binary Search, Loops, Time Complexity, Divide and Conquer",
+    "whyDoesThisExist": "Imagine hiking through mountains. Whenever you are standing on a mountain that is higher than both neighboring mountains, you've reached a peak. The goal is to find any one such peak efficiently without climbing every mountain.",
+    "realWorldAnalogy": "Imagine hiking through mountains. Whenever you are standing on a mountain that is higher than both neighboring mountains, you've reached a peak. The goal is to find any one such peak efficiently without climbing every mountain.",
+    "prerequisites": [
+      "Arrays",
+      "Binary Search",
+      "Loops",
+      "Time Complexity",
+      "Divide and Conquer"
+    ],
+    "whenToUseThis": "Use this Binary Search pattern whenever the array exhibits a directional property that guarantees an answer exists on one side based on neighboring comparisons.",
+    "patternRecognitionKeywords": [
+      "Peak",
+      "Binary Search",
+      "Slope",
+      "Mountain",
+      "Adjacent",
+      "Logarithmic"
+    ],
+    "signals": "Whenever comparing neighboring elements tells you which half definitely contains the answer, think of Binary Search on Answer.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "A peak element is an element that is strictly greater than its neighbors. Given a 0-indexed integer array nums, return the index of any peak element. You may imagine that nums[-1] = nums[n] = -∞. The solution must run in O(log n) time.",
+    "examples": [
+      {
+        "input": "nums = [1,2,3,1]",
+        "output": "2",
+        "explanation": "nums[2] = 3 is greater than both neighbors."
+      },
+      {
+        "input": "nums = [1,2,1,3,5,6,4]",
+        "output": "5",
+        "explanation": "Index 5 (value 6) is a valid peak. Index 1 is also a valid answer."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 1000",
+      "-2³¹ <= nums[i] <= 2³¹ - 1",
+      "nums[i] != nums[i + 1]"
+    ],
+    "edgeCases": [
+      "Single element",
+      "Peak at first index",
+      "Peak at last index",
+      "Strictly increasing array",
+      "Strictly decreasing array",
+      "Multiple peaks"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Traverse the array and check every element against its neighbors.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of checking every element, observe the slope. If the current element is smaller than the next one, a peak must exist on the right. Otherwise, a peak must exist on the left (including the current element).",
+    "ahaMoment": "An increasing slope guarantees a peak on the right, while a decreasing slope guarantees a peak on the left.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever comparing neighboring elements tells you which half definitely contains the answer, think of Binary Search on Answer.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every comparison removes half of the search space. Since at least one peak always exists, Binary Search guarantees an answer in logarithmic time.",
+    "howToRecognizeSimilar": "Whenever comparing neighboring elements tells you which half definitely contains the answer, think of Binary Search on Answer.",
+    "commonWrongPaths": [
+      "Comparing with both neighbors unnecessarily.",
+      "Moving the wrong pointer.",
+      "Using right = mid - 1 instead of right = mid.",
+      "Ignoring boundary conditions.",
+      "Assuming only one peak exists."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Compare the middle element with its next neighbor.",
+      "One side is guaranteed to contain a peak.",
+      "Think Binary Search instead of Linear Search."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Comparing with both neighbors unnecessarily.",
+      "Moving the wrong pointer.",
+      "Using right = mid - 1 instead of right = mid.",
+      "Ignoring boundary conditions.",
+      "Assuming only one peak exists."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Binary Search on Answer",
+    "recognitionSignals": "Whenever comparing neighboring elements tells you which half definitely contains the answer, think of Binary Search on Answer.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Linear Scan",
+      "idea": "Traverse the array and check every element against its neighbors.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse every index.",
+        "Check left and right neighbors.",
+        "Return the first valid peak."
+      ],
+      "dryRun": "nums=[1,2,3,1]\n1 არა\n2 არა\n3 → Peak",
+      "visualization": {},
+      "code": {
+        "java": "public int findPeakElement(int[] nums){\n    int n=nums.length;\n    for(int i=0;i<n;i++){\n        boolean left=(i==0)||nums[i]>nums[i-1];\n        boolean right=(i==n-1)||nums[i]>nums[i+1];\n        if(left&&right) return i;\n    }\n    return -1;\n}",
+        "python": "def findPeakElement(nums):\n    n=len(nums)\n    for i in range(n):\n        left=(i==0) or nums[i]>nums[i-1]\n        right=(i==n-1) or nums[i]>nums[i+1]\n        if left and right:\n            return i",
+        "cpp": "int findPeakElement(vector<int>& nums){\n    int n=nums.size();\n    for(int i=0;i<n;i++){\n        bool left=(i==0)||nums[i]>nums[i-1];\n        bool right=(i==n-1)||nums[i]>nums[i+1];\n        if(left&&right) return i;\n    }\n    return -1;\n}",
+        "javascript": "function findPeakElement(nums){\nfor(let i=0;i<nums.length;i++){\nconst left=i===0||nums[i]>nums[i-1];\nconst right=i===nums.length-1||nums[i]>nums[i+1];\nif(left&&right) return i;\n}\nreturn -1;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Binary Search",
+      "idea": "Use Binary Search by comparing the middle element with its next element.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Find middle.",
+        "Compare nums[mid] and nums[mid+1].",
+        "Move left or right accordingly.",
+        "Repeat until one element remains."
+      ],
+      "dryRun": "nums=[1,2,3,1]\nmid=1\n2<3 → Go Right\nPeak=3",
+      "visualization": {},
+      "code": {
+        "java": "Uses Binary Search.",
+        "python": "Uses Binary Search.",
+        "cpp": "Uses Binary Search.",
+        "javascript": "Uses Binary Search."
+      },
+      "complexities": {
+        "time": "O(log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Binary Search on Slope",
+      "idea": "Compare nums[mid] with nums[mid+1]. If nums[mid] is smaller, a peak must exist on the right side. Otherwise, a peak exists on the left side including mid. Continue until both pointers meet.",
+      "intuition": "Every comparison removes half of the search space. Since at least one peak always exists, Binary Search guarantees an answer in logarithmic time.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left = 0 and right = n-1.",
+        "While left < right:",
+        "Find middle.",
+        "If nums[mid] < nums[mid+1], move left to mid+1.",
+        "Else move right to mid.",
+        "Return left."
+      ],
+      "dryRun": "nums=[1,2,3,1]\nleft=0 right=3\nmid=1\n2<3 → left=2\nleft=2 right=3\nmid=2\n3>1 → right=2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int findPeakElement(int[] nums) {\n    int left=0,right=nums.length-1;\n    while(left<right){\n        int mid=left+(right-left)/2;\n        if(nums[mid]<nums[mid+1])\n            left=mid+1;\n        else\n            right=mid;\n    }\n    return left;\n}",
+        "python": "def findPeakElement(nums):\n    left,right=0,len(nums)-1\n    while left<right:\n        mid=(left+right)//2\n        if nums[mid]<nums[mid+1]:\n            left=mid+1\n        else:\n            right=mid\n    return left",
+        "cpp": "int findPeakElement(vector<int>& nums){\n    int left=0,right=nums.size()-1;\n    while(left<right){\n        int mid=left+(right-left)/2;\n        if(nums[mid]<nums[mid+1])\n            left=mid+1;\n        else\n            right=mid;\n    }\n    return left;\n}",
+        "javascript": "function findPeakElement(nums){\nlet left=0,right=nums.length-1;\nwhile(left<right){\nconst mid=Math.floor((left+right)/2);\nif(nums[mid]<nums[mid+1]) left=mid+1;\nelse right=mid;\n}\nreturn left;\n}"
+      },
+      "complexities": {
+        "time": "O(log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "The slope determines which side must contain a peak.",
+    "steps": [
+      "Compare middle with next element.",
+      "Ascending slope → Move Right.",
+      "Descending slope → Move Left.",
+      "Pointers meet at a peak."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Compare mid with mid+1.",
+      "Ascending slope → Right.",
+      "Descending slope → Left.",
+      "Binary Search.",
+      "Return left."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does Binary Search work here?",
+      "Can multiple peaks exist?",
+      "How would you find all peaks?",
+      "What if adjacent elements were equal?",
+      "How is this related to Mountain Array problems?"
+    ],
+    "interviewTips": [
+      "Explain why one side always contains a peak.",
+      "Mention the imaginary -∞ boundaries.",
+      "Move right = mid instead of mid-1.",
+      "State O(log n) complexity.",
+      "Remember that any peak is acceptable."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "An increasing slope guarantees a peak on the right, while a decreasing slope guarantees a peak on the left.",
+      "algorithm": "Compare Mid & Mid+1 → Move Toward Peak.",
+      "timeComplexity": "O(log n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "At least one peak always exists.",
+      "Compare adjacent elements.",
+      "Binary Search reduces search space.",
+      "Do not remove mid on descending slope.",
+      "O(log n) solution."
+    ],
+    "commonMistakes": [
+      "Comparing with both neighbors unnecessarily.",
+      "Moving the wrong pointer.",
+      "Using right = mid - 1 instead of right = mid.",
+      "Ignoring boundary conditions.",
+      "Assuming only one peak exists."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/find-peak-element/",
+    "neetcode": "https://neetcode.io/problems/find-peak-element",
+    "youtube": [
+      "NeetCode - Find Peak Element",
+      "Take U Forward - Binary Search",
+      "CodeHelp - Binary Search Problems",
+      "Abdul Bari - Binary Search",
+      "Nick White - Find Peak Element"
+    ],
+    "relatedProblems": [
+      "Peak Index in a Mountain Array",
+      "Search in Rotated Sorted Array",
+      "Find Minimum in Rotated Sorted Array",
+      "Maximum Element in Bitonic Array",
+      "Binary Search"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

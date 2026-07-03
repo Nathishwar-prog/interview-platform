@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "id": "arr016",
+    "title": "Find All Duplicates in an Array",
+    "slug": "find-all-duplicates-in-an-array",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Cyclic Sort",
+    "pattern": "Index Marking",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Cyclic Sort",
+      "Indexing",
+      "In-place Algorithm"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "76.2%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Index Manipulation, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine students are assigned locker numbers from 1 to n. Every student should occupy exactly one locker. If a locker is visited twice while marking attendance, that locker number represents a duplicate student ID.",
+    "realWorldAnalogy": "Imagine students are assigned locker numbers from 1 to n. Every student should occupy exactly one locker. If a locker is visited twice while marking attendance, that locker number represents a duplicate student ID.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Index Manipulation",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use the Index Marking pattern whenever array values are limited to the range [1, n] and extra space is restricted.",
+    "patternRecognitionKeywords": [
+      "1 to n",
+      "Duplicate",
+      "Index Marking",
+      "Negative Marking",
+      "In-place",
+      "Constant Space"
+    ],
+    "signals": "Whenever values are guaranteed to lie in the range [1,n], think of using the array indices themselves to store information.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums of length n where every integer is in the range [1, n] and appears once or twice, return an array of all the integers that appear exactly twice. The algorithm must run in O(n) time and use only constant extra space (excluding the output array).",
+    "examples": [
+      {
+        "input": "nums = [4,3,2,7,8,2,3,1]",
+        "output": "[2,3]",
+        "explanation": "Both 2 and 3 appear twice."
+      },
+      {
+        "input": "nums = [1,1,2]",
+        "output": "[1]",
+        "explanation": "Only 1 appears twice."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "[]",
+        "explanation": "There are no duplicate values."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "1 <= nums[i] <= nums.length",
+      "Each element appears once or twice."
+    ],
+    "edgeCases": [
+      "Single element",
+      "No duplicates",
+      "All possible duplicates",
+      "Duplicate at beginning",
+      "Duplicate at end",
+      "Maximum array size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every pair of elements and collect duplicate values.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since every value lies between 1 and n, each number has a unique corresponding index. Use that index to mark whether the number has already been seen. If the position is already marked, the number is a duplicate.",
+    "ahaMoment": "Every value has its own unique index because values lie in [1,n].",
+    "mentalModel": "",
+    "patternRecognition": "Whenever values are guaranteed to lie in the range [1,n], think of using the array indices themselves to store information.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is processed exactly once. The input array itself stores visited information, eliminating the need for extra memory.",
+    "howToRecognizeSimilar": "Whenever values are guaranteed to lie in the range [1,n], think of using the array indices themselves to store information.",
+    "commonWrongPaths": [
+      "Forgetting to use abs() after modifying values.",
+      "Using value instead of value-1 as the index.",
+      "Changing the sign twice.",
+      "Using additional arrays unnecessarily.",
+      "Ignoring the input constraints."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Every number maps to one index.",
+      "Use the array itself for marking.",
+      "Negative values can indicate visited positions."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Forgetting to use abs() after modifying values.",
+      "Using value instead of value-1 as the index.",
+      "Changing the sign twice.",
+      "Using additional arrays unnecessarily.",
+      "Ignoring the input constraints."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Index Marking",
+    "recognitionSignals": "Whenever values are guaranteed to lie in the range [1,n], think of using the array indices themselves to store information.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Nested Loop Comparison",
+      "idea": "Compare every pair of elements and collect duplicate values.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse every element.",
+        "Compare with every remaining element.",
+        "If equal, store the duplicate.",
+        "Avoid storing duplicates multiple times."
+      ],
+      "dryRun": "nums=[1,1,2]\nCompare 1 with 1 → Duplicate",
+      "visualization": {},
+      "code": {
+        "java": "Brute force nested-loop solution omitted because it is inefficient.",
+        "python": "Nested-loop solution omitted.",
+        "cpp": "Brute force implementation omitted.",
+        "javascript": "Nested-loop implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashSet",
+      "idea": "Store visited numbers in a HashSet. Whenever a number is already present, add it to the answer.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an empty HashSet.",
+        "Traverse the array.",
+        "If current number exists, add to answer.",
+        "Otherwise insert into HashSet."
+      ],
+      "dryRun": "Seen={}\n4→Add\n3→Add\n2→Add\n...\n2→Duplicate",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashSet to detect duplicates.",
+        "python": "Uses a set.",
+        "cpp": "Uses unordered_set.",
+        "javascript": "Uses Set."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Index Marking (Negative Marking)",
+      "idea": "Since values are in the range [1,n], each value maps to an index. Traverse the array, convert the corresponding index to negative to indicate it has been visited. If the position is already negative, the current value is a duplicate.",
+      "intuition": "Each element is processed exactly once. The input array itself stores visited information, eliminating the need for extra memory.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an empty answer list.",
+        "Traverse every number.",
+        "Compute index = abs(nums[i]) - 1.",
+        "If nums[index] is negative, add abs(nums[i]) to answer.",
+        "Otherwise multiply nums[index] by -1.",
+        "Return the answer."
+      ],
+      "dryRun": "nums=[4,3,2,7,8,2,3,1]\nVisit 4 → Mark index3\nVisit 3 → Mark index2\nVisit 2 → Mark index1\nVisit 2 again → index1 already negative → Duplicate 2\nVisit 3 again → Duplicate 3",
+      "visualization": {},
+      "code": {
+        "java": "public List<Integer> findDuplicates(int[] nums) {\n    List<Integer> ans = new ArrayList<>();\n\n    for(int i=0;i<nums.length;i++){\n        int index = Math.abs(nums[i]) - 1;\n        if(nums[index] < 0)\n            ans.add(Math.abs(nums[i]));\n        else\n            nums[index] *= -1;\n    }\n\n    return ans;\n}",
+        "python": "def findDuplicates(nums):\n    ans=[]\n    for num in nums:\n        index=abs(num)-1\n        if nums[index]<0:\n            ans.append(abs(num))\n        else:\n            nums[index]*=-1\n    return ans",
+        "cpp": "vector<int> findDuplicates(vector<int>& nums){\n    vector<int> ans;\n    for(int num:nums){\n        int index=abs(num)-1;\n        if(nums[index]<0)\n            ans.push_back(abs(num));\n        else\n            nums[index]*=-1;\n    }\n    return ans;\n}",
+        "javascript": "function findDuplicates(nums){\nconst ans=[];\nfor(let num of nums){\nlet index=Math.abs(num)-1;\nif(nums[index]<0) ans.push(Math.abs(num));\nelse nums[index]*=-1;\n}\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Each number marks its own index.",
+    "steps": [
+      "Take value x.",
+      "Go to index x-1.",
+      "If positive, mark negative.",
+      "If already negative, x is a duplicate."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Values are in [1,n].",
+      "Use index = value - 1.",
+      "Negative means visited.",
+      "Already negative means duplicate.",
+      "Constant extra space."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can you solve this without modifying the input array?",
+      "What if numbers appear three times?",
+      "How would you find missing numbers instead?",
+      "How is this related to Cyclic Sort?",
+      "Can you solve it using swapping?"
+    ],
+    "interviewTips": [
+      "Mention the HashSet solution first.",
+      "Explain why the input constraints enable index marking.",
+      "Remember to use abs() after values become negative.",
+      "State O(n) time and O(1) extra space.",
+      "Mention Cyclic Sort as another valid approach."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every value has its own unique index because values lie in [1,n].",
+      "algorithm": "Index = abs(value)-1 → If negative, duplicate → Else mark negative.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Use abs() before indexing.",
+      "Index = value - 1.",
+      "Mark by negating.",
+      "No extra array required.",
+      "Linear time."
+    ],
+    "commonMistakes": [
+      "Forgetting to use abs() after modifying values.",
+      "Using value instead of value-1 as the index.",
+      "Changing the sign twice.",
+      "Using additional arrays unnecessarily.",
+      "Ignoring the input constraints."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
+    "neetcode": "https://neetcode.io/problems/find-all-duplicates-in-an-array",
+    "youtube": [
+      "NeetCode - Find All Duplicates in an Array",
+      "Take U Forward - Cyclic Sort",
+      "CodeHelp - Array Problems",
+      "Abdul Bari - Array Algorithms",
+      "Nick White - Find All Duplicates"
+    ],
+    "relatedProblems": [
+      "Find All Numbers Disappeared in an Array",
+      "First Missing Positive",
+      "Find the Duplicate Number",
+      "Missing Number",
+      "Contains Duplicate"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

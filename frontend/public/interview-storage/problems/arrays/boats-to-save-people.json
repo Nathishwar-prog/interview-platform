@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "id": "arr005",
+    "title": "Boats to Save People",
+    "slug": "boats-to-save-people",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Greedy + Two Pointers",
+    "tags": [
+      "Array",
+      "Greedy",
+      "Sorting",
+      "Two Pointers"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Uber",
+      "Bloomberg",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "61.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Two Pointers, Greedy Algorithms, Time Complexity",
+    "whyDoesThisExist": "Imagine a rescue operation during a flood. Every rescue boat can carry at most two people and has a maximum weight limit. To minimize the number of rescue trips, the rescue team always tries to pair the lightest remaining person with the heaviest remaining person whenever possible.",
+    "realWorldAnalogy": "Imagine a rescue operation during a flood. Every rescue boat can carry at most two people and has a maximum weight limit. To minimize the number of rescue trips, the rescue team always tries to pair the lightest remaining person with the heaviest remaining person whenever possible.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Two Pointers",
+      "Greedy Algorithms",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Greedy Two Pointer pattern whenever you need to minimize the number of pairings under a weight or capacity constraint after sorting the data.",
+    "patternRecognitionKeywords": [
+      "Capacity",
+      "Pairing",
+      "Weight Limit",
+      "Minimum Boats",
+      "Sorting",
+      "Two Pointers",
+      "Greedy"
+    ],
+    "signals": "Whenever a problem asks to minimize the number of pairings under a capacity constraint, think of sorting followed by the Greedy Two Pointer technique.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an array people where people[i] is the weight of the ith person, and an integer limit representing the maximum weight a boat can carry. Each boat can carry at most two people at the same time, provided the sum of their weights does not exceed the limit. Return the minimum number of boats required to rescue everyone.",
+    "examples": [
+      {
+        "input": "people = [1,2], limit = 3",
+        "output": "1",
+        "explanation": "1 and 2 can share one boat."
+      },
+      {
+        "input": "people = [3,2,2,1], limit = 3",
+        "output": "3",
+        "explanation": "Boats: (1,2), (2), (3)."
+      },
+      {
+        "input": "people = [3,5,3,4], limit = 5",
+        "output": "4",
+        "explanation": "No valid pairing except each heavy person alone."
+      }
+    ],
+    "constraints": [
+      "1 <= people.length <= 50000",
+      "1 <= people[i] <= limit <= 30000"
+    ],
+    "edgeCases": [
+      "Only one person",
+      "Everyone fits into pairs",
+      "Nobody can be paired",
+      "Duplicate weights",
+      "All people have the same weight",
+      "Maximum input size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every unassigned person, search all remaining people to find the best partner. Repeat until everyone is assigned to a boat.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The heaviest person must always board a boat. The only decision is whether the lightest remaining person can share that boat. If they fit together, send both. Otherwise, the heaviest person goes alone.",
+    "ahaMoment": "The heaviest remaining person must always be assigned a boat. Pair them with the lightest remaining person whenever possible.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks to minimize the number of pairings under a capacity constraint, think of sorting followed by the Greedy Two Pointer technique.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The heaviest person must always be placed in a boat. Pairing them with the lightest available person whenever possible maximizes boat utilization and guarantees the minimum number of boats.",
+    "howToRecognizeSimilar": "Whenever a problem asks to minimize the number of pairings under a capacity constraint, think of sorting followed by the Greedy Two Pointer technique.",
+    "commonWrongPaths": [
+      "Trying to pair heavy people together.",
+      "Not sorting the array.",
+      "Moving both pointers when the pair exceeds the limit.",
+      "Forgetting to count every boat.",
+      "Using left < right instead of left <= right."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Sort the array first.",
+      "Always consider the heaviest person.",
+      "Try pairing the heaviest with the lightest."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Trying to pair heavy people together.",
+      "Not sorting the array.",
+      "Moving both pointers when the pair exceeds the limit.",
+      "Forgetting to count every boat.",
+      "Using left < right instead of left <= right."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy + Two Pointers",
+    "recognitionSignals": "Whenever a problem asks to minimize the number of pairings under a capacity constraint, think of sorting followed by the Greedy Two Pointer technique.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Possible Pairing",
+      "idea": "For every unassigned person, search all remaining people to find the best partner. Repeat until everyone is assigned to a boat.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Mark all people as unassigned.",
+        "Choose one person.",
+        "Search every remaining person for a valid partner.",
+        "Assign a boat.",
+        "Repeat until everyone is rescued."
+      ],
+      "dryRun": "people=[3,2,2,1]\nTry every possible pairing.\nMinimum boats = 3.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force pairing is omitted because it becomes inefficient for large inputs.",
+        "python": "Brute force solution omitted due to quadratic complexity.",
+        "cpp": "Brute force implementation omitted.",
+        "javascript": "Brute force implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting with Greedy Search",
+      "idea": "Sort the array and greedily attempt to pair the heaviest person with the lightest available person.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array.",
+        "Maintain left and right pointers.",
+        "Attempt to pair lightest and heaviest.",
+        "Count one boat each iteration."
+      ],
+      "dryRun": "Sorted=[1,2,2,3]\nPair (1,2)\n2 alone\n3 alone\nAnswer=3",
+      "visualization": {},
+      "code": {
+        "java": "Uses sorting and greedy pairing.",
+        "python": "Uses sorting with two pointers.",
+        "cpp": "Uses sorting and pointer traversal.",
+        "javascript": "Uses sorting and greedy logic."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Two Pointers",
+      "idea": "Sort the weights. Use two pointers: one at the lightest person and one at the heaviest. If both fit within the boat limit, move both pointers. Otherwise, send the heaviest person alone. Every iteration uses exactly one boat.",
+      "intuition": "The heaviest person must always be placed in a boat. Pairing them with the lightest available person whenever possible maximizes boat utilization and guarantees the minimum number of boats.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the people array.",
+        "Initialize left = 0 and right = n - 1.",
+        "Initialize boats = 0.",
+        "While left <= right:",
+        "If people[left] + people[right] <= limit, increment left.",
+        "Decrement right.",
+        "Increment boat count.",
+        "Return boats."
+      ],
+      "dryRun": "people=[3,2,2,1], limit=3\nSorted=[1,2,2,3]\n1+3>3 → Boat1=(3)\n1+2=3 → Boat2=(1,2)\n2 alone → Boat3=(2)\nAnswer=3",
+      "visualization": {},
+      "code": {
+        "java": "public int numRescueBoats(int[] people, int limit) {\n    Arrays.sort(people);\n    int left = 0;\n    int right = people.length - 1;\n    int boats = 0;\n\n    while(left <= right){\n        if(people[left] + people[right] <= limit){\n            left++;\n        }\n        right--;\n        boats++;\n    }\n    return boats;\n}",
+        "python": "def numRescueBoats(people, limit):\n    people.sort()\n    left, right = 0, len(people)-1\n    boats = 0\n    while left <= right:\n        if people[left] + people[right] <= limit:\n            left += 1\n        right -= 1\n        boats += 1\n    return boats",
+        "cpp": "int numRescueBoats(vector<int>& people, int limit){\n    sort(people.begin(), people.end());\n    int left=0,right=people.size()-1;\n    int boats=0;\n    while(left<=right){\n        if(people[left]+people[right]<=limit)\n            left++;\n        right--;\n        boats++;\n    }\n    return boats;\n}",
+        "javascript": "function numRescueBoats(people, limit){\n    people.sort((a,b)=>a-b);\n    let left=0,right=people.length-1;\n    let boats=0;\n    while(left<=right){\n        if(people[left]+people[right]<=limit) left++;\n        right--;\n        boats++;\n    }\n    return boats;\n}"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Always try to pair the lightest remaining person with the heaviest remaining person.",
+    "steps": [
+      "Sort weights.",
+      "Compare lightest and heaviest.",
+      "If they fit, send both.",
+      "Otherwise send the heaviest alone.",
+      "Repeat until everyone is assigned."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort first.",
+      "Use two pointers.",
+      "Heaviest person always boards.",
+      "Pair with the lightest if possible.",
+      "Each iteration uses one boat."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "What if each boat can carry three people?",
+      "Can this be solved without sorting?",
+      "Why is pairing the lightest with the heaviest optimal?",
+      "What if boats have different capacities?",
+      "Can this be extended to variable boat sizes?"
+    ],
+    "interviewTips": [
+      "Explain why the heaviest person must always be processed.",
+      "Justify pairing with the lightest person.",
+      "Mention that sorting enables the greedy decision.",
+      "State the O(n log n) complexity.",
+      "Discuss why the greedy approach is optimal."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The heaviest remaining person must always be assigned a boat. Pair them with the lightest remaining person whenever possible.",
+      "algorithm": "Sort → Two Pointers → Pair if possible → Otherwise send heaviest alone.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Sorting is required.",
+      "Greedy strategy.",
+      "Two pointers.",
+      "One boat per iteration.",
+      "Pair lightest with heaviest."
+    ],
+    "commonMistakes": [
+      "Trying to pair heavy people together.",
+      "Not sorting the array.",
+      "Moving both pointers when the pair exceeds the limit.",
+      "Forgetting to count every boat.",
+      "Using left < right instead of left <= right."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/boats-to-save-people/",
+    "neetcode": "https://neetcode.io/problems/boats-to-save-people",
+    "youtube": [
+      "NeetCode - Boats to Save People",
+      "Take U Forward - Two Pointer Problems",
+      "CodeHelp - Greedy Algorithms",
+      "Abdul Bari - Greedy Strategy",
+      "Nick White - Boats to Save People"
+    ],
+    "relatedProblems": [
+      "Advantage Shuffle",
+      "Assign Cookies",
+      "Two Sum II",
+      "Container With Most Water",
+      "Array Partition"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

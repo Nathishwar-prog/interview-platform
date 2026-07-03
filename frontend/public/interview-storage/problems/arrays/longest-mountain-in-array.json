@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr032",
+    "title": "Longest Mountain in Array",
+    "slug": "longest-mountain-in-array",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Peak Expansion",
+    "tags": [
+      "Array",
+      "Two Pointers",
+      "Dynamic Programming"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Medium",
+    "acceptance": "40.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Two Pointers, Loops, Peak Detection, Time Complexity",
+    "whyDoesThisExist": "Imagine tracking the altitude during a hike. A valid mountain requires climbing continuously to a highest point and then descending continuously. Your goal is to find the longest such hike.",
+    "realWorldAnalogy": "Imagine tracking the altitude during a hike. A valid mountain requires climbing continuously to a highest point and then descending continuously. Your goal is to find the longest such hike.",
+    "prerequisites": [
+      "Arrays",
+      "Two Pointers",
+      "Loops",
+      "Peak Detection",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Peak Expansion pattern whenever a problem involves finding increasing-then-decreasing sequences around a peak.",
+    "patternRecognitionKeywords": [
+      "Mountain",
+      "Peak",
+      "Increase Then Decrease",
+      "Two Pointers",
+      "Expansion",
+      "Subarray"
+    ],
+    "signals": "Whenever the problem asks for an increasing sequence followed immediately by a decreasing sequence, think of Peak Expansion.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array arr. A mountain is defined as a subarray with length at least 3 where the values strictly increase to a peak and then strictly decrease. Return the length of the longest mountain. If there is no mountain, return 0.",
+    "examples": [
+      {
+        "input": "arr = [2,1,4,7,3,2,5]",
+        "output": "5",
+        "explanation": "The longest mountain is [1,4,7,3,2] with length 5."
+      },
+      {
+        "input": "arr = [2,2,2]",
+        "output": "0",
+        "explanation": "No valid mountain exists because there is no strictly increasing and decreasing sequence."
+      }
+    ],
+    "constraints": [
+      "1 <= arr.length <= 10000",
+      "0 <= arr[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Array size less than 3",
+      "All increasing",
+      "All decreasing",
+      "Duplicate adjacent values",
+      "Multiple mountains"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every subarray and verify whether it forms a mountain.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "A mountain always has a peak. For every valid peak, expand left while elements are increasing and expand right while elements are decreasing. The total expanded length is one mountain.",
+    "ahaMoment": "Every valid mountain has exactly one peak.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for an increasing sequence followed immediately by a decreasing sequence, think of Peak Expansion.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every element is visited at most a constant number of times while expanding mountains, resulting in linear time complexity.",
+    "howToRecognizeSimilar": "Whenever the problem asks for an increasing sequence followed immediately by a decreasing sequence, think of Peak Expansion.",
+    "commonWrongPaths": [
+      "Treating plateaus as mountains.",
+      "Ignoring the requirement of both uphill and downhill.",
+      "Starting expansion from non-peak elements.",
+      "Not skipping processed mountains.",
+      "Accepting mountains of length less than 3."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "A mountain must have both an uphill and downhill.",
+      "Every peak satisfies arr[i-1] < arr[i] > arr[i+1].",
+      "Expand outward from every peak."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Treating plateaus as mountains.",
+      "Ignoring the requirement of both uphill and downhill.",
+      "Starting expansion from non-peak elements.",
+      "Not skipping processed mountains.",
+      "Accepting mountains of length less than 3."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Peak Expansion",
+    "recognitionSignals": "Whenever the problem asks for an increasing sequence followed immediately by a decreasing sequence, think of Peak Expansion.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every subarray and verify whether it forms a mountain.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate all subarrays.",
+        "Check increasing part.",
+        "Check decreasing part.",
+        "Return maximum valid length."
+      ],
+      "dryRun": "Check every possible subarray individually.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted due to high complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n³)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Dynamic Programming",
+      "idea": "Compute increasing lengths from the left and decreasing lengths from the right. Combine them to determine mountain lengths.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build increasing array.",
+        "Build decreasing array.",
+        "For every index, if both values are greater than zero, compute mountain length.",
+        "Return maximum length."
+      ],
+      "dryRun": "Precompute uphill and downhill lengths.",
+      "visualization": {},
+      "code": {
+        "java": "Uses two DP arrays.",
+        "python": "Uses DP arrays.",
+        "cpp": "Uses vectors.",
+        "javascript": "Uses arrays."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Peak Expansion",
+      "idea": "Traverse the array to find every valid peak. From each peak, expand left while values are strictly increasing and expand right while values are strictly decreasing. Calculate the mountain length and skip processed elements.",
+      "intuition": "Every element is visited at most a constant number of times while expanding mountains, resulting in linear time complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize answer = 0.",
+        "Traverse from index 1 to n-2.",
+        "Check if current element is a peak.",
+        "Expand left while increasing.",
+        "Expand right while decreasing.",
+        "Update maximum mountain length.",
+        "Continue from the end of the current mountain."
+      ],
+      "dryRun": "arr=[2,1,4,7,3,2,5]\nPeak=7\nExpand Left→1\nExpand Right→2\nMountain=[1,4,7,3,2]\nLength=5\nAnswer=5",
+      "visualization": {},
+      "code": {
+        "java": "public int longestMountain(int[] arr) {\n    int n = arr.length;\n    int ans = 0;\n    int i = 1;\n\n    while (i < n - 1) {\n        if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {\n            int left = i;\n            int right = i;\n\n            while (left > 0 && arr[left] > arr[left - 1]) left--;\n            while (right < n - 1 && arr[right] > arr[right + 1]) right++;\n\n            ans = Math.max(ans, right - left + 1);\n            i = right;\n        } else {\n            i++;\n        }\n    }\n\n    return ans;\n}",
+        "python": "def longestMountain(arr):\n    n = len(arr)\n    ans = 0\n    i = 1\n\n    while i < n - 1:\n        if arr[i] > arr[i - 1] and arr[i] > arr[i + 1]:\n            left = i\n            right = i\n\n            while left > 0 and arr[left] > arr[left - 1]:\n                left -= 1\n\n            while right < n - 1 and arr[right] > arr[right + 1]:\n                right += 1\n\n            ans = max(ans, right - left + 1)\n            i = right\n        else:\n            i += 1\n\n    return ans",
+        "cpp": "int longestMountain(vector<int>& arr) {\n    int n = arr.size();\n    int ans = 0;\n\n    for (int i = 1; i < n - 1;) {\n        if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {\n            int left = i;\n            int right = i;\n\n            while (left > 0 && arr[left] > arr[left - 1]) left--;\n            while (right < n - 1 && arr[right] > arr[right + 1]) right++;\n\n            ans = max(ans, right - left + 1);\n            i = right;\n        } else {\n            i++;\n        }\n    }\n\n    return ans;\n}",
+        "javascript": "function longestMountain(arr) {\n    let n = arr.length;\n    let ans = 0;\n    let i = 1;\n\n    while (i < n - 1) {\n        if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {\n            let left = i;\n            let right = i;\n\n            while (left > 0 && arr[left] > arr[left - 1]) left--;\n            while (right < n - 1 && arr[right] > arr[right + 1]) right++;\n\n            ans = Math.max(ans, right - left + 1);\n            i = right;\n        } else {\n            i++;\n        }\n    }\n\n    return ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Find a peak, then expand to both sides.",
+    "steps": [
+      "Locate a peak.",
+      "Expand left while increasing.",
+      "Expand right while decreasing.",
+      "Compute mountain length.",
+      "Track the maximum."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Find valid peaks.",
+      "Expand left and right.",
+      "Strict inequalities only.",
+      "Skip processed mountains.",
+      "Linear traversal."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using DP?",
+      "Why does every mountain need a peak?",
+      "How do duplicate values affect the answer?",
+      "Can the actual mountain be returned?",
+      "How would you count all mountains?"
+    ],
+    "interviewTips": [
+      "Define a valid mountain first.",
+      "Explain peak detection.",
+      "Mention why duplicates are invalid.",
+      "Show peak expansion.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every valid mountain has exactly one peak.",
+      "algorithm": "Find Peak → Expand Left → Expand Right → Update Maximum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Peak must satisfy left < peak > right.",
+      "Mountain length must be at least 3.",
+      "Duplicates invalidate a mountain.",
+      "Expansion visits each element only a few times.",
+      "O(n) time and O(1) space."
+    ],
+    "commonMistakes": [
+      "Treating plateaus as mountains.",
+      "Ignoring the requirement of both uphill and downhill.",
+      "Starting expansion from non-peak elements.",
+      "Not skipping processed mountains.",
+      "Accepting mountains of length less than 3."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/longest-mountain-in-array/",
+    "neetcode": "https://neetcode.io/problems/longest-mountain-in-array",
+    "youtube": [
+      "NeetCode - Longest Mountain in Array",
+      "Take U Forward - Longest Mountain",
+      "CodeHelp - Array Problems",
+      "Nick White - Longest Mountain",
+      "Abdul Bari - Array Algorithms"
+    ],
+    "relatedProblems": [
+      "Peak Index in a Mountain Array",
+      "Valid Mountain Array",
+      "Longest Increasing Subsequence",
+      "Trapping Rain Water",
+      "Find Peak Element"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

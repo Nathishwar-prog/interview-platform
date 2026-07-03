@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr039",
+    "title": "Maximum Subarray",
+    "slug": "maximum-subarray",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Dynamic Programming",
+    "pattern": "Kadane's Algorithm",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Divide and Conquer"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "52.8%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Dynamic Programming Basics, Kadane's Algorithm, Time Complexity",
+    "whyDoesThisExist": "Imagine tracking daily profits and losses of a company. You want to determine the continuous period that generated the highest overall profit.",
+    "realWorldAnalogy": "Imagine tracking daily profits and losses of a company. You want to determine the continuous period that generated the highest overall profit.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Dynamic Programming Basics",
+      "Kadane's Algorithm",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use Kadane's Algorithm whenever a problem asks for the maximum sum of a contiguous subarray in linear time.",
+    "patternRecognitionKeywords": [
+      "Maximum Subarray",
+      "Kadane",
+      "Running Sum",
+      "Dynamic Programming",
+      "Contiguous",
+      "Maximum Sum"
+    ],
+    "signals": "Whenever the problem asks for the maximum sum of a contiguous subarray, immediately think of Kadane's Algorithm.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, find the contiguous subarray that has the largest sum and return its sum.",
+    "examples": [
+      {
+        "input": "nums = [-2,1,-3,4,-1,2,1,-5,4]",
+        "output": "6",
+        "explanation": "The subarray [4,-1,2,1] has the largest sum, which is 6."
+      },
+      {
+        "input": "nums = [1]",
+        "output": "1",
+        "explanation": "The only element forms the maximum subarray."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "-10000 <= nums[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All positive numbers",
+      "All negative numbers",
+      "Contains zeros",
+      "Maximum subarray at the beginning or end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible subarray and calculate its sum.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "If the current running sum becomes negative, it can only decrease the sum of any future subarray. Therefore, discard it and start a new subarray from the current element.",
+    "ahaMoment": "A negative running sum can never help future subarrays.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for the maximum sum of a contiguous subarray, immediately think of Kadane's Algorithm.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "A negative running sum cannot contribute positively to any future subarray, so it is discarded. Every element is processed exactly once.",
+    "howToRecognizeSimilar": "Whenever the problem asks for the maximum sum of a contiguous subarray, immediately think of Kadane's Algorithm.",
+    "commonWrongPaths": [
+      "Resetting the sum to zero for all-negative arrays.",
+      "Using nested loops unnecessarily.",
+      "Returning the running sum instead of the global maximum.",
+      "Ignoring the first element initialization.",
+      "Confusing subsequence with subarray."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Maintain a running sum.",
+      "Restart the sum whenever it becomes negative.",
+      "Keep updating the maximum sum."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Resetting the sum to zero for all-negative arrays.",
+      "Using nested loops unnecessarily.",
+      "Returning the running sum instead of the global maximum.",
+      "Ignoring the first element initialization.",
+      "Confusing subsequence with subarray."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Kadane's Algorithm",
+    "recognitionSignals": "Whenever the problem asks for the maximum sum of a contiguous subarray, immediately think of Kadane's Algorithm.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every possible subarray and calculate its sum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every subarray.",
+        "Compute each subarray sum.",
+        "Track the largest sum.",
+        "Return the answer."
+      ],
+      "dryRun": "Check every contiguous subarray.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Dynamic Programming",
+      "idea": "Let dp[i] represent the maximum subarray sum ending at index i. The answer is the maximum value in the DP array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize dp[0] = nums[0].",
+        "For every index, choose between extending the previous subarray or starting a new one.",
+        "Track the maximum DP value.",
+        "Return the answer."
+      ],
+      "dryRun": "Fill the DP array from left to right.",
+      "visualization": {},
+      "code": {
+        "java": "Uses DP array.",
+        "python": "Uses DP.",
+        "cpp": "Uses vector.",
+        "javascript": "Uses array."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Kadane's Algorithm",
+      "idea": "Maintain the maximum subarray sum ending at the current position. If the running sum becomes negative, restart from the current element. Continuously update the global maximum.",
+      "intuition": "A negative running sum cannot contribute positively to any future subarray, so it is discarded. Every element is processed exactly once.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize currentSum and maxSum with nums[0].",
+        "Traverse from index 1.",
+        "Update currentSum = max(nums[i], currentSum + nums[i]).",
+        "Update maxSum = max(maxSum, currentSum).",
+        "Return maxSum."
+      ],
+      "dryRun": "nums=[-2,1,-3,4,-1,2,1,-5,4]\nCurrent=-2 Max=-2\n1→Current=1 Max=1\n-3→Current=-2\n4→Current=4 Max=4\n-1→Current=3\n2→Current=5 Max=5\n1→Current=6 Max=6\n-5→Current=1\n4→Current=5\nAnswer=6",
+      "visualization": {},
+      "code": {
+        "java": "public int maxSubArray(int[] nums) {\n    int currentSum = nums[0];\n    int maxSum = nums[0];\n\n    for (int i = 1; i < nums.length; i++) {\n        currentSum = Math.max(nums[i], currentSum + nums[i]);\n        maxSum = Math.max(maxSum, currentSum);\n    }\n\n    return maxSum;\n}",
+        "python": "def maxSubArray(nums):\n    current = nums[0]\n    maximum = nums[0]\n\n    for num in nums[1:]:\n        current = max(num, current + num)\n        maximum = max(maximum, current)\n\n    return maximum",
+        "cpp": "int maxSubArray(vector<int>& nums) {\n    int current = nums[0];\n    int maximum = nums[0];\n\n    for (int i = 1; i < nums.size(); i++) {\n        current = max(nums[i], current + nums[i]);\n        maximum = max(maximum, current);\n    }\n\n    return maximum;\n}",
+        "javascript": "function maxSubArray(nums) {\n    let current = nums[0];\n    let maximum = nums[0];\n\n    for (let i = 1; i < nums.length; i++) {\n        current = Math.max(nums[i], current + nums[i]);\n        maximum = Math.max(maximum, current);\n    }\n\n    return maximum;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Extend the current subarray only if it improves the sum.",
+    "steps": [
+      "Start with the first element.",
+      "Add the next element.",
+      "Restart if the running sum becomes worse.",
+      "Track the maximum sum.",
+      "Continue until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Maintain current sum.",
+      "Restart if extending is worse.",
+      "Update global maximum.",
+      "Kadane runs in O(n).",
+      "Works for negative numbers."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can you return the actual maximum subarray?",
+      "Why does Kadane's Algorithm work?",
+      "How does the DP solution differ?",
+      "Can Divide and Conquer solve it?",
+      "How would you solve the circular version?"
+    ],
+    "interviewTips": [
+      "Start with brute force.",
+      "Explain why negative running sums are discarded.",
+      "Introduce Kadane's Algorithm.",
+      "Mention the all-negative edge case.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A negative running sum can never help future subarrays.",
+      "algorithm": "Current = max(num, Current + num) → Update Maximum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Current sum stores the best subarray ending here.",
+      "Restart when the current element is better.",
+      "Track the global maximum.",
+      "Linear traversal.",
+      "O(n) time and O(1) space."
+    ],
+    "commonMistakes": [
+      "Resetting the sum to zero for all-negative arrays.",
+      "Using nested loops unnecessarily.",
+      "Returning the running sum instead of the global maximum.",
+      "Ignoring the first element initialization.",
+      "Confusing subsequence with subarray."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-subarray/",
+    "neetcode": "https://neetcode.io/problems/maximum-subarray",
+    "youtube": [
+      "NeetCode - Maximum Subarray",
+      "Take U Forward - Kadane's Algorithm",
+      "CodeHelp - Maximum Subarray",
+      "Abdul Bari - Kadane's Algorithm",
+      "Nick White - Maximum Subarray"
+    ],
+    "relatedProblems": [
+      "Maximum Product Subarray",
+      "Maximum Sum Circular Subarray",
+      "Best Time to Buy and Sell Stock",
+      "House Robber",
+      "Maximum Average Subarray I"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

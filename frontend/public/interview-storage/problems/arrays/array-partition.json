@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "id": "arr003",
+    "title": "Array Partition",
+    "slug": "array-partition",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Sorting",
+    "pattern": "Greedy Sorting",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Greedy",
+      "Pairing"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "76.8%",
+    "estimatedTime": "10-15 minutes",
+    "practiceLevel": "Beginner",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Greedy Algorithms, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine you are pairing employees into teams. Each team's performance depends on the weaker employee. To maximize the overall performance, you should pair employees with similar skill levels instead of pairing the strongest with the weakest. Sorting naturally creates the best pairings.",
+    "realWorldAnalogy": "Imagine you are pairing employees into teams. Each team's performance depends on the weaker employee. To maximize the overall performance, you should pair employees with similar skill levels instead of pairing the strongest with the weakest. Sorting naturally creates the best pairings.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Greedy Algorithms",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this greedy sorting technique whenever you need to maximize the minimum element of every pair after partitioning an array.",
+    "patternRecognitionKeywords": [
+      "Pair",
+      "Minimum",
+      "Sorting",
+      "Greedy",
+      "Partition",
+      "Adjacent"
+    ],
+    "signals": "Whenever a problem asks to maximize the minimum value of every pair, think of sorting and pairing adjacent elements.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums of 2n integers, group these integers into n pairs such that the sum of the minimum value in each pair is maximized. Return the maximum possible sum.",
+    "examples": [
+      {
+        "input": "nums = [1,4,3,2]",
+        "output": "4",
+        "explanation": "Optimal pairing is (1,2) and (3,4). Sum of minimums = 1 + 3 = 4."
+      },
+      {
+        "input": "nums = [6,2,6,5,1,2]",
+        "output": "9",
+        "explanation": "Sorted array = [1,2,2,5,6,6]. Pair adjacent values. Sum = 1 + 2 + 6 = 9."
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 10000",
+      "nums.length == 2 * n",
+      "-10000 <= nums[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Duplicate values",
+      "Negative numbers",
+      "All elements equal",
+      "Already sorted array",
+      "Reverse sorted array",
+      "Minimum array size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible way of pairing the numbers and compute the sum of pair minimums. Return the maximum.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since only the smaller element of every pair contributes to the answer, we should maximize those smaller values. Sorting the array and pairing adjacent elements ensures every minimum is as large as possible.",
+    "ahaMoment": "After sorting, every alternate element becomes the minimum of its pair.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks to maximize the minimum value of every pair, think of sorting and pairing adjacent elements.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Sorting guarantees that pairing adjacent numbers maximizes every pair's minimum value. After sorting, every alternate element is the minimum of its pair and contributes to the maximum possible sum.",
+    "howToRecognizeSimilar": "Whenever a problem asks to maximize the minimum value of every pair, think of sorting and pairing adjacent elements.",
+    "commonWrongPaths": [
+      "Pairing largest with smallest.",
+      "Adding every element instead of alternate elements.",
+      "Skipping sorting.",
+      "Using wrong loop increment.",
+      "Confusing minimum with maximum."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Try sorting the array first.",
+      "Pair neighboring elements.",
+      "Only every alternate element contributes to the answer."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Pairing largest with smallest.",
+      "Adding every element instead of alternate elements.",
+      "Skipping sorting.",
+      "Using wrong loop increment.",
+      "Confusing minimum with maximum."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy Sorting",
+    "recognitionSignals": "Whenever a problem asks to maximize the minimum value of every pair, think of sorting and pairing adjacent elements.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Generate Every Pairing",
+      "idea": "Generate every possible way of pairing the numbers and compute the sum of pair minimums. Return the maximum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate all possible pair combinations.",
+        "Compute minimum of every pair.",
+        "Calculate total sum.",
+        "Return the maximum sum."
+      ],
+      "dryRun": "nums=[1,4,3,2]\nPossible pairings:\n(1,4),(2,3)=3\n(1,2),(3,4)=4\nMaximum=4",
+      "visualization": {},
+      "code": {
+        "java": "Brute force pairing generation is omitted because of exponential complexity.",
+        "python": "Recursive pairing solution omitted due to exponential complexity.",
+        "cpp": "Brute force recursive pairing omitted.",
+        "javascript": "Recursive pairing solution omitted."
+      },
+      "complexities": {
+        "time": "O((2n)!)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sort and Pair Adjacent Elements",
+      "idea": "Sort the array and pair neighboring elements. Add every first element of each pair.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array.",
+        "Traverse with step size 2.",
+        "Add nums[i] into answer.",
+        "Return answer."
+      ],
+      "dryRun": "Sorted=[1,2,3,4]\nTake 1\nTake 3\nAnswer=4",
+      "visualization": {},
+      "code": {
+        "java": "Arrays.sort(nums); int sum=0; for(int i=0;i<nums.length;i+=2) sum+=nums[i];",
+        "python": "nums.sort(); return sum(nums[::2])",
+        "cpp": "sort(nums.begin(),nums.end());",
+        "javascript": "nums.sort((a,b)=>a-b);"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Sorting",
+      "idea": "Sort the array in ascending order. Pair consecutive elements. Since the smaller element of each pair contributes to the answer, adding every alternate element maximizes the total.",
+      "intuition": "Sorting guarantees that pairing adjacent numbers maximizes every pair's minimum value. After sorting, every alternate element is the minimum of its pair and contributes to the maximum possible sum.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort nums.",
+        "Initialize answer = 0.",
+        "Traverse from index 0 with step size 2.",
+        "Add nums[i] to answer.",
+        "Return answer."
+      ],
+      "dryRun": "nums=[6,2,6,5,1,2]\nSorted=[1,2,2,5,6,6]\nPairs=(1,2),(2,5),(6,6)\nAnswer=1+2+6=9",
+      "visualization": {},
+      "code": {
+        "java": "public int arrayPairSum(int[] nums) {\n    Arrays.sort(nums);\n    int sum = 0;\n    for(int i = 0; i < nums.length; i += 2){\n        sum += nums[i];\n    }\n    return sum;\n}",
+        "python": "def arrayPairSum(nums):\n    nums.sort()\n    ans = 0\n    for i in range(0, len(nums), 2):\n        ans += nums[i]\n    return ans",
+        "cpp": "int arrayPairSum(vector<int>& nums){\n    sort(nums.begin(), nums.end());\n    int sum=0;\n    for(int i=0;i<nums.size();i+=2)\n        sum+=nums[i];\n    return sum;\n}",
+        "javascript": "function arrayPairSum(nums){\n    nums.sort((a,b)=>a-b);\n    let sum=0;\n    for(let i=0;i<nums.length;i+=2)\n        sum+=nums[i];\n    return sum;\n}"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Sorting creates the best adjacent pairs.",
+    "steps": [
+      "Sort array.",
+      "Create adjacent pairs.",
+      "Take the first element from every pair.",
+      "Add all minimums."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort first.",
+      "Pair adjacent elements.",
+      "Take every alternate element.",
+      "Greedy proof is based on adjacent pairing.",
+      "Easy sorting interview problem."
+    ],
+    "practiceLevel": "Beginner",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved in O(n) using counting sort?",
+      "Why does adjacent pairing always work?",
+      "What if the array cannot be reordered?",
+      "How would negative numbers affect the solution?",
+      "Can you prove the greedy strategy?"
+    ],
+    "interviewTips": [
+      "Explain why sorting helps.",
+      "Mention that adjacent pairing maximizes pair minimums.",
+      "State that only even indices contribute.",
+      "Give the greedy proof.",
+      "Discuss counting sort optimization when values are bounded."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "After sorting, every alternate element becomes the minimum of its pair.",
+      "algorithm": "Sort → Pair neighbors → Sum elements at even indices.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Sorting is mandatory.",
+      "Answer uses indices 0,2,4,...",
+      "Adjacent pairing is optimal.",
+      "Greedy solution.",
+      "Simple implementation."
+    ],
+    "commonMistakes": [
+      "Pairing largest with smallest.",
+      "Adding every element instead of alternate elements.",
+      "Skipping sorting.",
+      "Using wrong loop increment.",
+      "Confusing minimum with maximum."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/array-partition/",
+    "neetcode": "https://neetcode.io/",
+    "youtube": [
+      "NeetCode - Array Partition",
+      "Take U Forward - Greedy",
+      "CodeHelp - Array Problems",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Array Partition"
+    ],
+    "relatedProblems": [
+      "Advantage Shuffle",
+      "Assign Cookies",
+      "Maximum Units on a Truck",
+      "Boats to Save People",
+      "Minimum Difference Between Highest and Lowest"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr037",
+    "title": "Maximum Points You Can Obtain from Cards",
+    "slug": "maximum-points-you-can-obtain-from-cards",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Complement Sliding Window",
+    "tags": [
+      "Array",
+      "Sliding Window",
+      "Prefix Sum"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "46.2%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sliding Window, Prefix Sum, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine choosing souvenirs from a shelf where you can only take items from the left or right end. You want to maximize the total value after picking exactly k items.",
+    "realWorldAnalogy": "Imagine choosing souvenirs from a shelf where you can only take items from the left or right end. You want to maximize the total value after picking exactly k items.",
+    "prerequisites": [
+      "Arrays",
+      "Sliding Window",
+      "Prefix Sum",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Complement Sliding Window pattern whenever you need to select elements from both ends while leaving one contiguous middle segment.",
+    "patternRecognitionKeywords": [
+      "Sliding Window",
+      "Both Ends",
+      "Complement",
+      "Maximum Score",
+      "Fixed Window",
+      "Cards"
+    ],
+    "signals": "Whenever elements can only be chosen from both ends and exactly k selections are required, think about leaving one contiguous middle segment and solve it using Sliding Window.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "There are several cards arranged in a row, and each card has an associated number of points. You can pick exactly k cards. In each step, you can take one card from either the beginning or the end of the row. Return the maximum score you can obtain.",
+    "examples": [
+      {
+        "input": "cardPoints = [1,2,3,4,5,6,1], k = 3",
+        "output": "12",
+        "explanation": "Choose cards with values 6, 5, and 1 for a total of 12."
+      },
+      {
+        "input": "cardPoints = [2,2,2], k = 2",
+        "output": "4",
+        "explanation": "Pick any two cards."
+      }
+    ],
+    "constraints": [
+      "1 <= cardPoints.length <= 100000",
+      "1 <= cardPoints[i] <= 10000",
+      "1 <= k <= cardPoints.length"
+    ],
+    "edgeCases": [
+      "k equals array length",
+      "k equals 1",
+      "Single card",
+      "All equal values",
+      "Maximum score comes entirely from one side"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Recursively try every possible combination of taking cards from the left and right.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of choosing k cards from the ends, think of leaving behind n-k consecutive cards in the middle. Minimize the sum of those remaining cards, then subtract it from the total sum.",
+    "ahaMoment": "Selecting k cards from both ends is equivalent to removing one contiguous subarray of length n-k.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever elements can only be chosen from both ends and exactly k selections are required, think about leaving one contiguous middle segment and solve it using Sliding Window.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Selecting k cards from both ends is equivalent to leaving one contiguous middle subarray of size n-k. Finding the minimum such subarray using Sliding Window gives the maximum obtainable score in linear time.",
+    "howToRecognizeSimilar": "Whenever elements can only be chosen from both ends and exactly k selections are required, think about leaving one contiguous middle segment and solve it using Sliding Window.",
+    "commonWrongPaths": [
+      "Trying every left/right combination recursively.",
+      "Forgetting that exactly k cards must be chosen.",
+      "Not handling k equal to array length.",
+      "Using a maximum instead of a minimum window.",
+      "Incorrect sliding window boundaries."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Find the total sum first.",
+      "Instead of selecting k cards, remove n-k cards.",
+      "Use a sliding window to find the minimum middle sum."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Trying every left/right combination recursively.",
+      "Forgetting that exactly k cards must be chosen.",
+      "Not handling k equal to array length.",
+      "Using a maximum instead of a minimum window.",
+      "Incorrect sliding window boundaries."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Complement Sliding Window",
+    "recognitionSignals": "Whenever elements can only be chosen from both ends and exactly k selections are required, think about leaving one contiguous middle segment and solve it using Sliding Window.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Combination",
+      "idea": "Recursively try every possible combination of taking cards from the left and right.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Pick from the left.",
+        "Pick from the right.",
+        "Repeat until k cards are chosen.",
+        "Return the maximum score."
+      ],
+      "dryRun": "Explore every possible left/right choice.",
+      "visualization": {},
+      "code": {
+        "java": "Recursive solution omitted due to exponential complexity.",
+        "python": "Recursive solution omitted.",
+        "cpp": "Recursive solution omitted.",
+        "javascript": "Recursive solution omitted."
+      },
+      "complexities": {
+        "time": "O(2^k)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix and Suffix Sums",
+      "idea": "Precompute prefix and suffix sums, then try every possible split between left and right picks.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build prefix sums.",
+        "Build suffix sums.",
+        "Try all left/right combinations.",
+        "Return the maximum score."
+      ],
+      "dryRun": "Combine i cards from the left and k-i cards from the right.",
+      "visualization": {},
+      "code": {
+        "java": "Uses prefix and suffix arrays.",
+        "python": "Uses prefix/suffix arrays.",
+        "cpp": "Uses vectors.",
+        "javascript": "Uses arrays."
+      },
+      "complexities": {
+        "time": "O(k)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Complement Sliding Window",
+      "idea": "Compute the total sum of all cards. Find the minimum sum subarray of length n-k using a sliding window. The answer equals totalSum minus this minimum window sum.",
+      "intuition": "Selecting k cards from both ends is equivalent to leaving one contiguous middle subarray of size n-k. Finding the minimum such subarray using Sliding Window gives the maximum obtainable score in linear time.",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute total array sum.",
+        "If k equals array length, return total sum.",
+        "Set window size = n-k.",
+        "Compute the first window sum.",
+        "Slide the window while maintaining the minimum window sum.",
+        "Return totalSum - minimumWindowSum."
+      ],
+      "dryRun": "cardPoints=[1,2,3,4,5,6,1], k=3\nTotal=22\nWindow Size=4\nWindow Sums:10→14→18→16\nMinimum=10\nAnswer=22-10=12",
+      "visualization": {},
+      "code": {
+        "java": "public int maxScore(int[] cardPoints, int k) {\n    int n = cardPoints.length;\n\n    if (k == n) {\n        int sum = 0;\n        for (int num : cardPoints) sum += num;\n        return sum;\n    }\n\n    int total = 0;\n    for (int num : cardPoints) total += num;\n\n    int windowSize = n - k;\n    int windowSum = 0;\n\n    for (int i = 0; i < windowSize; i++) {\n        windowSum += cardPoints[i];\n    }\n\n    int minSum = windowSum;\n\n    for (int i = windowSize; i < n; i++) {\n        windowSum += cardPoints[i] - cardPoints[i - windowSize];\n        minSum = Math.min(minSum, windowSum);\n    }\n\n    return total - minSum;\n}",
+        "python": "def maxScore(cardPoints, k):\n    n = len(cardPoints)\n\n    if k == n:\n        return sum(cardPoints)\n\n    total = sum(cardPoints)\n    windowSize = n - k\n\n    windowSum = sum(cardPoints[:windowSize])\n    minSum = windowSum\n\n    for i in range(windowSize, n):\n        windowSum += cardPoints[i] - cardPoints[i-windowSize]\n        minSum = min(minSum, windowSum)\n\n    return total - minSum",
+        "cpp": "int maxScore(vector<int>& cardPoints, int k) {\n    int n = cardPoints.size();\n\n    if (k == n)\n        return accumulate(cardPoints.begin(), cardPoints.end(), 0);\n\n    int total = accumulate(cardPoints.begin(), cardPoints.end(), 0);\n    int window = n - k;\n\n    int sum = 0;\n    for (int i = 0; i < window; i++)\n        sum += cardPoints[i];\n\n    int minSum = sum;\n\n    for (int i = window; i < n; i++) {\n        sum += cardPoints[i] - cardPoints[i-window];\n        minSum = min(minSum, sum);\n    }\n\n    return total - minSum;\n}",
+        "javascript": "function maxScore(cardPoints, k) {\n    const n = cardPoints.length;\n\n    if (k === n)\n        return cardPoints.reduce((a,b)=>a+b,0);\n\n    const total = cardPoints.reduce((a,b)=>a+b,0);\n    const window = n - k;\n\n    let sum = 0;\n    for (let i = 0; i < window; i++)\n        sum += cardPoints[i];\n\n    let minSum = sum;\n\n    for (let i = window; i < n; i++) {\n        sum += cardPoints[i] - cardPoints[i-window];\n        minSum = Math.min(minSum, sum);\n    }\n\n    return total - minSum;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Leave the smallest middle window and keep everything else.",
+    "steps": [
+      "Calculate total sum.",
+      "Create a window of size n-k.",
+      "Find the minimum window sum.",
+      "Subtract it from the total.",
+      "Return the maximum obtainable score."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Think in reverse.",
+      "Leave n-k consecutive cards.",
+      "Find the minimum window.",
+      "Answer = Total - Minimum Window.",
+      "Sliding Window."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why is finding the minimum middle window equivalent?",
+      "Can Prefix Sums solve this?",
+      "What if cards can only be picked from one side?",
+      "Can the picked indices be returned?",
+      "How would the solution change for variable k?"
+    ],
+    "interviewTips": [
+      "Start with brute-force recursion.",
+      "Recognize the complement idea.",
+      "Convert the problem into finding the minimum window.",
+      "Explain why window size is n-k.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Selecting k cards from both ends is equivalent to removing one contiguous subarray of length n-k.",
+      "algorithm": "Total Sum → Minimum Window (n-k) → Total - Minimum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Reverse the thinking.",
+      "Use a fixed-size sliding window.",
+      "Window size = n-k.",
+      "Minimum middle window gives maximum score.",
+      "Linear time solution."
+    ],
+    "commonMistakes": [
+      "Trying every left/right combination recursively.",
+      "Forgetting that exactly k cards must be chosen.",
+      "Not handling k equal to array length.",
+      "Using a maximum instead of a minimum window.",
+      "Incorrect sliding window boundaries."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/",
+    "neetcode": "https://neetcode.io/problems/maximum-points-you-can-obtain-from-cards",
+    "youtube": [
+      "NeetCode - Maximum Points You Can Obtain from Cards",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window",
+      "Nick White - Maximum Points from Cards"
+    ],
+    "relatedProblems": [
+      "Maximum Average Subarray I",
+      "Minimum Size Subarray Sum",
+      "Sliding Window Maximum",
+      "Maximum Subarray",
+      "Fruit Into Baskets"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

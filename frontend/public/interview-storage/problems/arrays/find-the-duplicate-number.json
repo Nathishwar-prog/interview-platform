@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "id": "arr020",
+    "title": "Find the Duplicate Number",
+    "slug": "find-the-duplicate-number",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Cycle Detection",
+    "pattern": "Floyd's Tortoise and Hare",
+    "tags": [
+      "Array",
+      "Two Pointers",
+      "Cycle Detection",
+      "Binary Search",
+      "Linked List"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "65.4%",
+    "estimatedTime": "30-35 minutes",
+    "practiceLevel": "Advanced",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Two Pointers, Cycle Detection, Binary Search, Time Complexity",
+    "whyDoesThisExist": "Imagine n students are assigned unique locker numbers from 1 to n, but one locker number is accidentally assigned to two students. If every locker points to another locker, the duplicate assignment creates a cycle. Detecting this cycle reveals the duplicated locker number.",
+    "realWorldAnalogy": "Imagine n students are assigned unique locker numbers from 1 to n, but one locker number is accidentally assigned to two students. If every locker points to another locker, the duplicate assignment creates a cycle. Detecting this cycle reveals the duplicated locker number.",
+    "prerequisites": [
+      "Arrays",
+      "Two Pointers",
+      "Cycle Detection",
+      "Binary Search",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use Floyd's Cycle Detection whenever an array represents pointers and the constraints require O(1) space without modifying the input.",
+    "patternRecognitionKeywords": [
+      "Duplicate",
+      "Cycle",
+      "Floyd",
+      "Tortoise",
+      "Hare",
+      "Linked List",
+      "Constant Space"
+    ],
+    "signals": "Whenever values point to valid indices and the problem asks for constant space without modifying the array, think of Floyd's Cycle Detection.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array nums containing n + 1 integers where each integer is in the range [1, n] inclusive, there is only one repeated number, but it may appear more than once. Return the duplicate number. You must solve the problem without modifying the array and using only constant extra space.",
+    "examples": [
+      {
+        "input": "nums = [1,3,4,2,2]",
+        "output": "2",
+        "explanation": "The number 2 appears twice."
+      },
+      {
+        "input": "nums = [3,1,3,4,2]",
+        "output": "3",
+        "explanation": "The number 3 is repeated."
+      }
+    ],
+    "constraints": [
+      "1 <= n <= 100000",
+      "nums.length == n + 1",
+      "1 <= nums[i] <= n",
+      "Exactly one duplicate number exists.",
+      "Do not modify the array.",
+      "Use only constant extra space."
+    ],
+    "edgeCases": [
+      "Duplicate appears twice",
+      "Duplicate appears multiple times",
+      "Duplicate at beginning",
+      "Duplicate at end",
+      "Minimum array size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every pair of numbers until a duplicate is found.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Treat every array value as the next pointer in a linked list. Since there are n+1 numbers but only n possible values, a cycle must exist. The entry point of that cycle is the duplicate number.",
+    "ahaMoment": "n+1 nodes pointing to n positions must create a cycle.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever values point to valid indices and the problem asks for constant space without modifying the array, think of Floyd's Cycle Detection.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The duplicate creates a cycle in the virtual linked list. Floyd's algorithm finds the cycle entrance using constant memory and without modifying the array.",
+    "howToRecognizeSimilar": "Whenever values point to valid indices and the problem asks for constant space without modifying the array, think of Floyd's Cycle Detection.",
+    "commonWrongPaths": [
+      "Trying to modify the array.",
+      "Using HashSet despite constant-space requirement.",
+      "Confusing indices with values.",
+      "Resetting the wrong pointer.",
+      "Using fast pointer incorrectly."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Think of the array as a linked list.",
+      "Duplicate creates a cycle.",
+      "Use Floyd's Tortoise and Hare algorithm."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Trying to modify the array.",
+      "Using HashSet despite constant-space requirement.",
+      "Confusing indices with values.",
+      "Resetting the wrong pointer.",
+      "Using fast pointer incorrectly."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Floyd's Tortoise and Hare",
+    "recognitionSignals": "Whenever values point to valid indices and the problem asks for constant space without modifying the array, think of Floyd's Cycle Detection.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Nested Loop Comparison",
+      "idea": "Compare every pair of numbers until a duplicate is found.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Loop through every element.",
+        "Compare it with every remaining element.",
+        "Return the duplicate."
+      ],
+      "dryRun": "nums=[1,3,4,2,2]\nCompare every pair.\nDuplicate = 2",
+      "visualization": {},
+      "code": {
+        "java": "public int findDuplicate(int[] nums){\n    for(int i=0;i<nums.length;i++){\n        for(int j=i+1;j<nums.length;j++){\n            if(nums[i]==nums[j]) return nums[i];\n        }\n    }\n    return -1;\n}",
+        "python": "def findDuplicate(nums):\n    for i in range(len(nums)):\n        for j in range(i+1,len(nums)):\n            if nums[i]==nums[j]:\n                return nums[i]",
+        "cpp": "Nested loop comparison.",
+        "javascript": "Nested loop comparison."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashSet",
+      "idea": "Store visited numbers in a HashSet. Return the first number already present.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a HashSet.",
+        "Traverse the array.",
+        "If current number already exists, return it.",
+        "Otherwise insert it."
+      ],
+      "dryRun": "Seen={1,3,4}\nVisit 2\nVisit 2 again → Duplicate",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashSet.",
+        "python": "Uses set().",
+        "cpp": "Uses unordered_set.",
+        "javascript": "Uses Set."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Floyd's Tortoise and Hare Cycle Detection",
+      "idea": "Treat each array value as a pointer to the next index. Use slow and fast pointers to detect the cycle. After they meet, move one pointer back to the beginning. The point where they meet again is the duplicate number.",
+      "intuition": "The duplicate creates a cycle in the virtual linked list. Floyd's algorithm finds the cycle entrance using constant memory and without modifying the array.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize slow and fast to nums[0].",
+        "Move slow one step.",
+        "Move fast two steps.",
+        "Continue until they meet.",
+        "Initialize another pointer at nums[0].",
+        "Move both pointers one step.",
+        "When they meet again, return the value."
+      ],
+      "dryRun": "nums=[1,3,4,2,2]\nSlow=1 Fast=1\nSlow=3 Fast=2\nSlow=2 Fast=2 (Meet)\nStart=1\nMove both → Meet at 2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int findDuplicate(int[] nums) {\n    int slow = nums[0];\n    int fast = nums[0];\n\n    do{\n        slow = nums[slow];\n        fast = nums[nums[fast]];\n    }while(slow != fast);\n\n    slow = nums[0];\n\n    while(slow != fast){\n        slow = nums[slow];\n        fast = nums[fast];\n    }\n\n    return slow;\n}",
+        "python": "def findDuplicate(nums):\n    slow = nums[0]\n    fast = nums[0]\n\n    while True:\n        slow = nums[slow]\n        fast = nums[nums[fast]]\n        if slow == fast:\n            break\n\n    slow = nums[0]\n\n    while slow != fast:\n        slow = nums[slow]\n        fast = nums[fast]\n\n    return slow",
+        "cpp": "int findDuplicate(vector<int>& nums){\n    int slow=nums[0],fast=nums[0];\n    do{\n        slow=nums[slow];\n        fast=nums[nums[fast]];\n    }while(slow!=fast);\n\n    slow=nums[0];\n    while(slow!=fast){\n        slow=nums[slow];\n        fast=nums[fast];\n    }\n\n    return slow;\n}",
+        "javascript": "function findDuplicate(nums){\nlet slow=nums[0],fast=nums[0];\ndo{\nslow=nums[slow];\nfast=nums[nums[fast]];\n}while(slow!==fast);\n\nslow=nums[0];\nwhile(slow!==fast){\nslow=nums[slow];\nfast=nums[fast];\n}\n\nreturn slow;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Array values form pointers that eventually create a cycle.",
+    "steps": [
+      "Treat values as next pointers.",
+      "Detect the cycle.",
+      "Reset one pointer.",
+      "Meeting point is the duplicate."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Treat array as linked list.",
+      "Duplicate creates cycle.",
+      "Use Floyd's algorithm.",
+      "Reset one pointer.",
+      "Meeting point is answer."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does Floyd's algorithm work?",
+      "Can Binary Search solve this problem?",
+      "Why is there always a cycle?",
+      "What if multiple duplicates exist?",
+      "Can you solve it by sorting?"
+    ],
+    "interviewTips": [
+      "Mention the HashSet solution first.",
+      "Explain why the array behaves like a linked list.",
+      "Describe why a cycle must exist.",
+      "Explain both phases of Floyd's algorithm.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "n+1 nodes pointing to n positions must create a cycle.",
+      "algorithm": "Detect Cycle → Find Cycle Entrance.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Do not modify array.",
+      "O(1) extra space.",
+      "Cycle Detection.",
+      "Linked list interpretation.",
+      "Classic interview problem."
+    ],
+    "commonMistakes": [
+      "Trying to modify the array.",
+      "Using HashSet despite constant-space requirement.",
+      "Confusing indices with values.",
+      "Resetting the wrong pointer.",
+      "Using fast pointer incorrectly."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/find-the-duplicate-number/",
+    "neetcode": "https://neetcode.io/problems/find-duplicate-integer",
+    "youtube": [
+      "NeetCode - Find the Duplicate Number",
+      "Take U Forward - Floyd Cycle Detection",
+      "CodeHelp - Find Duplicate Number",
+      "Abdul Bari - Cycle Detection",
+      "Nick White - Find the Duplicate Number"
+    ],
+    "relatedProblems": [
+      "Find All Duplicates in an Array",
+      "Find All Numbers Disappeared in an Array",
+      "Linked List Cycle",
+      "Linked List Cycle II",
+      "First Missing Positive"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

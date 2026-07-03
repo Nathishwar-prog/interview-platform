@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "id": "arr023",
+    "title": "Fruit Into Baskets",
+    "slug": "fruit-into-baskets",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Variable Size Sliding Window",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Sliding Window",
+      "Two Pointers"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "46.8%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, HashMap, Sliding Window, Two Pointers, Time Complexity",
+    "whyDoesThisExist": "Imagine walking through an orchard carrying two baskets. Each basket can hold only one fruit type. As you walk from left to right, you keep collecting fruits until you encounter a third fruit type that cannot fit into either basket.",
+    "realWorldAnalogy": "Imagine walking through an orchard carrying two baskets. Each basket can hold only one fruit type. As you walk from left to right, you keep collecting fruits until you encounter a third fruit type that cannot fit into either basket.",
+    "prerequisites": [
+      "Arrays",
+      "HashMap",
+      "Sliding Window",
+      "Two Pointers",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Variable Size Sliding Window pattern whenever a problem asks for the longest or shortest subarray satisfying a constraint on distinct elements.",
+    "patternRecognitionKeywords": [
+      "Sliding Window",
+      "Two Baskets",
+      "At Most Two Distinct",
+      "Longest Subarray",
+      "HashMap",
+      "Two Pointers"
+    ],
+    "signals": "Whenever a problem asks for the longest contiguous subarray with at most K distinct elements, think of Variable Size Sliding Window.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are visiting a farm that has a row of fruit trees represented by an integer array fruits, where fruits[i] is the type of fruit produced by the ith tree. You have exactly two baskets, and each basket can hold only one type of fruit. Starting from any tree, collect exactly one fruit from every tree while moving to the right until you encounter a third fruit type. Return the maximum number of fruits you can collect.",
+    "examples": [
+      {
+        "input": "fruits = [1,2,1]",
+        "output": "3",
+        "explanation": "Both baskets hold fruit types 1 and 2, so all fruits can be collected."
+      },
+      {
+        "input": "fruits = [0,1,2,2]",
+        "output": "3",
+        "explanation": "Collect fruits [1,2,2]."
+      },
+      {
+        "input": "fruits = [1,2,3,2,2]",
+        "output": "4",
+        "explanation": "Collect fruits [2,3,2,2]."
+      }
+    ],
+    "constraints": [
+      "1 <= fruits.length <= 100000",
+      "0 <= fruits[i] < fruits.length"
+    ],
+    "edgeCases": [
+      "Single tree",
+      "Only one fruit type",
+      "Exactly two fruit types",
+      "More than two fruit types",
+      "All trees different",
+      "Longest window at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible subarray and count distinct fruit types until more than two types appear.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The problem asks for the longest contiguous subarray containing at most two distinct numbers. Maintain a sliding window while tracking the frequency of fruit types inside the window.",
+    "ahaMoment": "The problem is equivalent to finding the longest subarray containing at most two distinct elements.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks for the longest contiguous subarray with at most K distinct elements, think of Variable Size Sliding Window.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each tree enters and leaves the sliding window at most once. Therefore, every element is processed a constant number of times, resulting in linear time complexity.",
+    "howToRecognizeSimilar": "Whenever a problem asks for the longest contiguous subarray with at most K distinct elements, think of Variable Size Sliding Window.",
+    "commonWrongPaths": [
+      "Not shrinking the window when three fruit types appear.",
+      "Forgetting to remove fruit types with zero frequency.",
+      "Updating the answer before shrinking.",
+      "Using a Set instead of tracking frequencies.",
+      "Confusing distinct fruits with total fruits."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Think of the longest subarray.",
+      "Track frequencies using a HashMap.",
+      "Shrink the window when more than two fruit types appear."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not shrinking the window when three fruit types appear.",
+      "Forgetting to remove fruit types with zero frequency.",
+      "Updating the answer before shrinking.",
+      "Using a Set instead of tracking frequencies.",
+      "Confusing distinct fruits with total fruits."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Variable Size Sliding Window",
+    "recognitionSignals": "Whenever a problem asks for the longest contiguous subarray with at most K distinct elements, think of Variable Size Sliding Window.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every possible subarray and count distinct fruit types until more than two types appear.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose every starting index.",
+        "Expand to every ending index.",
+        "Count distinct fruit types.",
+        "Update maximum length if distinct types are at most two."
+      ],
+      "dryRun": "fruits=[1,2,3]\n[1] ✓\n[1,2] ✓\n[1,2,3] ✗",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because every subarray must be checked.",
+        "python": "Brute force omitted.",
+        "cpp": "Naive implementation omitted.",
+        "javascript": "Naive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sliding Window with HashMap",
+      "idea": "Maintain a sliding window containing at most two fruit types using a HashMap to store frequencies.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Expand the window.",
+        "Update frequency.",
+        "Shrink while more than two fruit types exist.",
+        "Track the maximum window."
+      ],
+      "dryRun": "Window=[1,2]\nAdd 3 → Shrink\nWindow=[2,3]",
+      "visualization": {},
+      "code": {
+        "java": "Uses Sliding Window.",
+        "python": "Uses Sliding Window.",
+        "cpp": "Uses Sliding Window.",
+        "javascript": "Uses Sliding Window."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(2)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Variable Size Sliding Window",
+      "idea": "Expand the right pointer while maintaining the frequencies of fruit types inside a HashMap. Whenever the window contains more than two distinct fruit types, shrink the window from the left until only two remain. Track the maximum window size throughout the traversal.",
+      "intuition": "Each tree enters and leaves the sliding window at most once. Therefore, every element is processed a constant number of times, resulting in linear time complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left = 0.",
+        "Create a HashMap for frequencies.",
+        "Expand right pointer.",
+        "Add current fruit to the map.",
+        "While the map contains more than two fruit types:",
+        "Decrease frequency of fruits[left].",
+        "Remove it if frequency becomes zero.",
+        "Increment left.",
+        "Update the maximum window length."
+      ],
+      "dryRun": "fruits=[1,2,3,2,2]\nWindow=[1,2]\nAdd 3 → 3 types\nShrink → [2,3]\nExtend → [2,3,2,2]\nLength=4",
+      "visualization": {},
+      "code": {
+        "java": "public int totalFruit(int[] fruits) {\n    Map<Integer,Integer> map = new HashMap<>();\n    int left = 0;\n    int max = 0;\n\n    for(int right = 0; right < fruits.length; right++){\n        map.put(fruits[right], map.getOrDefault(fruits[right],0)+1);\n\n        while(map.size() > 2){\n            map.put(fruits[left], map.get(fruits[left])-1);\n            if(map.get(fruits[left]) == 0)\n                map.remove(fruits[left]);\n            left++;\n        }\n\n        max = Math.max(max, right-left+1);\n    }\n\n    return max;\n}",
+        "python": "def totalFruit(fruits):\n    left=0\n    freq={}\n    ans=0\n\n    for right in range(len(fruits)):\n        freq[fruits[right]]=freq.get(fruits[right],0)+1\n\n        while len(freq)>2:\n            freq[fruits[left]]-=1\n            if freq[fruits[left]]==0:\n                del freq[fruits[left]]\n            left+=1\n\n        ans=max(ans,right-left+1)\n\n    return ans",
+        "cpp": "int totalFruit(vector<int>& fruits){\n    unordered_map<int,int> mp;\n    int left=0,ans=0;\n\n    for(int right=0;right<fruits.size();right++){\n        mp[fruits[right]]++;\n\n        while(mp.size()>2){\n            mp[fruits[left]]--;\n            if(mp[fruits[left]]==0)\n                mp.erase(fruits[left]);\n            left++;\n        }\n\n        ans=max(ans,right-left+1);\n    }\n\n    return ans;\n}",
+        "javascript": "function totalFruit(fruits){\nlet left=0;\nlet ans=0;\nconst map=new Map();\n\nfor(let right=0;right<fruits.length;right++){\nmap.set(fruits[right],(map.get(fruits[right])||0)+1);\n\nwhile(map.size>2){\nmap.set(fruits[left],map.get(fruits[left])-1);\nif(map.get(fruits[left])===0) map.delete(fruits[left]);\nleft++;\n}\n\nans=Math.max(ans,right-left+1);\n}\n\nreturn ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Maintain a window containing at most two fruit types.",
+    "steps": [
+      "Expand the window.",
+      "Track fruit frequencies.",
+      "Shrink if more than two types appear.",
+      "Record the maximum window size."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Longest subarray.",
+      "At most two distinct values.",
+      "Sliding Window.",
+      "HashMap frequencies.",
+      "Shrink when size > 2."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "What if three baskets are available?",
+      "Can this be generalized to K distinct elements?",
+      "How is this related to Longest Substring with K Distinct Characters?",
+      "Can an array be solved without HashMap?",
+      "What if fruits arrive as a stream?"
+    ],
+    "interviewTips": [
+      "Recognize that this is 'Longest Subarray with At Most Two Distinct Elements'.",
+      "Explain why frequencies are required instead of a Set.",
+      "Shrink only when the window becomes invalid.",
+      "Update the answer after restoring validity.",
+      "Mention the generalized K-distinct version."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The problem is equivalent to finding the longest subarray containing at most two distinct elements.",
+      "algorithm": "Expand Window → Shrink if Distinct > 2 → Track Maximum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Variable-size Sliding Window.",
+      "Track frequencies.",
+      "Window must contain at most two fruit types.",
+      "Every element enters and leaves once.",
+      "Linear solution."
+    ],
+    "commonMistakes": [
+      "Not shrinking the window when three fruit types appear.",
+      "Forgetting to remove fruit types with zero frequency.",
+      "Updating the answer before shrinking.",
+      "Using a Set instead of tracking frequencies.",
+      "Confusing distinct fruits with total fruits."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/fruit-into-baskets/",
+    "neetcode": "https://neetcode.io/problems/fruit-into-baskets",
+    "youtube": [
+      "NeetCode - Fruit Into Baskets",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window",
+      "Nick White - Fruit Into Baskets"
+    ],
+    "relatedProblems": [
+      "Longest Substring with At Most Two Distinct Characters",
+      "Longest Substring with K Distinct Characters",
+      "Longest Repeating Character Replacement",
+      "Maximum Erasure Value",
+      "Subarrays with K Different Integers"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

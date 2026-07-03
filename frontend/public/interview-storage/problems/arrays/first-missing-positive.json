@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "id": "arr021",
+    "title": "First Missing Positive",
+    "slug": "first-missing-positive",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Cyclic Sort",
+    "pattern": "Index Placement",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Cyclic Sort",
+      "In-place Algorithm"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "41.8%",
+    "estimatedTime": "30-35 minutes",
+    "practiceLevel": "Advanced",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Swapping, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine lockers numbered from 1 onwards. Some lockers contain the wrong keys, while some are empty. Your goal is to place every key into its correct locker. The first locker that remains empty tells you the smallest missing positive number.",
+    "realWorldAnalogy": "Imagine lockers numbered from 1 onwards. Some lockers contain the wrong keys, while some are empty. Your goal is to place every key into its correct locker. The first locker that remains empty tells you the smallest missing positive number.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Swapping",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use the Cyclic Sort (Index Placement) pattern whenever values belong to a fixed range and each value has a natural correct position inside the array.",
+    "patternRecognitionKeywords": [
+      "1 to n",
+      "Missing Positive",
+      "Cyclic Sort",
+      "Index Placement",
+      "Swap",
+      "In-place"
+    ],
+    "signals": "Whenever numbers belong to a limited range and each number naturally maps to an index, think of Cyclic Sort (Index Placement).",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an unsorted integer array nums, return the smallest missing positive integer. You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.",
+    "examples": [
+      {
+        "input": "nums = [1,2,0]",
+        "output": "3",
+        "explanation": "1 and 2 are present, so the smallest missing positive is 3."
+      },
+      {
+        "input": "nums = [3,4,-1,1]",
+        "output": "2",
+        "explanation": "After placing numbers correctly, 2 is missing."
+      },
+      {
+        "input": "nums = [7,8,9,11,12]",
+        "output": "1",
+        "explanation": "No positive number starting from 1 exists."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "-2³¹ <= nums[i] <= 2³¹ - 1"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All negative numbers",
+      "All positive consecutive numbers",
+      "Duplicate values",
+      "Numbers larger than n",
+      "Missing number is n + 1"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Start from 1 and repeatedly search the array until the first missing positive is found.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Only positive numbers between 1 and n are useful because the answer always lies in the range [1, n + 1]. Place every valid number at its correct index (value x belongs at index x-1). After rearrangement, the first index where nums[i] != i + 1 gives the answer.",
+    "ahaMoment": "Each positive number has one unique correct index inside the array.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever numbers belong to a limited range and each number naturally maps to an index, think of Cyclic Sort (Index Placement).",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is swapped at most once into its correct position. Therefore, every element is processed only a constant number of times, resulting in O(n) time while using only constant extra space.",
+    "howToRecognizeSimilar": "Whenever numbers belong to a limited range and each number naturally maps to an index, think of Cyclic Sort (Index Placement).",
+    "commonWrongPaths": [
+      "Sorting the array first.",
+      "Not checking whether the value is within [1,n].",
+      "Infinite swapping due to duplicate values.",
+      "Accessing invalid indices.",
+      "Returning the index instead of index+1."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Ignore negative numbers and values larger than n.",
+      "Each valid number has one correct position.",
+      "Swap instead of sorting."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting the array first.",
+      "Not checking whether the value is within [1,n].",
+      "Infinite swapping due to duplicate values.",
+      "Accessing invalid indices.",
+      "Returning the index instead of index+1."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Index Placement",
+    "recognitionSignals": "Whenever numbers belong to a limited range and each number naturally maps to an index, think of Cyclic Sort (Index Placement).",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Linear Search for Every Positive",
+      "idea": "Start from 1 and repeatedly search the array until the first missing positive is found.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Start with candidate = 1.",
+        "Search the entire array.",
+        "If found, increment candidate.",
+        "Otherwise return candidate."
+      ],
+      "dryRun": "nums=[1,2,0]\nFind 1 ✓\nFind 2 ✓\nFind 3 ✗",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because every search scans the entire array.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashSet",
+      "idea": "Insert every positive number into a HashSet, then search from 1 upward until a missing number is found.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Store all positive numbers in a HashSet.",
+        "Start from 1.",
+        "Return the first number not present."
+      ],
+      "dryRun": "Set={1,2}\n1 ✓\n2 ✓\n3 ✗",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashSet.",
+        "python": "Uses set().",
+        "cpp": "Uses unordered_set.",
+        "javascript": "Uses Set."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Cyclic Sort (Index Placement)",
+      "idea": "Traverse the array and place every valid positive integer x (1 ≤ x ≤ n) at index x-1 using swapping. After all numbers are placed, scan the array again. The first position where nums[i] != i+1 represents the smallest missing positive.",
+      "intuition": "Each element is swapped at most once into its correct position. Therefore, every element is processed only a constant number of times, resulting in O(n) time while using only constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize index i = 0.",
+        "While i < n:",
+        "If nums[i] is in range [1,n] and not already in its correct position, swap it with nums[nums[i]-1].",
+        "Otherwise increment i.",
+        "Traverse the array again.",
+        "Return the first index where nums[i] != i+1.",
+        "If every position is correct, return n+1."
+      ],
+      "dryRun": "nums=[3,4,-1,1]\nSwap 3↔-1 → [-1,4,3,1]\nSwap 4↔1 → [-1,1,3,4]\nSwap 1↔-1 → [1,-1,3,4]\nIndex1 should contain 2 but contains -1\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int firstMissingPositive(int[] nums) {\n    int n = nums.length;\n    int i = 0;\n\n    while(i < n){\n        int correct = nums[i] - 1;\n\n        if(nums[i] > 0 && nums[i] <= n && nums[i] != nums[correct]){\n            int temp = nums[i];\n            nums[i] = nums[correct];\n            nums[correct] = temp;\n        }else{\n            i++;\n        }\n    }\n\n    for(i = 0; i < n; i++){\n        if(nums[i] != i + 1)\n            return i + 1;\n    }\n\n    return n + 1;\n}",
+        "python": "def firstMissingPositive(nums):\n    n=len(nums)\n    i=0\n\n    while i<n:\n        correct=nums[i]-1\n        if 1<=nums[i]<=n and nums[i]!=nums[correct]:\n            nums[i],nums[correct]=nums[correct],nums[i]\n        else:\n            i+=1\n\n    for i in range(n):\n        if nums[i]!=i+1:\n            return i+1\n\n    return n+1",
+        "cpp": "int firstMissingPositive(vector<int>& nums){\n    int n=nums.size();\n    int i=0;\n\n    while(i<n){\n        int correct=nums[i]-1;\n        if(nums[i]>0 && nums[i]<=n && nums[i]!=nums[correct])\n            swap(nums[i],nums[correct]);\n        else\n            i++;\n    }\n\n    for(i=0;i<n;i++)\n        if(nums[i]!=i+1)\n            return i+1;\n\n    return n+1;\n}",
+        "javascript": "function firstMissingPositive(nums){\nlet i=0;\nconst n=nums.length;\n\nwhile(i<n){\nlet correct=nums[i]-1;\nif(nums[i]>0 && nums[i]<=n && nums[i]!==nums[correct]){\n[nums[i],nums[correct]]=[nums[correct],nums[i]];\n}else{\ni++;\n}\n}\n\nfor(i=0;i<n;i++){\nif(nums[i]!==i+1) return i+1;\n}\n\nreturn n+1;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Every value is placed into its own index.",
+    "steps": [
+      "1 belongs at index 0.",
+      "2 belongs at index 1.",
+      "3 belongs at index 2.",
+      "First incorrect position gives the answer."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Ignore invalid numbers.",
+      "Swap valid numbers to correct indices.",
+      "Scan for first mismatch.",
+      "Return n+1 if complete.",
+      "Classic Cyclic Sort problem."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without modifying the array?",
+      "Why is the answer always between 1 and n+1?",
+      "How does this differ from Find All Missing Numbers?",
+      "Can negative marking solve this problem?",
+      "Why is Cyclic Sort preferred?"
+    ],
+    "interviewTips": [
+      "Explain why numbers outside [1,n] are ignored.",
+      "Mention that every swap places one number correctly.",
+      "Avoid infinite swaps by checking duplicates.",
+      "State O(n) time and O(1) space.",
+      "Mention HashSet as the simpler alternative."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Each positive number has one unique correct index inside the array.",
+      "algorithm": "Index Placement → Scan for First Mismatch.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Answer lies in [1,n+1].",
+      "Value x belongs at index x-1.",
+      "Swap until correctly placed.",
+      "Constant extra space.",
+      "Linear time."
+    ],
+    "commonMistakes": [
+      "Sorting the array first.",
+      "Not checking whether the value is within [1,n].",
+      "Infinite swapping due to duplicate values.",
+      "Accessing invalid indices.",
+      "Returning the index instead of index+1."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/first-missing-positive/",
+    "neetcode": "https://neetcode.io/problems/first-missing-positive",
+    "youtube": [
+      "NeetCode - First Missing Positive",
+      "Take U Forward - Cyclic Sort",
+      "CodeHelp - First Missing Positive",
+      "Abdul Bari - Array Problems",
+      "Nick White - First Missing Positive"
+    ],
+    "relatedProblems": [
+      "Find All Numbers Disappeared in an Array",
+      "Find All Duplicates in an Array",
+      "Find the Duplicate Number",
+      "Missing Number",
+      "Set Mismatch"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

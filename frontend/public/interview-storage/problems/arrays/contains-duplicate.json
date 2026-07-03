@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "id": "arr010",
+    "title": "Contains Duplicate",
+    "slug": "contains-duplicate",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Hashing",
+    "pattern": "Hash Set Lookup",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Hash Set",
+      "Lookup",
+      "Searching"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "LinkedIn",
+      "Oracle",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware",
+      "Netflix"
+    ],
+    "frequency": "Very High",
+    "acceptance": "64.8%",
+    "estimatedTime": "10-15 minutes",
+    "practiceLevel": "Beginner",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, HashSet, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine checking attendance in a classroom. As each student's ID is read, you record it in a register. If an ID appears again, you immediately know there is a duplicate attendance. There's no need to continue checking the remaining students.",
+    "realWorldAnalogy": "Imagine checking attendance in a classroom. As each student's ID is read, you record it in a register. If an ID appears again, you immediately know there is a duplicate attendance. There's no need to continue checking the remaining students.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "HashSet",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Hash Set lookup pattern whenever you need to detect duplicates, repeated values, or previously visited elements efficiently.",
+    "patternRecognitionKeywords": [
+      "Duplicate",
+      "Visited",
+      "HashSet",
+      "Lookup",
+      "Repeated",
+      "Contains",
+      "Unique"
+    ],
+    "signals": "Whenever a problem asks whether an element has appeared before, immediately think of using a HashSet.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.",
+    "examples": [
+      {
+        "input": "nums = [1,2,3,1]",
+        "output": "true",
+        "explanation": "The value 1 appears more than once."
+      },
+      {
+        "input": "nums = [1,2,3,4]",
+        "output": "false",
+        "explanation": "Every element is unique."
+      },
+      {
+        "input": "nums = [1,1,1,3,3,4,3,2,4,2]",
+        "output": "true",
+        "explanation": "Several duplicate values exist."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "-1000000000 <= nums[i] <= 1000000000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All elements unique",
+      "All elements identical",
+      "Negative numbers",
+      "Large positive numbers",
+      "Duplicate appears at the beginning",
+      "Duplicate appears at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every element with every other element to determine whether any duplicate exists.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of comparing every element with every other element, simply remember the numbers you've already seen. If the current number already exists in the HashSet, a duplicate has been found immediately.",
+    "ahaMoment": "A duplicate means the current element has already been seen.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks whether an element has appeared before, immediately think of using a HashSet.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every element is processed exactly once. HashSet insertion and lookup take O(1) average time, resulting in linear complexity.",
+    "howToRecognizeSimilar": "Whenever a problem asks whether an element has appeared before, immediately think of using a HashSet.",
+    "commonWrongPaths": [
+      "Using a HashMap instead of a HashSet unnecessarily.",
+      "Adding before checking when additional information is needed.",
+      "Sorting the original array when order must be preserved.",
+      "Ignoring negative numbers.",
+      "Not returning immediately after finding a duplicate."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Store previously visited values.",
+      "A HashSet provides O(1) average lookup.",
+      "Return immediately after finding a duplicate."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using a HashMap instead of a HashSet unnecessarily.",
+      "Adding before checking when additional information is needed.",
+      "Sorting the original array when order must be preserved.",
+      "Ignoring negative numbers.",
+      "Not returning immediately after finding a duplicate."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Hash Set Lookup",
+    "recognitionSignals": "Whenever a problem asks whether an element has appeared before, immediately think of using a HashSet.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Nested Loop Comparison",
+      "idea": "Compare every element with every other element to determine whether any duplicate exists.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Loop i from 0 to n-1.",
+        "Loop j from i+1 to n-1.",
+        "If nums[i] == nums[j], return true.",
+        "Return false after checking every pair."
+      ],
+      "dryRun": "nums=[1,2,3,1]\nCompare 1 with 2\nCompare 1 with 3\nCompare 1 with 1 -> Duplicate Found",
+      "visualization": {},
+      "code": {
+        "java": "public boolean containsDuplicate(int[] nums) {\n    for(int i=0;i<nums.length;i++){\n        for(int j=i+1;j<nums.length;j++){\n            if(nums[i]==nums[j])\n                return true;\n        }\n    }\n    return false;\n}",
+        "python": "def containsDuplicate(nums):\n    n=len(nums)\n    for i in range(n):\n        for j in range(i+1,n):\n            if nums[i]==nums[j]:\n                return True\n    return False",
+        "cpp": "bool containsDuplicate(vector<int>& nums){\n    for(int i=0;i<nums.size();i++){\n        for(int j=i+1;j<nums.size();j++){\n            if(nums[i]==nums[j])\n                return true;\n        }\n    }\n    return false;\n}",
+        "javascript": "function containsDuplicate(nums){\nfor(let i=0;i<nums.length;i++){\nfor(let j=i+1;j<nums.length;j++){\nif(nums[i]===nums[j]) return true;\n}\n}\nreturn false;\n}"
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting",
+      "idea": "Sort the array first, then check neighboring elements for duplicates.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array.",
+        "Traverse from index 1.",
+        "Compare current element with previous element.",
+        "If equal, return true.",
+        "Otherwise continue."
+      ],
+      "dryRun": "nums=[1,2,3,1]\nSorted=[1,1,2,3]\nAdjacent duplicate found.",
+      "visualization": {},
+      "code": {
+        "java": "Arrays.sort(nums);",
+        "python": "nums.sort()",
+        "cpp": "sort(nums.begin(),nums.end());",
+        "javascript": "nums.sort((a,b)=>a-b);"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashSet Lookup",
+      "idea": "Traverse the array once while storing every visited number inside a HashSet. If the current number already exists in the set, immediately return true.",
+      "intuition": "Every element is processed exactly once. HashSet insertion and lookup take O(1) average time, resulting in linear complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an empty HashSet.",
+        "Traverse the array.",
+        "If current number exists in the HashSet, return true.",
+        "Otherwise insert the number into the HashSet.",
+        "Return false after traversal."
+      ],
+      "dryRun": "nums=[1,2,3,1]\nSet={}\n1 -> Add\n2 -> Add\n3 -> Add\n1 -> Already Exists -> Return true",
+      "visualization": {},
+      "code": {
+        "java": "public boolean containsDuplicate(int[] nums) {\n    Set<Integer> set = new HashSet<>();\n    for(int num : nums){\n        if(set.contains(num))\n            return true;\n        set.add(num);\n    }\n    return false;\n}",
+        "python": "def containsDuplicate(nums):\n    seen=set()\n    for num in nums:\n        if num in seen:\n            return True\n        seen.add(num)\n    return False",
+        "cpp": "bool containsDuplicate(vector<int>& nums){\n    unordered_set<int> seen;\n    for(int num:nums){\n        if(seen.count(num))\n            return true;\n        seen.insert(num);\n    }\n    return false;\n}",
+        "javascript": "function containsDuplicate(nums){\nconst seen=new Set();\nfor(const num of nums){\nif(seen.has(num)) return true;\nseen.add(num);\n}\nreturn false;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "The HashSet stores every number that has already appeared.",
+    "steps": [
+      "Visit first number.",
+      "Insert into HashSet.",
+      "Visit next number.",
+      "If already present, return true.",
+      "Otherwise continue."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "HashSet stores visited elements.",
+      "Lookup before insertion.",
+      "Return immediately on duplicate.",
+      "Classic HashSet interview problem.",
+      "Linear time solution."
+    ],
+    "practiceLevel": "Beginner",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without extra space?",
+      "How would you count duplicate frequencies?",
+      "What if duplicates must be within distance k?",
+      "What if the input is a data stream?",
+      "How would you return the duplicated values instead of true/false?"
+    ],
+    "interviewTips": [
+      "Explain the brute-force solution first.",
+      "Mention HashSet's O(1) average lookup.",
+      "Explain why a HashSet is sufficient instead of a HashMap.",
+      "Return immediately after finding a duplicate.",
+      "Discuss the sorting alternative if extra space is restricted."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A duplicate means the current element has already been seen.",
+      "algorithm": "Lookup in HashSet → If found return true → Else insert.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "HashSet provides O(1) lookup.",
+      "Store visited numbers.",
+      "Return on first duplicate.",
+      "Single traversal.",
+      "Very common interview question."
+    ],
+    "commonMistakes": [
+      "Using a HashMap instead of a HashSet unnecessarily.",
+      "Adding before checking when additional information is needed.",
+      "Sorting the original array when order must be preserved.",
+      "Ignoring negative numbers.",
+      "Not returning immediately after finding a duplicate."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/contains-duplicate/",
+    "neetcode": "https://neetcode.io/problems/duplicate-integer",
+    "youtube": [
+      "NeetCode - Contains Duplicate",
+      "Take U Forward - Hashing",
+      "CodeHelp - HashSet Problems",
+      "Abdul Bari - Hashing",
+      "Nick White - Contains Duplicate"
+    ],
+    "relatedProblems": [
+      "Contains Duplicate II",
+      "Contains Duplicate III",
+      "Two Sum",
+      "Happy Number",
+      "Find the Duplicate Number"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

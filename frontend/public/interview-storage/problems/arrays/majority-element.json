@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr033",
+    "title": "Majority Element",
+    "slug": "majority-element",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Voting Algorithm",
+    "pattern": "Boyer-Moore Voting Algorithm",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Divide and Conquer",
+      "Sorting",
+      "Counting"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "66.2%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, HashMap, Time Complexity, Basic Counting",
+    "whyDoesThisExist": "Imagine counting votes in an election where one candidate is guaranteed to receive more than half of all votes. Instead of counting every vote separately, the Boyer-Moore Voting Algorithm efficiently identifies the winner in one pass.",
+    "realWorldAnalogy": "Imagine counting votes in an election where one candidate is guaranteed to receive more than half of all votes. Instead of counting every vote separately, the Boyer-Moore Voting Algorithm efficiently identifies the winner in one pass.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "HashMap",
+      "Time Complexity",
+      "Basic Counting"
+    ],
+    "whenToUseThis": "Use the Boyer-Moore Voting Algorithm whenever a majority element (> n/2 occurrences) is guaranteed and constant space is required.",
+    "patternRecognitionKeywords": [
+      "Majority Element",
+      "Voting",
+      "Cancellation",
+      "Candidate",
+      "Frequency > n/2",
+      "O(1) Space"
+    ],
+    "signals": "Whenever a problem guarantees an element appears more than half the time and asks for constant space, think of the Boyer-Moore Voting Algorithm.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array nums of size n, return the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.",
+    "examples": [
+      {
+        "input": "nums = [3,2,3]",
+        "output": "3",
+        "explanation": "3 appears 2 times, which is more than ⌊3/2⌋."
+      },
+      {
+        "input": "nums = [2,2,1,1,1,2,2]",
+        "output": "2",
+        "explanation": "2 appears 4 times, which is greater than ⌊7/2⌋."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 50000",
+      "-10^9 <= nums[i] <= 10^9"
+    ],
+    "edgeCases": [
+      "Single element array",
+      "All elements identical",
+      "Majority appears at the end",
+      "Negative numbers",
+      "Minimum array size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For each element, count its occurrences by scanning the entire array.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Whenever two different elements are encountered, they cancel each other out. Since the majority element appears more than half the time, it can never be completely eliminated, leaving it as the final candidate.",
+    "ahaMoment": "The majority element cannot be completely cancelled by all other elements.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem guarantees an element appears more than half the time and asks for constant space, think of the Boyer-Moore Voting Algorithm.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Different elements cancel each other. Since the majority element appears more than half the time, it survives all cancellations and remains the final candidate.",
+    "howToRecognizeSimilar": "Whenever a problem guarantees an element appears more than half the time and asks for constant space, think of the Boyer-Moore Voting Algorithm.",
+    "commonWrongPaths": [
+      "Using sorting when O(1) space is expected.",
+      "Forgetting to reset the candidate when count becomes zero.",
+      "Confusing majority (> n/2) with most frequent.",
+      "Using HashMap when constant space is required.",
+      "Applying Boyer-Moore when no majority is guaranteed without verification."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Think about cancelling different elements.",
+      "Maintain a candidate and a count.",
+      "The remaining candidate will be the majority."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using sorting when O(1) space is expected.",
+      "Forgetting to reset the candidate when count becomes zero.",
+      "Confusing majority (> n/2) with most frequent.",
+      "Using HashMap when constant space is required.",
+      "Applying Boyer-Moore when no majority is guaranteed without verification."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Boyer-Moore Voting Algorithm",
+    "recognitionSignals": "Whenever a problem guarantees an element appears more than half the time and asks for constant space, think of the Boyer-Moore Voting Algorithm.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Count Every Element",
+      "idea": "For each element, count its occurrences by scanning the entire array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Pick every element.",
+        "Count its frequency.",
+        "Return the element whose count exceeds n/2."
+      ],
+      "dryRun": "Repeatedly count occurrences for every element.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Nested loop omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "HashMap Frequency Counting",
+      "idea": "Store the frequency of each element using a HashMap and return the element whose frequency exceeds n/2.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a HashMap.",
+        "Count the frequency of each element.",
+        "Return the element with frequency greater than n/2."
+      ],
+      "dryRun": "Increment frequencies while traversing the array.",
+      "visualization": {},
+      "code": {
+        "java": "Uses HashMap.",
+        "python": "Uses dictionary.",
+        "cpp": "Uses unordered_map.",
+        "javascript": "Uses Map."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Boyer-Moore Voting Algorithm",
+      "idea": "Maintain a candidate and a counter. If the counter becomes zero, choose the current element as the new candidate. Increase the counter when the current element matches the candidate; otherwise decrease it. The final candidate is the majority element.",
+      "intuition": "Different elements cancel each other. Since the majority element appears more than half the time, it survives all cancellations and remains the final candidate.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize candidate = 0 and count = 0.",
+        "Traverse every element.",
+        "If count becomes zero, set current element as candidate.",
+        "If current element equals candidate, increment count.",
+        "Otherwise decrement count.",
+        "Return candidate."
+      ],
+      "dryRun": "nums=[2,2,1,1,1,2,2]\nCandidate=2 Count=1\n2→Count=2\n1→Count=1\n1→Count=0\n1→Candidate=1 Count=1\n2→Count=0\n2→Candidate=2 Count=1\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int majorityElement(int[] nums) {\n    int candidate = 0;\n    int count = 0;\n\n    for (int num : nums) {\n        if (count == 0) {\n            candidate = num;\n        }\n\n        if (num == candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n\n    return candidate;\n}",
+        "python": "def majorityElement(nums):\n    candidate = 0\n    count = 0\n\n    for num in nums:\n        if count == 0:\n            candidate = num\n\n        if num == candidate:\n            count += 1\n        else:\n            count -= 1\n\n    return candidate",
+        "cpp": "int majorityElement(vector<int>& nums) {\n    int candidate = 0;\n    int count = 0;\n\n    for (int num : nums) {\n        if (count == 0)\n            candidate = num;\n\n        if (num == candidate)\n            count++;\n        else\n            count--;\n    }\n\n    return candidate;\n}",
+        "javascript": "function majorityElement(nums) {\n    let candidate = 0;\n    let count = 0;\n\n    for (const num of nums) {\n        if (count === 0) {\n            candidate = num;\n        }\n\n        if (num === candidate) {\n            count++;\n        } else {\n            count--;\n        }\n    }\n\n    return candidate;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Different elements cancel each other, leaving only the majority element.",
+    "steps": [
+      "Choose a candidate.",
+      "Increase count for the same element.",
+      "Decrease count for a different element.",
+      "Reset candidate when count becomes zero.",
+      "Final candidate is the majority."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Different elements cancel each other.",
+      "Maintain candidate and count.",
+      "Reset candidate when count becomes zero.",
+      "Majority always survives.",
+      "O(n) time and O(1) space."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does the cancellation idea work?",
+      "What if no majority element exists?",
+      "How would you verify the candidate?",
+      "Can this be extended to elements occurring more than n/3 times?",
+      "Why is Boyer-Moore O(1) space?"
+    ],
+    "interviewTips": [
+      "Start with brute force counting.",
+      "Improve using HashMap.",
+      "Explain the cancellation concept clearly.",
+      "Mention Boyer-Moore by name.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The majority element cannot be completely cancelled by all other elements.",
+      "algorithm": "Candidate → Count → Cancel Different Elements → Return Candidate.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Majority means frequency > n/2.",
+      "Candidate changes only when count becomes zero.",
+      "Cancellation is the core idea.",
+      "No extra memory required.",
+      "Linear traversal."
+    ],
+    "commonMistakes": [
+      "Using sorting when O(1) space is expected.",
+      "Forgetting to reset the candidate when count becomes zero.",
+      "Confusing majority (> n/2) with most frequent.",
+      "Using HashMap when constant space is required.",
+      "Applying Boyer-Moore when no majority is guaranteed without verification."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/majority-element/",
+    "neetcode": "https://neetcode.io/problems/majority-element",
+    "youtube": [
+      "NeetCode - Majority Element",
+      "Take U Forward - Boyer Moore Voting Algorithm",
+      "CodeHelp - Majority Element",
+      "Abdul Bari - Boyer Moore Voting",
+      "Nick White - Majority Element"
+    ],
+    "relatedProblems": [
+      "Majority Element II",
+      "Top K Frequent Elements",
+      "Find the Duplicate Number",
+      "Single Number",
+      "Contains Duplicate"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

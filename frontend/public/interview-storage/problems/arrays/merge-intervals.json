@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr044",
+    "title": "Merge Intervals",
+    "slug": "merge-intervals",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Sorting + Interval Merging",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Intervals"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware",
+      "Salesforce"
+    ],
+    "frequency": "Very High",
+    "acceptance": "49.6%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Intervals, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine booking meeting rooms throughout a day. If two meetings overlap, they can be represented as one continuous occupied time slot. Your goal is to combine all overlapping bookings.",
+    "realWorldAnalogy": "Imagine booking meeting rooms throughout a day. If two meetings overlap, they can be represented as one continuous occupied time slot. Your goal is to combine all overlapping bookings.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Intervals",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this pattern whenever intervals overlap and need to be combined into larger intervals.",
+    "patternRecognitionKeywords": [
+      "Intervals",
+      "Merge",
+      "Sorting",
+      "Overlap",
+      "Continuous Range",
+      "Interval Merging"
+    ],
+    "signals": "Whenever intervals need to be combined into larger non-overlapping intervals, think of Sorting + Interval Merging.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals and return an array of the non-overlapping intervals that cover all the intervals in the input.",
+    "examples": [
+      {
+        "input": "intervals = [[1,3],[2,6],[8,10],[15,18]]",
+        "output": "[[1,6],[8,10],[15,18]]",
+        "explanation": "Intervals [1,3] and [2,6] overlap and merge into [1,6]."
+      },
+      {
+        "input": "intervals = [[1,4],[4,5]]",
+        "output": "[[1,5]]",
+        "explanation": "The intervals touch at the endpoint, so they are merged."
+      }
+    ],
+    "constraints": [
+      "1 <= intervals.length <= 10000",
+      "intervals[i].length == 2",
+      "0 <= starti <= endi <= 10000"
+    ],
+    "edgeCases": [
+      "Single interval",
+      "Already merged intervals",
+      "All intervals overlap",
+      "No overlapping intervals",
+      "Intervals touching at endpoints"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every interval with every other interval repeatedly until no further merges are possible.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "After sorting intervals by start time, overlapping intervals become adjacent. Keep the current merged interval and extend its ending whenever an overlap occurs.",
+    "ahaMoment": "After sorting, all overlapping intervals become adjacent.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever intervals need to be combined into larger non-overlapping intervals, think of Sorting + Interval Merging.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Sorting guarantees overlapping intervals become adjacent, allowing a single linear traversal to merge all intervals efficiently.",
+    "howToRecognizeSimilar": "Whenever intervals need to be combined into larger non-overlapping intervals, think of Sorting + Interval Merging.",
+    "commonWrongPaths": [
+      "Not sorting the intervals.",
+      "Using < instead of <= for overlap.",
+      "Forgetting to update the ending value.",
+      "Adding overlapping intervals separately.",
+      "Ignoring endpoint overlaps."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Sort intervals by starting time.",
+      "Compare the current interval with the last merged interval.",
+      "Extend the ending if they overlap."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not sorting the intervals.",
+      "Using < instead of <= for overlap.",
+      "Forgetting to update the ending value.",
+      "Adding overlapping intervals separately.",
+      "Ignoring endpoint overlaps."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Sorting + Interval Merging",
+    "recognitionSignals": "Whenever intervals need to be combined into larger non-overlapping intervals, think of Sorting + Interval Merging.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Repeated Interval Comparison",
+      "idea": "Compare every interval with every other interval repeatedly until no further merges are possible.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compare every pair of intervals.",
+        "Merge overlapping intervals.",
+        "Repeat until no changes occur.",
+        "Return the merged intervals."
+      ],
+      "dryRun": "Keep comparing intervals until everything is merged.",
+      "visualization": {},
+      "code": {
+        "java": "Repeated comparison solution omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Stack",
+      "idea": "Sort intervals and use a stack to merge overlapping intervals.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort intervals.",
+        "Push the first interval.",
+        "Merge overlaps with the top of the stack.",
+        "Return the stack."
+      ],
+      "dryRun": "Stack always stores merged intervals.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Stack.",
+        "python": "Uses list as stack.",
+        "cpp": "Uses vector.",
+        "javascript": "Uses array."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Interval Merging",
+      "idea": "Sort intervals by start time. Traverse the intervals while maintaining the last merged interval. If the current interval overlaps with the previous one, update its ending. Otherwise, add it as a new interval.",
+      "intuition": "Sorting guarantees overlapping intervals become adjacent, allowing a single linear traversal to merge all intervals efficiently.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort intervals by start time.",
+        "Initialize the answer list with the first interval.",
+        "Traverse remaining intervals.",
+        "If current start <= last merged end, merge them.",
+        "Otherwise add the current interval.",
+        "Return the merged intervals."
+      ],
+      "dryRun": "Intervals=[[1,3],[2,6],[8,10],[15,18]]\nSorted=[[1,3],[2,6],[8,10],[15,18]]\nMerge [1,3] & [2,6] → [1,6]\nAdd [8,10]\nAdd [15,18]\nAnswer=[[1,6],[8,10],[15,18]]",
+      "visualization": {},
+      "code": {
+        "java": "public int[][] merge(int[][] intervals) {\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n\n    List<int[]> result = new ArrayList<>();\n    result.add(intervals[0]);\n\n    for (int i = 1; i < intervals.length; i++) {\n        int[] last = result.get(result.size() - 1);\n\n        if (intervals[i][0] <= last[1]) {\n            last[1] = Math.max(last[1], intervals[i][1]);\n        } else {\n            result.add(intervals[i]);\n        }\n    }\n\n    return result.toArray(new int[result.size()][]);\n}",
+        "python": "def merge(intervals):\n    intervals.sort()\n\n    merged = [intervals[0]]\n\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n\n    return merged",
+        "cpp": "vector<vector<int>> merge(vector<vector<int>>& intervals) {\n    sort(intervals.begin(), intervals.end());\n\n    vector<vector<int>> ans;\n    ans.push_back(intervals[0]);\n\n    for (int i = 1; i < intervals.size(); i++) {\n        if (intervals[i][0] <= ans.back()[1]) {\n            ans.back()[1] = max(ans.back()[1], intervals[i][1]);\n        } else {\n            ans.push_back(intervals[i]);\n        }\n    }\n\n    return ans;\n}",
+        "javascript": "function merge(intervals) {\n    intervals.sort((a, b) => a[0] - b[0]);\n\n    const result = [intervals[0]];\n\n    for (let i = 1; i < intervals.length; i++) {\n        let last = result[result.length - 1];\n\n        if (intervals[i][0] <= last[1]) {\n            last[1] = Math.max(last[1], intervals[i][1]);\n        } else {\n            result.push(intervals[i]);\n        }\n    }\n\n    return result;\n}"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Merge neighboring overlapping intervals after sorting.",
+    "steps": [
+      "Sort intervals.",
+      "Take the first interval.",
+      "Merge overlapping intervals.",
+      "Start a new interval when no overlap exists.",
+      "Return the merged list."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort intervals.",
+      "Compare with the last merged interval.",
+      "Merge if overlapping.",
+      "Otherwise start a new interval.",
+      "O(n log n)."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How would you insert a new interval?",
+      "Can this be solved without sorting?",
+      "How do you count merged intervals?",
+      "What if intervals are unsorted streams?",
+      "How would you merge intervals in-place?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Explain why sorting is necessary.",
+      "Show the overlap condition.",
+      "Explain endpoint merging.",
+      "State O(n log n) time and O(n) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "After sorting, all overlapping intervals become adjacent.",
+      "algorithm": "Sort → Compare → Merge → Append.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Sorting is required.",
+      "Overlap condition is currentStart <= lastEnd.",
+      "Update only the ending value.",
+      "One traversal after sorting.",
+      "Standard interval pattern."
+    ],
+    "commonMistakes": [
+      "Not sorting the intervals.",
+      "Using < instead of <= for overlap.",
+      "Forgetting to update the ending value.",
+      "Adding overlapping intervals separately.",
+      "Ignoring endpoint overlaps."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/merge-intervals/",
+    "neetcode": "https://neetcode.io/problems/merge-intervals",
+    "youtube": [
+      "NeetCode - Merge Intervals",
+      "Take U Forward - Merge Intervals",
+      "CodeHelp - Interval Problems",
+      "Abdul Bari - Interval Algorithms",
+      "Nick White - Merge Intervals"
+    ],
+    "relatedProblems": [
+      "Insert Interval",
+      "Meeting Rooms",
+      "Meeting Rooms II",
+      "Interval List Intersections",
+      "Non-overlapping Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

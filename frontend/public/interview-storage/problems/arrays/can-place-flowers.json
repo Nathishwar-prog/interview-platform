@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "id": "arr006",
+    "title": "Can Place Flowers",
+    "slug": "can-place-flowers",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Greedy Placement",
+    "tags": [
+      "Array",
+      "Greedy",
+      "Simulation"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "39.7%",
+    "estimatedTime": "15-20 minutes",
+    "practiceLevel": "Beginner",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, Conditions, Greedy Algorithms, Time Complexity",
+    "whyDoesThisExist": "Imagine a parking lot where every parked car requires one empty parking space on both sides for safety. Before parking a new car, you must ensure that both neighboring spots are empty. Similarly, a flower can only be planted if both adjacent plots are empty.",
+    "realWorldAnalogy": "Imagine a parking lot where every parked car requires one empty parking space on both sides for safety. Before parking a new car, you must ensure that both neighboring spots are empty. Similarly, a flower can only be planted if both adjacent plots are empty.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "Conditions",
+      "Greedy Algorithms",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this greedy simulation whenever you need to maximize placements while respecting adjacency constraints.",
+    "patternRecognitionKeywords": [
+      "Greedy",
+      "Placement",
+      "Adjacent",
+      "Simulation",
+      "Flowerbed",
+      "Neighbors",
+      "One Pass"
+    ],
+    "signals": "Whenever a problem asks to maximize placements while maintaining adjacency constraints, think of Greedy Placement.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You have a long flowerbed in which some plots are planted and others are empty. However, flowers cannot be planted in adjacent plots. Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means planted, and an integer n, return true if n new flowers can be planted without violating the no-adjacent-flowers rule, otherwise return false.",
+    "examples": [
+      {
+        "input": "flowerbed = [1,0,0,0,1], n = 1",
+        "output": "true",
+        "explanation": "Plant one flower at index 2."
+      },
+      {
+        "input": "flowerbed = [1,0,0,0,1], n = 2",
+        "output": "false",
+        "explanation": "Only one additional flower can be planted."
+      }
+    ],
+    "constraints": [
+      "1 <= flowerbed.length <= 20000",
+      "flowerbed[i] is either 0 or 1",
+      "There are no adjacent flowers initially.",
+      "0 <= n <= flowerbed.length"
+    ],
+    "edgeCases": [
+      "Single empty plot",
+      "Single occupied plot",
+      "Empty flowerbed",
+      "All plots occupied",
+      "All plots empty",
+      "Planting zero flowers",
+      "Flowers at both ends"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible combination of planting flowers while respecting the adjacency rule and determine whether at least n flowers can be planted.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Traverse the flowerbed from left to right. Whenever you find an empty plot whose left and right neighbors are also empty (or outside the array), plant a flower immediately. This greedy decision never hurts future placements.",
+    "ahaMoment": "Plant a flower whenever both neighboring plots are empty.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks to maximize placements while maintaining adjacency constraints, think of Greedy Placement.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Planting a flower as soon as a valid position is found never reduces future opportunities. Every plot is visited once, resulting in linear time and constant extra space.",
+    "howToRecognizeSimilar": "Whenever a problem asks to maximize placements while maintaining adjacency constraints, think of Greedy Placement.",
+    "commonWrongPaths": [
+      "Not handling the first plot correctly.",
+      "Not handling the last plot correctly.",
+      "Forgetting to update the flowerbed after planting.",
+      "Checking only one neighboring plot.",
+      "Ignoring the case when n equals 0."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Check both neighboring plots before planting.",
+      "Treat array boundaries as empty plots.",
+      "Plant immediately whenever possible."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not handling the first plot correctly.",
+      "Not handling the last plot correctly.",
+      "Forgetting to update the flowerbed after planting.",
+      "Checking only one neighboring plot.",
+      "Ignoring the case when n equals 0."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy Placement",
+    "recognitionSignals": "Whenever a problem asks to maximize placements while maintaining adjacency constraints, think of Greedy Placement.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Possible Placement",
+      "idea": "Generate every possible combination of planting flowers while respecting the adjacency rule and determine whether at least n flowers can be planted.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every valid planting arrangement.",
+        "Count planted flowers.",
+        "Check if at least n flowers can be planted."
+      ],
+      "dryRun": "flowerbed=[1,0,0,0,1]\nTry every possible placement.\nMaximum new flowers = 1.",
+      "visualization": {},
+      "code": {
+        "java": "Backtracking solution omitted because it is exponential.",
+        "python": "Recursive backtracking solution omitted.",
+        "cpp": "Backtracking implementation omitted.",
+        "javascript": "Recursive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(2ⁿ)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Simulation",
+      "idea": "Scan the flowerbed from left to right. Whenever a valid empty plot is found, plant a flower immediately and continue scanning.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Traverse the flowerbed.",
+        "Check left and right neighbors.",
+        "Plant if both neighbors are empty.",
+        "Count planted flowers.",
+        "Return whether count >= n."
+      ],
+      "dryRun": "flowerbed=[1,0,0,0,1]\nPlant at index 2.\nCount=1",
+      "visualization": {},
+      "code": {
+        "java": "Uses greedy simulation.",
+        "python": "Uses greedy traversal.",
+        "cpp": "Uses greedy placement.",
+        "javascript": "Uses greedy simulation."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Placement",
+      "idea": "Traverse the flowerbed once. If the current plot is empty and both neighboring plots are also empty (or out of bounds), plant a flower there, increment the count, and continue. Stop early if enough flowers have been planted.",
+      "intuition": "Planting a flower as soon as a valid position is found never reduces future opportunities. Every plot is visited once, resulting in linear time and constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize count = 0.",
+        "Traverse every plot.",
+        "If current plot is empty:",
+        "Check left neighbor.",
+        "Check right neighbor.",
+        "If both are empty, plant a flower.",
+        "Increment count.",
+        "Return true if count >= n.",
+        "Otherwise return false."
+      ],
+      "dryRun": "flowerbed=[1,0,0,0,1], n=1\nIndex2 has empty neighbors.\nPlant flower.\nCount=1\nAnswer=true",
+      "visualization": {},
+      "code": {
+        "java": "public boolean canPlaceFlowers(int[] flowerbed, int n) {\n    int count = 0;\n    for(int i = 0; i < flowerbed.length; i++){\n        if(flowerbed[i] == 0){\n            int left = (i == 0) ? 0 : flowerbed[i-1];\n            int right = (i == flowerbed.length-1) ? 0 : flowerbed[i+1];\n            if(left == 0 && right == 0){\n                flowerbed[i] = 1;\n                count++;\n                if(count >= n) return true;\n            }\n        }\n    }\n    return count >= n;\n}",
+        "python": "def canPlaceFlowers(flowerbed, n):\n    count = 0\n    for i in range(len(flowerbed)):\n        if flowerbed[i] == 0:\n            left = 0 if i == 0 else flowerbed[i-1]\n            right = 0 if i == len(flowerbed)-1 else flowerbed[i+1]\n            if left == 0 and right == 0:\n                flowerbed[i] = 1\n                count += 1\n                if count >= n:\n                    return True\n    return count >= n",
+        "cpp": "bool canPlaceFlowers(vector<int>& flowerbed, int n){\n    int count=0;\n    for(int i=0;i<flowerbed.size();i++){\n        if(flowerbed[i]==0){\n            int left=(i==0)?0:flowerbed[i-1];\n            int right=(i==flowerbed.size()-1)?0:flowerbed[i+1];\n            if(left==0 && right==0){\n                flowerbed[i]=1;\n                count++;\n                if(count>=n) return true;\n            }\n        }\n    }\n    return count>=n;\n}",
+        "javascript": "function canPlaceFlowers(flowerbed,n){\nlet count=0;\nfor(let i=0;i<flowerbed.length;i++){\nif(flowerbed[i]===0){\nlet left=(i===0)?0:flowerbed[i-1];\nlet right=(i===flowerbed.length-1)?0:flowerbed[i+1];\nif(left===0 && right===0){\nflowerbed[i]=1;\ncount++;\nif(count>=n) return true;\n}\n}\n}\nreturn count>=n;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Plant a flower only when both neighboring plots are empty.",
+    "steps": [
+      "Visit each plot.",
+      "Check left neighbor.",
+      "Check right neighbor.",
+      "Plant if both are empty.",
+      "Continue until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Check left and right neighbors.",
+      "Treat boundaries as empty.",
+      "Plant immediately.",
+      "Greedy always works.",
+      "One pass solution."
+    ],
+    "practiceLevel": "Beginner",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can you solve this without modifying the input array?",
+      "Why is the greedy strategy always correct?",
+      "What if adjacent distance must be two instead of one?",
+      "Can flowers be removed?",
+      "How would you maximize total planted flowers?"
+    ],
+    "interviewTips": [
+      "Explain why planting immediately is safe.",
+      "Mention boundary conditions separately.",
+      "Discuss why the algorithm is greedy.",
+      "State O(n) time and O(1) space.",
+      "Remember to update the flowerbed after planting."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Plant a flower whenever both neighboring plots are empty.",
+      "algorithm": "Traverse → Check neighbors → Plant → Count.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Boundary handling is important.",
+      "Plant only when both neighbors are empty.",
+      "Update the array after planting.",
+      "Linear traversal.",
+      "Constant space."
+    ],
+    "commonMistakes": [
+      "Not handling the first plot correctly.",
+      "Not handling the last plot correctly.",
+      "Forgetting to update the flowerbed after planting.",
+      "Checking only one neighboring plot.",
+      "Ignoring the case when n equals 0."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/can-place-flowers/",
+    "neetcode": "https://neetcode.io/problems/can-place-flowers",
+    "youtube": [
+      "NeetCode - Can Place Flowers",
+      "Take U Forward - Greedy Problems",
+      "CodeHelp - Greedy Algorithms",
+      "Abdul Bari - Greedy Strategy",
+      "Nick White - Can Place Flowers"
+    ],
+    "relatedProblems": [
+      "Boats to Save People",
+      "Assign Cookies",
+      "Jump Game",
+      "Gas Station",
+      "Maximum Units on a Truck"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

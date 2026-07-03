@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "id": "arr050",
+    "title": "Move Zeroes",
+    "slug": "move-zeroes",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Two Pointers",
+    "pattern": "Two Pointers (Stable Partition)",
+    "tags": [
+      "Array",
+      "Two Pointers"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "63.5%",
+    "estimatedTime": "10-15 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Two Pointers, Loops, Swapping, Time Complexity",
+    "whyDoesThisExist": "Imagine arranging books on a shelf where empty spaces (0's) should be moved to the end while keeping the order of all actual books unchanged.",
+    "realWorldAnalogy": "Imagine arranging books on a shelf where empty spaces (0's) should be moved to the end while keeping the order of all actual books unchanged.",
+    "prerequisites": [
+      "Arrays",
+      "Two Pointers",
+      "Loops",
+      "Swapping",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Stable Two Pointer pattern whenever elements matching a condition must be shifted while preserving the order of the remaining elements.",
+    "patternRecognitionKeywords": [
+      "Two Pointers",
+      "Stable Partition",
+      "Move Zeroes",
+      "In-place",
+      "Swap",
+      "Maintain Order"
+    ],
+    "signals": "Whenever elements satisfying a condition must be moved while preserving their order, think of the Stable Two Pointer pattern.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, move all 0's to the end while maintaining the relative order of the non-zero elements. Perform the operation in-place without making a copy of the array.",
+    "examples": [
+      {
+        "input": "nums = [0,1,0,3,12]",
+        "output": "[1,3,12,0,0]",
+        "explanation": "All non-zero elements remain in the same order while zeroes move to the end."
+      },
+      {
+        "input": "nums = [0]",
+        "output": "[0]",
+        "explanation": "The array already satisfies the condition."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 10000",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "edgeCases": [
+      "All zeroes",
+      "No zeroes",
+      "Single element",
+      "Zeroes at the beginning",
+      "Zeroes at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Store all non-zero elements in a temporary array, then append all zeroes and copy everything back.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Maintain one pointer indicating the position where the next non-zero element should be placed. Traverse the array, and whenever a non-zero element is found, swap it into its correct position.",
+    "ahaMoment": "Every non-zero element should be moved to the earliest available position.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever elements satisfying a condition must be moved while preserving their order, think of the Stable Two Pointer pattern.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each element is visited exactly once, and swaps happen only when necessary. The relative order of non-zero elements is preserved while using constant extra space.",
+    "howToRecognizeSimilar": "Whenever elements satisfying a condition must be moved while preserving their order, think of the Stable Two Pointer pattern.",
+    "commonWrongPaths": [
+      "Not preserving the order of non-zero elements.",
+      "Using an extra array despite the in-place requirement.",
+      "Incrementing the insertion pointer for zeroes.",
+      "Swapping every element unnecessarily.",
+      "Forgetting the single-element case."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Maintain an insertion pointer.",
+      "Swap only non-zero elements.",
+      "Do everything in-place."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not preserving the order of non-zero elements.",
+      "Using an extra array despite the in-place requirement.",
+      "Incrementing the insertion pointer for zeroes.",
+      "Swapping every element unnecessarily.",
+      "Forgetting the single-element case."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Two Pointers (Stable Partition)",
+    "recognitionSignals": "Whenever elements satisfying a condition must be moved while preserving their order, think of the Stable Two Pointer pattern.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Use Extra Array",
+      "idea": "Store all non-zero elements in a temporary array, then append all zeroes and copy everything back.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a temporary array.",
+        "Copy all non-zero elements.",
+        "Append required zeroes.",
+        "Copy back into nums."
+      ],
+      "dryRun": "Collect non-zero elements first.",
+      "visualization": {},
+      "code": {
+        "java": "Uses an auxiliary array.",
+        "python": "Uses an extra list.",
+        "cpp": "Uses a temporary vector.",
+        "javascript": "Uses an extra array."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Overwrite then Fill Zeroes",
+      "idea": "Overwrite the array with all non-zero elements first, then fill the remaining positions with zeroes.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Write all non-zero values sequentially.",
+        "Fill the remaining positions with zeroes.",
+        "Return."
+      ],
+      "dryRun": "Compact non-zero elements, then append zeroes.",
+      "visualization": {},
+      "code": {
+        "java": "Uses overwrite approach.",
+        "python": "Uses overwrite.",
+        "cpp": "Uses overwrite.",
+        "javascript": "Uses overwrite."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pointers (Stable Partition)",
+      "idea": "Maintain two pointers. One pointer scans the array while the other marks the position where the next non-zero element belongs. Whenever a non-zero element is encountered, swap it with the insertion pointer and advance the insertion pointer.",
+      "intuition": "Each element is visited exactly once, and swaps happen only when necessary. The relative order of non-zero elements is preserved while using constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize insert = 0.",
+        "Traverse the array.",
+        "If nums[i] is non-zero:",
+        "Swap nums[i] with nums[insert].",
+        "Increment insert.",
+        "Continue until the end."
+      ],
+      "dryRun": "nums=[0,1,0,3,12]\ninsert=0\n1→swap→[1,0,0,3,12]\n3→swap→[1,3,0,0,12]\n12→swap→[1,3,12,0,0]",
+      "visualization": {},
+      "code": {
+        "java": "public void moveZeroes(int[] nums) {\n    int insert = 0;\n\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] != 0) {\n            int temp = nums[insert];\n            nums[insert] = nums[i];\n            nums[i] = temp;\n            insert++;\n        }\n    }\n}",
+        "python": "def moveZeroes(nums):\n    insert = 0\n\n    for i in range(len(nums)):\n        if nums[i] != 0:\n            nums[insert], nums[i] = nums[i], nums[insert]\n            insert += 1",
+        "cpp": "void moveZeroes(vector<int>& nums) {\n    int insert = 0;\n\n    for (int i = 0; i < nums.size(); i++) {\n        if (nums[i] != 0) {\n            swap(nums[insert], nums[i]);\n            insert++;\n        }\n    }\n}",
+        "javascript": "function moveZeroes(nums) {\n    let insert = 0;\n\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] !== 0) {\n            [nums[insert], nums[i]] = [nums[i], nums[insert]];\n            insert++;\n        }\n    }\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Move every non-zero element to its correct position.",
+    "steps": [
+      "Keep an insertion pointer.",
+      "Scan the array.",
+      "Swap non-zero elements forward.",
+      "Advance insertion pointer.",
+      "Zeroes automatically shift to the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Two pointers.",
+      "Insertion pointer.",
+      "Swap non-zero elements.",
+      "Stable ordering.",
+      "O(n) solution."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without swapping?",
+      "Why is the order preserved?",
+      "How many swaps occur in the worst case?",
+      "Can you move non-zeroes to the end instead?",
+      "How would you partition based on another value?"
+    ],
+    "interviewTips": [
+      "Mention the extra-array solution first.",
+      "Explain why the insertion pointer works.",
+      "Highlight that order is preserved.",
+      "Emphasize the in-place requirement.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every non-zero element should be moved to the earliest available position.",
+      "algorithm": "Scan → Swap Non-zero → Advance Insert Pointer.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Maintain relative order.",
+      "Perform in-place.",
+      "Each element visited once.",
+      "Constant extra space.",
+      "Stable partition pattern."
+    ],
+    "commonMistakes": [
+      "Not preserving the order of non-zero elements.",
+      "Using an extra array despite the in-place requirement.",
+      "Incrementing the insertion pointer for zeroes.",
+      "Swapping every element unnecessarily.",
+      "Forgetting the single-element case."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/move-zeroes/",
+    "neetcode": "https://neetcode.io/problems/move-zeroes",
+    "youtube": [
+      "NeetCode - Move Zeroes",
+      "Take U Forward - Move Zeroes",
+      "CodeHelp - Two Pointer Problems",
+      "Abdul Bari - Two Pointer Technique",
+      "Nick White - Move Zeroes"
+    ],
+    "relatedProblems": [
+      "Remove Element",
+      "Sort Colors",
+      "Partition Array According to Pivot",
+      "Merge Sorted Array",
+      "Duplicate Zeroes"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

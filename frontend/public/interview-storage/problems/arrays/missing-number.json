@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr049",
+    "title": "Missing Number",
+    "slug": "missing-number",
+    "difficulty": "Easy",
+    "category": "Array",
+    "subcategory": "Bit Manipulation",
+    "pattern": "XOR / Mathematical Formula",
+    "tags": [
+      "Array",
+      "Hash Table",
+      "Math",
+      "Bit Manipulation",
+      "Sorting"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "70.2%",
+    "estimatedTime": "10-15 minutes",
+    "practiceLevel": "Easy",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Loops, XOR Operator, Arithmetic Series, Time Complexity",
+    "whyDoesThisExist": "Imagine assigning roll numbers from 0 to n to students. One student is absent, so one roll number is missing from the attendance list. Your task is to identify the missing roll number.",
+    "realWorldAnalogy": "Imagine assigning roll numbers from 0 to n to students. One student is absent, so one roll number is missing from the attendance list. Your task is to identify the missing roll number.",
+    "prerequisites": [
+      "Arrays",
+      "Loops",
+      "XOR Operator",
+      "Arithmetic Series",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the XOR pattern whenever one number is missing from a complete range of unique integers.",
+    "patternRecognitionKeywords": [
+      "Missing Number",
+      "XOR",
+      "Bit Manipulation",
+      "Math",
+      "Complete Range",
+      "Unique Numbers"
+    ],
+    "signals": "Whenever exactly one unique number is missing from a complete range, think of XOR or the arithmetic sum formula.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.",
+    "examples": [
+      {
+        "input": "nums = [3,0,1]",
+        "output": "2",
+        "explanation": "The numbers 0,1,2,3 should exist. The missing number is 2."
+      },
+      {
+        "input": "nums = [0,1]",
+        "output": "2",
+        "explanation": "The range is [0,2]. The missing number is 2."
+      }
+    ],
+    "constraints": [
+      "n == nums.length",
+      "1 <= n <= 10000",
+      "0 <= nums[i] <= n",
+      "All numbers are unique."
+    ],
+    "edgeCases": [
+      "Missing number is 0",
+      "Missing number is n",
+      "Single element array",
+      "Smallest valid input",
+      "Largest valid input"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Check every number from 0 to n and search whether it exists in the array.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The numbers should form a complete sequence from 0 to n. Either compute the expected sum and subtract the actual sum, or use XOR since identical numbers cancel each other.",
+    "ahaMoment": "Every matching number cancels itself using XOR.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever exactly one unique number is missing from a complete range, think of XOR or the arithmetic sum formula.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every number appearing in both the index range and the array cancels out because a XOR a = 0. Only the missing number remains.",
+    "howToRecognizeSimilar": "Whenever exactly one unique number is missing from a complete range, think of XOR or the arithmetic sum formula.",
+    "commonWrongPaths": [
+      "Initializing XOR with 0 instead of n.",
+      "Ignoring the number n.",
+      "Using sorting unnecessarily.",
+      "Overflow concerns with the sum formula in other languages.",
+      "Using XOR on duplicate values."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Numbers range from 0 to n.",
+      "XOR of identical numbers becomes 0.",
+      "Arithmetic sum formula also works."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Initializing XOR with 0 instead of n.",
+      "Ignoring the number n.",
+      "Using sorting unnecessarily.",
+      "Overflow concerns with the sum formula in other languages.",
+      "Using XOR on duplicate values."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "XOR / Mathematical Formula",
+    "recognitionSignals": "Whenever exactly one unique number is missing from a complete range, think of XOR or the arithmetic sum formula.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Linear Search",
+      "idea": "Check every number from 0 to n and search whether it exists in the array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Iterate from 0 to n.",
+        "Search the number in the array.",
+        "Return the missing number."
+      ],
+      "dryRun": "Search every possible value.",
+      "visualization": {},
+      "code": {
+        "java": "Nested search omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Mathematical Formula",
+      "idea": "Compute the expected sum of numbers from 0 to n using the arithmetic series formula, then subtract the actual array sum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute expected = n × (n + 1) / 2.",
+        "Compute actual array sum.",
+        "Return expected - actual."
+      ],
+      "dryRun": "Expected sum - Actual sum = Missing number.",
+      "visualization": {},
+      "code": {
+        "java": "Uses arithmetic formula.",
+        "python": "Uses formula.",
+        "cpp": "Uses formula.",
+        "javascript": "Uses formula."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "XOR",
+      "idea": "XOR all indices from 0 to n together with all array elements. Since identical numbers cancel each other, the remaining value is the missing number.",
+      "intuition": "Every number appearing in both the index range and the array cancels out because a XOR a = 0. Only the missing number remains.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize result = n.",
+        "Traverse the array.",
+        "Perform result ^= index.",
+        "Perform result ^= nums[index].",
+        "Return result."
+      ],
+      "dryRun": "nums=[3,0,1]\nresult=3\n^0^3=0\n^1^0=1\n^2^1=2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int missingNumber(int[] nums) {\n    int xor = nums.length;\n\n    for (int i = 0; i < nums.length; i++) {\n        xor ^= i;\n        xor ^= nums[i];\n    }\n\n    return xor;\n}",
+        "python": "def missingNumber(nums):\n    xor = len(nums)\n\n    for i in range(len(nums)):\n        xor ^= i\n        xor ^= nums[i]\n\n    return xor",
+        "cpp": "int missingNumber(vector<int>& nums) {\n    int xr = nums.size();\n\n    for (int i = 0; i < nums.size(); i++) {\n        xr ^= i;\n        xr ^= nums[i];\n    }\n\n    return xr;\n}",
+        "javascript": "function missingNumber(nums) {\n    let xor = nums.length;\n\n    for (let i = 0; i < nums.length; i++) {\n        xor ^= i;\n        xor ^= nums[i];\n    }\n\n    return xor;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Matching numbers cancel each other using XOR.",
+    "steps": [
+      "Initialize XOR with n.",
+      "XOR all indices.",
+      "XOR all array elements.",
+      "Matching numbers disappear.",
+      "Remaining value is the answer."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Range is 0 to n.",
+      "XOR cancels equal numbers.",
+      "Sum formula also works.",
+      "Linear solution.",
+      "Constant space."
+    ],
+    "practiceLevel": "Easy",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does XOR work?",
+      "Which is better: Sum Formula or XOR?",
+      "What if duplicate numbers exist?",
+      "How would you find two missing numbers?",
+      "Can sorting solve the problem?"
+    ],
+    "interviewTips": [
+      "Start with the brute-force approach.",
+      "Mention the arithmetic sum optimization.",
+      "Explain why XOR cancels duplicate values.",
+      "Discuss why XOR avoids overflow.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every matching number cancels itself using XOR.",
+      "algorithm": "XOR(0...n) ^ XOR(all elements).",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Numbers are unique.",
+      "Exactly one number is missing.",
+      "XOR avoids overflow.",
+      "No extra space required.",
+      "O(n) solution."
+    ],
+    "commonMistakes": [
+      "Initializing XOR with 0 instead of n.",
+      "Ignoring the number n.",
+      "Using sorting unnecessarily.",
+      "Overflow concerns with the sum formula in other languages.",
+      "Using XOR on duplicate values."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/missing-number/",
+    "neetcode": "https://neetcode.io/problems/missing-number",
+    "youtube": [
+      "NeetCode - Missing Number",
+      "Take U Forward - Missing Number",
+      "CodeHelp - Bit Manipulation",
+      "Abdul Bari - XOR Tricks",
+      "Nick White - Missing Number"
+    ],
+    "relatedProblems": [
+      "First Missing Positive",
+      "Find the Duplicate Number",
+      "Single Number",
+      "Find All Numbers Disappeared in an Array",
+      "Missing Ranges"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

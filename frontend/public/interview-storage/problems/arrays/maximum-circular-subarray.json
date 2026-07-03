@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "id": "arr035",
+    "title": "Maximum Sum Circular Subarray",
+    "slug": "maximum-circular-subarray",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Kadane's Algorithm",
+    "pattern": "Kadane + Circular Array",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Kadane's Algorithm",
+      "Prefix Sum"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "38.7%",
+    "estimatedTime": "25-30 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Kadane's Algorithm, Loops, Dynamic Programming Basics, Time Complexity",
+    "whyDoesThisExist": "Imagine running around a circular race track collecting points. You may start anywhere and continue around the track, even wrapping from the end back to the beginning. Find the path with the maximum total score.",
+    "realWorldAnalogy": "Imagine running around a circular race track collecting points. You may start anywhere and continue around the track, even wrapping from the end back to the beginning. Find the path with the maximum total score.",
+    "prerequisites": [
+      "Arrays",
+      "Kadane's Algorithm",
+      "Loops",
+      "Dynamic Programming Basics",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this pattern whenever the array is circular and the problem asks for a maximum contiguous subarray sum.",
+    "patternRecognitionKeywords": [
+      "Circular Array",
+      "Kadane",
+      "Maximum Subarray",
+      "Wrap Around",
+      "Minimum Subarray",
+      "Total Sum"
+    ],
+    "signals": "Whenever the array is circular and the problem asks for a maximum contiguous sum, think of Kadane's Algorithm combined with totalSum - minimumSubarray.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums. A circular array means the end of the array connects to the beginning.",
+    "examples": [
+      {
+        "input": "nums = [1,-2,3,-2]",
+        "output": "3",
+        "explanation": "The best subarray is [3]."
+      },
+      {
+        "input": "nums = [5,-3,5]",
+        "output": "10",
+        "explanation": "The circular subarray [5,5] gives the maximum sum of 10."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 30000",
+      "-30000 <= nums[i] <= 30000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All negative numbers",
+      "All positive numbers",
+      "Maximum subarray wraps around",
+      "Maximum subarray does not wrap"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible circular subarray and calculate its sum.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "There are two possible answers: either the maximum subarray lies completely inside the array (normal Kadane), or it wraps around the ends. The wrapped sum equals totalSum minus the minimum subarray sum.",
+    "ahaMoment": "A wrapped maximum subarray equals the total array sum minus the minimum subarray.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the array is circular and the problem asks for a maximum contiguous sum, think of Kadane's Algorithm combined with totalSum - minimumSubarray.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The maximum circular subarray either does not wrap (Kadane) or wraps around. Wrapping excludes the minimum subarray, so totalSum - minSum gives the wrapped maximum.",
+    "howToRecognizeSimilar": "Whenever the array is circular and the problem asks for a maximum contiguous sum, think of Kadane's Algorithm combined with totalSum - minimumSubarray.",
+    "commonWrongPaths": [
+      "Ignoring the all-negative case.",
+      "Using only Kadane's Algorithm.",
+      "Forgetting to calculate the minimum subarray.",
+      "Returning total-minSum when all numbers are negative.",
+      "Confusing circular and non-circular subarrays."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Solve the normal maximum subarray first.",
+      "Find the minimum subarray as well.",
+      "Handle the all-negative case separately."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Ignoring the all-negative case.",
+      "Using only Kadane's Algorithm.",
+      "Forgetting to calculate the minimum subarray.",
+      "Returning total-minSum when all numbers are negative.",
+      "Confusing circular and non-circular subarrays."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Kadane + Circular Array",
+    "recognitionSignals": "Whenever the array is circular and the problem asks for a maximum contiguous sum, think of Kadane's Algorithm combined with totalSum - minimumSubarray.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Circular Subarray",
+      "idea": "Generate every possible circular subarray and calculate its sum.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose every starting index.",
+        "Generate every circular subarray.",
+        "Compute its sum.",
+        "Return the maximum."
+      ],
+      "dryRun": "Try every possible circular subarray.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force omitted because of cubic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n³)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum",
+      "idea": "Use prefix sums to compute circular subarray sums faster, but still requires checking many ranges.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build prefix sums.",
+        "Compute circular sums.",
+        "Track the maximum."
+      ],
+      "dryRun": "Compute every circular range using prefix sums.",
+      "visualization": {},
+      "code": {
+        "java": "Uses prefix sums.",
+        "python": "Uses prefix sums.",
+        "cpp": "Uses prefix sums.",
+        "javascript": "Uses prefix sums."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Kadane + Circular Array",
+      "idea": "Run Kadane's Algorithm to find the maximum subarray sum. Simultaneously compute the minimum subarray sum using a modified Kadane. If all numbers are negative, return the normal maximum. Otherwise, return the larger of normal maximum and totalSum minus minimum subarray sum.",
+      "intuition": "The maximum circular subarray either does not wrap (Kadane) or wraps around. Wrapping excludes the minimum subarray, so totalSum - minSum gives the wrapped maximum.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize totalSum = 0.",
+        "Find maximum subarray using Kadane.",
+        "Find minimum subarray using modified Kadane.",
+        "If maximum sum is negative, return it.",
+        "Return max(maxSum, totalSum - minSum)."
+      ],
+      "dryRun": "nums=[5,-3,5]\nTotal=7\nMaxKadane=7\nMinKadane=-3\nCircular=7-(-3)=10\nAnswer=max(7,10)=10",
+      "visualization": {},
+      "code": {
+        "java": "public int maxSubarraySumCircular(int[] nums) {\n    int total = 0;\n    int maxSum = nums[0], curMax = 0;\n    int minSum = nums[0], curMin = 0;\n\n    for (int num : nums) {\n        curMax = Math.max(curMax + num, num);\n        maxSum = Math.max(maxSum, curMax);\n\n        curMin = Math.min(curMin + num, num);\n        minSum = Math.min(minSum, curMin);\n\n        total += num;\n    }\n\n    if (maxSum < 0) return maxSum;\n\n    return Math.max(maxSum, total - minSum);\n}",
+        "python": "def maxSubarraySumCircular(nums):\n    total = 0\n    curMax = curMin = 0\n    maxSum = minSum = nums[0]\n\n    for num in nums:\n        curMax = max(curMax + num, num)\n        maxSum = max(maxSum, curMax)\n\n        curMin = min(curMin + num, num)\n        minSum = min(minSum, curMin)\n\n        total += num\n\n    if maxSum < 0:\n        return maxSum\n\n    return max(maxSum, total - minSum)",
+        "cpp": "int maxSubarraySumCircular(vector<int>& nums) {\n    int total = 0;\n    int curMax = 0, curMin = 0;\n    int maxSum = nums[0], minSum = nums[0];\n\n    for (int num : nums) {\n        curMax = max(curMax + num, num);\n        maxSum = max(maxSum, curMax);\n\n        curMin = min(curMin + num, num);\n        minSum = min(minSum, curMin);\n\n        total += num;\n    }\n\n    if (maxSum < 0)\n        return maxSum;\n\n    return max(maxSum, total - minSum);\n}",
+        "javascript": "function maxSubarraySumCircular(nums) {\n    let total = 0;\n    let curMax = 0, curMin = 0;\n    let maxSum = nums[0], minSum = nums[0];\n\n    for (const num of nums) {\n        curMax = Math.max(curMax + num, num);\n        maxSum = Math.max(maxSum, curMax);\n\n        curMin = Math.min(curMin + num, num);\n        minSum = Math.min(minSum, curMin);\n\n        total += num;\n    }\n\n    if (maxSum < 0) return maxSum;\n\n    return Math.max(maxSum, total - minSum);\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "The answer is either a normal maximum subarray or a wrapped subarray.",
+    "steps": [
+      "Find maximum subarray.",
+      "Find minimum subarray.",
+      "Compute total array sum.",
+      "Calculate wrapped sum = total - minimum.",
+      "Return the larger value."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Run Kadane twice.",
+      "Find maximum and minimum subarrays.",
+      "Compute total sum.",
+      "Handle all-negative arrays.",
+      "Answer = max(maxSum, total-minSum)."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does total - minimum work?",
+      "Why is the all-negative case special?",
+      "Can Kadane be modified for minimum sum?",
+      "Can this be solved using prefix sums?",
+      "How would you return the actual circular subarray?"
+    ],
+    "interviewTips": [
+      "Start with normal Kadane.",
+      "Explain why wrapping is possible.",
+      "Introduce the minimum subarray trick.",
+      "Mention the all-negative edge case.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A wrapped maximum subarray equals the total array sum minus the minimum subarray.",
+      "algorithm": "Kadane Max → Kadane Min → Total Sum → Compare.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Two possible answers: wrapped and non-wrapped.",
+      "Wrapped sum = total - minimum subarray.",
+      "All-negative case is special.",
+      "Kadane is used twice.",
+      "Linear time solution."
+    ],
+    "commonMistakes": [
+      "Ignoring the all-negative case.",
+      "Using only Kadane's Algorithm.",
+      "Forgetting to calculate the minimum subarray.",
+      "Returning total-minSum when all numbers are negative.",
+      "Confusing circular and non-circular subarrays."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
+    "neetcode": "https://neetcode.io/problems/maximum-sum-circular-subarray",
+    "youtube": [
+      "NeetCode - Maximum Sum Circular Subarray",
+      "Take U Forward - Maximum Circular Subarray",
+      "CodeHelp - Kadane's Algorithm",
+      "Abdul Bari - Kadane's Algorithm",
+      "Nick White - Maximum Sum Circular Subarray"
+    ],
+    "relatedProblems": [
+      "Maximum Subarray",
+      "Maximum Product Subarray",
+      "Maximum Average Subarray I",
+      "Kadane's Algorithm",
+      "Best Time to Buy and Sell Stock"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

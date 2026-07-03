@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "id": "arr048",
+    "title": "Minimum Size Subarray Sum",
+    "slug": "minimum-size-subarray-sum",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sliding Window",
+    "pattern": "Variable Size Sliding Window",
+    "tags": [
+      "Array",
+      "Sliding Window",
+      "Binary Search",
+      "Prefix Sum"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "48.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sliding Window, Loops, Prefix Sum, Time Complexity",
+    "whyDoesThisExist": "Imagine filling a water tank using consecutive buckets of water. Your goal is to use the fewest consecutive buckets whose total volume reaches at least the required capacity.",
+    "realWorldAnalogy": "Imagine filling a water tank using consecutive buckets of water. Your goal is to use the fewest consecutive buckets whose total volume reaches at least the required capacity.",
+    "prerequisites": [
+      "Arrays",
+      "Sliding Window",
+      "Loops",
+      "Prefix Sum",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Variable Size Sliding Window pattern whenever all elements are positive and you need the smallest or largest contiguous window satisfying a condition.",
+    "patternRecognitionKeywords": [
+      "Sliding Window",
+      "Minimum Length",
+      "Positive Numbers",
+      "Target Sum",
+      "Shrink Window",
+      "Variable Window"
+    ],
+    "signals": "Whenever the problem asks for the smallest contiguous subarray satisfying a condition and all numbers are positive, think of Variable Size Sliding Window.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray whose sum is greater than or equal to target. If there is no such subarray, return 0.",
+    "examples": [
+      {
+        "input": "target = 7, nums = [2,3,1,2,4,3]",
+        "output": "2",
+        "explanation": "The subarray [4,3] has the minimum length of 2."
+      },
+      {
+        "input": "target = 4, nums = [1,4,4]",
+        "output": "1",
+        "explanation": "The single element [4] satisfies the condition."
+      }
+    ],
+    "constraints": [
+      "1 <= target <= 10^9",
+      "1 <= nums.length <= 100000",
+      "1 <= nums[i] <= 100000"
+    ],
+    "edgeCases": [
+      "Single element satisfies target",
+      "Entire array is needed",
+      "No valid subarray",
+      "Large target",
+      "Minimum window at the end"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible subarray and compute its sum until a valid one is found.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Since all numbers are positive, once the current window reaches the target sum, try shrinking it from the left to obtain the smallest valid window.",
+    "ahaMoment": "Once the target is reached, immediately shrink the window to minimize its length.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for the smallest contiguous subarray satisfying a condition and all numbers are positive, think of Variable Size Sliding Window.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Since every element is added and removed from the sliding window at most once, the algorithm runs in linear time.",
+    "howToRecognizeSimilar": "Whenever the problem asks for the smallest contiguous subarray satisfying a condition and all numbers are positive, think of Variable Size Sliding Window.",
+    "commonWrongPaths": [
+      "Using sliding window when negative numbers exist.",
+      "Not shrinking the window completely.",
+      "Returning Infinity instead of 0.",
+      "Using > instead of >=.",
+      "Not updating the answer before shrinking."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Expand the window until the target is reached.",
+      "Shrink the window while maintaining the condition.",
+      "Track the smallest valid window length."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using sliding window when negative numbers exist.",
+      "Not shrinking the window completely.",
+      "Returning Infinity instead of 0.",
+      "Using > instead of >=.",
+      "Not updating the answer before shrinking."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Variable Size Sliding Window",
+    "recognitionSignals": "Whenever the problem asks for the smallest contiguous subarray satisfying a condition and all numbers are positive, think of Variable Size Sliding Window.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every possible subarray and compute its sum until a valid one is found.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every subarray.",
+        "Compute its sum.",
+        "Track the minimum valid length.",
+        "Return the answer."
+      ],
+      "dryRun": "Check every contiguous subarray.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Prefix Sum + Binary Search",
+      "idea": "Build prefix sums and use binary search to locate the smallest valid ending position for each starting index.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Build prefix sums.",
+        "Binary search the required prefix.",
+        "Update the minimum length.",
+        "Return the answer."
+      ],
+      "dryRun": "Search using prefix sums.",
+      "visualization": {},
+      "code": {
+        "java": "Uses prefix sums.",
+        "python": "Uses bisect.",
+        "cpp": "Uses lower_bound.",
+        "javascript": "Uses binary search."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Variable Size Sliding Window",
+      "idea": "Maintain a sliding window and its current sum. Expand the window by moving the right pointer. Whenever the sum becomes greater than or equal to the target, shrink the window from the left while updating the minimum window length.",
+      "intuition": "Since every element is added and removed from the sliding window at most once, the algorithm runs in linear time.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left = 0.",
+        "Initialize currentSum = 0.",
+        "Expand the window by moving right.",
+        "Add nums[right] to currentSum.",
+        "While currentSum >= target:",
+        "Update the minimum length.",
+        "Subtract nums[left] from currentSum.",
+        "Move left forward.",
+        "Return 0 if no valid window exists."
+      ],
+      "dryRun": "target=7\nnums=[2,3,1,2,4,3]\nWindow=[2,3,1,2] Sum=8 Length=4\nShrink→[3,1,2] Length=3\nLater→[4,3] Length=2\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int minSubArrayLen(int target, int[] nums) {\n    int left = 0;\n    int sum = 0;\n    int ans = Integer.MAX_VALUE;\n\n    for (int right = 0; right < nums.length; right++) {\n        sum += nums[right];\n\n        while (sum >= target) {\n            ans = Math.min(ans, right - left + 1);\n            sum -= nums[left++];\n        }\n    }\n\n    return ans == Integer.MAX_VALUE ? 0 : ans;\n}",
+        "python": "def minSubArrayLen(target, nums):\n    left = 0\n    curr = 0\n    ans = float('inf')\n\n    for right in range(len(nums)):\n        curr += nums[right]\n\n        while curr >= target:\n            ans = min(ans, right - left + 1)\n            curr -= nums[left]\n            left += 1\n\n    return 0 if ans == float('inf') else ans",
+        "cpp": "int minSubArrayLen(int target, vector<int>& nums) {\n    int left = 0, sum = 0;\n    int ans = INT_MAX;\n\n    for (int right = 0; right < nums.size(); right++) {\n        sum += nums[right];\n\n        while (sum >= target) {\n            ans = min(ans, right - left + 1);\n            sum -= nums[left++];\n        }\n    }\n\n    return ans == INT_MAX ? 0 : ans;\n}",
+        "javascript": "function minSubArrayLen(target, nums) {\n    let left = 0;\n    let sum = 0;\n    let ans = Infinity;\n\n    for (let right = 0; right < nums.length; right++) {\n        sum += nums[right];\n\n        while (sum >= target) {\n            ans = Math.min(ans, right - left + 1);\n            sum -= nums[left++];\n        }\n    }\n\n    return ans === Infinity ? 0 : ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Expand until the target is reached, then shrink to find the smallest valid window.",
+    "steps": [
+      "Expand the window.",
+      "Reach target sum.",
+      "Shrink from the left.",
+      "Update minimum length.",
+      "Repeat until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Positive numbers only.",
+      "Expand then shrink.",
+      "Maintain current sum.",
+      "Update minimum length.",
+      "O(n) solution."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why does Sliding Window work only for positive numbers?",
+      "How would you solve it with negative numbers?",
+      "Can Binary Search solve this problem?",
+      "Can you return the actual subarray?",
+      "How does this differ from Maximum Size Subarray Sum Equals K?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Explain why positive numbers allow shrinking.",
+      "Show expand-then-shrink logic.",
+      "Discuss the no-solution case.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Once the target is reached, immediately shrink the window to minimize its length.",
+      "algorithm": "Expand → Reach Target → Shrink → Update Answer.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Sliding window works because numbers are positive.",
+      "Shrink whenever the target is satisfied.",
+      "Maintain the minimum length.",
+      "Return 0 if impossible.",
+      "Linear time."
+    ],
+    "commonMistakes": [
+      "Using sliding window when negative numbers exist.",
+      "Not shrinking the window completely.",
+      "Returning Infinity instead of 0.",
+      "Using > instead of >=.",
+      "Not updating the answer before shrinking."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+    "neetcode": "https://neetcode.io/problems/minimum-size-subarray-sum",
+    "youtube": [
+      "NeetCode - Minimum Size Subarray Sum",
+      "Take U Forward - Sliding Window",
+      "CodeHelp - Sliding Window Problems",
+      "Abdul Bari - Sliding Window Technique",
+      "Nick White - Minimum Size Subarray Sum"
+    ],
+    "relatedProblems": [
+      "Maximum Sum of Distinct Subarrays With Length K",
+      "Minimum Operations to Reduce X to Zero",
+      "Longest Substring Without Repeating Characters",
+      "Fruit Into Baskets",
+      "Sliding Window Maximum"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "id": "arr013",
+    "title": "Count of Smaller Numbers After Self",
+    "slug": "count-of-smaller-numbers-after-self",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Merge Sort",
+    "pattern": "Modified Merge Sort",
+    "tags": [
+      "Array",
+      "Merge Sort",
+      "Binary Indexed Tree",
+      "Segment Tree",
+      "Divide and Conquer"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "VMware",
+      "PayPal"
+    ],
+    "frequency": "High",
+    "acceptance": "43.5%",
+    "estimatedTime": "40-50 minutes",
+    "practiceLevel": "Advanced",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Merge Sort, Recursion, Divide and Conquer, Time Complexity",
+    "whyDoesThisExist": "Imagine students standing in a queue based on arrival time. For every student, you want to know how many students standing behind them have a lower score. Instead of checking every student behind them individually, Merge Sort can count these values efficiently while sorting.",
+    "realWorldAnalogy": "Imagine students standing in a queue based on arrival time. For every student, you want to know how many students standing behind them have a lower score. Instead of checking every student behind them individually, Merge Sort can count these values efficiently while sorting.",
+    "prerequisites": [
+      "Arrays",
+      "Merge Sort",
+      "Recursion",
+      "Divide and Conquer",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Modified Merge Sort whenever you need to count relationships between elements appearing before and after each index.",
+    "patternRecognitionKeywords": [
+      "Smaller After Self",
+      "Merge Sort",
+      "Binary Indexed Tree",
+      "Pairs",
+      "Counting",
+      "Indices"
+    ],
+    "signals": "Whenever you need to count relationships between elements appearing before and after each index, think of Modified Merge Sort or Binary Indexed Tree.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, return an integer array counts where counts[i] is the number of smaller elements to the right of nums[i].",
+    "examples": [
+      {
+        "input": "nums = [5,2,6,1]",
+        "output": "[2,1,1,0]",
+        "explanation": "5 has two smaller elements (2,1). 2 has one smaller element (1). 6 has one smaller element (1). 1 has none."
+      },
+      {
+        "input": "nums = [-1]",
+        "output": "[0]",
+        "explanation": "There are no elements after it."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100000",
+      "-10000 <= nums[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "Already sorted array",
+      "Reverse sorted array",
+      "Duplicate values",
+      "Negative numbers",
+      "All elements equal"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every element, compare it with every element to its right and count how many are smaller.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "While merging two sorted halves, every time an element from the right half moves before an element in the left half, it means that element is smaller and originally appeared after it. Count how many such right elements have already moved before placing each left element.",
+    "ahaMoment": "Every right element that moves before a left element during merging is a smaller element appearing after it.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever you need to count relationships between elements appearing before and after each index, think of Modified Merge Sort or Binary Indexed Tree.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each merge operation counts all smaller elements appearing after every index while sorting. Every level performs linear work, giving O(n log n) overall complexity.",
+    "howToRecognizeSimilar": "Whenever you need to count relationships between elements appearing before and after each index, think of Modified Merge Sort or Binary Indexed Tree.",
+    "commonWrongPaths": [
+      "Not storing original indices.",
+      "Counting equal elements as smaller.",
+      "Updating counts at the wrong time.",
+      "Losing original order during merge.",
+      "Incorrect merge logic."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Brute force compares every element.",
+      "Merge Sort can count while sorting.",
+      "Keep track of original indices."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not storing original indices.",
+      "Counting equal elements as smaller.",
+      "Updating counts at the wrong time.",
+      "Losing original order during merge.",
+      "Incorrect merge logic."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Modified Merge Sort",
+    "recognitionSignals": "Whenever you need to count relationships between elements appearing before and after each index, think of Modified Merge Sort or Binary Indexed Tree.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Nested Loop Comparison",
+      "idea": "For every element, compare it with every element to its right and count how many are smaller.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create answer array.",
+        "For every index i:",
+        "Compare nums[i] with every j > i.",
+        "Increment count whenever nums[j] < nums[i].",
+        "Store the count."
+      ],
+      "dryRun": "nums=[5,2,6,1]\n5 -> 2,1 =>2\n2 ->1 =>1\n6 ->1 =>1\n1 ->0",
+      "visualization": {},
+      "code": {
+        "java": "public List<Integer> countSmaller(int[] nums){\n List<Integer> ans=new ArrayList<>();\n for(int i=0;i<nums.length;i++){\n  int count=0;\n  for(int j=i+1;j<nums.length;j++){\n   if(nums[j]<nums[i]) count++;\n  }\n  ans.add(count);\n }\n return ans;\n}",
+        "python": "def countSmaller(nums):\n ans=[]\n for i in range(len(nums)):\n  count=0\n  for j in range(i+1,len(nums)):\n   if nums[j]<nums[i]:\n    count+=1\n  ans.append(count)\n return ans",
+        "cpp": "Brute force nested loop solution.",
+        "javascript": "Brute force nested loop solution."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Binary Indexed Tree",
+      "idea": "Compress the values and use a Fenwick Tree to count how many smaller values have already been processed while traversing from right to left.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Coordinate compress values.",
+        "Traverse from right to left.",
+        "Query BIT for smaller values.",
+        "Update BIT with current value."
+      ],
+      "dryRun": "Process 1 →0\nProcess 6 →1\nProcess 2 →1\nProcess 5 →2",
+      "visualization": {},
+      "code": {
+        "java": "Uses Fenwick Tree.",
+        "python": "Uses BIT.",
+        "cpp": "Uses Fenwick Tree.",
+        "javascript": "Uses Binary Indexed Tree."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Modified Merge Sort",
+      "idea": "Store every element together with its original index. During Merge Sort, whenever elements from the right half move before elements from the left half, count how many right elements have already been placed. Add that count to the answer for every left element.",
+      "intuition": "Each merge operation counts all smaller elements appearing after every index while sorting. Every level performs linear work, giving O(n log n) overall complexity.",
+      "whenToUse": "",
+      "algorithm": [
+        "Store (value,index) pairs.",
+        "Initialize answer array with zeros.",
+        "Recursively split the array.",
+        "Merge sorted halves.",
+        "Maintain rightCounter.",
+        "Whenever right element is smaller, increment rightCounter.",
+        "When placing a left element, add rightCounter to its answer.",
+        "Return answer."
+      ],
+      "dryRun": "nums=[5,2,6,1]\nSplit\nMerge [5],[2] -> count[5]+=1\nMerge [6],[1] -> count[6]+=1\nFinal Merge -> count[5]+=1\nAnswer=[2,1,1,0]",
+      "visualization": {},
+      "code": {
+        "java": "class Solution {\n    class Pair{\n        int value,index;\n        Pair(int v,int i){value=v;index=i;}\n    }\n\n    int[] ans;\n\n    public List<Integer> countSmaller(int[] nums){\n        ans=new int[nums.length];\n        Pair[] arr=new Pair[nums.length];\n        for(int i=0;i<nums.length;i++)\n            arr[i]=new Pair(nums[i],i);\n        mergeSort(arr,0,nums.length-1);\n        List<Integer> res=new ArrayList<>();\n        for(int x:ans) res.add(x);\n        return res;\n    }\n\n    private void mergeSort(Pair[] arr,int left,int right){\n        if(left>=right) return;\n        int mid=(left+right)/2;\n        mergeSort(arr,left,mid);\n        mergeSort(arr,mid+1,right);\n        merge(arr,left,mid,right);\n    }\n\n    private void merge(Pair[] arr,int left,int mid,int right){\n        List<Pair> temp=new ArrayList<>();\n        int i=left,j=mid+1;\n        int rightCounter=0;\n\n        while(i<=mid && j<=right){\n            if(arr[j].value<arr[i].value){\n                rightCounter++;\n                temp.add(arr[j++]);\n            }else{\n                ans[arr[i].index]+=rightCounter;\n                temp.add(arr[i++]);\n            }\n        }\n\n        while(i<=mid){\n            ans[arr[i].index]+=rightCounter;\n            temp.add(arr[i++]);\n        }\n\n        while(j<=right)\n            temp.add(arr[j++]);\n\n        for(int k=left;k<=right;k++)\n            arr[k]=temp.get(k-left);\n    }\n}",
+        "python": "Uses modified Merge Sort with index tracking.",
+        "cpp": "Uses Merge Sort with original indices.",
+        "javascript": "Uses Merge Sort with pair objects."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Count how many right-side elements move ahead during Merge Sort.",
+    "steps": [
+      "Split array.",
+      "Merge sorted halves.",
+      "Track moved right elements.",
+      "Update answer for left elements."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Store original indices.",
+      "Modified Merge Sort.",
+      "Count moved right elements.",
+      "Update answer during merge.",
+      "Classic Hard interview problem."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using a Fenwick Tree?",
+      "How does Segment Tree solve this problem?",
+      "What if updates were dynamic?",
+      "Why must original indices be stored?",
+      "How does this differ from Count Inversions?"
+    ],
+    "interviewTips": [
+      "Explain the brute-force approach first.",
+      "Mention why original indices are necessary.",
+      "Describe how rightCounter works.",
+      "Discuss the BIT alternative.",
+      "Explain why Merge Sort achieves O(n log n)."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Every right element that moves before a left element during merging is a smaller element appearing after it.",
+      "algorithm": "Store Indices → Merge Sort → Count During Merge.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Track original index.",
+      "Count during merge.",
+      "Do not count equal values.",
+      "Merge Sort based.",
+      "O(n log n)."
+    ],
+    "commonMistakes": [
+      "Not storing original indices.",
+      "Counting equal elements as smaller.",
+      "Updating counts at the wrong time.",
+      "Losing original order during merge.",
+      "Incorrect merge logic."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+    "neetcode": "https://neetcode.io/problems/count-smaller-after-self",
+    "youtube": [
+      "NeetCode - Count of Smaller Numbers After Self",
+      "Take U Forward - Merge Sort Problems",
+      "CodeHelp - Modified Merge Sort",
+      "William Fiset - Fenwick Tree",
+      "Abdul Bari - Divide and Conquer"
+    ],
+    "relatedProblems": [
+      "Count Inversions",
+      "Reverse Pairs",
+      "Range Sum Query",
+      "Binary Indexed Tree",
+      "Segment Tree"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

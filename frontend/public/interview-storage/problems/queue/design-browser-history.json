@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "id": "design-browser-history",
+    "title": "Design Browser History",
+    "slug": "design-browser-history",
+    "difficulty": "Medium",
+    "category": "queue",
+    "subcategory": "",
+    "pattern": "",
+    "tags": [],
+    "companies": [],
+    "frequency": "",
+    "acceptance": "",
+    "estimatedTime": "",
+    "practiceLevel": "",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Core pattern and intuition",
+    "whyDoesThisExist": "Common interview concept",
+    "realWorldAnalogy": "",
+    "prerequisites": [],
+    "whenToUseThis": "",
+    "patternRecognitionKeywords": [],
+    "signals": "",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "",
+    "examples": [],
+    "constraints": [],
+    "edgeCases": []
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "",
+    "ahaMoment": "",
+    "mentalModel": "",
+    "patternRecognition": "",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "",
+    "howToRecognizeSimilar": "",
+    "commonWrongPaths": []
+  },
+  "thinkingCoach": {
+    "hints": [],
+    "guidedQuestions": [],
+    "commonMisconceptions": [],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "",
+    "recognitionSignals": "",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [],
+  "visualization": {
+    "description": "",
+    "steps": []
+  },
+  "practice": {
+    "revisionNotes": [],
+    "practiceLevel": "",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [],
+    "interviewTips": [],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {},
+    "importantPoints": [],
+    "commonMistakes": []
+  },
+  "resources": {
+    "leetcode": "",
+    "neetcode": "",
+    "youtube": [],
+    "relatedProblems": []
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

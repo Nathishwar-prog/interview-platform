@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "id": "arr008",
+    "title": "Car Pooling",
+    "slug": "car-pooling",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Prefix Sum",
+    "pattern": "Difference Array",
+    "tags": [
+      "Array",
+      "Prefix Sum",
+      "Difference Array",
+      "Simulation",
+      "Greedy"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Uber",
+      "Bloomberg",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "High",
+    "acceptance": "58.9%",
+    "estimatedTime": "20-30 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Prefix Sum, Difference Array, Loops, Time Complexity",
+    "whyDoesThisExist": "Imagine you are driving a taxi that only travels in one direction. At different locations, passengers enter and leave the taxi. Instead of simulating every passenger individually, you simply record how many passengers enter and leave at each stop, then calculate the running passenger count.",
+    "realWorldAnalogy": "Imagine you are driving a taxi that only travels in one direction. At different locations, passengers enter and leave the taxi. Instead of simulating every passenger individually, you simply record how many passengers enter and leave at each stop, then calculate the running passenger count.",
+    "prerequisites": [
+      "Arrays",
+      "Prefix Sum",
+      "Difference Array",
+      "Loops",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Difference Array pattern whenever multiple range updates are followed by sequential queries over the entire range.",
+    "patternRecognitionKeywords": [
+      "Range Update",
+      "Prefix Sum",
+      "Difference Array",
+      "Passengers",
+      "Capacity",
+      "Trips",
+      "Simulation"
+    ],
+    "signals": "Whenever multiple range updates are followed by sequential queries, think of a Difference Array with Prefix Sum.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "There is a car with a fixed number of empty seats represented by capacity. The vehicle only drives east (it never turns around). You are given an array trips where trips[i] = [numPassengers, from, to] indicates that numPassengers passengers are picked up at location from and dropped off before location to. Return true if it is possible to complete all trips without exceeding the vehicle's capacity at any time, otherwise return false.",
+    "examples": [
+      {
+        "input": "trips = [[2,1,5],[3,3,7]], capacity = 4",
+        "output": "false",
+        "explanation": "At location 3, there are 5 passengers in the car, exceeding the capacity."
+      },
+      {
+        "input": "trips = [[2,1,5],[3,3,7]], capacity = 5",
+        "output": "true",
+        "explanation": "The maximum number of passengers at any point is exactly 5."
+      }
+    ],
+    "constraints": [
+      "1 <= trips.length <= 1000",
+      "1 <= numPassengers <= 100",
+      "0 <= from < to <= 1000",
+      "1 <= capacity <= 100000"
+    ],
+    "edgeCases": [
+      "Only one trip",
+      "Trips starting at the same location",
+      "Trips ending at the same location",
+      "Passenger drop-off before another pickup",
+      "Capacity exactly equals passengers",
+      "Maximum location value"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "For every trip, visit every location from pickup to drop-off and update the passenger count. If the capacity is exceeded, return false.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of checking every trip against every other trip, record only the changes at each location. Add passengers where they enter and subtract them where they leave. A running prefix sum tells you exactly how many passengers are in the car at every point.",
+    "ahaMoment": "Only passenger changes matter—not every location inside a trip.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever multiple range updates are followed by sequential queries, think of a Difference Array with Prefix Sum.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each trip contributes only two updates regardless of its length. The prefix sum reconstructs the passenger count at every location in linear time.",
+    "howToRecognizeSimilar": "Whenever multiple range updates are followed by sequential queries, think of a Difference Array with Prefix Sum.",
+    "commonWrongPaths": [
+      "Subtracting passengers after the destination instead of at the destination.",
+      "Updating every location manually.",
+      "Forgetting prefix sum.",
+      "Using the trip length instead of passenger count.",
+      "Checking capacity before updating the prefix."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Think about passenger changes rather than active trips.",
+      "Record pickups and drop-offs separately.",
+      "Use a running prefix sum."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Subtracting passengers after the destination instead of at the destination.",
+      "Updating every location manually.",
+      "Forgetting prefix sum.",
+      "Using the trip length instead of passenger count.",
+      "Checking capacity before updating the prefix."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Difference Array",
+    "recognitionSignals": "Whenever multiple range updates are followed by sequential queries, think of a Difference Array with Prefix Sum.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Simulate Every Location",
+      "idea": "For every trip, visit every location from pickup to drop-off and update the passenger count. If the capacity is exceeded, return false.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an array representing every location.",
+        "For each trip, increment passengers at every location between from and to.",
+        "Check if any location exceeds capacity.",
+        "Return the result."
+      ],
+      "dryRun": "Trip [2,1,5]\nLocations 1-4 +=2\nTrip [3,3,7]\nLocations 3-6 +=3\nLocation 3 has 5 passengers.",
+      "visualization": {},
+      "code": {
+        "java": "Brute force simulation omitted because it repeatedly updates every location.",
+        "python": "Brute force range update omitted.",
+        "cpp": "Naive simulation omitted.",
+        "javascript": "Naive implementation omitted."
+      },
+      "complexities": {
+        "time": "O(n × m)",
+        "space": "O(m)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting Pickup and Drop Events",
+      "idea": "Separate pickup and drop-off events, sort them, and simulate passenger movement in chronological order.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Store all pickup events.",
+        "Store all drop-off events.",
+        "Sort events.",
+        "Process events while tracking passengers."
+      ],
+      "dryRun": "Events:\n+2 at 1\n+3 at 3\n-2 at 5\n-3 at 7",
+      "visualization": {},
+      "code": {
+        "java": "Sorting-based event simulation.",
+        "python": "Uses sorted pickup and drop events.",
+        "cpp": "Uses event sorting.",
+        "javascript": "Uses sorted events."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Difference Array + Prefix Sum",
+      "idea": "Create a difference array representing passenger changes at every location. Add passengers at the pickup location and subtract them at the drop-off location. Compute the running prefix sum to determine the current number of passengers.",
+      "intuition": "Each trip contributes only two updates regardless of its length. The prefix sum reconstructs the passenger count at every location in linear time.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create a difference array of size 1001.",
+        "For every trip:",
+        "Add passengers at pickup location.",
+        "Subtract passengers at drop-off location.",
+        "Traverse the difference array.",
+        "Maintain running passenger count.",
+        "If passengers exceed capacity, return false.",
+        "Return true."
+      ],
+      "dryRun": "Trips=[[2,1,5],[3,3,7]]\nDiff[1]+=2\nDiff[5]-=2\nDiff[3]+=3\nDiff[7]-=3\nPrefix: 0,2,2,5,...",
+      "visualization": {},
+      "code": {
+        "java": "public boolean carPooling(int[][] trips, int capacity) {\n    int[] diff = new int[1001];\n\n    for(int[] trip : trips){\n        diff[trip[1]] += trip[0];\n        diff[trip[2]] -= trip[0];\n    }\n\n    int passengers = 0;\n    for(int x : diff){\n        passengers += x;\n        if(passengers > capacity)\n            return false;\n    }\n\n    return true;\n}",
+        "python": "def carPooling(trips, capacity):\n    diff = [0] * 1001\n\n    for passengers, start, end in trips:\n        diff[start] += passengers\n        diff[end] -= passengers\n\n    current = 0\n    for change in diff:\n        current += change\n        if current > capacity:\n            return False\n\n    return True",
+        "cpp": "bool carPooling(vector<vector<int>>& trips, int capacity){\n    vector<int> diff(1001,0);\n\n    for(auto &trip:trips){\n        diff[trip[1]] += trip[0];\n        diff[trip[2]] -= trip[0];\n    }\n\n    int passengers=0;\n    for(int x:diff){\n        passengers+=x;\n        if(passengers>capacity)\n            return false;\n    }\n\n    return true;\n}",
+        "javascript": "function carPooling(trips,capacity){\nconst diff=new Array(1001).fill(0);\n\nfor(const [passengers,start,end] of trips){\ndiff[start]+=passengers;\ndiff[end]-=passengers;\n}\n\nlet current=0;\nfor(const change of diff){\ncurrent+=change;\nif(current>capacity) return false;\n}\n\nreturn true;\n}"
+      },
+      "complexities": {
+        "time": "O(n + 1000)",
+        "space": "O(1000)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Instead of tracking passengers continuously, track only where they enter and leave.",
+    "steps": [
+      "Pickup adds passengers.",
+      "Drop-off removes passengers.",
+      "Build difference array.",
+      "Compute prefix sum.",
+      "Check capacity."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Difference array stores changes.",
+      "Prefix sum reconstructs values.",
+      "Pickup adds.",
+      "Drop-off subtracts.",
+      "Check capacity while building prefix."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved without using a fixed-size array?",
+      "How would you solve it if locations reached 10^9?",
+      "Can a priority queue solve this problem?",
+      "What if the car could travel in both directions?",
+      "How does this relate to Range Addition?"
+    ],
+    "interviewTips": [
+      "Explain why updating only two indices is enough.",
+      "Mention that prefix sum reconstructs passenger counts.",
+      "Discuss the event-based interpretation.",
+      "State O(n + m) complexity.",
+      "Mention that the fixed array size is possible because locations are bounded."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Only passenger changes matter—not every location inside a trip.",
+      "algorithm": "Difference Array → Prefix Sum → Capacity Check.",
+      "timeComplexity": "O(n + m)",
+      "spaceComplexity": "O(m)"
+    },
+    "importantPoints": [
+      "Difference array.",
+      "Prefix sum.",
+      "Range update optimization.",
+      "Only two updates per trip.",
+      "Linear scan."
+    ],
+    "commonMistakes": [
+      "Subtracting passengers after the destination instead of at the destination.",
+      "Updating every location manually.",
+      "Forgetting prefix sum.",
+      "Using the trip length instead of passenger count.",
+      "Checking capacity before updating the prefix."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/car-pooling/",
+    "neetcode": "https://neetcode.io/problems/car-pooling",
+    "youtube": [
+      "NeetCode - Car Pooling",
+      "Take U Forward - Prefix Sum",
+      "CodeHelp - Difference Array",
+      "Abdul Bari - Prefix Sum",
+      "Nick White - Car Pooling"
+    ],
+    "relatedProblems": [
+      "Range Addition",
+      "Corporate Flight Bookings",
+      "Meeting Rooms II",
+      "Merge Intervals",
+      "My Calendar I"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

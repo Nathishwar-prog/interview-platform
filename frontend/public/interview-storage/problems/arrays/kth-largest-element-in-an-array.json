@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr029",
+    "title": "Kth Largest Element in an Array",
+    "slug": "kth-largest-element-in-an-array",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Heap",
+    "pattern": "Min Heap",
+    "tags": [
+      "Array",
+      "Heap (Priority Queue)",
+      "Divide and Conquer",
+      "Sorting",
+      "Quickselect"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "Salesforce",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "67.5%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Priority Queue (Heap), Recursion Basics, Time Complexity",
+    "whyDoesThisExist": "Imagine an online gaming leaderboard where millions of players have scores. Instead of sorting every score, you only need to know who has the kth highest score.",
+    "realWorldAnalogy": "Imagine an online gaming leaderboard where millions of players have scores. Instead of sorting every score, you only need to know who has the kth highest score.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Priority Queue (Heap)",
+      "Recursion Basics",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Min Heap pattern whenever you need the kth largest/smallest element without fully sorting the array.",
+    "patternRecognitionKeywords": [
+      "Top K",
+      "Kth Largest",
+      "Heap",
+      "Priority Queue",
+      "Quickselect",
+      "Selection Algorithm"
+    ],
+    "signals": "Whenever the problem asks for kth largest/smallest or Top K elements without requiring complete sorting, think Min Heap or Quickselect.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums and an integer k, return the kth largest element in the array. Note that it is the kth largest element in sorted order, not the kth distinct element.",
+    "examples": [
+      {
+        "input": "nums = [3,2,1,5,6,4], k = 2",
+        "output": "5",
+        "explanation": "The sorted array is [6,5,4,3,2,1]. The 2nd largest element is 5."
+      },
+      {
+        "input": "nums = [3,2,3,1,2,4,5,5,6], k = 4",
+        "output": "4",
+        "explanation": "After sorting in descending order, the 4th largest element is 4."
+      }
+    ],
+    "constraints": [
+      "1 <= k <= nums.length <= 100000",
+      "-10000 <= nums[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single element array",
+      "k = 1",
+      "k = nums.length",
+      "Duplicate values",
+      "Negative numbers"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Sort the array in descending order and return the kth element.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "We only care about the largest k elements. Maintain a Min Heap of size k. Whenever the heap grows larger than k, remove the smallest element. At the end, the heap's top is the kth largest element.",
+    "ahaMoment": "Keep only the largest k elements using a Min Heap.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for kth largest/smallest or Top K elements without requiring complete sorting, think Min Heap or Quickselect.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The heap always stores the k largest elements. Every insertion and deletion takes O(log k), making the overall complexity O(n log k), which is much better than sorting when k is much smaller than n.",
+    "howToRecognizeSimilar": "Whenever the problem asks for kth largest/smallest or Top K elements without requiring complete sorting, think Min Heap or Quickselect.",
+    "commonWrongPaths": [
+      "Sorting unnecessarily.",
+      "Confusing kth largest with kth distinct largest.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Removing elements before heap size exceeds k.",
+      "Returning the last inserted element instead of heap top."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "You don't need to sort the entire array.",
+      "Keep only the largest k elements.",
+      "Use a Min Heap of size k."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting unnecessarily.",
+      "Confusing kth largest with kth distinct largest.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Removing elements before heap size exceeds k.",
+      "Returning the last inserted element instead of heap top."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Min Heap",
+    "recognitionSignals": "Whenever the problem asks for kth largest/smallest or Top K elements without requiring complete sorting, think Min Heap or Quickselect.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Sorting",
+      "idea": "Sort the array in descending order and return the kth element.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort the array in descending order.",
+        "Return nums[k-1]."
+      ],
+      "dryRun": "Sort → Pick kth element.",
+      "visualization": {},
+      "code": {
+        "java": "Arrays.sort(nums); return nums[nums.length-k];",
+        "python": "nums.sort(); return nums[-k]",
+        "cpp": "sort(nums.begin(), nums.end()); return nums[nums.size()-k];",
+        "javascript": "nums.sort((a,b)=>a-b); return nums[nums.length-k];"
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Quickselect",
+      "idea": "Use partitioning similar to QuickSort to place the kth largest element into its correct position without completely sorting the array.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose a pivot.",
+        "Partition the array.",
+        "Compare pivot position with target index.",
+        "Repeat on the required half."
+      ],
+      "dryRun": "Repeatedly partition until the target index is found.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Quickselect.",
+        "python": "Uses Quickselect.",
+        "cpp": "Uses Quickselect.",
+        "javascript": "Uses Quickselect."
+      },
+      "complexities": {
+        "time": "O(n) Average, O(n²) Worst",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Min Heap",
+      "idea": "Maintain a Min Heap containing only the k largest elements seen so far. If the heap size exceeds k, remove the smallest element. The heap root will always be the kth largest element.",
+      "intuition": "The heap always stores the k largest elements. Every insertion and deletion takes O(log k), making the overall complexity O(n log k), which is much better than sorting when k is much smaller than n.",
+      "whenToUse": "",
+      "algorithm": [
+        "Create an empty Min Heap.",
+        "Traverse every element.",
+        "Insert current element into heap.",
+        "If heap size exceeds k, remove the smallest element.",
+        "Return the heap top."
+      ],
+      "dryRun": "nums=[3,2,1,5,6,4], k=2\nHeap=[3]\nHeap=[2,3]\nInsert 1 -> Remove 1\nHeap=[2,3]\nInsert 5 -> Remove 2\nHeap=[3,5]\nInsert 6 -> Remove 3\nHeap=[5,6]\nInsert 4 -> Remove 4\nHeap=[5,6]\nAnswer=5",
+      "visualization": {},
+      "code": {
+        "java": "public int findKthLargest(int[] nums, int k) {\n    PriorityQueue<Integer> minHeap = new PriorityQueue<>();\n\n    for (int num : nums) {\n        minHeap.offer(num);\n\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n    }\n\n    return minHeap.peek();\n}",
+        "python": "import heapq\n\ndef findKthLargest(nums, k):\n    heap=[]\n\n    for num in nums:\n        heapq.heappush(heap, num)\n\n        if len(heap)>k:\n            heapq.heappop(heap)\n\n    return heap[0]",
+        "cpp": "int findKthLargest(vector<int>& nums, int k){\n    priority_queue<int, vector<int>, greater<int>> pq;\n\n    for(int num:nums){\n        pq.push(num);\n\n        if(pq.size()>k)\n            pq.pop();\n    }\n\n    return pq.top();\n}",
+        "javascript": "JavaScript requires implementing a Min Heap class. The algorithm remains the same: maintain a heap of size k and return its root."
+      },
+      "complexities": {
+        "time": "O(n log k)",
+        "space": "O(k)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Maintain only the largest k elements inside the heap.",
+    "steps": [
+      "Insert every number.",
+      "Heap grows beyond k.",
+      "Remove the smallest element.",
+      "Continue processing.",
+      "Heap top becomes kth largest."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Maintain heap size k.",
+      "Remove smallest when size exceeds k.",
+      "Heap top is answer.",
+      "Quickselect gives average O(n).",
+      "Sorting is not necessary."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can you solve it without sorting?",
+      "Why does a Min Heap work?",
+      "When is Quickselect better?",
+      "How would you find the kth smallest element?",
+      "How would you process a data stream?"
+    ],
+    "interviewTips": [
+      "Mention sorting first.",
+      "Optimize using Quickselect.",
+      "Explain why Min Heap stores only k elements.",
+      "Compare Heap vs Quickselect.",
+      "State complexity clearly."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Keep only the largest k elements using a Min Heap.",
+      "algorithm": "Insert → If size > k remove smallest → Return heap top.",
+      "timeComplexity": "O(n log k)",
+      "spaceComplexity": "O(k)"
+    },
+    "importantPoints": [
+      "Min Heap stores k largest elements.",
+      "Heap size never exceeds k.",
+      "Root is kth largest.",
+      "Quickselect has better average complexity.",
+      "Heap solution is interview friendly."
+    ],
+    "commonMistakes": [
+      "Sorting unnecessarily.",
+      "Confusing kth largest with kth distinct largest.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Removing elements before heap size exceeds k.",
+      "Returning the last inserted element instead of heap top."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+    "neetcode": "https://neetcode.io/problems/kth-largest-element-in-an-array",
+    "youtube": [
+      "NeetCode - Kth Largest Element in an Array",
+      "Take U Forward - Kth Largest Element",
+      "CodeHelp - Heap Problems",
+      "Abdul Bari - Heap",
+      "Nick White - Kth Largest Element"
+    ],
+    "relatedProblems": [
+      "Kth Smallest Element in a Sorted Matrix",
+      "Top K Frequent Elements",
+      "Find Median from Data Stream",
+      "K Closest Points to Origin",
+      "Sort an Array"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

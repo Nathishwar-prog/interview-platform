@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "id": "arr030",
+    "title": "Largest Number",
+    "slug": "largest-number",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Sorting",
+    "pattern": "Custom Comparator Sorting",
+    "tags": [
+      "Array",
+      "Sorting",
+      "String",
+      "Greedy"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "LinkedIn",
+      "Uber",
+      "Salesforce",
+      "Yahoo",
+      "Goldman Sachs"
+    ],
+    "frequency": "High",
+    "acceptance": "40.6%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Strings, Custom Comparator, Greedy Thinking",
+    "whyDoesThisExist": "Imagine arranging number cards to create the biggest possible number. Instead of simply placing the largest individual numbers first, you compare which pair ordering produces a larger combined number.",
+    "realWorldAnalogy": "Imagine arranging number cards to create the biggest possible number. Instead of simply placing the largest individual numbers first, you compare which pair ordering produces a larger combined number.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Strings",
+      "Custom Comparator",
+      "Greedy Thinking"
+    ],
+    "whenToUseThis": "Use this pattern whenever elements must be arranged to maximize or minimize a concatenated result using a custom sorting rule.",
+    "patternRecognitionKeywords": [
+      "Largest Number",
+      "Custom Comparator",
+      "Sorting",
+      "String Concatenation",
+      "Greedy",
+      "Arrangement"
+    ],
+    "signals": "Whenever numbers or strings must be arranged to maximize or minimize a concatenated value, think of Custom Comparator Sorting.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given a list of non-negative integers nums, arrange them such that they form the largest possible number and return it as a string. Since the result may be very large, return it as a string instead of an integer.",
+    "examples": [
+      {
+        "input": "nums = [10,2]",
+        "output": "\"210\"",
+        "explanation": "Since '210' > '102', place 2 before 10."
+      },
+      {
+        "input": "nums = [3,30,34,5,9]",
+        "output": "\"9534330\"",
+        "explanation": "Sorting using the custom comparator produces the largest possible number."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 10^9"
+    ],
+    "edgeCases": [
+      "All elements are zero",
+      "Single element",
+      "Numbers with common prefixes",
+      "Very large numbers",
+      "Duplicate values"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible arrangement and return the largest concatenated number.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "The decision depends on two numbers together. For any two numbers a and b, compare (a+b) and (b+a). Place them in the order that creates the larger concatenated number.",
+    "ahaMoment": "Compare concatenated strings instead of numeric values.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever numbers or strings must be arranged to maximize or minimize a concatenated value, think of Custom Comparator Sorting.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Sorting with a custom comparator guarantees every adjacent pair contributes optimally to the final concatenated number. No exhaustive search is required.",
+    "howToRecognizeSimilar": "Whenever numbers or strings must be arranged to maximize or minimize a concatenated value, think of Custom Comparator Sorting.",
+    "commonWrongPaths": [
+      "Sorting numerically instead of using concatenation.",
+      "Ignoring the all-zero case.",
+      "Comparing lengths instead of concatenated strings.",
+      "Returning an integer instead of a string.",
+      "Using lexicographical sort directly."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Convert integers into strings.",
+      "Compare a+b and b+a.",
+      "Handle the all-zero case separately."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Sorting numerically instead of using concatenation.",
+      "Ignoring the all-zero case.",
+      "Comparing lengths instead of concatenated strings.",
+      "Returning an integer instead of a string.",
+      "Using lexicographical sort directly."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Custom Comparator Sorting",
+    "recognitionSignals": "Whenever numbers or strings must be arranged to maximize or minimize a concatenated value, think of Custom Comparator Sorting.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Generate All Permutations",
+      "idea": "Generate every possible arrangement and return the largest concatenated number.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate all permutations.",
+        "Concatenate every permutation.",
+        "Track the maximum string.",
+        "Return the largest result."
+      ],
+      "dryRun": "Try every possible ordering and keep the largest.",
+      "visualization": {},
+      "code": {
+        "java": "Permutation solution omitted because of factorial complexity.",
+        "python": "Permutation solution omitted.",
+        "cpp": "Permutation solution omitted.",
+        "javascript": "Permutation solution omitted."
+      },
+      "complexities": {
+        "time": "O(n!)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sort Using Custom Comparator",
+      "idea": "Convert numbers to strings and sort them based on which concatenation produces the larger number.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Convert every number to a string.",
+        "Sort using comparator (b+a).compareTo(a+b).",
+        "Join all strings.",
+        "Handle leading zero case."
+      ],
+      "dryRun": "Sort strings using concatenation comparison.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Arrays.sort() with comparator.",
+        "python": "Uses cmp_to_key comparator.",
+        "cpp": "Uses custom comparator.",
+        "javascript": "Uses custom sort comparator."
+      },
+      "complexities": {
+        "time": "O(n log n × k)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Custom Comparator Sorting",
+      "idea": "Convert every number into a string and sort them using a custom comparator. For two strings a and b, place a before b if (a+b) is greater than (b+a). Finally concatenate all strings. If the first character is '0', return '0'.",
+      "intuition": "Sorting with a custom comparator guarantees every adjacent pair contributes optimally to the final concatenated number. No exhaustive search is required.",
+      "whenToUse": "",
+      "algorithm": [
+        "Convert every integer to a string.",
+        "Sort strings using comparator (b+a).compareTo(a+b).",
+        "If the first string is '0', return '0'.",
+        "Append every string into a StringBuilder.",
+        "Return the final string."
+      ],
+      "dryRun": "nums=[3,30,34,5,9]\nStrings=[3,30,34,5,9]\nSorted=[9,5,34,3,30]\nResult=9534330",
+      "visualization": {},
+      "code": {
+        "java": "public String largestNumber(int[] nums) {\n    String[] arr = new String[nums.length];\n\n    for (int i = 0; i < nums.length; i++) {\n        arr[i] = String.valueOf(nums[i]);\n    }\n\n    Arrays.sort(arr, (a, b) -> (b + a).compareTo(a + b));\n\n    if (arr[0].equals(\"0\")) {\n        return \"0\";\n    }\n\n    StringBuilder sb = new StringBuilder();\n    for (String s : arr) {\n        sb.append(s);\n    }\n\n    return sb.toString();\n}",
+        "python": "from functools import cmp_to_key\n\ndef largestNumber(nums):\n    arr = list(map(str, nums))\n\n    def compare(a, b):\n        if a + b > b + a:\n            return -1\n        elif a + b < b + a:\n            return 1\n        return 0\n\n    arr.sort(key=cmp_to_key(compare))\n\n    if arr[0] == '0':\n        return '0'\n\n    return ''.join(arr)",
+        "cpp": "string largestNumber(vector<int>& nums) {\n    vector<string> arr;\n\n    for (int num : nums)\n        arr.push_back(to_string(num));\n\n    sort(arr.begin(), arr.end(), [](string a, string b) {\n        return a + b > b + a;\n    });\n\n    if (arr[0] == \"0\")\n        return \"0\";\n\n    string ans;\n    for (string s : arr)\n        ans += s;\n\n    return ans;\n}",
+        "javascript": "function largestNumber(nums) {\n    const arr = nums.map(String);\n\n    arr.sort((a, b) => (b + a).localeCompare(a + b));\n\n    if (arr[0] === '0') return '0';\n\n    return arr.join('');\n}"
+      },
+      "complexities": {
+        "time": "O(n log n × k)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Sort strings based on which concatenation is larger.",
+    "steps": [
+      "Convert numbers to strings.",
+      "Compare a+b and b+a.",
+      "Sort using the custom comparator.",
+      "Join all strings.",
+      "Return '0' if all numbers are zero."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Convert integers to strings.",
+      "Compare a+b with b+a.",
+      "Sort using custom comparator.",
+      "Handle all zeros.",
+      "Return string."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why doesn't normal sorting work?",
+      "Why compare a+b and b+a?",
+      "Can this be solved without sorting?",
+      "What if negative numbers are allowed?",
+      "Why is the answer returned as a string?"
+    ],
+    "interviewTips": [
+      "Explain why numeric sorting fails.",
+      "Show the a+b vs b+a comparison.",
+      "Mention the all-zero edge case.",
+      "State the sorting complexity.",
+      "Return the result as a string."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Compare concatenated strings instead of numeric values.",
+      "algorithm": "Convert → Custom Sort → Join → Handle Zero.",
+      "timeComplexity": "O(n log n × k)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Comparison is based on concatenation.",
+      "Normal numeric sorting fails.",
+      "Comparator decides ordering.",
+      "First element '0' means answer is '0'.",
+      "String output avoids overflow."
+    ],
+    "commonMistakes": [
+      "Sorting numerically instead of using concatenation.",
+      "Ignoring the all-zero case.",
+      "Comparing lengths instead of concatenated strings.",
+      "Returning an integer instead of a string.",
+      "Using lexicographical sort directly."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/largest-number/",
+    "neetcode": "https://neetcode.io/problems/largest-number",
+    "youtube": [
+      "NeetCode - Largest Number",
+      "Take U Forward - Largest Number",
+      "CodeHelp - Custom Comparator",
+      "Abdul Bari - Sorting Algorithms",
+      "Nick White - Largest Number"
+    ],
+    "relatedProblems": [
+      "Largest Number At Least Twice of Others",
+      "Sort Characters By Frequency",
+      "Top K Frequent Elements",
+      "Kth Largest Element in an Array",
+      "Maximum Swap"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

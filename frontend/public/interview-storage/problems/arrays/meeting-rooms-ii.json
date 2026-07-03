@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr043",
+    "title": "Meeting Rooms II",
+    "slug": "meeting-rooms-ii",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Intervals",
+    "pattern": "Sorting + Min Heap",
+    "tags": [
+      "Array",
+      "Sorting",
+      "Heap (Priority Queue)",
+      "Intervals"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "53.8%",
+    "estimatedTime": "25-30 minutes",
+    "practiceLevel": "Medium",
+    "premium": true
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Sorting, Priority Queue, Intervals, Time Complexity",
+    "whyDoesThisExist": "Imagine managing conference rooms in an office. Whenever two meetings overlap, they require separate rooms. Your goal is to determine the minimum number of rooms needed so every meeting can be scheduled.",
+    "realWorldAnalogy": "Imagine managing conference rooms in an office. Whenever two meetings overlap, they require separate rooms. Your goal is to determine the minimum number of rooms needed so every meeting can be scheduled.",
+    "prerequisites": [
+      "Arrays",
+      "Sorting",
+      "Priority Queue",
+      "Intervals",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use the Sorting + Min Heap pattern whenever you need to find the minimum number of resources required for overlapping intervals.",
+    "patternRecognitionKeywords": [
+      "Meeting Rooms",
+      "Intervals",
+      "Min Heap",
+      "Priority Queue",
+      "Overlap",
+      "Resource Allocation"
+    ],
+    "signals": "Whenever the problem asks for the minimum number of resources needed for overlapping intervals, think of Sorting + Min Heap.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required to hold all meetings.",
+    "examples": [
+      {
+        "input": "intervals = [[0,30],[5,10],[15,20]]",
+        "output": "2",
+        "explanation": "Meeting [0,30] overlaps with both other meetings, so at least two rooms are required."
+      },
+      {
+        "input": "intervals = [[7,10],[2,4]]",
+        "output": "1",
+        "explanation": "The meetings do not overlap, so one room is sufficient."
+      }
+    ],
+    "constraints": [
+      "1 <= intervals.length <= 10000",
+      "0 <= starti < endi <= 1000000"
+    ],
+    "edgeCases": [
+      "Single meeting",
+      "All meetings overlap",
+      "No overlapping meetings",
+      "Meetings touching at endpoints",
+      "Already sorted intervals"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare each meeting with every other meeting to determine the maximum number of simultaneous meetings.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Sort meetings by their start times. Keep track of currently occupied meeting rooms using a Min Heap storing meeting end times. Whenever the earliest meeting finishes before the next meeting starts, reuse that room.",
+    "ahaMoment": "The earliest finishing meeting should always be reused first.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for the minimum number of resources needed for overlapping intervals, think of Sorting + Min Heap.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The Min Heap always stores currently active meetings. Whenever a meeting ends, its room becomes available immediately. The maximum heap size represents the maximum simultaneous meetings.",
+    "howToRecognizeSimilar": "Whenever the problem asks for the minimum number of resources needed for overlapping intervals, think of Sorting + Min Heap.",
+    "commonWrongPaths": [
+      "Not sorting meetings first.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Forgetting to remove finished meetings.",
+      "Returning heap size before processing all meetings.",
+      "Confusing Meeting Rooms I with Meeting Rooms II."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Sort meetings by start time.",
+      "Store ending times in a Min Heap.",
+      "Reuse rooms whenever possible."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not sorting meetings first.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Forgetting to remove finished meetings.",
+      "Returning heap size before processing all meetings.",
+      "Confusing Meeting Rooms I with Meeting Rooms II."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Sorting + Min Heap",
+    "recognitionSignals": "Whenever the problem asks for the minimum number of resources needed for overlapping intervals, think of Sorting + Min Heap.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Compare Every Meeting",
+      "idea": "Compare each meeting with every other meeting to determine the maximum number of simultaneous meetings.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compare every pair of meetings.",
+        "Count overlapping meetings.",
+        "Return the maximum overlap."
+      ],
+      "dryRun": "Check overlap with every other meeting.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted due to quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Two Pointers",
+      "idea": "Separate all start and end times into two arrays, sort them independently, and use two pointers to count active meetings.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Extract start times.",
+        "Extract end times.",
+        "Sort both arrays.",
+        "Traverse using two pointers.",
+        "Track maximum rooms."
+      ],
+      "dryRun": "Starts increase rooms, ends free rooms.",
+      "visualization": {},
+      "code": {
+        "java": "Uses two sorted arrays.",
+        "python": "Uses two pointers.",
+        "cpp": "Uses vectors.",
+        "javascript": "Uses arrays."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Sorting + Min Heap",
+      "idea": "Sort meetings by start time. Use a Min Heap storing meeting end times. If the earliest ending meeting finishes before the current meeting starts, remove it from the heap because that room becomes available. Insert the current meeting's end time. The maximum heap size equals the minimum number of meeting rooms required.",
+      "intuition": "The Min Heap always stores currently active meetings. Whenever a meeting ends, its room becomes available immediately. The maximum heap size represents the maximum simultaneous meetings.",
+      "whenToUse": "",
+      "algorithm": [
+        "Sort intervals by start time.",
+        "Create an empty Min Heap.",
+        "Insert the end time of the first meeting.",
+        "For every remaining meeting:",
+        "If heap top <= current start, remove the earliest ending meeting.",
+        "Insert the current meeting's end time.",
+        "Return the heap size."
+      ],
+      "dryRun": "Meetings=[[0,30],[5,10],[15,20]]\nHeap=[30]\n5<30 → Add 10 → Heap=[10,30]\n15>=10 → Remove 10\nAdd 20 → Heap=[20,30]\nRooms=2",
+      "visualization": {},
+      "code": {
+        "java": "public int minMeetingRooms(int[][] intervals) {\n    if (intervals.length == 0) return 0;\n\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n\n    PriorityQueue<Integer> pq = new PriorityQueue<>();\n    pq.offer(intervals[0][1]);\n\n    for (int i = 1; i < intervals.length; i++) {\n        if (pq.peek() <= intervals[i][0]) {\n            pq.poll();\n        }\n        pq.offer(intervals[i][1]);\n    }\n\n    return pq.size();\n}",
+        "python": "import heapq\n\ndef minMeetingRooms(intervals):\n    if not intervals:\n        return 0\n\n    intervals.sort(key=lambda x: x[0])\n\n    heap = [intervals[0][1]]\n\n    for start, end in intervals[1:]:\n        if heap[0] <= start:\n            heapq.heappop(heap)\n\n        heapq.heappush(heap, end)\n\n    return len(heap)",
+        "cpp": "int minMeetingRooms(vector<vector<int>>& intervals) {\n    if (intervals.empty()) return 0;\n\n    sort(intervals.begin(), intervals.end());\n\n    priority_queue<int, vector<int>, greater<int>> pq;\n    pq.push(intervals[0][1]);\n\n    for (int i = 1; i < intervals.size(); i++) {\n        if (pq.top() <= intervals[i][0])\n            pq.pop();\n\n        pq.push(intervals[i][1]);\n    }\n\n    return pq.size();\n}",
+        "javascript": "JavaScript requires implementing a Min Heap manually or using a Priority Queue library. The algorithm remains identical: sort meetings, reuse rooms when the earliest meeting ends, otherwise allocate a new room."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Reuse rooms whenever meetings finish.",
+    "steps": [
+      "Sort meetings.",
+      "Track active meeting end times.",
+      "Reuse finished rooms.",
+      "Allocate new rooms when necessary.",
+      "Maximum heap size is the answer."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Sort by start time.",
+      "Min Heap stores ending times.",
+      "Reuse rooms when possible.",
+      "Heap size equals active meetings.",
+      "Maximum heap size is the answer."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using two pointers?",
+      "Why is a Min Heap required?",
+      "How would you assign room numbers?",
+      "Can you return the meeting schedule?",
+      "What if meetings can be rescheduled?"
+    ],
+    "interviewTips": [
+      "Mention brute force first.",
+      "Explain why sorting is necessary.",
+      "Describe how the Min Heap represents occupied rooms.",
+      "Explain room reuse clearly.",
+      "State O(n log n) time and O(n) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "The earliest finishing meeting should always be reused first.",
+      "algorithm": "Sort → Min Heap → Reuse Room → Heap Size.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Always sort meetings first.",
+      "Min Heap stores end times only.",
+      "Reuse rooms whenever possible.",
+      "Heap size equals occupied rooms.",
+      "O(n log n) solution."
+    ],
+    "commonMistakes": [
+      "Not sorting meetings first.",
+      "Using a Max Heap instead of a Min Heap.",
+      "Forgetting to remove finished meetings.",
+      "Returning heap size before processing all meetings.",
+      "Confusing Meeting Rooms I with Meeting Rooms II."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/meeting-rooms-ii/",
+    "neetcode": "https://neetcode.io/problems/meeting-rooms-ii",
+    "youtube": [
+      "NeetCode - Meeting Rooms II",
+      "Take U Forward - Meeting Rooms II",
+      "CodeHelp - Priority Queue Problems",
+      "Abdul Bari - Heap",
+      "Nick White - Meeting Rooms II"
+    ],
+    "relatedProblems": [
+      "Meeting Rooms",
+      "Merge Intervals",
+      "Insert Interval",
+      "Employee Free Time",
+      "Non-overlapping Intervals"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

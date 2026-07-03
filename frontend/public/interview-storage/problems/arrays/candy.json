@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "id": "arr007",
+    "title": "Candy",
+    "slug": "candy",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Two Pass Greedy",
+    "tags": [
+      "Array",
+      "Greedy",
+      "Two Pass",
+      "Simulation"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware",
+      "Netflix"
+    ],
+    "frequency": "High",
+    "acceptance": "44.8%",
+    "estimatedTime": "30-40 minutes",
+    "practiceLevel": "Advanced",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Greedy Algorithms, Loops, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine a teacher rewarding students based on performance. Every student receives at least one chocolate. If a student's score is higher than the student sitting immediately beside them, they must receive more chocolates. The goal is to distribute the minimum number of chocolates while satisfying these fairness rules.",
+    "realWorldAnalogy": "Imagine a teacher rewarding students based on performance. Every student receives at least one chocolate. If a student's score is higher than the student sitting immediately beside them, they must receive more chocolates. The goal is to distribute the minimum number of chocolates while satisfying these fairness rules.",
+    "prerequisites": [
+      "Arrays",
+      "Greedy Algorithms",
+      "Loops",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Two-Pass Greedy pattern whenever constraints depend on both the left and right neighboring elements.",
+    "patternRecognitionKeywords": [
+      "Neighbors",
+      "Ratings",
+      "Greedy",
+      "Two Pass",
+      "Minimum Distribution",
+      "Array"
+    ],
+    "signals": "Whenever constraints depend independently on both left and right neighbors, think of the Two-Pass Greedy pattern.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings. You are giving candies to these children following two rules: (1) Every child must have at least one candy. (2) Children with a higher rating than an immediate neighbor must receive more candies than that neighbor. Return the minimum number of candies you need to distribute.",
+    "examples": [
+      {
+        "input": "ratings = [1,0,2]",
+        "output": "5",
+        "explanation": "Candy distribution = [2,1,2]. Total = 5."
+      },
+      {
+        "input": "ratings = [1,2,2]",
+        "output": "4",
+        "explanation": "Candy distribution = [1,2,1]. Total = 4."
+      }
+    ],
+    "constraints": [
+      "1 <= ratings.length <= 20000",
+      "0 <= ratings[i] <= 20000"
+    ],
+    "edgeCases": [
+      "Single child",
+      "All ratings equal",
+      "Strictly increasing ratings",
+      "Strictly decreasing ratings",
+      "Peak in the middle",
+      "Valley in the middle",
+      "Duplicate ratings"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Repeatedly scan the array and adjust candy counts until all neighbor conditions are satisfied.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "A single left-to-right pass only satisfies the left neighbor rule. A right-to-left pass is also needed to satisfy the right neighbor rule. Taking the maximum candies required from both directions guarantees the minimum valid distribution.",
+    "ahaMoment": "One traversal cannot satisfy both neighboring constraints. Two greedy passes solve the problem.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever constraints depend independently on both left and right neighbors, think of the Two-Pass Greedy pattern.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "The first pass guarantees every increasing sequence from the left is satisfied. The second pass fixes decreasing sequences from the right without breaking previous assignments. Every child is processed twice, giving the minimum valid distribution.",
+    "howToRecognizeSimilar": "Whenever constraints depend independently on both left and right neighbors, think of the Two-Pass Greedy pattern.",
+    "commonWrongPaths": [
+      "Using only one traversal.",
+      "Ignoring the right neighbor condition.",
+      "Overwriting instead of taking the maximum during the second pass.",
+      "Forgetting every child must receive at least one candy.",
+      "Incorrectly handling equal ratings."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Every child starts with one candy.",
+      "One pass is not enough.",
+      "Think about satisfying left and right neighbors independently."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Using only one traversal.",
+      "Ignoring the right neighbor condition.",
+      "Overwriting instead of taking the maximum during the second pass.",
+      "Forgetting every child must receive at least one candy.",
+      "Incorrectly handling equal ratings."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Two Pass Greedy",
+    "recognitionSignals": "Whenever constraints depend independently on both left and right neighbors, think of the Two-Pass Greedy pattern.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Repeated Adjustments",
+      "idea": "Repeatedly scan the array and adjust candy counts until all neighbor conditions are satisfied.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Assign one candy to every child.",
+        "Traverse the array repeatedly.",
+        "Increase candies whenever a rule is violated.",
+        "Stop when no further updates occur."
+      ],
+      "dryRun": "ratings=[1,0,2]\nInitial=[1,1,1]\nUpdate repeatedly until [2,1,2].",
+      "visualization": {},
+      "code": {
+        "java": "Brute force repeated simulation is omitted because it is inefficient.",
+        "python": "Repeated adjustment solution omitted.",
+        "cpp": "Simulation solution omitted.",
+        "javascript": "Simulation solution omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Auxiliary Arrays",
+      "idea": "Compute the minimum candies required from the left side and from the right side separately, then take the maximum for every child.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize left[] with 1.",
+        "Traverse left to right.",
+        "Initialize right[] with 1.",
+        "Traverse right to left.",
+        "Take max(left[i], right[i])."
+      ],
+      "dryRun": "ratings=[1,0,2]\nLeft=[1,1,2]\nRight=[2,1,1]\nAnswer=[2,1,2]",
+      "visualization": {},
+      "code": {
+        "java": "Uses two arrays to store left and right requirements.",
+        "python": "Uses left and right arrays.",
+        "cpp": "Uses two helper vectors.",
+        "javascript": "Uses two auxiliary arrays."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Two Pass Greedy",
+      "idea": "Initialize every child with one candy. Traverse from left to right to satisfy the left neighbor condition. Then traverse from right to left to satisfy the right neighbor condition by taking the maximum candy count required from either direction.",
+      "intuition": "The first pass guarantees every increasing sequence from the left is satisfied. The second pass fixes decreasing sequences from the right without breaking previous assignments. Every child is processed twice, giving the minimum valid distribution.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize candy array with 1 for every child.",
+        "Traverse left to right.",
+        "If current rating > previous rating, assign previous candies + 1.",
+        "Traverse right to left.",
+        "If current rating > next rating, update current candies using max(current, next + 1).",
+        "Sum all candies.",
+        "Return the total."
+      ],
+      "dryRun": "ratings=[1,0,2]\nInitial=[1,1,1]\nLeft Pass=[1,1,2]\nRight Pass=[2,1,2]\nTotal=5",
+      "visualization": {},
+      "code": {
+        "java": "public int candy(int[] ratings) {\n    int n = ratings.length;\n    int[] candies = new int[n];\n    Arrays.fill(candies, 1);\n\n    for(int i = 1; i < n; i++){\n        if(ratings[i] > ratings[i-1])\n            candies[i] = candies[i-1] + 1;\n    }\n\n    for(int i = n-2; i >= 0; i--){\n        if(ratings[i] > ratings[i+1])\n            candies[i] = Math.max(candies[i], candies[i+1] + 1);\n    }\n\n    int total = 0;\n    for(int candy : candies)\n        total += candy;\n\n    return total;\n}",
+        "python": "def candy(ratings):\n    n = len(ratings)\n    candies = [1] * n\n\n    for i in range(1, n):\n        if ratings[i] > ratings[i-1]:\n            candies[i] = candies[i-1] + 1\n\n    for i in range(n-2, -1, -1):\n        if ratings[i] > ratings[i+1]:\n            candies[i] = max(candies[i], candies[i+1] + 1)\n\n    return sum(candies)",
+        "cpp": "int candy(vector<int>& ratings){\n    int n=ratings.size();\n    vector<int> candies(n,1);\n\n    for(int i=1;i<n;i++)\n        if(ratings[i]>ratings[i-1])\n            candies[i]=candies[i-1]+1;\n\n    for(int i=n-2;i>=0;i--)\n        if(ratings[i]>ratings[i+1])\n            candies[i]=max(candies[i],candies[i+1]+1);\n\n    return accumulate(candies.begin(),candies.end(),0);\n}",
+        "javascript": "function candy(ratings){\nconst n=ratings.length;\nconst candies=new Array(n).fill(1);\n\nfor(let i=1;i<n;i++){\nif(ratings[i]>ratings[i-1])\n    candies[i]=candies[i-1]+1;\n}\n\nfor(let i=n-2;i>=0;i--){\nif(ratings[i]>ratings[i+1])\n    candies[i]=Math.max(candies[i],candies[i+1]+1);\n}\n\nreturn candies.reduce((a,b)=>a+b,0);\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Use one pass to satisfy the left neighbor and another pass to satisfy the right neighbor.",
+    "steps": [
+      "Assign one candy to everyone.",
+      "Left-to-right pass.",
+      "Right-to-left pass.",
+      "Take maximum requirement.",
+      "Sum all candies."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Everyone starts with one candy.",
+      "First pass handles left neighbor.",
+      "Second pass handles right neighbor.",
+      "Take maximum during second pass.",
+      "Sum the final array."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using O(1) extra space?",
+      "Why are two passes sufficient?",
+      "What happens when ratings are equal?",
+      "Can the problem be solved in one traversal?",
+      "How would you prove the greedy strategy?"
+    ],
+    "interviewTips": [
+      "Start with every child receiving one candy.",
+      "Explain why one pass is insufficient.",
+      "Mention taking the maximum during the second pass.",
+      "State O(n) time complexity clearly.",
+      "Discuss the O(1) space optimization as a follow-up."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "One traversal cannot satisfy both neighboring constraints. Two greedy passes solve the problem.",
+      "algorithm": "Initialize → Left Pass → Right Pass → Sum.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Two passes are required.",
+      "Initialize with one candy.",
+      "Use max() in the second pass.",
+      "Equal ratings need no extra candies.",
+      "Linear time solution."
+    ],
+    "commonMistakes": [
+      "Using only one traversal.",
+      "Ignoring the right neighbor condition.",
+      "Overwriting instead of taking the maximum during the second pass.",
+      "Forgetting every child must receive at least one candy.",
+      "Incorrectly handling equal ratings."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/candy/",
+    "neetcode": "https://neetcode.io/problems/candy",
+    "youtube": [
+      "NeetCode - Candy",
+      "Take U Forward - Greedy Problems",
+      "CodeHelp - Candy",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Candy"
+    ],
+    "relatedProblems": [
+      "Can Place Flowers",
+      "Assign Cookies",
+      "Jump Game",
+      "Gas Station",
+      "Distribute Candies"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

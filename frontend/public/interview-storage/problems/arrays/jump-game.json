@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr027",
+    "title": "Jump Game",
+    "slug": "jump-game",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Greedy Reachability",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Greedy"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Uber",
+      "Bloomberg",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "41.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Greedy Algorithm, Loops, Time Complexity, Dynamic Programming Basics",
+    "whyDoesThisExist": "Imagine crossing a river using stepping stones. Each stone tells you the maximum distance you can jump ahead. Your goal is to determine whether you can reach the final stone without getting stuck.",
+    "realWorldAnalogy": "Imagine crossing a river using stepping stones. Each stone tells you the maximum distance you can jump ahead. Your goal is to determine whether you can reach the final stone without getting stuck.",
+    "prerequisites": [
+      "Arrays",
+      "Greedy Algorithm",
+      "Loops",
+      "Time Complexity",
+      "Dynamic Programming Basics"
+    ],
+    "whenToUseThis": "Use this Greedy Reachability pattern whenever each position extends your reachable range and you only need to determine whether the destination is reachable.",
+    "patternRecognitionKeywords": [
+      "Reachability",
+      "Greedy",
+      "Maximum Jump",
+      "Array",
+      "Destination",
+      "Farthest Index"
+    ],
+    "signals": "Whenever every position expands the reachable range and you only need to determine whether the destination is reachable, think of Greedy Reachability.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "You are given an integer array nums. Each element nums[i] represents the maximum jump length from that position. Starting from the first index, determine whether you can reach the last index.",
+    "examples": [
+      {
+        "input": "nums = [2,3,1,1,4]",
+        "output": "true",
+        "explanation": "Jump from index 0 to index 1, then to the last index."
+      },
+      {
+        "input": "nums = [3,2,1,0,4]",
+        "output": "false",
+        "explanation": "Index 3 blocks further movement, making the last index unreachable."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 10000",
+      "0 <= nums[i] <= 100000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "Starts with zero",
+      "Ends with zero",
+      "Large jump at beginning",
+      "Multiple consecutive zeros",
+      "Already at destination"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Try every possible jump recursively until reaching the last index.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Instead of deciding the exact jump at every position, simply keep track of the farthest index you can currently reach. If your current position is beyond that reach, then continuing is impossible.",
+    "ahaMoment": "Only the farthest reachable position matters; the exact path is unnecessary.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever every position expands the reachable range and you only need to determine whether the destination is reachable, think of Greedy Reachability.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Each index is processed only once while maintaining the maximum reachable position. No unnecessary paths are explored, making it an optimal greedy solution.",
+    "howToRecognizeSimilar": "Whenever every position expands the reachable range and you only need to determine whether the destination is reachable, think of Greedy Reachability.",
+    "commonWrongPaths": [
+      "Trying every possible jump.",
+      "Ignoring unreachable indices.",
+      "Using recursion causing TLE.",
+      "Confusing maximum jump with exact jump.",
+      "Stopping before checking all reachable positions."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Track the farthest reachable index.",
+      "If the current index is unreachable, stop immediately.",
+      "Update the farthest reach greedily."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Trying every possible jump.",
+      "Ignoring unreachable indices.",
+      "Using recursion causing TLE.",
+      "Confusing maximum jump with exact jump.",
+      "Stopping before checking all reachable positions."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy Reachability",
+    "recognitionSignals": "Whenever every position expands the reachable range and you only need to determine whether the destination is reachable, think of Greedy Reachability.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Recursive Backtracking",
+      "idea": "Try every possible jump recursively until reaching the last index.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Start from index 0.",
+        "Try every jump from 1 to nums[i].",
+        "Recursively check each path.",
+        "Return true if any path reaches the end."
+      ],
+      "dryRun": "Index 0 → Try all possible jumps recursively.",
+      "visualization": {},
+      "code": {
+        "java": "Recursive DFS exploring every possible jump.",
+        "python": "Recursive backtracking solution.",
+        "cpp": "Recursive DFS.",
+        "javascript": "Recursive solution."
+      },
+      "complexities": {
+        "time": "O(2ⁿ)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Dynamic Programming",
+      "idea": "Mark indices that can reach the last index using memoization or tabulation.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize reachable array.",
+        "Traverse backwards.",
+        "Mark indices that can reach a good position.",
+        "Check the first index."
+      ],
+      "dryRun": "Mark last index good.\nPropagate backwards.",
+      "visualization": {},
+      "code": {
+        "java": "Uses DP array.",
+        "python": "Uses memoization.",
+        "cpp": "Uses DP.",
+        "javascript": "Uses DP."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Reachability",
+      "idea": "Maintain the farthest index reachable while traversing the array. If the current index is ever greater than the farthest reachable index, return false. Otherwise, continuously update the farthest reachable position.",
+      "intuition": "Each index is processed only once while maintaining the maximum reachable position. No unnecessary paths are explored, making it an optimal greedy solution.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize farthest = 0.",
+        "Traverse the array.",
+        "If current index > farthest, return false.",
+        "Update farthest = max(farthest, i + nums[i]).",
+        "If farthest reaches the last index, return true.",
+        "Return true after traversal."
+      ],
+      "dryRun": "nums=[2,3,1,1,4]\nReach=2\nReach=4\nLast index reachable.",
+      "visualization": {},
+      "code": {
+        "java": "public boolean canJump(int[] nums) {\n    int farthest = 0;\n\n    for(int i = 0; i < nums.length; i++){\n        if(i > farthest)\n            return false;\n\n        farthest = Math.max(farthest, i + nums[i]);\n\n        if(farthest >= nums.length - 1)\n            return true;\n    }\n\n    return true;\n}",
+        "python": "def canJump(nums):\n    farthest = 0\n\n    for i in range(len(nums)):\n        if i > farthest:\n            return False\n\n        farthest = max(farthest, i + nums[i])\n\n        if farthest >= len(nums) - 1:\n            return True\n\n    return True",
+        "cpp": "bool canJump(vector<int>& nums){\n    int farthest=0;\n\n    for(int i=0;i<nums.size();i++){\n        if(i>farthest)\n            return false;\n\n        farthest=max(farthest,i+nums[i]);\n\n        if(farthest>=nums.size()-1)\n            return true;\n    }\n\n    return true;\n}",
+        "javascript": "function canJump(nums){\nlet farthest=0;\n\nfor(let i=0;i<nums.length;i++){\nif(i>farthest) return false;\nfarthest=Math.max(farthest,i+nums[i]);\nif(farthest>=nums.length-1) return true;\n}\n\nreturn true;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Keep expanding the farthest reachable position.",
+    "steps": [
+      "Start at index 0.",
+      "Update maximum reachable index.",
+      "If current index exceeds reach, stop.",
+      "Otherwise continue until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Track farthest reachable index.",
+      "Current index must be reachable.",
+      "Update maximum reach greedily.",
+      "Linear traversal.",
+      "Classic greedy problem."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "How is this different from Jump Game II?",
+      "Can Dynamic Programming solve it?",
+      "Why does the greedy solution work?",
+      "Can you reconstruct one valid path?",
+      "What if jumps could be negative?"
+    ],
+    "interviewTips": [
+      "Explain the recursive solution first.",
+      "Mention the DP optimization.",
+      "Show why only the farthest reachable index matters.",
+      "Explain why greedy never misses a valid solution.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "Only the farthest reachable position matters; the exact path is unnecessary.",
+      "algorithm": "Track Farthest Reach → Check Reachability.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Greedy is optimal.",
+      "Maintain farthest reach.",
+      "Stop when index becomes unreachable.",
+      "No recursion required.",
+      "O(n) time."
+    ],
+    "commonMistakes": [
+      "Trying every possible jump.",
+      "Ignoring unreachable indices.",
+      "Using recursion causing TLE.",
+      "Confusing maximum jump with exact jump.",
+      "Stopping before checking all reachable positions."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/jump-game/",
+    "neetcode": "https://neetcode.io/problems/jump-game",
+    "youtube": [
+      "NeetCode - Jump Game",
+      "Take U Forward - Jump Game",
+      "CodeHelp - Greedy Problems",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Jump Game"
+    ],
+    "relatedProblems": [
+      "Jump Game II",
+      "Gas Station",
+      "Minimum Number of Refueling Stops",
+      "Frog Jump",
+      "Reach a Number"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

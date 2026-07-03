@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "id": "arr012",
+    "title": "Count Inversions",
+    "slug": "count-inversions",
+    "difficulty": "Hard",
+    "category": "Array",
+    "subcategory": "Divide and Conquer",
+    "pattern": "Merge Sort",
+    "tags": [
+      "Array",
+      "Merge Sort",
+      "Divide and Conquer",
+      "Sorting",
+      "Counting"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "Goldman Sachs",
+      "LinkedIn",
+      "Salesforce",
+      "PayPal",
+      "VMware",
+      "Infosys"
+    ],
+    "frequency": "Very High",
+    "acceptance": "49.3%",
+    "estimatedTime": "35-45 minutes",
+    "practiceLevel": "Advanced",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Recursion, Merge Sort, Divide and Conquer, Time Complexity",
+    "whyDoesThisExist": "Imagine students standing according to roll numbers, but some students are out of order. Every pair of students standing in the wrong relative order represents an inversion. Counting inversions tells how far the arrangement is from being sorted.",
+    "realWorldAnalogy": "Imagine students standing according to roll numbers, but some students are out of order. Every pair of students standing in the wrong relative order represents an inversion. Counting inversions tells how far the arrangement is from being sorted.",
+    "prerequisites": [
+      "Arrays",
+      "Recursion",
+      "Merge Sort",
+      "Divide and Conquer",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Merge Sort counting technique whenever you need to count pair relationships efficiently while sorting.",
+    "patternRecognitionKeywords": [
+      "Inversions",
+      "Pairs",
+      "Merge Sort",
+      "Divide and Conquer",
+      "Counting",
+      "Sorting"
+    ],
+    "signals": "Whenever a problem asks to count ordered pairs efficiently, especially involving array ordering, think of Merge Sort counting.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array arr, count the number of inversions in the array. An inversion is a pair (i, j) such that i < j and arr[i] > arr[j]. Return the total number of inversions.",
+    "examples": [
+      {
+        "input": "arr = [2,4,1,3,5]",
+        "output": "3",
+        "explanation": "The inversions are (2,1), (4,1), and (4,3)."
+      },
+      {
+        "input": "arr = [5,4,3,2,1]",
+        "output": "10",
+        "explanation": "Every pair is an inversion."
+      }
+    ],
+    "constraints": [
+      "1 <= arr.length <= 200000",
+      "-1000000000 <= arr[i] <= 1000000000"
+    ],
+    "edgeCases": [
+      "Single element",
+      "Already sorted array",
+      "Reverse sorted array",
+      "Duplicate values",
+      "Negative numbers",
+      "Large input size"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Compare every pair of elements and count whenever arr[i] > arr[j].",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Brute force compares every pair, but Merge Sort naturally divides the array. During merging, whenever an element from the right half is placed before an element from the left half, it forms inversions with all remaining elements in the left half.",
+    "ahaMoment": "When a right element is smaller than a left element during merge, it forms inversions with every remaining element in the left half.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever a problem asks to count ordered pairs efficiently, especially involving array ordering, think of Merge Sort counting.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Merge Sort processes each level in linear time and has log n levels. Counting inversions during merging avoids comparing every pair individually.",
+    "howToRecognizeSimilar": "Whenever a problem asks to count ordered pairs efficiently, especially involving array ordering, think of Merge Sort counting.",
+    "commonWrongPaths": [
+      "Adding only one inversion instead of all remaining left elements.",
+      "Using '<' instead of '<=' during merge.",
+      "Forgetting to copy remaining elements.",
+      "Overflowing inversion count by using int.",
+      "Incorrect merge indices."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Brute force compares every pair.",
+      "Think about Merge Sort.",
+      "Count inversions during the merge step."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Adding only one inversion instead of all remaining left elements.",
+      "Using '<' instead of '<=' during merge.",
+      "Forgetting to copy remaining elements.",
+      "Overflowing inversion count by using int.",
+      "Incorrect merge indices."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Merge Sort",
+    "recognitionSignals": "Whenever a problem asks to count ordered pairs efficiently, especially involving array ordering, think of Merge Sort counting.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Nested Loop Comparison",
+      "idea": "Compare every pair of elements and count whenever arr[i] > arr[j].",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize inversion count = 0.",
+        "Loop i from 0 to n-1.",
+        "Loop j from i+1 to n-1.",
+        "If arr[i] > arr[j], increment count.",
+        "Return count."
+      ],
+      "dryRun": "arr=[2,4,1]\n(2,4) No\n(2,1) Yes\n(4,1) Yes\nAnswer=2",
+      "visualization": {},
+      "code": {
+        "java": "public int inversionCount(int[] arr){\n int count=0;\n for(int i=0;i<arr.length;i++){\n  for(int j=i+1;j<arr.length;j++){\n   if(arr[i]>arr[j]) count++;\n  }\n }\n return count;\n}",
+        "python": "def inversionCount(arr):\n count=0\n for i in range(len(arr)):\n  for j in range(i+1,len(arr)):\n   if arr[i]>arr[j]:\n    count+=1\n return count",
+        "cpp": "int inversionCount(vector<int>& arr){\n int count=0;\n for(int i=0;i<arr.size();i++)\n  for(int j=i+1;j<arr.size();j++)\n   if(arr[i]>arr[j]) count++;\n return count;\n}",
+        "javascript": "function inversionCount(arr){\nlet count=0;\nfor(let i=0;i<arr.length;i++){\n for(let j=i+1;j<arr.length;j++){\n  if(arr[i]>arr[j]) count++;\n }\n}\nreturn count;\n}"
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Merge Sort Counting",
+      "idea": "Use Merge Sort and count inversions while merging the two sorted halves.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Divide the array into halves.",
+        "Recursively count inversions in both halves.",
+        "Merge the halves.",
+        "Count cross inversions during merge."
+      ],
+      "dryRun": "Left=[2,4]\nRight=[1,3]\n1 is smaller than 2 and 4.\nAdd 2 inversions.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Merge Sort with inversion counting.",
+        "python": "Uses recursive Merge Sort.",
+        "cpp": "Uses Merge Sort.",
+        "javascript": "Uses Merge Sort recursion."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Merge Sort with Inversion Counting",
+      "idea": "During Merge Sort, whenever an element from the right subarray is smaller than the current element from the left subarray, all remaining elements in the left subarray form inversions. Add (mid - leftIndex + 1) to the inversion count.",
+      "intuition": "Merge Sort processes each level in linear time and has log n levels. Counting inversions during merging avoids comparing every pair individually.",
+      "whenToUse": "",
+      "algorithm": [
+        "Split the array recursively.",
+        "Count inversions in the left half.",
+        "Count inversions in the right half.",
+        "Merge both halves.",
+        "If left element <= right element, copy left.",
+        "Otherwise copy right and add remaining left elements to inversion count.",
+        "Return total inversions."
+      ],
+      "dryRun": "arr=[2,4,1,3]\nSplit into [2,4] and [1,3]\nDuring merge:\n1 < 2 → Add 2 inversions\n3 < 4 → Add 1 inversion\nAnswer = 3",
+      "visualization": {},
+      "code": {
+        "java": "class Solution {\n    long mergeSort(int[] arr,int left,int right){\n        if(left>=right) return 0;\n        int mid=(left+right)/2;\n        long count=0;\n        count+=mergeSort(arr,left,mid);\n        count+=mergeSort(arr,mid+1,right);\n        count+=merge(arr,left,mid,right);\n        return count;\n    }\n\n    long merge(int[] arr,int left,int mid,int right){\n        ArrayList<Integer> temp=new ArrayList<>();\n        int i=left,j=mid+1;\n        long inv=0;\n        while(i<=mid && j<=right){\n            if(arr[i]<=arr[j]) temp.add(arr[i++]);\n            else{\n                temp.add(arr[j++]);\n                inv += (mid-i+1);\n            }\n        }\n        while(i<=mid) temp.add(arr[i++]);\n        while(j<=right) temp.add(arr[j++]);\n        for(int k=left;k<=right;k++)\n            arr[k]=temp.get(k-left);\n        return inv;\n    }\n\n    public long inversionCount(int[] arr){\n        return mergeSort(arr,0,arr.length-1);\n    }\n}",
+        "python": "def inversionCount(arr):\n    def merge_sort(nums):\n        if len(nums)<=1:\n            return nums,0\n        mid=len(nums)//2\n        left,c1=merge_sort(nums[:mid])\n        right,c2=merge_sort(nums[mid:])\n        merged=[]\n        i=j=0\n        inv=c1+c2\n        while i<len(left) and j<len(right):\n            if left[i]<=right[j]:\n                merged.append(left[i]); i+=1\n            else:\n                merged.append(right[j]);\n                inv+=len(left)-i\n                j+=1\n        merged.extend(left[i:])\n        merged.extend(right[j:])\n        return merged,inv\n    return merge_sort(arr)[1]",
+        "cpp": "Uses Merge Sort with inversion counting by adding (mid-i+1) whenever right element is smaller.",
+        "javascript": "Uses Merge Sort recursion and counts remaining left elements during merge."
+      },
+      "complexities": {
+        "time": "O(n log n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Count inversions while merging two sorted halves.",
+    "steps": [
+      "Split array.",
+      "Sort left half.",
+      "Sort right half.",
+      "Merge both halves.",
+      "Whenever right element is smaller, count remaining left elements."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Merge Sort is the key.",
+      "Count during merge.",
+      "Add remaining left elements.",
+      "Use long for answer.",
+      "Classic Divide and Conquer problem."
+    ],
+    "practiceLevel": "Advanced",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Can this be solved using a Binary Indexed Tree?",
+      "Can Segment Tree solve this problem?",
+      "What happens with duplicate values?",
+      "How is this related to Merge Sort?",
+      "Can inversions measure array disorder?"
+    ],
+    "interviewTips": [
+      "Explain the brute-force solution first.",
+      "Mention why Merge Sort is suitable.",
+      "Clearly explain why (mid - i + 1) inversions are added.",
+      "Use long for large inversion counts.",
+      "Discuss alternative BIT/Segment Tree solutions if asked."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "When a right element is smaller than a left element during merge, it forms inversions with every remaining element in the left half.",
+      "algorithm": "Merge Sort → Count During Merge → Return Total.",
+      "timeComplexity": "O(n log n)",
+      "spaceComplexity": "O(n)"
+    },
+    "importantPoints": [
+      "Inversion: i < j and arr[i] > arr[j].",
+      "Count during merge.",
+      "Add (mid - i + 1).",
+      "O(n log n).",
+      "Requires auxiliary array."
+    ],
+    "commonMistakes": [
+      "Adding only one inversion instead of all remaining left elements.",
+      "Using '<' instead of '<=' during merge.",
+      "Forgetting to copy remaining elements.",
+      "Overflowing inversion count by using int.",
+      "Incorrect merge indices."
+    ]
+  },
+  "resources": {
+    "leetcode": "",
+    "neetcode": "",
+    "youtube": [
+      "Take U Forward - Count Inversions",
+      "Abdul Bari - Merge Sort",
+      "CodeHelp - Count Inversions",
+      "GeeksforGeeks - Count Inversions",
+      "William Fiset - Merge Sort"
+    ],
+    "relatedProblems": [
+      "Reverse Pairs",
+      "Count of Smaller Numbers After Self",
+      "Merge Sorted Array",
+      "Sort an Array",
+      "Reverse Pairs II"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

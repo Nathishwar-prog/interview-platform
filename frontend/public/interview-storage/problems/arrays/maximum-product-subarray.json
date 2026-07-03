@@ -1,0 +1,314 @@
+{
+  "metadata": {
+    "id": "arr038",
+    "title": "Maximum Product Subarray",
+    "slug": "maximum-product-subarray",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Dynamic Programming",
+    "pattern": "Kadane Variant (Max & Min Product)",
+    "tags": [
+      "Array",
+      "Dynamic Programming",
+      "Greedy"
+    ],
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Oracle",
+      "Uber",
+      "LinkedIn",
+      "Goldman Sachs",
+      "VMware",
+      "Yahoo"
+    ],
+    "frequency": "Very High",
+    "acceptance": "36.9%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Medium",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Kadane's Algorithm, Dynamic Programming Basics, Negative Numbers, Time Complexity",
+    "whyDoesThisExist": "Imagine multiplying profits and losses over consecutive business days. Since multiplying two negative values becomes positive, you must track both the largest and smallest running products to maximize your final profit.",
+    "realWorldAnalogy": "Imagine multiplying profits and losses over consecutive business days. Since multiplying two negative values becomes positive, you must track both the largest and smallest running products to maximize your final profit.",
+    "prerequisites": [
+      "Arrays",
+      "Kadane's Algorithm",
+      "Dynamic Programming Basics",
+      "Negative Numbers",
+      "Time Complexity"
+    ],
+    "whenToUseThis": "Use this Kadane Variant whenever multiplication with negative numbers can flip the sign of the running product.",
+    "patternRecognitionKeywords": [
+      "Maximum Product",
+      "Kadane Variant",
+      "Negative Numbers",
+      "Dynamic Programming",
+      "Contiguous Subarray",
+      "Max and Min Product"
+    ],
+    "signals": "Whenever the problem asks for the maximum product of a contiguous subarray involving negative numbers, think of tracking both maximum and minimum products.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "Given an integer array nums, find a contiguous non-empty subarray that has the largest product, and return the product.",
+    "examples": [
+      {
+        "input": "nums = [2,3,-2,4]",
+        "output": "6",
+        "explanation": "The subarray [2,3] has the largest product of 6."
+      },
+      {
+        "input": "nums = [-2,0,-1]",
+        "output": "0",
+        "explanation": "The answer is 0 because [-2,-1] is not contiguous."
+      }
+    ],
+    "constraints": [
+      "1 <= nums.length <= 20000",
+      "-10 <= nums[i] <= 10"
+    ],
+    "edgeCases": [
+      "Single element",
+      "All positive numbers",
+      "All negative numbers",
+      "Zeros inside the array",
+      "Even and odd count of negatives"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Generate every possible subarray and calculate its product.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "Unlike the maximum sum problem, a negative number can turn the smallest product into the largest product. Therefore, maintain both the maximum and minimum product ending at every index.",
+    "ahaMoment": "A negative number can transform the smallest product into the largest product.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever the problem asks for the maximum product of a contiguous subarray involving negative numbers, think of tracking both maximum and minimum products.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Only the previous maximum and minimum products are required to compute the current state. This achieves linear time with constant extra space.",
+    "howToRecognizeSimilar": "Whenever the problem asks for the maximum product of a contiguous subarray involving negative numbers, think of tracking both maximum and minimum products.",
+    "commonWrongPaths": [
+      "Tracking only the maximum product.",
+      "Ignoring the effect of negative numbers.",
+      "Not swapping max and min after a negative value.",
+      "Forgetting zeros reset the running product.",
+      "Applying the normal Kadane's Algorithm directly."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Track both maximum and minimum products.",
+      "Swap them when encountering a negative number.",
+      "Update the global maximum after every step."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Tracking only the maximum product.",
+      "Ignoring the effect of negative numbers.",
+      "Not swapping max and min after a negative value.",
+      "Forgetting zeros reset the running product.",
+      "Applying the normal Kadane's Algorithm directly."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Kadane Variant (Max & Min Product)",
+    "recognitionSignals": "Whenever the problem asks for the maximum product of a contiguous subarray involving negative numbers, think of tracking both maximum and minimum products.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Check Every Subarray",
+      "idea": "Generate every possible subarray and calculate its product.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Generate every subarray.",
+        "Multiply all elements.",
+        "Track the maximum product.",
+        "Return the answer."
+      ],
+      "dryRun": "Calculate the product of every contiguous subarray.",
+      "visualization": {},
+      "code": {
+        "java": "Nested loop solution omitted because of quadratic complexity.",
+        "python": "Brute force omitted.",
+        "cpp": "Brute force omitted.",
+        "javascript": "Brute force omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Dynamic Programming Arrays",
+      "idea": "Maintain two DP arrays storing the maximum and minimum product ending at each index.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Create maxDP and minDP arrays.",
+        "Update both values for every index.",
+        "Track the global maximum.",
+        "Return the answer."
+      ],
+      "dryRun": "Fill DP arrays while traversing.",
+      "visualization": {},
+      "code": {
+        "java": "Uses two DP arrays.",
+        "python": "Uses two arrays.",
+        "cpp": "Uses vectors.",
+        "javascript": "Uses arrays."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(n)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Kadane Variant (Max & Min Product)",
+      "idea": "Maintain the maximum and minimum product ending at each position. When encountering a negative number, swap them because multiplication by a negative reverses their roles. Update both values using the current number and previous products.",
+      "intuition": "Only the previous maximum and minimum products are required to compute the current state. This achieves linear time with constant extra space.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize maxProduct, minProduct, and answer with nums[0].",
+        "Traverse the array from index 1.",
+        "If current number is negative, swap maxProduct and minProduct.",
+        "Update maxProduct.",
+        "Update minProduct.",
+        "Update the global answer.",
+        "Return the answer."
+      ],
+      "dryRun": "nums=[2,3,-2,4]\nmax=2 min=2 ans=2\n3→max=6 min=3 ans=6\n-2→swap→max=-2 min=-12 ans=6\n4→max=4 min=-48 ans=6",
+      "visualization": {},
+      "code": {
+        "java": "public int maxProduct(int[] nums) {\n    int maxProduct = nums[0];\n    int minProduct = nums[0];\n    int answer = nums[0];\n\n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            int temp = maxProduct;\n            maxProduct = minProduct;\n            minProduct = temp;\n        }\n\n        maxProduct = Math.max(nums[i], maxProduct * nums[i]);\n        minProduct = Math.min(nums[i], minProduct * nums[i]);\n\n        answer = Math.max(answer, maxProduct);\n    }\n\n    return answer;\n}",
+        "python": "def maxProduct(nums):\n    maxProd = nums[0]\n    minProd = nums[0]\n    ans = nums[0]\n\n    for num in nums[1:]:\n        if num < 0:\n            maxProd, minProd = minProd, maxProd\n\n        maxProd = max(num, maxProd * num)\n        minProd = min(num, minProd * num)\n\n        ans = max(ans, maxProd)\n\n    return ans",
+        "cpp": "int maxProduct(vector<int>& nums) {\n    int maxProd = nums[0];\n    int minProd = nums[0];\n    int ans = nums[0];\n\n    for (int i = 1; i < nums.size(); i++) {\n        if (nums[i] < 0)\n            swap(maxProd, minProd);\n\n        maxProd = max(nums[i], maxProd * nums[i]);\n        minProd = min(nums[i], minProd * nums[i]);\n\n        ans = max(ans, maxProd);\n    }\n\n    return ans;\n}",
+        "javascript": "function maxProduct(nums) {\n    let maxProd = nums[0];\n    let minProd = nums[0];\n    let ans = nums[0];\n\n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            [maxProd, minProd] = [minProd, maxProd];\n        }\n\n        maxProd = Math.max(nums[i], maxProd * nums[i]);\n        minProd = Math.min(nums[i], minProd * nums[i]);\n\n        ans = Math.max(ans, maxProd);\n    }\n\n    return ans;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Maintain both the largest and smallest product ending at each index.",
+    "steps": [
+      "Initialize max and min products.",
+      "Swap them if the current value is negative.",
+      "Update both products.",
+      "Update the answer.",
+      "Continue until the end."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Maintain max and min products.",
+      "Swap on negative numbers.",
+      "Update both products.",
+      "Track the global maximum.",
+      "O(n) time."
+    ],
+    "practiceLevel": "Medium",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why do we maintain the minimum product?",
+      "Why is swapping necessary?",
+      "How do zeros affect the algorithm?",
+      "Can this be solved using prefix and suffix products?",
+      "Can you return the actual subarray?"
+    ],
+    "interviewTips": [
+      "Start with brute force.",
+      "Explain why normal Kadane fails.",
+      "Highlight the effect of negative numbers.",
+      "Describe the max/min product idea.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "A negative number can transform the smallest product into the largest product.",
+      "algorithm": "Max Product + Min Product → Swap if Negative → Update → Answer.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Negative × Negative = Positive.",
+      "Track both maximum and minimum.",
+      "Swap when current value is negative.",
+      "Zeros restart the product.",
+      "Constant extra space."
+    ],
+    "commonMistakes": [
+      "Tracking only the maximum product.",
+      "Ignoring the effect of negative numbers.",
+      "Not swapping max and min after a negative value.",
+      "Forgetting zeros reset the running product.",
+      "Applying the normal Kadane's Algorithm directly."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/maximum-product-subarray/",
+    "neetcode": "https://neetcode.io/problems/maximum-product-subarray",
+    "youtube": [
+      "NeetCode - Maximum Product Subarray",
+      "Take U Forward - Maximum Product Subarray",
+      "CodeHelp - Dynamic Programming",
+      "Abdul Bari - Kadane's Algorithm",
+      "Nick White - Maximum Product Subarray"
+    ],
+    "relatedProblems": [
+      "Maximum Subarray",
+      "Maximum Sum Circular Subarray",
+      "House Robber",
+      "Best Time to Buy and Sell Stock",
+      "Product of Array Except Self"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}

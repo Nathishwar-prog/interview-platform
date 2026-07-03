@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "id": "arr024",
+    "title": "Gas Station",
+    "slug": "gas-station",
+    "difficulty": "Medium",
+    "category": "Array",
+    "subcategory": "Greedy",
+    "pattern": "Greedy Traversal",
+    "tags": [
+      "Array",
+      "Greedy"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta",
+      "Apple",
+      "Adobe",
+      "Bloomberg",
+      "Uber",
+      "Oracle",
+      "LinkedIn",
+      "Goldman Sachs",
+      "Salesforce",
+      "PayPal",
+      "VMware"
+    ],
+    "frequency": "Very High",
+    "acceptance": "45.7%",
+    "estimatedTime": "20-25 minutes",
+    "practiceLevel": "Intermediate",
+    "premium": false
+  },
+  "learning": {
+    "whatWillYouLearn": "Prerequisites: Arrays, Greedy Algorithm, Loops, Time Complexity, Space Complexity",
+    "whyDoesThisExist": "Imagine driving around a circular highway with fuel stations. At every station, you refuel before driving to the next station. Your goal is to determine the only station from which you can complete the entire loop without running out of fuel.",
+    "realWorldAnalogy": "Imagine driving around a circular highway with fuel stations. At every station, you refuel before driving to the next station. Your goal is to determine the only station from which you can complete the entire loop without running out of fuel.",
+    "prerequisites": [
+      "Arrays",
+      "Greedy Algorithm",
+      "Loops",
+      "Time Complexity",
+      "Space Complexity"
+    ],
+    "whenToUseThis": "Use this Greedy pattern whenever a failed starting point eliminates an entire range of future candidates.",
+    "patternRecognitionKeywords": [
+      "Gas Station",
+      "Greedy",
+      "Circular Route",
+      "Restart",
+      "Fuel Balance",
+      "Unique Start"
+    ],
+    "signals": "Whenever failure at one position eliminates a whole range of future candidates, think of a Greedy Traversal.",
+    "redFlags": "",
+    "expectedLearningOutcome": "I will know when to use this pattern."
+  },
+  "problem": {
+    "problemStatement": "There are n gas stations arranged in a circular route. You are given two integer arrays gas and cost, where gas[i] is the amount of gas available at station i and cost[i] is the gas required to travel from station i to station (i + 1). Return the starting gas station's index if you can travel around the circuit once in the clockwise direction; otherwise, return -1. If a solution exists, it is guaranteed to be unique.",
+    "examples": [
+      {
+        "input": "gas = [1,2,3,4,5], cost = [3,4,5,1,2]",
+        "output": "3",
+        "explanation": "Starting from station 3 allows completing the entire circuit."
+      },
+      {
+        "input": "gas = [2,3,4], cost = [3,4,3]",
+        "output": "-1",
+        "explanation": "Total gas is less than total cost, so completing the circuit is impossible."
+      }
+    ],
+    "constraints": [
+      "1 <= gas.length == cost.length <= 100000",
+      "0 <= gas[i], cost[i] <= 10000"
+    ],
+    "edgeCases": [
+      "Single station",
+      "Total gas less than total cost",
+      "Starting station is the last index",
+      "All stations have equal gas and cost",
+      "Gas exactly equals total cost"
+    ]
+  },
+  "thinkingProcess": {
+    "firstThought": "",
+    "initialAssumptions": "",
+    "naiveIdea": "Attempt to complete the circuit starting from every gas station until a valid one is found.",
+    "whyItSeemsCorrect": "",
+    "whereItFails": "",
+    "observation": "",
+    "keyInsight": "If you cannot reach station B starting from station A, then every station between A and B also cannot be a valid starting point. Therefore, when your fuel becomes negative, you can safely skip all those stations and start searching from the next station.",
+    "ahaMoment": "If you fail between stations A and B, none of the stations between A and B can be a valid starting point.",
+    "mentalModel": "",
+    "patternRecognition": "Whenever failure at one position eliminates a whole range of future candidates, think of a Greedy Traversal.",
+    "deriveTheAlgorithm": "",
+    "whyItWorks": "Every station is visited exactly once. Whenever a starting station fails, all stations before the failure are eliminated from consideration, resulting in a linear-time greedy solution.",
+    "howToRecognizeSimilar": "Whenever failure at one position eliminates a whole range of future candidates, think of a Greedy Traversal.",
+    "commonWrongPaths": [
+      "Not checking if total gas is less than total cost.",
+      "Restarting from the wrong station.",
+      "Resetting total gas instead of current fuel.",
+      "Trying every starting station.",
+      "Confusing total fuel with current fuel."
+    ]
+  },
+  "thinkingCoach": {
+    "hints": [
+      "Compare total gas and total cost first.",
+      "Maintain a running fuel balance.",
+      "Restart whenever the balance becomes negative."
+    ],
+    "guidedQuestions": [],
+    "commonMisconceptions": [
+      "Not checking if total gas is less than total cost.",
+      "Restarting from the wrong station.",
+      "Resetting total gas instead of current fuel.",
+      "Trying every starting station.",
+      "Confusing total fuel with current fuel."
+    ],
+    "correctMindset": "",
+    "reasoningCheckpoints": []
+  },
+  "pattern": {
+    "name": "Greedy Traversal",
+    "recognitionSignals": "Whenever failure at one position eliminates a whole range of future candidates, think of a Greedy Traversal.",
+    "whenNotToUse": "",
+    "mentalModel": "",
+    "templateAlgorithm": "",
+    "reusablePseudocode": "",
+    "similarPatterns": []
+  },
+  "approaches": [
+    {
+      "title": "Try Every Starting Station",
+      "idea": "Attempt to complete the circuit starting from every gas station until a valid one is found.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Choose every station as the starting point.",
+        "Simulate one complete trip.",
+        "Return the first successful station.",
+        "Return -1 if none works."
+      ],
+      "dryRun": "Start from 0 → Fail\nStart from 1 → Fail\nStart from 3 → Success",
+      "visualization": {},
+      "code": {
+        "java": "Brute force simulation omitted because it tries every starting station.",
+        "python": "Brute force simulation omitted.",
+        "cpp": "Naive simulation omitted.",
+        "javascript": "Naive simulation omitted."
+      },
+      "complexities": {
+        "time": "O(n²)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Restart",
+      "idea": "Maintain the current fuel balance. Whenever it becomes negative, discard all previous stations and restart from the next station.",
+      "intuition": "",
+      "whenToUse": "",
+      "algorithm": [
+        "Compute total gas and total cost.",
+        "Maintain current fuel.",
+        "Restart when fuel becomes negative.",
+        "Return the final starting station."
+      ],
+      "dryRun": "Fuel becomes negative at station 2.\nRestart from station 3.",
+      "visualization": {},
+      "code": {
+        "java": "Uses Greedy Traversal.",
+        "python": "Uses Greedy Traversal.",
+        "cpp": "Uses Greedy Traversal.",
+        "javascript": "Uses Greedy Traversal."
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    },
+    {
+      "title": "Greedy Traversal",
+      "idea": "First verify that the total gas is at least the total travel cost. Then traverse the stations while maintaining the current fuel balance. Whenever the balance becomes negative, reset the balance to zero and choose the next station as the new candidate starting point.",
+      "intuition": "Every station is visited exactly once. Whenever a starting station fails, all stations before the failure are eliminated from consideration, resulting in a linear-time greedy solution.",
+      "whenToUse": "",
+      "algorithm": [
+        "Initialize totalGas = 0, totalCost = 0.",
+        "Initialize currentFuel = 0.",
+        "Initialize start = 0.",
+        "Traverse every station.",
+        "Update totalGas and totalCost.",
+        "Update currentFuel += gas[i] - cost[i].",
+        "If currentFuel becomes negative:",
+        "Set start = i + 1.",
+        "Reset currentFuel = 0.",
+        "After traversal, if totalGas < totalCost return -1.",
+        "Otherwise return start."
+      ],
+      "dryRun": "gas=[1,2,3,4,5]\ncost=[3,4,5,1,2]\nFuel=-2 → Restart at 1\nFuel=-2 → Restart at 2\nFuel=-2 → Restart at 3\nComplete journey\nAnswer=3",
+      "visualization": {},
+      "code": {
+        "java": "public int canCompleteCircuit(int[] gas, int[] cost) {\n    int totalGas = 0;\n    int totalCost = 0;\n    int fuel = 0;\n    int start = 0;\n\n    for(int i = 0; i < gas.length; i++){\n        totalGas += gas[i];\n        totalCost += cost[i];\n        fuel += gas[i] - cost[i];\n\n        if(fuel < 0){\n            start = i + 1;\n            fuel = 0;\n        }\n    }\n\n    return totalGas >= totalCost ? start : -1;\n}",
+        "python": "def canCompleteCircuit(gas, cost):\n    totalGas = sum(gas)\n    totalCost = sum(cost)\n\n    if totalGas < totalCost:\n        return -1\n\n    fuel = 0\n    start = 0\n\n    for i in range(len(gas)):\n        fuel += gas[i] - cost[i]\n\n        if fuel < 0:\n            start = i + 1\n            fuel = 0\n\n    return start",
+        "cpp": "int canCompleteCircuit(vector<int>& gas, vector<int>& cost){\n    int totalGas=0,totalCost=0,fuel=0,start=0;\n\n    for(int i=0;i<gas.size();i++){\n        totalGas+=gas[i];\n        totalCost+=cost[i];\n        fuel+=gas[i]-cost[i];\n\n        if(fuel<0){\n            start=i+1;\n            fuel=0;\n        }\n    }\n\n    return totalGas>=totalCost?start:-1;\n}",
+        "javascript": "function canCompleteCircuit(gas,cost){\nlet totalGas=0,totalCost=0,fuel=0,start=0;\n\nfor(let i=0;i<gas.length;i++){\n    totalGas+=gas[i];\n    totalCost+=cost[i];\n    fuel+=gas[i]-cost[i];\n\n    if(fuel<0){\n        start=i+1;\n        fuel=0;\n    }\n}\n\nreturn totalGas>=totalCost?start:-1;\n}"
+      },
+      "complexities": {
+        "time": "O(n)",
+        "space": "O(1)"
+      },
+      "pros": [],
+      "cons": [],
+      "interviewExplanation": "",
+      "optimizationPath": "",
+      "edgeCases": []
+    }
+  ],
+  "visualization": {
+    "description": "Whenever fuel becomes negative, restart from the next station.",
+    "steps": [
+      "Start from station 0.",
+      "Track current fuel.",
+      "Fuel becomes negative.",
+      "Discard previous stations.",
+      "Restart from the next station."
+    ]
+  },
+  "practice": {
+    "revisionNotes": [
+      "Check total gas first.",
+      "Maintain current fuel.",
+      "Restart on negative balance.",
+      "Greedy elimination.",
+      "Linear solution."
+    ],
+    "practiceLevel": "Intermediate",
+    "mistakeChecklist": []
+  },
+  "interview": {
+    "interviewFollowUps": [
+      "Why is the answer unique?",
+      "Why can failed stations be skipped?",
+      "Can multiple valid starting stations exist?",
+      "How would you prove the greedy solution?",
+      "Can this problem be solved using prefix sums?"
+    ],
+    "interviewTips": [
+      "Explain the brute-force simulation first.",
+      "Mention why total gas must be checked.",
+      "Explain why restarting is safe.",
+      "Discuss the greedy proof.",
+      "State O(n) time and O(1) space."
+    ],
+    "communicationExpectations": "Explain your thought process clearly.",
+    "tradeOffs": ""
+  },
+  "revision": {
+    "cheatSheet": {
+      "keyObservation": "If you fail between stations A and B, none of the stations between A and B can be a valid starting point.",
+      "algorithm": "Check Total → Traverse → Restart on Negative Fuel.",
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)"
+    },
+    "importantPoints": [
+      "Total gas must be at least total cost.",
+      "Negative balance eliminates previous stations.",
+      "Restart from next station.",
+      "Single traversal.",
+      "Greedy proof."
+    ],
+    "commonMistakes": [
+      "Not checking if total gas is less than total cost.",
+      "Restarting from the wrong station.",
+      "Resetting total gas instead of current fuel.",
+      "Trying every starting station.",
+      "Confusing total fuel with current fuel."
+    ]
+  },
+  "resources": {
+    "leetcode": "https://leetcode.com/problems/gas-station/",
+    "neetcode": "https://neetcode.io/problems/gas-station",
+    "youtube": [
+      "NeetCode - Gas Station",
+      "Take U Forward - Gas Station",
+      "CodeHelp - Greedy Problems",
+      "Abdul Bari - Greedy Algorithms",
+      "Nick White - Gas Station"
+    ],
+    "relatedProblems": [
+      "Jump Game",
+      "Jump Game II",
+      "Minimum Number of Refueling Stops",
+      "Car Pooling",
+      "Candy"
+    ]
+  },
+  "analytics": {
+    "completionStatus": false,
+    "timeSpent": 0,
+    "confidence": 0,
+    "attempts": 0,
+    "hintsUsed": 0,
+    "mistakes": 0,
+    "revisionCount": 0
+  }
+}
