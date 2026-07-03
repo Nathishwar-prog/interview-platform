@@ -6,9 +6,11 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import path from "path";
 import fs from "fs";
+import os from "os";
 import { exec } from "child_process";
 
-// Load .env from frontend folder
+// Load .env
+dotenv.config();
 dotenv.config({ path: path.resolve("../frontend/.env") });
 
 const app = express();
@@ -16,14 +18,22 @@ const PORT = process.env.BACKEND_PORT || 8000;
 const JWT_SECRET = process.env.JWT_SECRET || "prepcrack_super_secret_jwt_key_2026";
 
 const { Pool } = pg;
+const dbUrl = process.env.DATABASE_URL;
+const isLocalDb = dbUrl && (dbUrl.includes("localhost") || dbUrl.includes("127.0.0.1"));
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: dbUrl,
+  ssl: isLocalDb ? false : { rejectUnauthorized: false },
 });
 
-// Ensure temp directory exists for running multi-language code compilation
-const TEMP_DIR = path.resolve("./temp");
-if (!fs.existsSync(TEMP_DIR)) {
-  fs.mkdirSync(TEMP_DIR, { recursive: true });
+// Ensure temp directory exists for running multi-language code compilation (using OS tmpdir for Vercel serverless compatibility)
+const TEMP_DIR = path.join(os.tmpdir(), "prepcrack_temp");
+try {
+  if (!fs.existsSync(TEMP_DIR)) {
+    fs.mkdirSync(TEMP_DIR, { recursive: true });
+  }
+} catch (e) {
+  console.warn("Failed to create TEMP_DIR:", e);
 }
 
 app.use(cors());
@@ -33,6 +43,11 @@ app.use(express.json());
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
+});
+
+// Config Endpoint for frontend runtime configuration
+app.get("/api/config", (req, res) => {
+  res.json({ API_BASE_URL: "" });
 });
 
 // Middleware to authenticate JWT token
